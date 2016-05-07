@@ -2,13 +2,12 @@
 
 ## Features
 
->>
-react
-redux
-react-router
-react-router-redux
+* react
+* redux
+* react-router
+* react-router-redux
 
-redux-devtools
-webpack
-babel
-classnames
+* redux-devtools
+* webpack
+* babel
+* classnames
