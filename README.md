@@ -36,7 +36,7 @@ webpack: bundle is now VALID.
 
 Serves your app at 
 ```
-localhost:3000
+localhost:3003
 ```
 
 ## Features
