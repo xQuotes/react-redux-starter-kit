@@ -3,6 +3,8 @@ var path = require('path');
 var WebpackMd5Hash = require('webpack-md5-hash');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+var TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 
 var node_modules_dir = path.resolve(__dirname, 'node_modules');
@@ -20,12 +22,12 @@ var build = {
   dir: 'dist',
   HTML1: {
     filename: 'index.html',
-    title: 'react-redux-stator-kit',
+    title: '',
     template: 'index.ejs'
   },
   HTML2: {
     filename: 'mobile.html',
-    title: 'react-redux-stator-kit',
+    title: '',
     template: 'mobile.ejs'
   }
 }
@@ -36,13 +38,14 @@ var isProduction = function () {
 }
 
 var plugins = [
+  new WebpackCleanupPlugin(),
   new webpack.BannerPlugin('This file is created by fooying@qq.com'),
   new webpack.HotModuleReplacementPlugin(),
   new WebpackMd5Hash(),
-  new ExtractTextPlugin("[name].css"), //合并css
+  new ExtractTextPlugin("[name].[hash].css"), //合并css
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendors',
-    filename: 'vendors.js',
+    filename: 'vendors.[hash].js',
     minChunks: Infinity
   }), //用于分析模块的共用代码
   new webpack.NoErrorsPlugin(),
@@ -50,14 +53,19 @@ var plugins = [
     filename: build.HTML1.filename,
     title: build.HTML1.title,
     template: build.HTML1.template,
-    chunks: ['vendors', 'app']
+    chunks: ['vendors', 'app'],
+    inject: 'body'
   }),
   new HtmlWebpackPlugin({
     filename: build.HTML2.filename,
     title: build.HTML2.title,
     template: build.HTML2.template,
-    chunks: ['vendors', 'mobile']
-  })
+    chunks: ['vendors', 'mobile'],
+    inject: 'body'
+  }),
+  new TransferWebpackPlugin([
+    {from: 'json'}
+  ], path.resolve(__dirname,''))
 ];
 
 var entryApp = [
@@ -91,11 +99,11 @@ if( isProduction() ) {
 } else {
   entryApp.push(
     'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:3003'
+    'webpack-dev-server/client?http://localhost:3333'
   );
   entryMobile.push(
     'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:3003'
+    'webpack-dev-server/client?http://localhost:3333'
   );
 }
 
@@ -109,12 +117,12 @@ var config = {
       'react-router',
       'react-router-redux',
       'react-redux',
-      './src/common/js/Tools']
+      './src/common/js/tools']
   },
   output: {
     path: path.resolve(__dirname, build.dir),
     publicPath: '/', // 自动添加 css js 文件绝对路径 
-    filename: '[name].js'
+    filename: '[name].[hash].js'
   },
   module: {
     loaders: [
