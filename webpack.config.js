@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var TransferWebpackPlugin = require('transfer-webpack-plugin');
-
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 var node_modules_dir = path.resolve(__dirname, 'node_modules');
 
@@ -13,6 +13,7 @@ var node_modules_dir = path.resolve(__dirname, 'node_modules');
  * 用于分析模块的共用代码
  * https://github.com/webpack/docs/wiki/optimization#multi-page-app
  */
+var httpUrl = 'http://localhost:3333'
 
 var source = {
   entryAppJS: './src/app.js',
@@ -65,7 +66,8 @@ var plugins = [
   }),
   new TransferWebpackPlugin([
     {from: 'json'}
-  ], path.resolve(__dirname,''))
+  ], path.resolve(__dirname,'')),
+  new OpenBrowserPlugin({ url: httpUrl })
 ];
 
 var entryApp = [
@@ -99,11 +101,11 @@ if( isProduction() ) {
 } else {
   entryApp.push(
     'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:3333'
+    'webpack-dev-server/client?'+httpUrl
   );
   entryMobile.push(
     'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:3333'
+    'webpack-dev-server/client?'+httpUrl
   );
 }
 
