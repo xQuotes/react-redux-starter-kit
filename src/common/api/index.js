@@ -1,7 +1,7 @@
 const url = '';
 
 const Api = {
-  login: '/login'
+  login: '/signin'
 }
 
 export default Api

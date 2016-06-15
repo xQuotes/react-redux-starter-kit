@@ -1,5 +1,11 @@
 # React Redux Starter Kit
 
+## develop wexin(wechat) app
+
+### Features
+- [react-weui](https://github.com/weui/weui)
+- [react-weui](https://github.com/weui/react-weui)
+
 ## Requirements
 
 - node
@@ -36,7 +42,7 @@ webpack: bundle is now VALID.
 
 Serves your app at 
 ```
-localhost:3003
+localhost:3333
 ```
 
 ## Features
