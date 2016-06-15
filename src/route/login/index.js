@@ -1,10 +1,17 @@
 import React from 'react'
 
-export default class Login extends React.Component {
+import Overlay from '../../components/overlay/index'
+import Login from './components/login'
+
+import './index.less'
+
+export default class LoginIndex extends React.Component {
   render() {
     return(
-      <div>
-        login
+      <div
+        className="login">
+        <Overlay />
+        <Login className="login_index"/>
       </div>
       )
   }

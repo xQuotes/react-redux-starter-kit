@@ -24,7 +24,7 @@ export default class Root extends React.Component {
     return(
       <Router history={history}>
         <Route path='/' component={App}>
-          <IndexRoute component={Ads} />
+          <IndexRoute component={Login} />
           <Route path='index' component={Index} >
             <IndexRoute component={Main} />
             <Route path='main' component={Main} />

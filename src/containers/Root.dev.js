@@ -23,7 +23,7 @@ export default class RootDev extends React.Component {
     const history = syncHistoryWithStore(browserHistory, store)
     return(
       <Provider store={store}>
-        <div>
+        <div className="root">
           <Root history={history}/>
           <DevTools />
         </div>
