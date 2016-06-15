@@ -118,8 +118,7 @@ var config = {
       'react',
       'react-router',
       'react-router-redux',
-      'react-redux',
-      './src/common/js/tools']
+      'react-redux']
   },
   output: {
     path: path.resolve(__dirname, build.dir),
