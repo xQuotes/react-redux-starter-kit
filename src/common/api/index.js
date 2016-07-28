@@ -1,7 +1,8 @@
 const url = '';
 
 const Api = {
-  login: '/signin'
+  login: '/signin',
+  searchReport: '/search'
 }
 
 export default Api

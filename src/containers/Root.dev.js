@@ -4,7 +4,7 @@ import {
   Provider
 } from 'react-redux'
 import {
-  browserHistory
+  hashHistory
 } from 'react-router'
 import {
   syncHistoryWithStore
@@ -20,7 +20,7 @@ export default class RootDev extends React.Component {
   }
   render() {
     const { store } = this.props
-    const history = syncHistoryWithStore(browserHistory, store)
+    const history = syncHistoryWithStore(hashHistory, store)
     return(
       <Provider store={store}>
         <div className="root">

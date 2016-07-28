@@ -1,8 +1,9 @@
 import React from 'react'
 
 import {
-  browserHistory
+  hashHistory
 } from 'react-router'
+import Url from 'Url'
 
 export default class Ads extends React.Component {
   constructor(props) {
@@ -10,9 +11,9 @@ export default class Ads extends React.Component {
   }
   componentDidMount() {
     var intervalid = setInterval(function () {
-      browserHistory.push('/index')
+      hashHistory.push(Url.index)
       clearInterval(intervalid)
-    }.bind(this), 5000);
+    }.bind(this), 1000);
   }
   render() {
     return(

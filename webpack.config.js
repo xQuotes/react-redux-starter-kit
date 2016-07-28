@@ -64,9 +64,9 @@ var plugins = [
     chunks: ['vendors', 'mobile'],
     inject: 'body'
   }),
-  new TransferWebpackPlugin([
-    {from: 'json'}
-  ], path.resolve(__dirname,'')),
+  // new TransferWebpackPlugin([
+  //   {from: 'json'}
+  // ], path.resolve(__dirname,'')),
   new OpenBrowserPlugin({ url: httpUrl })
 ];
 
@@ -118,7 +118,8 @@ var config = {
       'react',
       'react-router',
       'react-router-redux',
-      'react-redux']
+      'react-redux'],
+    common: ['Utils', 'Url', 'Api', 'Auth', 'Fetch', 'Img']
   },
   output: {
     path: path.resolve(__dirname, build.dir),
@@ -164,7 +165,15 @@ var config = {
     ]
   },
   resolve:{
-    extensions:['','.js','.jsx'] // 可以忽略的后缀名
+    extensions:['','.js','.jsx'], // 可以忽略的后缀名
+    alias: {
+      Utils : path.resolve(__dirname, './src/common/utils/utils.js'),//后续直接 require('Tools') 即可
+      Url : path.resolve(__dirname, './src/route/url.js'),
+      Api : path.resolve(__dirname, './src/common/api/index.js'),
+      Auth : path.resolve(__dirname, './src/common/utils/auth.js'),
+      Fetch : path.resolve(__dirname, './src/common/utils/fetch.js'),
+      Img : path.resolve(__dirname, './src/common/img/index.js')
+    }
   },
   plugins: plugins,
   devtool: isProduction() ? null : 'source-map'

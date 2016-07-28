@@ -6,7 +6,7 @@ import Button from '../../components/button/index'
 
 import './index.less'
 
-export default class LoginIndex extends React.Component {
+class LoginIndex extends React.Component {
   render() {
     return(
       <div
@@ -17,3 +17,5 @@ export default class LoginIndex extends React.Component {
       )
   }
 }
+
+module.exports = LoginIndex

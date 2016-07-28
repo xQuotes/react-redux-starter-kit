@@ -1,13 +1,20 @@
 import {
   createStore,
-  applyMiddleware
+  applyMiddleware,
+  compose
 } from 'redux'
 
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers'
+import commonRequest from '../common/middleware/request'
 
-const finalCreateStore = applyMiddleware(thunk)
+
+const finalCreateStore = compose(
+  applyMiddleware(thunk),
+  applyMiddleware(commonRequest)
+)(createStore)
+
 
 export default function configureStore(initialState) {
-  return createStore(rootReducer, initialState, finalCreateStore)
+  return finalCreateStore(rootReducer, initialState)
 }

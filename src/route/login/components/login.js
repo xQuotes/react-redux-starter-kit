@@ -23,7 +23,7 @@ export default class Login extends React.Component {
         {...others}
         className={cls}>
         <div className='login_header'>
-          <img src="http://www.jqueryfuns.com/resource/view/670/flavr/images/icons/email.png" />
+          <img src="" />
         </div>
         <div className='login_body'>
           <h1>登录</h1>
@@ -37,7 +37,7 @@ export default class Login extends React.Component {
             </div>
             <div className="form_row">
               <input type="checkbox" name="remember" id="check"/>
-              <label for="check">记住我</label>
+              <label htmlFor="check">记住我</label>
             </div>
           </form>
         </div>

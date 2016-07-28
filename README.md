@@ -1,10 +1,5 @@
-# React Redux Starter Kit
-
-## develop wexin(wechat) app
-
 ### Features
-- [react-weui](https://github.com/weui/weui)
-- [react-weui](https://github.com/weui/react-weui)
+- [ANTD](http://ant.design/)
 
 ## Requirements
 

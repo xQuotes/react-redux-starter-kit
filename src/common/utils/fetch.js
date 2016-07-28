@@ -1,21 +1,32 @@
 import { Modal } from 'antd'
 
 
-export function fetchResult(result, callback, errorCallback) {
-  if(result.code == 0) {
+export function fetchResult(result, callback) {
+  if (result.code === 200) {
     callback()
-  } else {
-    errorCallback()
-     Modal.error({
+  } else if (result.code === 0) {
+    Modal.error({
       title: '',
-      content: result.message
+      content: result.msg,
+    })
+  } else {
+    Modal.error({
+      title: '',
+      content: '服务器出错',
     })
   }
 }
 
-export function fetchResultError(result) {
+export function alertError(msg) {
   Modal.error({
     title: '',
-    content: result.message
+    content: msg,
+  })
+}
+
+export function alertSuccess(msg) {
+  Modal.success({
+    title: '',
+    content: msg,
   })
 }

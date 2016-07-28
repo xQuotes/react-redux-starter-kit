@@ -1,49 +1,79 @@
 import {
-  browserHistory,
-  hashHistory
+  hashHistory,
 } from 'react-router'
 
-var Auth = {}
+import Url from 'Url'
 
-Auth.redirectToLogin = function(nextState, replace) {
+const Auth = {}
+
+Auth.redirectToLogin = function (nextState, replace) {
   if (!Auth.loggedIn()) {
     replace({
-      pathname: '/index',
-      state: { nextPathname: nextState.location.pathname }
+      pathname: Url.register,
+      state: {
+        nextPathname: nextState.location.pathname,
+      },
     })
   }
 }
-Auth.redirectToIndex = function(nextState, replace) {
+Auth.redirectToIndex = function (nextState, replace) {
   if (Auth.loggedIn()) {
-    replace('/goods')
+    replace(Url.index)
+  }
+}
+Auth.remenber = function(auth) {
+  if(!!auth) {
+    localStorage.username = auth.username || ''
+    localStorage.token = auth.token || ''
+    localStorage.user_id = auth.id || ''
+    
+    if (Auth.loggedIn()) {
+      hashHistory.goBack()
+      return
+    }
+  } else {
+    Auth.logout()
   }
 }
 Auth.login = function(auth) {
   if(!!auth) {
-    localStorage.email = auth.email
-    if (this.loggedIn()) {
-      hashHistory.push('/goods')
+    sessionStorage.username = auth.username || ''
+    sessionStorage.token = auth.token || ''
+    sessionStorage.user_id = auth.id || ''
+
+    if (Auth.loggedIn()) {
+      hashHistory.goBack()
       return
     }
   } else {
-    this.logout()
+    Auth.logout()
   }
 }
-
 Auth.getToken = function () {
-  return localStorage.email
+  return localStorage.token || sessionStorage.token
 }
 Auth.getUser = function () {
-  return localStorage.email
+  return localStorage.username || sessionStorage.username
+}
+Auth.getUid = function () {
+  return localStorage.user_id || sessionStorage.user_id
+}
+Auth.hasAuth = function (uid) {
+  return localStorage.user_id == uid || sessionStorage.user_id == uid
 }
 Auth.logout = function () {
-  delete localStorage.email
-  hashHistory.push('/index')
-  // hashHistory.goBack()
+  delete localStorage.token
+  delete localStorage.username
+  delete localStorage.user_id
+
+  delete sessionStorage.token
+  delete sessionStorage.username
+  delete sessionStorage.user_id
+  
+  hashHistory.goBack()
 }
 Auth.loggedIn = function () {
-  return !!localStorage.email
+  return !!localStorage.username || !!sessionStorage.username
 }
-Auth.onChange = function () {}
 
-module.exports = Auth;
+export default Auth
