@@ -1,6 +1,6 @@
 ## React-redux-starter-kit
 
-![]()
+![admin](https://github.com/xQuotes/react-redux-starter-kit/blob/admin/src/common/img/admin.png)
 
 ### Features
 - [ANTD](http://ant.design/)
