@@ -6,7 +6,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app">
-       {this.props.children || <Ads /> }
+       {this.props.children}
       </div>
       )
   }

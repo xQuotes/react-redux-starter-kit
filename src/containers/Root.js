@@ -19,7 +19,8 @@ const rootRoute = {
       require.ensure([], function (require) {
         callback(null, [
           require('../route/index/route'),
-          require('../route/login/route')
+          require('../route/login/route'),
+          require('../route/logout/route')
         ])
       })
     }

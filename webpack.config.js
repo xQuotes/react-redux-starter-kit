@@ -13,7 +13,7 @@ var node_modules_dir = path.resolve(__dirname, 'node_modules');
  * 用于分析模块的共用代码
  * https://github.com/webpack/docs/wiki/optimization#multi-page-app
  */
-var httpUrl = 'http://localhost:3333'
+var httpUrl = 'http://localhost:3003'
 
 var source = {
   entryAppJS: './src/app.js',

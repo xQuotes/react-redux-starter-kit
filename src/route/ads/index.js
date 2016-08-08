@@ -5,6 +5,8 @@ import {
 } from 'react-router'
 import Url from 'Url'
 
+import './ads.less'
+
 export default class Ads extends React.Component {
   constructor(props) {
     super(props)
@@ -17,7 +19,7 @@ export default class Ads extends React.Component {
   }
   render() {
     return(
-      <div>
+      <div className="ads">
         Ads
       </div>
       )

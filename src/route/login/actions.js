@@ -5,8 +5,16 @@ import Api from 'Api'
 
 import Auth from 'Auth'
 
-export function fetchLogin(formData) {
-  console.log(formData)
+export function login(formData) {
+  // 没有接口
+  formData = {
+    username: 'fuyin',
+    token: 'fuyin',
+    user_id: '1'
+  }
+  Auth.login(formData)
+  return;
+
   return {
     type: LOGIN,
     url: Api.login,
@@ -27,6 +35,11 @@ export function fetchLogin(formData) {
 
 
 export function logout(formData) {
+  // 没有接口
+  console.log('11')
+  Auth.logout()
+  return;
+
   return {
     type: LOGOUT,
     url: Api.logout,

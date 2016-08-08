@@ -1,18 +1,30 @@
 import React from 'react'
 import {
-  Menu, Breadcrumb, Icon, Dropdown,
-} from 'antd'
+  connect
+} from 'react-redux'
 import {
   Link
 } from 'react-router'
+import {
+  Menu, Breadcrumb, Icon, Dropdown,
+} from 'antd'
 import { TreeSelect } from 'antd';
 const TreeNode = TreeSelect.TreeNode;
 const SubMenu = Menu.SubMenu
-import './dashboard.less'
 
 import Url from 'Url'
+import Auth from 'Auth'
 
+import {
+  logout
+} from '../login/actions'
+
+import './dashboard.less'
+@connect()
 export default class Dashboard extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   render() {
     const menu = (
       <Menu>
@@ -32,7 +44,9 @@ export default class Dashboard extends React.Component {
           <a href="#">设置</a>
         </Menu.Item>
         <Menu.Divider />
-        <Menu.Item key="1">退出</Menu.Item>
+        <Menu.Item key="1">
+          <Link to={Url.logout}>退出</Link>
+        </Menu.Item>
       </Menu>
     )
     return(
@@ -62,11 +76,19 @@ export default class Dashboard extends React.Component {
               </Dropdown>
             </div>
             <div className="header-right">
-              <Dropdown overlay={userMenu} trigger={['click']}>
-                <a className="ant-dropdown-link user-menu" href="#">
-                  xxx <Icon type="down" /> <Icon type="user" className="user-icon"/>
-                </a>
-              </Dropdown>
+              <div className="ant-dropdown-link user-menu">
+                {Auth.loggedIn() ? (<Dropdown overlay={userMenu} trigger={['click']}>
+                  <a href="#">
+                    <Icon type="user" className="user-icon"/>
+                    &nbsp; {Auth.getUser()}
+                    <Icon type="down" /> 
+                  </a>
+                </Dropdown>) : (
+                  <Link to={Url.login}>
+                    <Icon type="user" />&nbsp;登录
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
           <div className="ant-layout-breadcrumb">

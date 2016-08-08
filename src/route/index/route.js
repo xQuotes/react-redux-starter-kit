@@ -4,8 +4,7 @@ module.exports = {
   // getChildRoutes(location, callback) {
   //   require.ensure([], function (require) {
   //     callback(null, [
-  //       require('../demo'),
-  //       require('../demo'),
+  //       require('../logout')['default']
   //     ])
   //   })
   // }

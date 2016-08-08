@@ -28,7 +28,8 @@ Auth.remenber = function(auth) {
     localStorage.user_id = auth.id || ''
     
     if (Auth.loggedIn()) {
-      hashHistory.goBack()
+      // hashHistory.goBack()
+      hashHistory.push(Url.index)
       return
     }
   } else {
@@ -42,7 +43,8 @@ Auth.login = function(auth) {
     sessionStorage.user_id = auth.id || ''
 
     if (Auth.loggedIn()) {
-      hashHistory.goBack()
+      // hashHistory.goBack()
+      hashHistory.push(Url.index)
       return
     }
   } else {
