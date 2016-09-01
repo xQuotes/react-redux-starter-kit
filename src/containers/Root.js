@@ -11,16 +11,20 @@ import {
 import App from './App'
 
 const rootRoute = {
-  component: App,
-  scrollBehavior: "scrollToTop",
   childRoutes: [{
     path: '/',
+    component: App,
+    scrollBehavior: "scrollToTop",
+    indexRoute: {
+      component: require('../route/resume')['default']
+    },
     getChildRoutes(location, callback) {
       require.ensure([], function (require) {
         callback(null, [
           require('../route/index/route'),
           require('../route/login/route'),
-          require('../route/logout/route')
+          require('../route/logout/route'),
+          require('../route/resume/route')
         ])
       })
     }

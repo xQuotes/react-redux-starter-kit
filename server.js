@@ -5,7 +5,7 @@ var webpackDevServer=require("webpack-dev-server");
 var compiler = webpack(config);
 
 var server = new webpackDevServer(compiler, {
-  contentBase: "dist",
+  contentBase: "../dist",
   hot: true,
   inline: true,
   historyApiFallback: true,

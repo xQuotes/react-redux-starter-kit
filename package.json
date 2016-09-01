@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack webpack.config.js",
     "development": "export NODE_ENV=development  && webpack --config webpack.config.js",
-    "production": "export NODE_ENV=production  && webpack -p --config webpack.config.js",
+    "production": "export NODE_ENV=production  && webpack -p --config webpack.config.js && cp ../dist/index.html ../",
     "deploy": "export NODE_ENV=production && node server",
     "dev": "export NODE_ENV=development && node server",
     "win": "set NODE_ENV=development && node server",

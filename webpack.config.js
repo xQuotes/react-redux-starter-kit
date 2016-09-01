@@ -20,7 +20,7 @@ var source = {
   entryMobileJS: './src/mobile.js'
 }
 var build = {
-  dir: 'dist',
+  dir: '../dist',
   HTML1: {
     filename: 'index.html',
     title: '',
@@ -39,6 +39,12 @@ var isProduction = function () {
 }
 
 var plugins = [
+  new webpack.ProvidePlugin({
+      _: 'lodash', // 使_变成全局变量,不用在自己文件require('lodash')了
+      React: 'react',
+      ReactDOM: 'react-dom',
+      classNames: 'classnames'
+  }),
   new WebpackCleanupPlugin(),
   new webpack.BannerPlugin('This file is created by fooying@qq.com'),
   new webpack.HotModuleReplacementPlugin(),
@@ -109,6 +115,7 @@ if( isProduction() ) {
   );
 }
 
+var public_path = isProduction() ? '/dist/' : '/';
 
 var config = {
   entry: {
@@ -123,7 +130,7 @@ var config = {
   },
   output: {
     path: path.resolve(__dirname, build.dir),
-    publicPath: '/', // 自动添加 css js 文件绝对路径 
+    publicPath: public_path, // 自动添加 css js 文件绝对路径 
     filename: '[name].[hash].js'
   },
   module: {
