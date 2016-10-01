@@ -30,7 +30,8 @@
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
-    "reqwest": "^2.0.5"
+    "reqwest": "^2.0.5",
+    "shelljs": "^0.7.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

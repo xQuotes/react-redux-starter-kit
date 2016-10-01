@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var shell = require('shelljs');
 var WebpackMd5Hash = require('webpack-md5-hash');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -20,6 +21,7 @@ var source = {
   // entryMobileJS: './src/mobile.js'
 }
 
+shell.mkdir('-p', 'dist');
 var build = {
   dir: 'dist',
   HTML1: {
