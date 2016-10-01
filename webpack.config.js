@@ -130,7 +130,7 @@ var config = {
       'react-router',
       'react-router-redux',
       'react-redux'],
-    common: ['Utils', 'Url', 'Api', 'Auth', 'Fetch', 'Img']
+    common: ['Utils', 'Url', 'Api', 'Auth']
   },
   output: {
     path: path.resolve(__dirname, build.dir),

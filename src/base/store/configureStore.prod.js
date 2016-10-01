@@ -6,7 +6,7 @@ import {
 
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers'
-import commonRequest from '../common/middleware/request'
+import commonRequest from '../../common/middleware/request'
 
 
 const finalCreateStore = compose(

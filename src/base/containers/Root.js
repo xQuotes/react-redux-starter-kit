@@ -14,13 +14,13 @@ const rootRoute = {
     path: '/',
     component: App,
     indexRoute: {
-      component: require('../route/index/index')['default']
+      component: require('../../route/index')['default']
     },
     scrollBehavior: "scrollToTop",
     getChildRoutes(location, callback) {
       require.ensure([], function (require) {
         callback(null, [
-          require('../route/switches/route')
+          require('../../route/route')
         ])
       })
     }

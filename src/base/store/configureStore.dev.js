@@ -7,7 +7,7 @@ import DevTools from '../containers/DevTools'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import rootReducer from '../reducers'
-import commonRequest from '../common/middleware/request'
+import commonRequest from '../../common/middleware/request'
 
 const finalCreateStore = compose(
   applyMiddleware(thunk),
