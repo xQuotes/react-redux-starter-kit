@@ -65,7 +65,7 @@ var plugins = [
     inject: 'body'
   }),
   new TransferWebpackPlugin([
-    {from: 'json'}
+    {from: 'json', to: 'dist'}
   ], path.resolve(__dirname,'')),
   new OpenBrowserPlugin({ url: httpUrl })
 ];
