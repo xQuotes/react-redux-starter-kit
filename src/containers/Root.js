@@ -1,7 +1,3 @@
-import React from 'react'
-import {
-  connect
-} from 'react-redux'
 import {
   IndexRoute,
   Router,
@@ -14,7 +10,6 @@ import Index from '../route/index/index'
 import Main from '../route/index/main/index'
 import Login from '../route/login/index'
 
-@connect(() => ({}))
 export default class Root extends React.Component {
   constructor(props) {
     super(props)

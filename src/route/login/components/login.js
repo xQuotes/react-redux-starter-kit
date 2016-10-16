@@ -1,6 +1,3 @@
-import React from 'react'
-import classNames from 'classnames'
-
 import './login.less'
 
 export default class Login extends React.Component {
