@@ -1,9 +1,9 @@
 import {
   observable, computed, reaction, action
 } from 'mobx'
-import Api from 'Api'
 
-import fetching from '../common/utils/fetch'
+import Api from 'Api'
+import Fetch from 'Fetch'
 
 export default class UserStore {
   @observable user = {}
@@ -11,7 +11,7 @@ export default class UserStore {
 
   @action loginServer(formData) {
     this.isLoading = true
-    fetching({
+    Fetch({
       url: Api.login,
       data: formData,
       success: (data) => {
@@ -26,7 +26,7 @@ export default class UserStore {
   }
   @action registerServer(formData) {
     this.isLoading = true
-    fetching({
+    Fetch({
       url: Api.register,
       data: formData,
       success: (data) => {

@@ -1,4 +1,4 @@
-# React Redux Starter Kit
+# React mobx Starter Kit
 
 ## develop wexin(wechat) app
 
@@ -30,29 +30,22 @@ Child html-webpack-plugin for "index.html":
         [0] ./~/html-webpack-plugin/lib/loader.js!./index.ejs 955 bytes {0}
         [1] ./~/lodash/lodash.js 511 kB {0}
         [2] (webpack)/buildin/module.js 251 bytes {0}
-Child html-webpack-plugin for "mobile.html":
-          Asset    Size  Chunks       Chunk Names
-    mobile.html  548 kB       0
-    chunk    {0} mobile.html 512 kB
-        [0] ./~/html-webpack-plugin/lib/loader.js!./mobile.ejs 671 bytes {0}
-        [1] ./~/lodash/lodash.js 511 kB {0}
-        [2] (webpack)/buildin/module.js 251 bytes {0}
+......
 webpack: bundle is now VALID.
 ```
 
 Serves your app at 
 ```
-localhost:3333
+localhost:3002
 ```
 
 ## Features
 
 * react
-* redux
+* mobx
 * react-router
-* react-router-redux
 
-* redux-devtools
+* mobx-react-devtools
 * webpack
 * babel
 * classnames
