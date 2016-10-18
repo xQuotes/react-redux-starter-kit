@@ -10,8 +10,8 @@ var server = new webpackDevServer(compiler, {
   inline: true,
   historyApiFallback: true,
   proxy: {
-    '/api/*': {
-      target: 'http://172.30.84.207',
+    '/db/mobx/*': {
+      target: 'http://localhost:4000',
       // port: "8080",
       secure: false
     }

@@ -12,7 +12,7 @@ export default class RootDev extends React.Component {
   render() {
     return(
         <div className="root">
-          <Root history={browserHistory}/>
+          <Root history={browserHistory} {...this.props}/>
           <DevTool />
         </div>
       )

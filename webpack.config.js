@@ -113,9 +113,7 @@ var config = {
     // mobile: entryMobile,
     vendors: [
       'react',
-      'react-router',
-      'react-router-redux',
-      'react-redux'],
+      'react-router'],
     common: ['Utils', 'Url', 'Api', 'Auth']
   },
   output: {

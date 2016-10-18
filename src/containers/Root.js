@@ -1,32 +1,40 @@
 import {
-  IndexRoute,
-  Router,
-  Route
+  Router
 } from 'react-router'
+import {
+  Provider
+} from 'mobx-react'
 
-import App from './App.js'
-import Ads from '../route/ads/index'
-import Index from '../route/index/index'
-import Main from '../route/index/main/index'
-import Login from '../route/login/index'
+import App from './App'
+
+const rootRoute = {
+  childRoutes: [{
+    path: '/',
+    component: App,
+    indexRoute: {
+      component: require('../route/index')['default']
+    },
+    scrollBehavior: "scrollToTop",
+    getChildRoutes(location, callback) {
+      require.ensure([], function (require) {
+        callback(null, [
+          require('../route/register/route'),
+          require('../route/login/route')
+        ])
+      })
+    }
+  }]
+}
 
 export default class Root extends React.Component {
   constructor(props) {
     super(props)
   }
   render() {
-    const { history } = this.props
     return(
-      <Router history={history}>
-        <Route path='/' component={App}>
-          <IndexRoute component={Login} />
-          <Route path='index' component={Index} >
-            <IndexRoute component={Main} />
-            <Route path='main' component={Main} />
-          </Route>
-          <Route path='login' component={Login} />
-        </Route>
-      </Router>
+      <Provider userStore={this.props.userStore}>
+        <Router routes={rootRoute} history={this.props.history}/>
+      </Provider>
       )
   }
 }
