@@ -1,10 +1,8 @@
 # React mobx Starter Kit
 
-## develop wexin(wechat) app
+## develop web app
 
 ### Features
-- [react-weui](https://github.com/weui/weui)
-- [react-weui](https://github.com/weui/react-weui)
 
 ## Requirements
 
