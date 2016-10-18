@@ -9,7 +9,7 @@ export default class UserStore {
   @observable user = {}
   @observable isLoading = false
 
-  @action loginServer(formData) {
+  loginServer(formData) {
     this.isLoading = true
     Fetch({
       url: Api.login,
@@ -24,7 +24,8 @@ export default class UserStore {
       }
     })
   }
-  @action registerServer(formData) {
+  
+  registerServer(formData) {
     this.isLoading = true
     Fetch({
       url: Api.register,

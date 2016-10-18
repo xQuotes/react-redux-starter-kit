@@ -6,6 +6,7 @@ import {
 } from 'mobx-react'
 
 import App from './App'
+import routes from '../route/route'
 
 const rootRoute = {
   childRoutes: [{
@@ -17,10 +18,7 @@ const rootRoute = {
     scrollBehavior: "scrollToTop",
     getChildRoutes(location, callback) {
       require.ensure([], function (require) {
-        callback(null, [
-          require('../route/register/route'),
-          require('../route/login/route')
-        ])
+        callback(null, routes)
       })
     }
   }]
