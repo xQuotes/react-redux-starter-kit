@@ -1,12 +1,11 @@
+import './switches.less'
+
 import Dashboard from '../dashboard/index'
 
-export default class Index extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+export default class Switches extends React.Component {
   render() {
     return(
-      <div>
+      <div className="switches">
         <Dashboard {...this.props}/>
       </div>
       )

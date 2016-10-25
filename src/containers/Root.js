@@ -1,12 +1,14 @@
 import {
+  inject, observer
+} from 'mobx-react'
+import {
   Router
 } from 'react-router'
-import {
-  Provider
-} from 'mobx-react'
 
 import App from './App'
 import routes from '../route/route'
+
+import Auth from 'Auth'
 
 const rootRoute = {
   childRoutes: [{
@@ -24,15 +26,20 @@ const rootRoute = {
   }]
 }
 
+@inject('userStore') @observer
 export default class Root extends React.Component {
   constructor(props) {
     super(props)
+
+    // 判断是否登录
+    Auth.checkAuthCookie('UserIfosSession')
+  }
+  componentDidMount() {
+    this.props.userStore.getMeServer()
   }
   render() {
     return(
-      <Provider userStore={this.props.userStore}>
         <Router routes={rootRoute} history={this.props.history}/>
-      </Provider>
       )
   }
 }

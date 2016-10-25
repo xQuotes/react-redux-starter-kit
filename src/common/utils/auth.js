@@ -77,8 +77,8 @@ Auth.logout = function () {
   
   browserHistory.goBack()
 }
-Auth.removeAuthCookie = function(name) {
-  cookie.remove(name, { path: '/' })
+Auth.removeAuthCookie = function(name, options) {
+  cookie.remove(name, options)
 }
 Auth.getAuthCookie = function(name) {
   return cookie.load(name)

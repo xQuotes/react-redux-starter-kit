@@ -1,38 +1,25 @@
 import {
-  observable, computed, reaction, action
+  observable, computed, action
 } from 'mobx'
 
-import Api from 'Api'
 import Fetch from 'Fetch'
+import Api from 'Api'
 
-export default class UserStore {
-  @observable name = ''
-  @observable usr = ''
+import Store from './Store'
+
+export default class BackupStore {
   @observable isLoading = false
+  @observable backups = []
 
-  @active getMeServer(formData) {
+  @action getBackupsServer(formData) {
     this.isLoading = true
     Fetch({
-      url: Api.getMe,
+      url: Api.getBackups,
       data: formData,
+      method: 'post',
       success: (data) => {
         this.isLoading = false
-        this.name = data.name
-        this.usr = data.usr
-      },
-      error: (data) => {
-        this.isLoading = false
-      }
-    })
-  }
-  
-  @active logoutServer(formData) {
-    this.isLoading = true
-    Fetch({
-      url: Api.logout,
-      data: formData,
-      success: (data) => {
-        this.isLoading = false
+        this.backups = data.list.toObjectById()
       },
       error: (data) => {
         this.isLoading = false
@@ -40,15 +27,24 @@ export default class UserStore {
     })
   }
 
-  toJS() {
-    return {
-      name: this.name,
-      usr: this.usr
-    }
-  }
-  
-  static fromJS() {
-    return new UserStore()
+  @action getBackupServer(formData) {
+    this.isLoading = true
+    Fetch({
+      url: Api.getBackup,
+      data: formData,
+      method: 'post',
+      success: (data) => {
+        this.isLoading = false
+        this.backups[data.id] = data
+      },
+      error: (data) => {
+        this.isLoading = false
+      }
+    })
   }
 
+  static fromJS(array = []) {
+    return new BackupStore()
+  }
 }
+

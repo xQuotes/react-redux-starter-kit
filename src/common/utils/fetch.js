@@ -4,7 +4,7 @@ import reqwest from 'reqwest'
 import Auth from 'Auth'
 
 export default function fetching(action) {
-  const loop = (data, message, code) => data
+  const loop = (data, msg, statuscode) => data
   const successCb = action.success || loop
   const errorCb = action.error || loop
   
@@ -18,11 +18,11 @@ export default function fetching(action) {
     data: JSON.stringify(action.data),
     type: 'json',
     success: (res) => {
-      if (res.code === 200) {
-        return successCb(res.data, res.message, res.code)
+      if (res.statuscode === 200) {
+        return successCb(res.data, res.msg, res.statuscode)
       } else {
-        alert(res.message)
-        return errorCb(res.data, res.message, res.code)
+        alert(res.msg)
+        return errorCb(res.data, res.msg, res.statuscode)
       }
     },
     error: (err) => {

@@ -1,4 +1,60 @@
-body {
-  font-family: "Microsoft YaHei",Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC","Hiragino Sans GB",Simsun,sans-self;
-  font-size: 14px;
+@media (max-width: 767px){
+  .ant-calendar-picker-container .ant-calendar-range {
+    width: 100%;
+  }
+  .app {
+    .mobile-menu {
+      display: inline-block;
+      z-index: 999;
+      position: fixed;
+    }
+    .ant-layout-sider {
+      z-index: 999;
+    }
+    .ant-layout-header .header-left,
+    .ant-layout-sider,
+    .ant-layout-breadcrumb {
+      display: none;
+    }
+    .ant-layout-aside {
+      .ant-layout-sider {
+        position: fixed;
+      }
+      .ant-layout-header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 998;
+      }
+      .ant-layout-main {
+        margin-left: 0;
+      }
+      .ant-layout-container {
+        margin: 0;
+        margin-top: 50px;
+      }
+      .ant-layout-content {
+        padding: 0;
+      }
+    }
+    .table-search {
+      .ant-form-item {
+        .ant-col-8 {
+          width: 20%;
+        }
+        .ant-col-16 {
+          width: 80%;
+        }
+      }
+    }
+    .switches-action-type {
+      padding: 0px 10px 10px;
+      text-align: right;
+    }
+    .add-action-type {
+      text-align: right;
+      padding: 0px 10px;
+    }
+  }
 }

@@ -21,10 +21,15 @@ Array.prototype.delete = function (n) {
   }
   return this
 }
-
 Array.prototype.update = function (n, fileds) {
   if (n >= 0) {
     return this.slice(0, n).concat(fileds).concat(this.slice(n + 1, this.length))
   }
   return this
+}
+Array.prototype.toObjectById = function() {
+  return this.reduce(function(result, value, key) {
+    result[value.id] = value
+    return result
+  }, {})
 }
