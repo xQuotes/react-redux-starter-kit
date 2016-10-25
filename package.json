@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "antd": "^2.1.0",
+    "brace": "^0.8.0",
     "classnames": "^2.2.3",
     "lodash": "^4.11.1",
     "mobx": "^2.0.0",
@@ -30,6 +31,7 @@
     "object-assign": "~4.0.1",
     "pure-render-decorator": "^1.1.0",
     "react": "^0.14.7",
+    "react-ace": "^3.6.1",
     "react-cookie": "^0.4.8",
     "react-dom": "^0.14.7",
     "reqwest": "^2.0.5"
