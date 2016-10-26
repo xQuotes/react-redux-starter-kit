@@ -19,7 +19,8 @@ export default class BackupStore {
       method: 'post',
       success: (data) => {
         this.isLoading = false
-        this.backups = data.list.toObjectById()
+        console.log(data.list)
+        this.backups = data.list
       },
       error: (data) => {
         this.isLoading = false
@@ -41,6 +42,10 @@ export default class BackupStore {
         this.isLoading = false
       }
     })
+  }
+
+  toJS() {
+    return this.backups.map(backup => backup)
   }
 
   static fromJS(array = []) {

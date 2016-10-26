@@ -10,7 +10,7 @@ export default class UserStore {
   @observable usr = ''
   @observable isLoading = false
 
-  @active getMeServer(formData) {
+  @action getMeServer(formData) {
     this.isLoading = true
     Fetch({
       url: Api.getMe,
@@ -26,7 +26,7 @@ export default class UserStore {
     })
   }
   
-  @active logoutServer(formData) {
+  @action logoutServer(formData) {
     this.isLoading = true
     Fetch({
       url: Api.logout,

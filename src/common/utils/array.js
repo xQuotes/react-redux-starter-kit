@@ -1,3 +1,4 @@
+import _ from 'lodash'
 /* Array 操作
 * var arr = ['concat', 'join', 'pop']
 * concat() 连接两个或更多的数组，并返回结果。
@@ -27,9 +28,28 @@ Array.prototype.update = function (n, fileds) {
   }
   return this
 }
-Array.prototype.toObjectById = function() {
-  return this.reduce(function(result, value, key) {
-    result[value.id] = value
-    return result
-  }, {})
+Array.prototype.getById = function (id) {
+  return _.some(this, function(value, key) {
+    console.log(value)
+    console.log(key)
+    if(value['id'] == id) {
+      return value
+    } else {
+      return {}
+    }
+  })
 }
+Array.prototype.toObjectById = function() {
+  if (this.length != 0) {
+    return this.reduce(function(result, value, key) {
+      result[value.id] = value
+      return result
+    }, {})
+  } else {
+    return {}
+  }
+}
+Array.prototype.isEmpty = function() {
+  return this.length == 0
+}
+

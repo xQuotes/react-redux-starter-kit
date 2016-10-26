@@ -1,4 +1,7 @@
 import {
+  inject, observer
+} from 'mobx-react'
+import {
   Input,
   Card
 } from 'antd'
@@ -12,6 +15,7 @@ import Url from 'Url'
 
 import './backup.less'
 
+@inject('backupStore') @observer
 export default class BackupView extends React.Component {
   constructor(props) {
     super(props)
@@ -21,12 +25,11 @@ export default class BackupView extends React.Component {
     }
   }
   componentWillMount() {
-    const { dispatch } = this.props
     const bcData = ['首页', '常用服务', '备份管理']
-    dispatch(changeUrl(bcData))
+    // dispatch(changeUrl(bcData))
   }
   componentDidMount() {
-    const { dispatch, params } = this.props
+    const { params } = this.props
     
     dispatch(getBackup({
       id: params.id

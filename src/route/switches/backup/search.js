@@ -16,15 +16,17 @@ export default class SearchTable extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault()
-    const {form, dispatch} = this.props
+    const {form, backupStore} = this.props
     form.validateFields((errors, values) => {
       if (!!errors) {
         console.log('Errors in form!!!');
         return;
       }
       var searchData = _.pickBy(values)
-      dispatch(searchBackupData(searchData))
-      dispatch(getBackups(searchData))
+      // dispatch(searchBackupData(searchData))
+      // dispatch(getBackups(searchData))
+      console.log(searchData)
+      backupStore.getBackupsServer(searchData)
     })
   }
   componentDidMount() {
@@ -37,7 +39,14 @@ export default class SearchTable extends React.Component {
     dispatch(searchBackupData({}))
   }
   render() {
-    const searchBackupDatas = {}
+    const searchBackupDatas = {
+      name: '',
+      host: '',
+      brand: '',
+      sn: '',
+      day: ''
+    }
+
     const {
       getFieldDecorator, getFieldError, isFieldValidating,
       setFieldsValue
@@ -90,22 +99,24 @@ export default class SearchTable extends React.Component {
                 })} />
             </FormItem>
           </Col>
-          {/*<Col sm={5}>
+          <Col sm={5}>
             <FormItem
               label="日期"
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}>
-              <DatePicker format="yyyy-MM-dd"
+              <DatePicker format="YYYY-MM-DD"
                 {...getFieldDecorator('day', {
                   initialValue: searchBackupDatas.day || moment(new Date()).format('YYYY-MM-DD')
                 })}
                 onChange={(date, dateString)=> {
+                  console.log(date)
+                  console.log(dateString)
                   setFieldsValue({
                     'day': dateString || null
                   })
                 }}/>
             </FormItem>
-          </Col>*/}
+          </Col>
         </Row>
         <Row>
           <Col span={12} offset={12} style={{ textAlign: 'right' }}>

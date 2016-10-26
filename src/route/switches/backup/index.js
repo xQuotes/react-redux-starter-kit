@@ -22,12 +22,11 @@ export default class Backup extends React.Component {
   }
   componentWillMount() {
     const bcData = ['首页', '常用服务', '备份管理']
-    // dispatch(changeUrl(bcData))
   }
   render() {
     const {backupStore} = this.props
     console.log(backupStore.toJS())
-    let backups = backupStore.toJS().backups || []
+    let backups = backupStore.toJS() || []
 
     let fields = {
       id: "ID",
