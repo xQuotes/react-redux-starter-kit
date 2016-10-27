@@ -5,21 +5,23 @@ import {
 import Fetch from 'Fetch'
 import Api from 'Api'
 
-import Store from './Store'
-
-export default class BackupStore {
+export default class VlanStore {
   @observable isLoading = false
   @observable vlans = []
+  @observable file = ''
+  searchDatas = {}
 
-  @action getBackupsServer(formData) {
+  @action getVlansServer(formData) {
     this.isLoading = true
+    this.setSearchDatas(formData)
+    
     Fetch({
-      url: Api.getBackups,
+      url: Api.getVlans,
       data: formData,
       method: 'post',
       success: (data) => {
         this.isLoading = false
-        this.backups = data.list
+        this.vlans = data.list
       },
       error: (data) => {
         this.isLoading = false
@@ -27,10 +29,10 @@ export default class BackupStore {
     })
   }
 
-  @action getBackupServer(formData) {
+  @action getVlanServer(formData) {
     this.isLoading = true
     Fetch({
-      url: Api.getBackup,
+      url: Api.getVlan,
       data: formData,
       method: 'post',
       success: (data) => {
@@ -43,12 +45,16 @@ export default class BackupStore {
     })
   }
 
+  @action setSearchDatas(formData) {
+    this.searchDatas = formData
+  }
+
   toJS() {
-    return this.backups.map(backup => backup)
+    return this.vlans.map(vlan => vlan)
   }
 
   static fromJS(array = []) {
-    return new BackupStore()
+    return new VlanStore()
   }
 }
 

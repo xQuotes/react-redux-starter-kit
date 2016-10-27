@@ -5,14 +5,10 @@ import {
 
 import Root from './containers/index'
 
-import UserStore from './stores/UserStore'
-import DashboardStore from './stores/DashboardStore'
-import BackupStore from './stores/BackupStore'
+import store from './stores/index'
 
 ReactDOM.render(
-  (<Provider userStore={UserStore.fromJS()}
-      dashboardStore={DashboardStore.fromJS()}
-      backupStore={BackupStore.fromJS()}>
+  (<Provider {...store}>
     <Root />
   </Provider>),
   document.getElementById('react')

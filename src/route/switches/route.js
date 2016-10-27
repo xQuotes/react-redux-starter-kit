@@ -10,7 +10,7 @@ module.exports = {
         require('./network/route'),
         require('./actions/route'),
         ...require('./mapping/route'),
-        require('./vlans/route')
+        require('./vlan/route')
       ])
     })
   },

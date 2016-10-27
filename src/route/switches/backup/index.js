@@ -24,7 +24,7 @@ export default class Backup extends React.Component {
     super(props)
   }
   componentWillMount() {
-    const bcData = ['首页', '常用服务', '备份管理']
+    const bcData = ['首页', '收集信息', '备份管理']
     const {dashboardStore} = this.props
     dashboardStore.putDashboard(bcData)
   }
@@ -34,8 +34,8 @@ export default class Backup extends React.Component {
 
     let fields = {
       id: "ID",
-      host: "IP",
       name: "主机名",
+      host: "IP",
       brand: "品牌",
       sn: "SN",
       day: "日期",
