@@ -1,4 +1,4 @@
 module.exports = {
-  path: 'mapping',
+  path: 'mappings',
   component: require('./index')['default']
 }

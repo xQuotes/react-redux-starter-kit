@@ -6,7 +6,7 @@ import {
 const FormItem = Form.Item
 
 @Form.create()
-export default class SearchTable extends React.Component {
+export default class SearchForm extends React.Component {
   constructor(props) {
     super(props)
   }

@@ -13,7 +13,7 @@ const Url = {
   switchesBackups: `/${switches}/backups`,
   switchesBackup: `/${switches}/backup`,
 
-  switchesMap: `/${switches}/mapping`,
+  switchesMap: `/${switches}/mappings`,
   switchesMapUpload:  `/${switches}/uploadcsv/mapping`,
   switchesVlans: `/${switches}/vlans`
 }

@@ -1,4 +1,4 @@
-import {inject} from 'mobx-react'
+import {inject, observer} from 'mobx-react'
 import moment from 'moment'
 import {Form} from 'antd'
 const FormItem = Form.Item
@@ -6,6 +6,7 @@ const FormItem = Form.Item
 import SearchForm from '../../components/search'
 
 @inject('backupStore')
+@observer
 export default class Search extends React.Component {
   constructor(props) {
     super(props)

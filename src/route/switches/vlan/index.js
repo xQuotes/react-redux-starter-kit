@@ -27,7 +27,7 @@ export default class Vlans extends React.Component {
   }
   render() {
     const {vlanStore} = this.props
-    let vlans = vlanStore.toJS()
+    let dataList = vlanStore.toJS()
 
     let fields = {
       id: 'ID',
@@ -40,8 +40,6 @@ export default class Vlans extends React.Component {
       g_time: '创建时间'
     }
 
-    let dataList = vlans
-
     let tableHeader = _.map(fields, (v, k) => {
       return {
         title: v,
@@ -50,7 +48,6 @@ export default class Vlans extends React.Component {
         width: 80
       }
     })
-
     const columns = _.isEmpty(tableHeader) ? [] : [
       ...tableHeader
     ];

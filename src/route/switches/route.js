@@ -9,7 +9,7 @@ module.exports = {
         ...require('./backup/route'),
         require('./network/route'),
         require('./actions/route'),
-        ...require('./mapping/route'),
+        require('./mapping/route'),
         require('./vlan/route')
       ])
     })

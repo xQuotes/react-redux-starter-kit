@@ -31,7 +31,7 @@ export default class Backup extends React.Component {
   }
   render() {
     const {backupStore} = this.props
-    let backups = backupStore.toJS()
+    let dataList = backupStore.toJS()
 
     let fields = {
       id: "ID",
@@ -44,8 +44,6 @@ export default class Backup extends React.Component {
       s_time: "开始时间",
       status: "状态"
     }
-
-    let dataList = backups
 
     let tableHeader = _.map(fields, (v, k) => {
       if (k == 'name') {
@@ -88,7 +86,7 @@ export default class Backup extends React.Component {
           return <Link to={`${Url.switchesBackup}/${record.id}`}>查看</Link>
         }
       } 
-    ];
+    ]
 
     return(
       <div className="switches-network">
@@ -97,7 +95,6 @@ export default class Backup extends React.Component {
         </div>
         <div className={classNames({"tables": true})}>
           <Table columns={columns}
-            showSizeChanger
             dataSource={dataList}
             scroll={{ x: 1000 }}/>
         </div>
@@ -105,5 +102,3 @@ export default class Backup extends React.Component {
       )
   }
 }
-
-// module.exports = TypeBar

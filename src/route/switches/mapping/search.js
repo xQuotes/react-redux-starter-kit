@@ -4,14 +4,14 @@ const FormItem = Form.Item
 
 import SearchForm from '../../components/search'
 
-@inject('vlanStore')
+@inject('mappingStore')
 @observer
 export default class Search extends React.Component {
   constructor(props) {
     super(props)
   }
   render() {
-    const {vlanStore: store} = this.props
+    const {mappingStore: store} = this.props
     const {searchDatas} = store
 
     var searchDataTitileServer = [{
@@ -22,26 +22,19 @@ export default class Search extends React.Component {
       },
       placeholder: '请输入搜索主机名'
     }, {
-      name: 'switchIp',
-      label: '交换机IP',
+      name: 'ext_ip',
+      label: '公网IP',
       fieldOptions: {
-        initialValue: searchDatas.switchIp
+        initialValue: searchDatas.ext_ip
       },
-      placeholder: '请输入搜索交换机IP'
+      placeholder: '请输入搜索公网IP'
     }, {
-      name: 'mac',
-      label: '品牌',
+      name: 'int_ip',
+      label: '内网IP',
       fieldOptions: {
-        initialValue: searchDatas.brand
+        initialValue: searchDatas.int_ip
       },
-      placeholder: '请输入搜索MAC地址'
-    }, {
-      name: 'serverIp',
-      label: '服务器IP',
-      fieldOptions: {
-        initialValue: searchDatas.serverIp
-      },
-      placeholder: '请输入搜索服务器IP'
+      placeholder: '请输入搜索内网IP'
     }]
 
     return(
