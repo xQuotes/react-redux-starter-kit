@@ -1,6 +1,7 @@
 import {
   inject, observer
 } from 'mobx-react'
+import moment from 'moment'
 import {
   Link
 } from 'react-router'
@@ -96,6 +97,7 @@ export default class Backup extends React.Component {
         </div>
         <div className={classNames({"tables": true})}>
           <Table columns={columns}
+            showSizeChanger
             dataSource={dataList}
             scroll={{ x: 1000 }}/>
         </div>

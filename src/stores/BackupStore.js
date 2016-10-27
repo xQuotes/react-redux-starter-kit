@@ -11,8 +11,12 @@ export default class BackupStore {
   @observable file = ''
   searchDatas = {}
 
-  @action getBackupsServer(formData) {
+  @action getServers(formData) {
     this.isLoading = true
+
+    // DatePicker 插件获取数据格式 为 moment
+    formData['day'] = formData['day'] && formData['day'].format('YYYY-MM-DD')
+
     this.setSearchDatas(formData)
     
     Fetch({
@@ -29,7 +33,7 @@ export default class BackupStore {
     })
   }
 
-  @action getBackupServer(formData) {
+  @action getServer(formData) {
     this.isLoading = true
     Fetch({
       url: Api.getBackup,

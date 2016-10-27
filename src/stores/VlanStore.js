@@ -8,10 +8,9 @@ import Api from 'Api'
 export default class VlanStore {
   @observable isLoading = false
   @observable vlans = []
-  @observable file = ''
   searchDatas = {}
 
-  @action getVlansServer(formData) {
+  @action getServers(formData) {
     this.isLoading = true
     this.setSearchDatas(formData)
     
@@ -22,22 +21,6 @@ export default class VlanStore {
       success: (data) => {
         this.isLoading = false
         this.vlans = data.list
-      },
-      error: (data) => {
-        this.isLoading = false
-      }
-    })
-  }
-
-  @action getVlanServer(formData) {
-    this.isLoading = true
-    Fetch({
-      url: Api.getVlan,
-      data: formData,
-      method: 'post',
-      success: (data) => {
-        this.isLoading = false
-        this.file = data
       },
       error: (data) => {
         this.isLoading = false

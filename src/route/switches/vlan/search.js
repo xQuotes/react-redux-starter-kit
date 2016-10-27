@@ -1,112 +1,50 @@
-import {
-  inject, observer
-} from 'mobx-react'
-import moment from 'moment'
-import {
-  Form, Input, Row, Col, Button,
-  DatePicker
-} from 'antd'
+import {inject} from 'mobx-react'
+import {Form} from 'antd'
 const FormItem = Form.Item
 
-@Form.create()
-@inject('vlanStore') @observer
-export default class SearchTable extends React.Component {
+import SearchForm from '../../components/search'
+
+@inject('vlanStore')
+export default class Search extends React.Component {
   constructor(props) {
     super(props)
   }
-  handleSubmit(e) {
-    e.preventDefault()
-    const {form, vlanStore} = this.props
-    form.validateFields((errors, values) => {
-      if (!!errors) {
-        console.log('Errors in form!!!');
-        return;
-      }
-      
-      var searchData = _.pickBy(values)
-
-      vlanStore.getVlansServer(searchData)
-    })
-  }
-  componentDidMount() {
-    const { vlanStore } = this.props
-    vlanStore.getVlansServer(vlanStore.searchDatas)
-  }
-  handleReset(e) {
-    e.preventDefault()
-    const {form, vlanStore} = this.props
-    form.resetFields()
-    vlanStore.setSearchDatas({})
-  }
   render() {
-    const {form, vlanStore} = this.props
-    const {
-      getFieldDecorator, getFieldError, isFieldValidating,
-      setFieldsValue
-    } = form
-    const {
-      searchDatas
-    } = vlanStore
+    const {vlanStore: store} = this.props
+    const {searchDatas} = store
+
+    var searchDataTitileServer = [{
+      name: 'hostname',
+      label: '主机名',
+      fieldOptions: {
+        initialValue: searchDatas.hostname
+      },
+      placeholder: '请输入搜索主机名'
+    }, {
+      name: 'switchIp',
+      label: '交换机IP',
+      fieldOptions: {
+        initialValue: searchDatas.switchIp
+      },
+      placeholder: '请输入搜索交换机IP'
+    }, {
+      name: 'mac',
+      label: '品牌',
+      fieldOptions: {
+        initialValue: searchDatas.brand
+      },
+      placeholder: '请输入搜索MAC地址'
+    }, {
+      name: 'serverIp',
+      label: '服务器IP',
+      fieldOptions: {
+        initialValue: searchDatas.serverIp
+      },
+      placeholder: '请输入搜索服务器IP'
+    }]
 
     return(
-      <Form horizontal className="ant-advanced-search-form">
-        <Row gutter={5}>
-          <Col sm={4}>
-            <FormItem
-              label="主机名"
-              labelCol={{ span: 8 }}
-              wrapperCol={{ span: 16 }}>
-              {getFieldDecorator('hostname', {
-                initialValue: searchDatas.hostname
-              })(
-                <Input autoCapitalize="off" placeholder="请输入搜索主机名" size="default"/>
-              )}
-            </FormItem>
-          </Col>
-          <Col sm={4}>
-            <FormItem
-              label="交换机IP"
-              labelCol={{ span: 8 }}
-              wrapperCol={{ span: 16 }}>
-              {getFieldDecorator('switchIp', {
-                initialValue: searchDatas.switchIp
-              })(
-                <Input autoCapitalize="off" placeholder="请输入搜索IP" size="default" />
-              )}
-            </FormItem>
-          </Col>
-          <Col sm={4}>
-            <FormItem
-              label="MAC地址"
-              labelCol={{ span: 8 }}
-              wrapperCol={{ span: 16 }}>
-              {getFieldDecorator('mac', {
-                initialValue: searchDatas.mac
-              })(
-                <Input autoCapitalize="off" placeholder="请输入搜索品牌" size="default"/>
-              )}
-            </FormItem>
-          </Col>
-          <Col sm={4}>
-            <FormItem
-              label="服务器IP"
-              labelCol={{ span: 8 }}
-              wrapperCol={{ span: 16 }}>
-              {getFieldDecorator('serverIp', {
-                initialValue: searchDatas.serverIp
-              })(
-                <Input name="serverIp" autoCapitalize="off" placeholder="请输入搜索SN" size="default" />
-              )}
-            </FormItem>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12} offset={12} style={{ textAlign: 'right' }}>
-            <Button type="primary" htmlType="submit" onClick={::this.handleSubmit}>搜索</Button>
-            <Button onClick={::this.handleReset}>清除条件</Button>
-          </Col>
-        </Row>
-      </Form>
+      <SearchForm store={store} title={searchDataTitileServer}/>
       )
   }
 }
