@@ -22,35 +22,32 @@ export default class SearchTable extends React.Component {
         console.log('Errors in form!!!');
         return;
       }
+      // DatePicker 插件获取数据格式 为 moment
+      values['day'] = values['day'] && values['day'].format('YYYY-MM-DD')
       var searchData = _.pickBy(values)
-      // dispatch(searchBackupData(searchData))
-      // dispatch(getBackups(searchData))
-      console.log(searchData)
+
       backupStore.getBackupsServer(searchData)
     })
   }
   componentDidMount() {
-    this.props.backupStore.getBackupsServer({})
+    const { backupStore } = this.props
+    backupStore.getBackupsServer(backupStore.searchDatas)
   }
   handleReset(e) {
     e.preventDefault()
-    const {form, dispatch} = this.props
+    const {form, backupStore} = this.props
     form.resetFields()
-    dispatch(searchBackupData({}))
+    backupStore.setSearchDatas({})
   }
   render() {
-    const searchBackupDatas = {
-      name: '',
-      host: '',
-      brand: '',
-      sn: '',
-      day: ''
-    }
-
+    const {form, backupStore} = this.props
     const {
       getFieldDecorator, getFieldError, isFieldValidating,
       setFieldsValue
-    } = this.props.form
+    } = form
+    const {
+      searchDatas
+    } = backupStore
 
     return(
       <Form horizontal className="ant-advanced-search-form">
@@ -60,10 +57,11 @@ export default class SearchTable extends React.Component {
               label="主机名"
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}>
-              <Input autoCapitalize="off" placeholder="请输入搜索主机名" size="default"
-                {...getFieldDecorator('name', {
-                  initialValue: searchBackupDatas.name
-                })}/>
+              {getFieldDecorator('name', {
+                initialValue: searchDatas.name
+              })(
+                <Input name="name" autoCapitalize="off" placeholder="请输入搜索主机名" size="default"/>
+              )}
             </FormItem>
           </Col>
           <Col sm={4}>
@@ -71,10 +69,11 @@ export default class SearchTable extends React.Component {
               label="IP"
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}>
-              <Input autoCapitalize="off" placeholder="请输入搜索IP" size="default"
-                {...getFieldDecorator('host', {
-                  initialValue: searchBackupDatas.host
-                })} />
+              {getFieldDecorator('host', {
+                initialValue: searchDatas.host
+              })(
+                <Input name="host" autoCapitalize="off" placeholder="请输入搜索IP" size="default" />
+              )}
             </FormItem>
           </Col>
           <Col sm={4}>
@@ -82,10 +81,11 @@ export default class SearchTable extends React.Component {
               label="品牌"
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}>
-              <Input autoCapitalize="off" placeholder="请输入搜索品牌" size="default"
-                {...getFieldDecorator('brand', {
-                  initialValue: searchBackupDatas.brand
-                })} />
+              {getFieldDecorator('brand', {
+                initialValue: searchDatas.brand
+              })(
+                <Input name="brand" autoCapitalize="off" placeholder="请输入搜索品牌" size="default"/>
+              )}
             </FormItem>
           </Col>
           <Col sm={4}>
@@ -93,10 +93,11 @@ export default class SearchTable extends React.Component {
               label="SN"
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}>
-              <Input autoCapitalize="off" placeholder="请输入搜索SN" size="default"
-                {...getFieldDecorator('sn', {
-                  initialValue: searchBackupDatas.sn
-                })} />
+              {getFieldDecorator('sn', {
+                initialValue: searchDatas.sn
+              })(
+                <Input name="sn" autoCapitalize="off" placeholder="请输入搜索SN" size="default" />
+              )}
             </FormItem>
           </Col>
           <Col sm={5}>
@@ -104,17 +105,15 @@ export default class SearchTable extends React.Component {
               label="日期"
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}>
-              <DatePicker format="YYYY-MM-DD"
-                {...getFieldDecorator('day', {
-                  initialValue: searchBackupDatas.day || moment(new Date()).format('YYYY-MM-DD')
-                })}
-                onChange={(date, dateString)=> {
-                  console.log(date)
-                  console.log(dateString)
+              {getFieldDecorator('day', {
+                initialValue: moment(searchDatas.day) || moment(new Date())
+              })(
+                <DatePicker onChange={function(dates, dateStrings) {
                   setFieldsValue({
-                    'day': dateString || null
+                    'day': dateStrings
                   })
-                }}/>
+                }} />
+              )}
             </FormItem>
           </Col>
         </Row>

@@ -8,9 +8,12 @@ import Fetch from 'Fetch'
 import Store from './Store'
 
 export default class DashboardStore {
-  @observable isLoading = false
   @observable bcData = []
   
+  @action putDashboard(formData) {
+    this.bcData = formData
+  }
+
   static fromJS() {
     return new DashboardStore()
   }

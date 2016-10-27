@@ -18,7 +18,11 @@ import './dashboard.less'
 import Url from 'Url'
 import Auth from 'Auth'
 
-@inject('dashboardStore', 'userStore') @observer
+@inject(
+  'dashboardStore',
+  'userStore'
+)
+@observer
 export default class Dashboard extends React.Component {
   constructor(props) {
     super(props)

@@ -44,7 +44,7 @@ var plugins = [
       classNames: 'classnames'
   }),
   new WebpackCleanupPlugin({
-    exclude: [".git/*"]
+    exclude: [".git/*", "dist/.git/*"]
   }),
   new webpack.BannerPlugin('This file is created by fooying@qq.com'),
   new webpack.HotModuleReplacementPlugin(),

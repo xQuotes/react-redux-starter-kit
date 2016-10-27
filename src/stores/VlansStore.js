@@ -5,16 +5,14 @@ import {
 import Fetch from 'Fetch'
 import Api from 'Api'
 
+import Store from './Store'
+
 export default class BackupStore {
   @observable isLoading = false
-  @observable backups = []
-  @observable file = ''
-  searchDatas = {}
+  @observable vlans = []
 
   @action getBackupsServer(formData) {
     this.isLoading = true
-    this.setSearchDatas(formData)
-    
     Fetch({
       url: Api.getBackups,
       data: formData,
@@ -43,10 +41,6 @@ export default class BackupStore {
         this.isLoading = false
       }
     })
-  }
-
-  @action setSearchDatas(formData) {
-    this.searchDatas = formData
   }
 
   toJS() {

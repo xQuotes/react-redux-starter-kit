@@ -15,29 +15,29 @@ import Url from 'Url'
 
 import './backup.less'
 
-@inject('backupStore') @observer
+@inject(
+  'backupStore',
+  'dashboardStore'
+)
+@observer
 export default class BackupView extends React.Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      id: ''
-    }
   }
   componentWillMount() {
     const bcData = ['首页', '常用服务', '备份管理']
-    // dispatch(changeUrl(bcData))
+    const {dashboardStore} = this.props
+    dashboardStore.putDashboard(bcData)
   }
   componentDidMount() {
-    const { params } = this.props
-    
-    dispatch(getBackup({
+    const { backupStore, params } = this.props
+    backupStore.getBackupServer({
       id: params.id
-    }))
+    })
   }
   render() {
-    const {SBackup} = this.props
-    let backup = _.isEmpty(SBackup.data) ? '' : SBackup.data
+    const {backupStore} = this.props
+    let backup = backupStore.file
     
     return(
       <div className="switches-network">
@@ -56,5 +56,3 @@ export default class BackupView extends React.Component {
       )
   }
 }
-
-// module.exports = TypeBar
