@@ -1,4 +1,29 @@
+import {
+  inject, observer
+} from 'mobx-react'
+import {
+  Table,
+  Input,
+  Button,
+  Form,
+  Modal,
+  Select,
+  Popconfirm,
+  Upload,
+  Icon
+} from 'antd'
+const FormItem = Form.Item
+const Option = Select.Option
 
+import {ipReg, portReg} from '../../../common/utils/regex'
+
+import ModalForm from '../../components/form'
+
+@Form.create()
+@inject(
+  'mappingStore'
+  )
+@observer
 export default class AddMapping extends React.Component {
   constructor(props) {
     super(props)
@@ -26,12 +51,11 @@ export default class AddMapping extends React.Component {
     }
   }
   handleSubmit(e) {
-    const {form} = this.props
-    const {getFieldsValue, validateFields} = form
+    const {form, mappingStore} = this.props
+    const {validateFields} = form
+    const {params} = mappingStore
 
     validateFields((errors, values) => {
-      const { dispatch, params, form } = this.props
-
       if (!!errors) {
         console.log('Errors in form!!!');
         return;
@@ -42,110 +66,94 @@ export default class AddMapping extends React.Component {
       form.resetFields()
       this.hideModal()
       
-      values.id ? dispatch(updateMapping({
-        index: this.state.index,
+      values.id ? mappingStore.putServer({
+        index: values.id,
         ...data
-      })) : dispatch(addMapping(data))
+      }) : mappingStore.postServer(data)
     })
   }
-  handleDeleteConfirm(formData) {
-    const {dispatch} = this.props
-    dispatch(deleteMapping(formData))
-  }
   hideModal() {
-    this.setState({ visible: false });
+    const {mappingStore} = this.props
+    mappingStore.toggleVisible()
   }
-  handleSubmit(e) {
-
-  }
-
-
 
   render() {
-    const formItemLayout = {
-      labelCol: { span: 4 },
-      wrapperCol: { span: 20 },
-    }
+    const {form, mappingStore} = this.props
+    const paramsData = mappingStore.params
+    const mapping = mappingStore.toJS()[paramsData.index] || []
+
+    var formDataTitileServer = [{
+      type: 'hidden',
+      name: 'id',
+      label: 'id',
+      fieldOptions: {
+        initialValue: mapping.id
+      }
+    }, {
+      name: 'hostname',
+      label: '主机名',
+      fieldOptions: {
+        initialValue: mapping.hostname,
+        rules: [
+          { required: true, whitespace: true, message: '请输入主机名' }
+        ],
+      },
+      placeholder: '请输入搜索主机名'
+    }, {
+      name: 'ext_ip',
+      label: '公网IP',
+      fieldOptions: {
+        initialValue: mapping.ext_ip,
+        rules: [
+          { required: true, whitespace: true, message: '请输入公网IP' },
+          { validator: ::this.mappingIpExists },
+        ],
+      },
+      placeholder: '如：123.125.114.144',
+      labelCol: 4,
+      wrapperCol: 20
+    }, {
+      name: 'ext_port',
+      label: '公网端口',
+      fieldOptions: {
+        initialValue: mapping.ext_port,
+        rules: [
+          { required: true, whitespace: true, message: '请输入公网端口' },
+          { validator: ::this.mappingPortExists },
+        ],
+      },
+      placeholder: '如：80',
+    }, {
+      name: 'int_ip',
+      label: '内网IP',
+      fieldOptions: {
+        initialValue: mapping.int_ip,
+        rules: [
+          { required: true, whitespace: true, message: '请输入内网IP' },
+          { validator: ::this.mappingIpExists },
+        ],
+      },
+      placeholder: '如：192.168.1.1'
+    }, {
+      name: 'int_port',
+      label: '内网端口',
+      fieldOptions: {
+        initialValue: mapping.int_port,
+        rules: [
+          { required: true, whitespace: true, message: '请输入内网端口' },
+          { validator: ::this.mappingPortExists },
+        ],
+      },
+      placeholder: '如：80'
+    }]
 
     return (
       <Modal title="操作映射"
-          visible={this.state.visible}
-          onOk={::this.handleSubmit}
-          onCancel={::this.hideModal}>
+          visible={mappingStore.visible}
+          onCancel={::this.hideModal}
+          onOk={::this.handleSubmit}>
         <Form horizontal>
-          <Input autoCapitalize="off" type="hidden"
-            {...getFieldProps('id', {
-                initialValue: mapping.id
-              })}/>
-          <FormItem
-            {...formItemLayout}
-            hasFeedback
-            label="主机名">
-            <Input autoCapitalize="off"
-              placeholder={`请输入主机名`}
-              {...getFieldProps('hostname', {
-                initialValue: mapping.hostname,
-                rules: [
-                  { required: true, whitespace: true, message: '请输入主机名' }
-                ],
-              })} type="text"/>
-          </FormItem>
-          <FormItem
-            {...formItemLayout}
-            hasFeedback
-            label="公网IP">
-            <Input autoCapitalize="off"
-              placeholder={`如：123.125.114.144`}
-              {...getFieldProps('ext_ip', {
-                initialValue: mapping.ext_ip,
-                rules: [
-                  { required: true, whitespace: true, message: '请输入公网IP' },
-                  { validator: ::this.mappingIpExists },
-                ],
-              })} type="text"/>
-          </FormItem>
-          <FormItem
-            {...formItemLayout}
-            hasFeedback
-            label="公网端口">
-            <Input autoCapitalize="off"
-              placeholder={`如：80`}
-              {...getFieldProps('ext_port', {
-                initialValue: mapping.ext_port,
-                rules: [
-                  { required: true, whitespace: true, message: '请输入公网端口' },
-                  { validator: ::this.mappingPortExists },
-                ],
-              })} type="text"/>
-          </FormItem>
-          <FormItem
-            {...formItemLayout}
-            hasFeedback
-            label="内网IP">
-            <Input autoCapitalize="off"
-              placeholder={`如：192.168.1.1`}
-              {...getFieldProps('int_ip', {
-                initialValue: mapping.int_ip,
-                rules: [
-                  { required: true, whitespace: true, message: '请输入内网IP' },
-                  { validator: ::this.mappingIpExists },
-                ],
-              })} type="text"/>
-          </FormItem>
-          <FormItem
-            {...formItemLayout}
-            hasFeedback
-            label="内网端口">
-            <Input autoCapitalize="off"
-              placeholder={`如：80`}
-              {...getFieldProps('int_port', {
-                initialValue: mapping.int_port,
-                rules: [
-                  { required: true, whitespace: true, message: '请输入内网端口' },
-                  { validator: ::this.mappingPortExists },
-                ],
-              })} type="text"/>
-          </FormItem>
+          <ModalForm form={form} store={mappingStore} title={formDataTitileServer}/>
         </Form>
       </Modal>)
   }

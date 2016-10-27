@@ -22,11 +22,11 @@ const Api = {
   checkNetworkError: `${url}/sw_admin/checkNetworkError`, //检测网段是否正确  post 参数 network
   changeNetworkStatus: `${url}/sw_admin/setNetworkStatus`, 
 
-  addMapping: `${url}/sw_config/addMapping`,
-  getMappings: `${url}/sw_config/getMappingList`,
-  getMapping: `${url}/sw_config/getMappingInfo`,
-  deleteMapping: `${url}/sw_config/deleteMapping`,
-  updateMapping: `${url}/sw_config/updateMapping`,
+  postMapping: `${url}/sw_config_mapping/addInfo`,
+  getMappings: `${url}/sw_config_mapping/getList`,
+  getMapping: `${url}/sw_config_mapping/getInfo`,
+  deleteMapping: `${url}/sw_config_mapping/deleteInfo`,
+  putMapping: `${url}/sw_config_mapping/updateInfo`,
 
   uploadCsvFile: `${url}/sw_config/uploadCsvFile`,
   uploadCsvData: `${url}/sw_config/uploadCsvData`,

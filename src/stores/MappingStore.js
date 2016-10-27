@@ -11,13 +11,23 @@ export default class MappingStore {
   @observable mappings = []
   searchDatas = {}
 
+  @observable visible = false
+  @observable params = {}
+
+  @action setSearchDatas(formData) {
+    this.searchDatas = formData
+  }
+
   @action getServers(formData) {
     this.isLoading = true
     this.setSearchDatas(formData)
     
     Fetch({
       url: Api.getMappings,
-      data: formData,
+      data: {
+        conditions: formData,
+        params: {}
+      },
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -29,16 +39,15 @@ export default class MappingStore {
     })
   }
 
-  @action setSearchDatas(formData) {
-    this.searchDatas = formData
-  }
-
   @action deleteServer(formData) {
     this.isLoading = true
     Fetch({
       url: Api.deleteMapping,
       data: {
-        id: formData.id
+        conditions: {
+          id: formData.id
+        },
+        params: {}
       },
       method: 'post',
       success: (data) => {
@@ -49,6 +58,55 @@ export default class MappingStore {
         this.isLoading = false
       }
     })
+  }
+
+  @action postServer(formData) {
+    this.isLoading = true
+    Fetch({
+      url: Api.postMapping,
+      data: {
+        conditions: formData,
+        params: {}
+      },
+      method: 'post',
+      success: (data) => {
+        this.isLoading = false
+        console.log(data)
+        this.mappings = this.mappings.push(formData)
+      },
+      error: (data) => {
+        this.isLoading = false
+      }
+    })
+  }
+
+  @action putServer(formData) {
+    this.isLoading = true
+    Fetch({
+      url: Api.putMapping,
+      data: {
+        conditions: formData,
+        params: {}
+      },
+      method: 'post',
+      success: (data) => {
+        this.isLoading = false
+        console.log(data)
+        console.log(data.getById(formData.id))
+        this.mappings = this.mappings.update(update, data.getById(formData.id))
+      },
+      error: (data) => {
+        this.isLoading = false
+      }
+    })
+  }
+
+  toggleVisible() {
+    this.visible = !this.visible
+  }
+
+  setParams(formData) {
+    this.params = formData
   }
 
   toJS() {

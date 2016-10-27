@@ -39,7 +39,8 @@ export default class SearchForm extends React.Component {
 
     const searchDataTitile = _.map(title, (value, key) => {
      return _.assign({
-        type: 'Input',
+        formType: 'Input',
+        type: 'text',
         sm: 4,
         labelCol: 8,
         wrapperCol: 16,
@@ -50,8 +51,8 @@ export default class SearchForm extends React.Component {
       }, value)
     })
 
-    function formJsxType(type, placeholder) {
-      if(type == 'date') {
+    function formJsxType(formType, placeholder) {
+      if(formType == 'date') {
         return <DatePicker />
       } else {
         return <Input autoCapitalize="off"
@@ -70,7 +71,7 @@ export default class SearchForm extends React.Component {
                 labelCol={{ span: v.labelCol }}
                 wrapperCol={{ span: v.wrapperCol }}>
                 {getFieldDecorator(v.name, v.fieldOptions)(
-                  formJsxType(v.type, v.placeholder)
+                  formJsxType(v.formType, v.placeholder)
                 )}
               </FormItem>
             </Col>

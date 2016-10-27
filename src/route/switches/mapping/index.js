@@ -16,6 +16,7 @@ import {
 import Url from 'Url'
 
 import SearchTable from './search'
+import AddMappingModal from './add'
 
 @inject(
   'mappingStore', 'dashboardStore'
@@ -24,6 +25,10 @@ import SearchTable from './search'
 export default class Mappings extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      visible: false
+    }
   }
   componentWillMount() {
     const bcData = ['首页', '常用信息', '映射信息']
@@ -31,13 +36,17 @@ export default class Mappings extends React.Component {
     dashboardStore.putDashboard(bcData)
   }
   addMapping(e) {
-    console.log(e)
+    const {mappingStore} = this.props
+    mappingStore.toggleVisible()
+    mappingStore.setParams({})
   }
   uploadMapping(e) {
     console.log(e)
   }
   updateMapping(data) {
-    console.log(data)
+    const {mappingStore} = this.props
+    mappingStore.toggleVisible()
+    mappingStore.setParams(data)
   }
   handleDeleteConfirm(formData) {
     const {mappingStore} = this.props
@@ -109,6 +118,7 @@ export default class Mappings extends React.Component {
             dataSource={dataList}
             scroll={{ x: 1000 }}/>
         </div>
+        <AddMappingModal />
       </div>
       )
   }

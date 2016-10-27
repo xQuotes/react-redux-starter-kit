@@ -7,16 +7,16 @@ export default function fetching(action) {
   const loop = (data, msg, statuscode) => data
   const successCb = action.success || loop
   const errorCb = action.error || loop
-  
+  console.log(action.data)
   reqwest({
     url: action.url,
     method: action.method || 'post',
-    // contentType: 'application/json',
+    contentType: 'application/json',
     headers: {
       AuthToken: Auth.getAuthCookie('UserIfosSession') || '',
     },
-    // data: JSON.stringify(action.data),
-    data: action.data,
+    data: JSON.stringify(action.data),
+    // data: action.data,
     type: 'json',
     success: (res) => {
       if (res.statuscode === 200) {
