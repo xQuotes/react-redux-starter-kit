@@ -30,8 +30,6 @@ Array.prototype.update = function (n, fileds) {
 }
 Array.prototype.getById = function (id) {
   return _.some(this, function(value, key) {
-    console.log(value)
-    console.log(key)
     if(value['id'] == id) {
       return value
     } else {

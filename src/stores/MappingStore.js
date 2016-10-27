@@ -4,6 +4,7 @@ import {
 
 import Fetch from 'Fetch'
 import Api from 'Api'
+import 'Arr'
 
 export default class MappingStore {
   @observable isLoading = false
@@ -34,23 +35,20 @@ export default class MappingStore {
 
   @action deleteServer(formData) {
     this.isLoading = true
-    console.log(formData)
-    console.log(this.mappings)
-    // Fetch({
-    //   url: Api.deleteMapping,
-    //   data: {
-    //     id: formData.id
-    //   },
-    //   method: 'post',
-    //   success: (data) => {
-    //     this.isLoading = false
-    //     console.log(this.toJS())
-    //     
-    //   },
-    //   error: (data) => {
-    //     this.isLoading = false
-    //   }
-    // })
+    Fetch({
+      url: Api.deleteMapping,
+      data: {
+        id: formData.id
+      },
+      method: 'post',
+      success: (data) => {
+        this.isLoading = false
+        this.mappings = this.mappings.delete(formData.index)
+      },
+      error: (data) => {
+        this.isLoading = false
+      }
+    })
   }
 
   toJS() {
