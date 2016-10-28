@@ -17,6 +17,7 @@ import Url from 'Url'
 
 import SearchTable from './search'
 import AddMappingModal from './add'
+import UploadBtn from '../../components/uploadBtn'
 
 @inject(
   'mappingStore', 'dashboardStore'
@@ -111,7 +112,7 @@ export default class Mappings extends React.Component {
         </div>
         <div className="switches-action-type">
           <Button type="primary" onClick={::this.addMapping}>添加映射</Button>
-          <Button type="ghost" onClick={::this.uploadMapping}>上传映射</Button>
+          <UploadBtn />
         </div>
         <div className={classNames({"tables": true})}>
           <Table columns={columns}

@@ -9,6 +9,11 @@ export default class ModalForm extends React.Component {
   constructor(props) {
     super(props)
   }
+  static propTypes = {
+    form: React.PropTypes.object,
+    store: React.PropTypes.object,
+    title: React.PropTypes.array
+  }
   componentDidMount() {
     const { store } = this.props
     store.getServers(store.searchDatas)

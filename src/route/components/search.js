@@ -7,6 +7,11 @@ const FormItem = Form.Item
 
 @Form.create()
 export default class SearchForm extends React.Component {
+  static propTypes = {
+    form: React.PropTypes.object,
+    store: React.PropTypes.object,
+    title: React.PropTypes.array
+  }
   constructor(props) {
     super(props)
   }
