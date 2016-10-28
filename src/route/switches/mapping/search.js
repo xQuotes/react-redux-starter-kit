@@ -9,7 +9,6 @@ export default class Search extends React.Component {
   render() {
     const {store, searchFields} = this.props
     const {searchDatas} = store
-    console.log(searchDatas)
 
     let searchDataTitileServer = _.map(searchFields, (v, k)=> {
       return {

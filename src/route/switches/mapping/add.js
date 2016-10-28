@@ -77,7 +77,7 @@ export default class AddMapping extends React.Component {
   render() {
     const {form, mappingStore} = this.props
     const paramsData = mappingStore.params
-    const mapping = mappingStore.toJS()[paramsData.index] || []
+    const mapping = mappingStore.mappings.getById(paramsData.id) || {}
 
     var formDataTitileServer = [{
       type: 'hidden',

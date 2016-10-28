@@ -29,13 +29,21 @@ Array.prototype.update = function (n, fileds) {
   return this
 }
 Array.prototype.getById = function (id) {
-  return _.some(this, function(value, key) {
-    if(value['id'] == id) {
-      return value
-    } else {
-      return {}
-    }
+  return _.find(this, {'id': id})
+}
+Array.prototype.getIndexById = function (id) {
+  return _.findIndex(this, {'id': id})
+}
+Array.prototype.deleteById = function (id) {
+   _.remove(this, function(n) {
+    return n.id == id;
   })
+  return this
+}
+Array.prototype.updateById = function (id, fileds) {
+  let index = _.findIndex(this, { 'id': id})
+  this[index] = _.assign(this[index], fileds)
+  return this
 }
 Array.prototype.toObjectById = function() {
   if (this.length != 0) {

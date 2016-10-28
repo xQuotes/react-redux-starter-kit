@@ -44,10 +44,10 @@ export default class Mappings extends React.Component {
   uploadMapping(e) {
     console.log(e)
   }
-  updateMapping(data) {
+  updateMapping(formData) {
     const {mappingStore} = this.props
     mappingStore.toggleVisible()
-    mappingStore.setParams(data)
+    mappingStore.setParams(formData)
   }
   handleDeleteConfirm(formData) {
     const {mappingStore} = this.props
@@ -56,21 +56,9 @@ export default class Mappings extends React.Component {
   render() {
     const that = this
     const {mappingStore} = this.props
-    
     let dataList = mappingStore.toJS()
     let fields = mappingStore.fields
     let searchFields = mappingStore.searchFields
-    // let fields = {
-    //   id: "ID",
-    //   hostname: "主机名",
-    //   ext_ip: "公网IP",
-    //   ext_port: "公网端口",
-    //   int_ip: "内网IP",
-    //   int_port: "内网端口",
-    //   user: "操作人员",
-    //   c_time: "创建时间",
-    //   u_time: "更新时间",
-    // }
 
     let tableHeader = _.map(fields, (v, k) => {
       return {
@@ -92,12 +80,10 @@ export default class Mappings extends React.Component {
         render: (text, record, index) => {
           return <div>  
             <a href="#" onClick={that.updateMapping.bind(this,{
-              id: record.id,
-              index
+              id: record.id
             })}>修改</a>　
             <Popconfirm title="确定要删除这个操作类型吗？" onConfirm={that.handleDeleteConfirm.bind(this, {
-              id: record.id,
-              index
+              id: record.id
             })}>
               <a href="#">删除</a>
             </Popconfirm>

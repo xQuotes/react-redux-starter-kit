@@ -10,6 +10,7 @@ export default class MappingStore {
   @observable isLoading = false
   @observable mappings = []
   @observable fields = {}
+  @observable updateFields = {}
   @observable searchFields = {}
 
   @observable searchDatas = {}
@@ -37,6 +38,7 @@ export default class MappingStore {
         this.mappings = data.list
         this.fields = data.fields
         this.searchFields = data.search_fields
+        this.updateFields = data.update_fields
       },
       error: (data) => {
         this.isLoading = false
@@ -57,7 +59,7 @@ export default class MappingStore {
       method: 'post',
       success: (data) => {
         this.isLoading = false
-        this.mappings = this.mappings.delete(formData.index)
+        this.mappings = this.mappings.deleteById(formData.id)
       },
       error: (data) => {
         this.isLoading = false
@@ -76,7 +78,7 @@ export default class MappingStore {
       method: 'post',
       success: (data) => {
         this.isLoading = false
-        this.mappings = this.mappings.push(formData)
+        this.mappings.push(data)
       },
       error: (data) => {
         this.isLoading = false
@@ -95,7 +97,8 @@ export default class MappingStore {
       method: 'post',
       success: (data) => {
         this.isLoading = false
-        this.mappings = this.mappings.update(this.params.index, data)
+        let index = this.mappings.getIndexById(data.id)
+        this.mappings[index] = data
       },
       error: (data) => {
         this.isLoading = false

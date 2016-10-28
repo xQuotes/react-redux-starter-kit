@@ -28,8 +28,8 @@ const Api = {
   deleteMapping: `${url}/sw_config_mapping/deleteInfo`,
   putMapping: `${url}/sw_config_mapping/updateInfo`,
 
-  uploadCsvFile: `${url}/sw_config/uploadCsvFile`,
-  uploadCsvData: `${url}/sw_config/uploadCsvData`,
+  uploadCsvFile: `${url}/sw_config_upload/uploadAndCheckCsvFile`,
+  uploadCsvData: `${url}/sw_config_upload/uploadCsvData`,
 
   getVlans: `${url}/sw_control/getVlanList`
 }
