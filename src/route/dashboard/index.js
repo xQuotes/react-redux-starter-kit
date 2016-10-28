@@ -114,11 +114,6 @@ export default class Dashboard extends React.Component {
                   <Icon type="appstore-o"/>映射信息
                 </Link>
               </Menu.Item>
-              <Menu.Item key={`${Url.switchesMapUpload}`}>
-                <Link to={`${Url.switchesMapUpload}`}>
-                  <Icon type="appstore-o"/>批量上传
-                </Link>
-              </Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" title={<span><Icon type="bars"/>配置管理</span>}>
               <Menu.Item key={`${Url.switchesNetwork}`}>

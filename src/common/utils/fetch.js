@@ -7,7 +7,7 @@ export default function fetching(action) {
   const loop = (data, msg, statuscode) => data
   const successCb = action.success || loop
   const errorCb = action.error || loop
-  console.log(action.data)
+  
   reqwest({
     url: action.url,
     method: action.method || 'post',

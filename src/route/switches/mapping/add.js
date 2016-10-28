@@ -66,10 +66,7 @@ export default class AddMapping extends React.Component {
       form.resetFields()
       this.hideModal()
       
-      values.id ? mappingStore.putServer({
-        index: values.id,
-        ...data
-      }) : mappingStore.postServer(data)
+      values.id ? mappingStore.putServer(data) : mappingStore.postServer(data)
     })
   }
   hideModal() {

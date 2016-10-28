@@ -89,9 +89,6 @@ Auth.checkAuthCookie = function(name) {
   if (!Auth.getAuthCookie(name)) {
     location.href = Api.login+"?url="+encodeURI(urlHref)
   }
-  // else {
-  //   console.log(Api.login+"?url="+encodeURI(urlHref))
-  // }
 }
 Auth.loggedIn = function () {
   return !!localStorage.username || !!sessionStorage.username

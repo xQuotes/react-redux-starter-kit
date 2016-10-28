@@ -9,7 +9,10 @@ import 'Arr'
 export default class MappingStore {
   @observable isLoading = false
   @observable mappings = []
-  searchDatas = {}
+  @observable fields = {}
+  @observable searchFields = {}
+
+  @observable searchDatas = {}
 
   @observable visible = false
   @observable params = {}
@@ -32,6 +35,8 @@ export default class MappingStore {
       success: (data) => {
         this.isLoading = false
         this.mappings = data.list
+        this.fields = data.fields
+        this.searchFields = data.search_fields
       },
       error: (data) => {
         this.isLoading = false
@@ -71,7 +76,6 @@ export default class MappingStore {
       method: 'post',
       success: (data) => {
         this.isLoading = false
-        console.log(data)
         this.mappings = this.mappings.push(formData)
       },
       error: (data) => {
@@ -91,9 +95,7 @@ export default class MappingStore {
       method: 'post',
       success: (data) => {
         this.isLoading = false
-        console.log(data)
-        console.log(data.getById(formData.id))
-        this.mappings = this.mappings.update(update, data.getById(formData.id))
+        this.mappings = this.mappings.update(this.params.index, data)
       },
       error: (data) => {
         this.isLoading = false

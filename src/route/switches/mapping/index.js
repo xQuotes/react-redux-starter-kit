@@ -56,20 +56,21 @@ export default class Mappings extends React.Component {
   render() {
     const that = this
     const {mappingStore} = this.props
-    console.log(mappingStore.toJS())
+    
     let dataList = mappingStore.toJS()
-
-    let fields = {
-      id: "ID",
-      hostname: "主机名",
-      ext_ip: "公网IP",
-      ext_port: "公网端口",
-      int_ip: "内网IP",
-      int_port: "内网端口",
-      user: "操作人员",
-      c_time: "创建时间",
-      u_time: "更新时间",
-    }
+    let fields = mappingStore.fields
+    let searchFields = mappingStore.searchFields
+    // let fields = {
+    //   id: "ID",
+    //   hostname: "主机名",
+    //   ext_ip: "公网IP",
+    //   ext_port: "公网端口",
+    //   int_ip: "内网IP",
+    //   int_port: "内网端口",
+    //   user: "操作人员",
+    //   c_time: "创建时间",
+    //   u_time: "更新时间",
+    // }
 
     let tableHeader = _.map(fields, (v, k) => {
       return {
@@ -108,7 +109,7 @@ export default class Mappings extends React.Component {
     return(
       <div className="switches-network">
         <div className="table-search">
-          <SearchTable />
+          <SearchTable searchFields={searchFields} store={mappingStore}/>
         </div>
         <div className="switches-action-type">
           <Button type="primary" onClick={::this.addMapping}>添加映射</Button>

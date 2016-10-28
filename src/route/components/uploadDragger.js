@@ -53,9 +53,6 @@ export default class UploadDragger extends React.Component {
         AuthToken: Auth.getAuthCookie('UserIfosSession') || ''
       },
       onChange: (info) => {
-        // if (info.file.status !== 'uploading') {
-        //   console.log(info.file, info.fileList);
-        // }
         if (info.file.status === 'done') {
           const {statuscode, msg, data} = info.file.response
           if (statuscode == '200') {
@@ -69,7 +66,6 @@ export default class UploadDragger extends React.Component {
                 key: k,
                 width: 80,
                 render: (text, record, index) => {
-                  console.log(text)
                   return !!text ? <div className={classNames({'item-error': !text.validate})}>{text.value}</div> : text
                 }
               }

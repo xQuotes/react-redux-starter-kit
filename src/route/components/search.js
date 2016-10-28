@@ -1,3 +1,4 @@
+import {observer} from 'mobx-react'
 import moment from 'moment'
 import {
   Form, Input, Row, Col, Button,
@@ -6,6 +7,7 @@ import {
 const FormItem = Form.Item
 
 @Form.create()
+@observer
 export default class SearchForm extends React.Component {
   static propTypes = {
     form: React.PropTypes.object,
@@ -33,10 +35,12 @@ export default class SearchForm extends React.Component {
     store.getServers(store.searchDatas)
   }
   handleReset(e) {
+    console.log(e)
     e.preventDefault()
     const {form, store} = this.props
     form.resetFields()
     store.setSearchDatas({})
+    console.log(store)
   }
   render() {
     const {form, store, title} = this.props
