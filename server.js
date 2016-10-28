@@ -11,7 +11,8 @@ var server = new webpackDevServer(compiler, {
   historyApiFallback: true,
   proxy: {
     '/web/sw_*/**': {
-      target: 'http://172.30.205.224:8081',
+      // target: 'http://172.30.205.224:8081',
+      target: 'http://172.30.200.163:8082',
       crossOrigin: true,
       // port: "8080",
       secure: false
