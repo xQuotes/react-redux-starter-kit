@@ -1,4 +1,4 @@
-import { Modal } from 'antd'
+import { Modal, message } from 'antd'
 import reqwest from 'reqwest'
 
 import Auth from 'Auth'
@@ -20,9 +20,13 @@ export default function fetching(action) {
     type: 'json',
     success: (res) => {
       if (res.statuscode === 200) {
+        message.success(res.msg);
         return successCb(res.data, res.msg, res.statuscode)
       } else {
-        alert(res.msg)
+        Modal.error({
+          title: '',
+          content: res.msg
+        })
         return errorCb(res.data, res.msg, res.statuscode)
       }
     },

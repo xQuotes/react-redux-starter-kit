@@ -11,6 +11,7 @@ import {
 import Url from 'Url'
 
 import SearchTable from './search'
+import DataTable from '../../components/table'
 
 @inject(
   'vlanStore', 'dashboardStore'
@@ -58,9 +59,8 @@ export default class Vlans extends React.Component {
           <SearchTable />
         </div>
         <div className={classNames({"tables": true})}>
-          <Table columns={columns}
-            dataSource={dataList}
-            scroll={{ x: 1000 }}/>
+          <DataTable columns={columns}
+            dataSource={dataList}/>
         </div>
       </div>
       )

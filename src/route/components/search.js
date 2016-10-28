@@ -60,12 +60,13 @@ export default class SearchForm extends React.Component {
       }, value)
     })
 
-    function formJsxType(formType, placeholder) {
-      if(formType == 'date') {
+    function formJsxType(formType, placeholder, type) {
+      if(formType == 'DatePicker') {
         return <DatePicker />
       } else {
         return <Input autoCapitalize="off"
           placeholder={placeholder}
+          type={type}
           size="default"/> 
       }
     }
@@ -80,7 +81,7 @@ export default class SearchForm extends React.Component {
                 labelCol={{ span: v.labelCol }}
                 wrapperCol={{ span: v.wrapperCol }}>
                 {getFieldDecorator(v.name, v.fieldOptions)(
-                  formJsxType(v.formType, v.placeholder)
+                  formJsxType(v.formType, v.placeholder, v.type)
                 )}
               </FormItem>
             </Col>

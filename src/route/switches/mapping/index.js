@@ -18,6 +18,7 @@ import Url from 'Url'
 import SearchTable from './search'
 import AddMappingModal from './add'
 import UploadBtn from '../../components/uploadBtn'
+import DataTable from '../../components/table'
 
 @inject(
   'mappingStore', 'dashboardStore'
@@ -102,9 +103,8 @@ export default class Mappings extends React.Component {
           <UploadBtn />
         </div>
         <div className={classNames({"tables": true})}>
-          <Table columns={columns}
-            dataSource={dataList}
-            scroll={{ x: 1000 }}/>
+          <DataTable columns={columns}
+            dataSource={dataList}/>
         </div>
         <AddMappingModal />
       </div>

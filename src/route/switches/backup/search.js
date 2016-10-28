@@ -44,7 +44,7 @@ export default class Search extends React.Component {
       },
       placeholder: '请输入搜索SN'
     }, {
-      type: 'date',
+      formType: 'DatePicker',
       name: 'day',
       label: '日期',
       fieldOptions: {

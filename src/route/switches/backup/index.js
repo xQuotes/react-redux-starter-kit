@@ -14,6 +14,8 @@ import Url from 'Url'
 import SearchTable from './search'
 import Status from './status'
 
+import DataTable from '../../components/table'
+
 import './backup.less'
 
 @inject(
@@ -94,9 +96,8 @@ export default class Backup extends React.Component {
           <SearchTable />
         </div>
         <div className={classNames({"tables": true})}>
-          <Table columns={columns}
-            dataSource={dataList}
-            scroll={{ x: 1000 }}/>
+          <DataTable columns={columns}
+            dataSource={dataList}/>
         </div>
       </div>
       )
