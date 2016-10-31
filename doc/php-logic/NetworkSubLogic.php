@@ -16,7 +16,7 @@ class NetworkSubLogicModel extends \Business\Config\AbstractModel {
     //不能为空的字段
     public static $not_empty_fields = array(
         'vlan',
-        'ext_portip',
+        'port',
         'mask',
         'gateway',
         'a_port_info',
