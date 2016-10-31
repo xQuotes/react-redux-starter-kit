@@ -11,10 +11,7 @@ module.exports = {
 
         require('./mapping/route'),
         require('./server/route'),
-        require('./networksub/route'),
-
-        require('./network/route'),
-        require('./actions/route')
+        require('./networksub/route')
       ])
     })
   },
