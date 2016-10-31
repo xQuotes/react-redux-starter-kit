@@ -39,7 +39,7 @@ export default class ModalForm extends React.Component {
     })
 
     function formJsxType(formType, placeholder) {
-      if(formType == 'date') {
+      if(formType == 'DatePicker') {
         return <DatePicker />
       } else {
         return <Input autoCapitalize="off"

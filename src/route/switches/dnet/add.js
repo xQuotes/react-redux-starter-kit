@@ -87,16 +87,6 @@ export default class AddDnet extends React.Component {
         initialValue: dnet.id
       }
     }, {
-      name: 'hostname',
-      label: '主机名',
-      fieldOptions: {
-        initialValue: dnet.hostname,
-        rules: [
-          { required: true, whitespace: true, message: '请输入主机名' }
-        ],
-      },
-      placeholder: '请输入主机名'
-    }, {
       name: 'ext_ip',
       label: '公网IP',
       fieldOptions: {
@@ -142,6 +132,47 @@ export default class AddDnet extends React.Component {
         ],
       },
       placeholder: '如：80'
+    }, {
+      name: 'applicant',
+      label: '申请人',
+      fieldOptions: {
+        initialValue: dnet.applicant,
+        rules: [
+          { required: true, whitespace: true, message: '请输入申请人' }
+        ],
+      },
+      placeholder: '请输入申请人'
+    }, {
+      name: 'equipment',
+      label: '所属设备',
+      fieldOptions: {
+        initialValue: dnet.equipment,
+        rules: [
+          { required: true, whitespace: true, message: '请输入所属设备' }
+        ],
+      },
+      placeholder: '请输入所属设备'
+    }, {
+      formType: 'DatePicker',
+      name: 'deadline',
+      label: '截止日期',
+      fieldOptions: {
+        initialValue: dnet.deadline,
+        rules: [
+          { required: true, whitespace: true, message: '请输入截止日期' }
+        ],
+      },
+      placeholder: '请输入截止日期'
+    }, {
+      name: 'remark',
+      label: '备注',
+      fieldOptions: {
+        initialValue: dnet.remark,
+        rules: [
+          { required: true, whitespace: true, message: '请输入备注' }
+        ],
+      },
+      placeholder: '请输入备注'
     }]
 
     return (
