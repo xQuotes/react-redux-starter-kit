@@ -28,6 +28,18 @@ const Api = {
   deleteMapping: `${url}/sw_config_mapping/deleteInfo`,
   putMapping: `${url}/sw_config_mapping/updateInfo`,
 
+  postServer: `${url}/sw_config_server/addInfo`,
+  getServers: `${url}/sw_config_server/getList`,
+  getServer: `${url}/sw_config_server/getInfo`,
+  deleteServer: `${url}/sw_config_server/deleteInfo`,
+  putServer: `${url}/sw_config_server/updateInfo`,
+
+  postNetworksub: `${url}/sw_config_networksub/addInfo`,
+  getNetworksubs: `${url}/sw_config_networksub/getList`,
+  getNetworksub: `${url}/sw_config_networksub/getInfo`,
+  deleteNetworksub: `${url}/sw_config_networksub/deleteInfo`,
+  putNetworksub: `${url}/sw_config_networksub/updateInfo`,
+
   uploadCsvFile: `${url}/sw_config_upload/uploadAndCheckCsvFile`,
   uploadCsvData: `${url}/sw_config_upload/uploadCsvData`,
 

@@ -7,10 +7,14 @@ module.exports = {
     require.ensure([], function (require) {
       callback(null, [
         ...require('./backup/route'),
-        require('./network/route'),
-        require('./actions/route'),
+        require('./vlan/route'),
+
         require('./mapping/route'),
-        require('./vlan/route')
+        require('./server/route'),
+        require('./networksub/route'),
+
+        require('./network/route'),
+        require('./actions/route')
       ])
     })
   },

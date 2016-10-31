@@ -17,14 +17,14 @@ import Url from 'Url'
 
 import SearchTable from './search'
 import DataTable from '../../components/table'
-import AddMappingModal from './add'
+import AddNetworksubModal from './add'
 import UploadBtn from '../../components/uploadBtn'
 
 @inject(
-  'mappingStore', 'dashboardStore'
+  'networksubStore', 'dashboardStore'
   )
 @observer
-export default class Mappings extends React.Component {
+export default class Networksubs extends React.Component {
   constructor(props) {
     super(props)
 
@@ -33,30 +33,30 @@ export default class Mappings extends React.Component {
     }
   }
   componentWillMount() {
-    const bcData = ['首页', '常用信息', '映射信息']
+    const bcData = ['首页', '常用信息', '子网信息']
     const {dashboardStore} = this.props
     dashboardStore.putDashboard(bcData)
   }
-  addMapping(e) {
-    const {mappingStore} = this.props
-    mappingStore.toggleVisible()
-    mappingStore.setParams({})
+  addNetworksub(e) {
+    const {networksubStore} = this.props
+    networksubStore.toggleVisible()
+    networksubStore.setParams({})
   }
-  updateMapping(formData) {
-    const {mappingStore} = this.props
-    mappingStore.toggleVisible()
-    mappingStore.setParams(formData)
+  updateNetworksub(formData) {
+    const {networksubStore} = this.props
+    networksubStore.toggleVisible()
+    networksubStore.setParams(formData)
   }
   handleDeleteConfirm(formData) {
-    const {mappingStore} = this.props
-    mappingStore.deleteServer(formData)
+    const {networksubStore} = this.props
+    networksubStore.deleteServer(formData)
   }
   render() {
     const that = this
-    const {mappingStore} = this.props
-    let dataList = mappingStore.toJS()
-    let fields = mappingStore.fields
-    let searchFields = mappingStore.searchFields
+    const {networksubStore} = this.props
+    let dataList = networksubStore.toJS()
+    let fields = networksubStore.fields
+    let searchFields = networksubStore.searchFields
 
     let tableHeader = _.map(fields, (v, k) => {
       return {
@@ -77,7 +77,7 @@ export default class Mappings extends React.Component {
         width: 100,
         render: (text, record, index) => {
           return <div>  
-            <a href="#" onClick={that.updateMapping.bind(this,{
+            <a href="#" onClick={that.updateNetworksub.bind(this,{
               id: record.id
             })}>修改</a>　
             <Popconfirm title="确定要删除这个操作类型吗？" onConfirm={that.handleDeleteConfirm.bind(this, {
@@ -93,21 +93,21 @@ export default class Mappings extends React.Component {
     return(
       <div className="switches-network">
         <div className="table-search">
-          <SearchTable searchFields={searchFields} store={mappingStore}/>
+          <SearchTable searchFields={searchFields} store={networksubStore}/>
         </div>
         <div className="switches-action-type">
-          <Button type="primary" onClick={::this.addMapping}>添加映射</Button>
+          <Button type="primary" onClick={::this.addNetworksub}>添加子网</Button>
           <UploadBtn
-            store={mappingStore} 
+            store={networksubStore} 
             params={{
-              type: "mapping"
+              type: "networksub"
             }}/>
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}
             dataSource={dataList}/>
         </div>
-        <AddMappingModal />
+        <AddNetworksubModal />
       </div>
       )
   }

@@ -8,14 +8,16 @@ const Url = {
   register: '/register',
 
   // 利用率
-  switchesNetwork: `/${switches}/network`,
-  switchesActions: `/${switches}/actions`,
   switchesBackups: `/${switches}/backups`,
   switchesBackup: `/${switches}/backup`,
+  switchesVlans: `/${switches}/vlans`,
 
-  switchesMap: `/${switches}/mappings`,
-  switchesMapUpload:  `/${switches}/uploadcsv/mapping`,
-  switchesVlans: `/${switches}/vlans`
+  switchesMappings: `/${switches}/mappings`,
+  switchesServers: `/${switches}/servers`,
+  switchesNetworksubs: `/${switches}/networksubs`,
+
+  switchesNetwork: `/${switches}/network`,
+  switchesActions: `/${switches}/actions`,
 }
 
 export default Url

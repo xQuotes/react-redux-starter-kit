@@ -109,13 +109,23 @@ export default class Dashboard extends React.Component {
               </Menu.Item>
             </SubMenu>
             <SubMenu key="sub2" title={<span><Icon type="bars"/>常用信息</span>}>
-              <Menu.Item key={`${Url.switchesMap}`}>
-                <Link to={`${Url.switchesMap}`}>
+              <Menu.Item key={`${Url.switchesMappings}`}>
+                <Link to={`${Url.switchesMappings}`}>
                   <Icon type="appstore-o"/>映射信息
                 </Link>
               </Menu.Item>
+              <Menu.Item key={`${Url.switchesServers}`}>
+                <Link to={`${Url.switchesServers}`}>
+                  <Icon type="appstore-o"/>服务器信息
+                </Link>
+              </Menu.Item>
+              <Menu.Item key={`${Url.switchesNetworksubs}`}>
+                <Link to={`${Url.switchesNetworksubs}`}>
+                  <Icon type="appstore-o"/>子网信息
+                </Link>
+              </Menu.Item>
             </SubMenu>
-            <SubMenu key="sub3" title={<span><Icon type="bars"/>配置管理</span>}>
+            {/*<SubMenu key="sub3" title={<span><Icon type="bars"/>配置管理</span>}>
               <Menu.Item key={`${Url.switchesNetwork}`}>
                 <Link to={`${Url.switchesNetwork}`}>
                   <Icon type="appstore-o"/>网段管理
@@ -126,7 +136,7 @@ export default class Dashboard extends React.Component {
                   <Icon type="appstore-o"/>操作类型
                 </Link>
               </Menu.Item>
-            </SubMenu>
+            </SubMenu>*/}
           </Menu>
         </aside>
         <div className="ant-layout-main">

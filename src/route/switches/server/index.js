@@ -17,14 +17,14 @@ import Url from 'Url'
 
 import SearchTable from './search'
 import DataTable from '../../components/table'
-import AddMappingModal from './add'
+import AddServerModal from './add'
 import UploadBtn from '../../components/uploadBtn'
 
 @inject(
-  'mappingStore', 'dashboardStore'
+  'serverStore', 'dashboardStore'
   )
 @observer
-export default class Mappings extends React.Component {
+export default class Servers extends React.Component {
   constructor(props) {
     super(props)
 
@@ -33,30 +33,30 @@ export default class Mappings extends React.Component {
     }
   }
   componentWillMount() {
-    const bcData = ['首页', '常用信息', '映射信息']
+    const bcData = ['首页', '常用信息', '服务器信息']
     const {dashboardStore} = this.props
     dashboardStore.putDashboard(bcData)
   }
-  addMapping(e) {
-    const {mappingStore} = this.props
-    mappingStore.toggleVisible()
-    mappingStore.setParams({})
+  addServer(e) {
+    const {serverStore} = this.props
+    serverStore.toggleVisible()
+    serverStore.setParams({})
   }
-  updateMapping(formData) {
-    const {mappingStore} = this.props
-    mappingStore.toggleVisible()
-    mappingStore.setParams(formData)
+  updateServer(formData) {
+    const {serverStore} = this.props
+    serverStore.toggleVisible()
+    serverStore.setParams(formData)
   }
   handleDeleteConfirm(formData) {
-    const {mappingStore} = this.props
-    mappingStore.deleteServer(formData)
+    const {serverStore} = this.props
+    serverStore.deleteServer(formData)
   }
   render() {
     const that = this
-    const {mappingStore} = this.props
-    let dataList = mappingStore.toJS()
-    let fields = mappingStore.fields
-    let searchFields = mappingStore.searchFields
+    const {serverStore} = this.props
+    let dataList = serverStore.toJS()
+    let fields = serverStore.fields
+    let searchFields = serverStore.searchFields
 
     let tableHeader = _.map(fields, (v, k) => {
       return {
@@ -77,7 +77,7 @@ export default class Mappings extends React.Component {
         width: 100,
         render: (text, record, index) => {
           return <div>  
-            <a href="#" onClick={that.updateMapping.bind(this,{
+            <a href="#" onClick={that.updateServer.bind(this,{
               id: record.id
             })}>修改</a>　
             <Popconfirm title="确定要删除这个操作类型吗？" onConfirm={that.handleDeleteConfirm.bind(this, {
@@ -93,21 +93,21 @@ export default class Mappings extends React.Component {
     return(
       <div className="switches-network">
         <div className="table-search">
-          <SearchTable searchFields={searchFields} store={mappingStore}/>
+          <SearchTable searchFields={searchFields} store={serverStore}/>
         </div>
         <div className="switches-action-type">
-          <Button type="primary" onClick={::this.addMapping}>添加映射</Button>
+          <Button type="primary" onClick={::this.addServer}>添加服务器</Button>
           <UploadBtn
-            store={mappingStore} 
+            store={serverStore} 
             params={{
-              type: "mapping"
+              type: "server"
             }}/>
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}
             dataSource={dataList}/>
         </div>
-        <AddMappingModal />
+        <AddServerModal />
       </div>
       )
   }

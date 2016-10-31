@@ -21,14 +21,14 @@ import ModalForm from '../../components/form'
 
 @Form.create()
 @inject(
-  'mappingStore'
+  'serverStore'
   )
 @observer
-export default class AddMapping extends React.Component {
+export default class AddServer extends React.Component {
   constructor(props) {
     super(props)
   }
-  mappingIpExists(rule, value, callback) {
+  serverIpExists(rule, value, callback) {
     if (!value) {
       callback()
     } else {
@@ -39,7 +39,7 @@ export default class AddMapping extends React.Component {
       }
     }
   }
-  mappingPortExists(rule, value, callback) {
+  serverPortExists(rule, value, callback) {
     if (!value) {
       callback();
     } else {
@@ -51,9 +51,9 @@ export default class AddMapping extends React.Component {
     }
   }
   handleSubmit(e) {
-    const {form, mappingStore} = this.props
+    const {form, serverStore} = this.props
     const {validateFields} = form
-    const {params} = mappingStore
+    const {params} = serverStore
 
     validateFields((errors, values) => {
       if (!!errors) {
@@ -66,31 +66,31 @@ export default class AddMapping extends React.Component {
       form.resetFields()
       this.hideModal()
       
-      values.id ? mappingStore.putServer(data) : mappingStore.postServer(data)
+      values.id ? serverStore.putServer(data) : serverStore.postServer(data)
     })
   }
   hideModal() {
-    const {mappingStore} = this.props
-    mappingStore.toggleVisible()
+    const {serverStore} = this.props
+    serverStore.toggleVisible()
   }
 
   render() {
-    const {form, mappingStore} = this.props
-    const paramsData = mappingStore.params
-    const mapping = mappingStore.list.getById(paramsData.id) || {}
+    const {form, serverStore} = this.props
+    const paramsData = serverStore.params
+    const server = serverStore.list.getById(paramsData.id) || {}
 
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: mapping.id
+        initialValue: server.id
       }
     }, {
       name: 'hostname',
       label: '主机名',
       fieldOptions: {
-        initialValue: mapping.hostname,
+        initialValue: server.hostname,
         rules: [
           { required: true, whitespace: true, message: '请输入主机名' }
         ],
@@ -100,10 +100,10 @@ export default class AddMapping extends React.Component {
       name: 'ext_ip',
       label: '公网IP',
       fieldOptions: {
-        initialValue: mapping.ext_ip,
+        initialValue: server.ext_ip,
         rules: [
           { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.mappingIpExists },
+          { validator: ::this.serverIpExists },
         ],
       },
       placeholder: '如：123.125.114.144',
@@ -113,10 +113,10 @@ export default class AddMapping extends React.Component {
       name: 'ext_port',
       label: '公网端口',
       fieldOptions: {
-        initialValue: mapping.ext_port,
+        initialValue: server.ext_port,
         rules: [
           { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.mappingPortExists },
+          { validator: ::this.serverPortExists },
         ],
       },
       placeholder: '如：80',
@@ -124,10 +124,10 @@ export default class AddMapping extends React.Component {
       name: 'int_ip',
       label: '内网IP',
       fieldOptions: {
-        initialValue: mapping.int_ip,
+        initialValue: server.int_ip,
         rules: [
           { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.mappingIpExists },
+          { validator: ::this.serverIpExists },
         ],
       },
       placeholder: '如：192.168.1.1'
@@ -135,23 +135,23 @@ export default class AddMapping extends React.Component {
       name: 'int_port',
       label: '内网端口',
       fieldOptions: {
-        initialValue: mapping.int_port,
+        initialValue: server.int_port,
         rules: [
           { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.mappingPortExists },
+          { validator: ::this.serverPortExists },
         ],
       },
       placeholder: '如：80'
     }]
 
     return (
-      <Modal title="操作映射"
-          visible={mappingStore.visible}
+      <Modal title="操作服务器"
+          visible={serverStore.visible}
           onCancel={::this.hideModal}
           onOk={::this.handleSubmit}>
         <Form horizontal>
           <ModalForm form={form}
-            store={mappingStore}
+            store={serverStore}
             title={formDataTitileServer}/>
         </Form>
       </Modal>)

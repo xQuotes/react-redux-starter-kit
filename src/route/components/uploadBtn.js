@@ -4,13 +4,14 @@ import {
   Button,
   Icon,
   message,
-  Modal,
-  Table
+  Modal
 } from 'antd'
 
 import Url from 'Url'
 import Auth from 'Auth'
 import Api from 'Api'
+
+import DataTable from './/table'
 
 export default class UploadBtn extends React.Component {
   constructor(props) {
@@ -32,12 +33,12 @@ export default class UploadBtn extends React.Component {
     const { store, params } = this.props
     const paramsData = params || {}
     const {uploadData, validate} = this.state
-
-    // validate && dispatch(uploadCsvData({
-    //   type: params.type,
-    //   list: uploadData.dataList
-    // }))
-    validate && store.postServers(uploadData.dataList)
+    console.log(store)
+    console.log(uploadData)
+    validate && store.postServers({
+      type: paramsData.type,
+      list: uploadData.dataList
+    })
     validate && this.hideModal()
   }
   render() {
@@ -124,7 +125,9 @@ export default class UploadBtn extends React.Component {
           onOk={::this.handleSubmit}
           onCancel={::this.hideModal}>
           {!validate && <div className="table-header-warning"><span className="item-error">橙色</span>为验证有错的字段，请在CSV中修改后重新上传！</div>}
-          <Table columns={uploadData.columns} dataSource={uploadData.dataList}/>
+          <DataTable
+            columns={uploadData.columns}
+            dataSource={uploadData.dataList}/>
         </Modal>
       </div>
       )
