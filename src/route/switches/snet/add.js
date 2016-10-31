@@ -21,14 +21,14 @@ import ModalForm from '../../components/form'
 
 @Form.create()
 @inject(
-  'snatStore'
+  'snetStore'
   )
 @observer
-export default class AddSnat extends React.Component {
+export default class AddSnet extends React.Component {
   constructor(props) {
     super(props)
   }
-  snatIpExists(rule, value, callback) {
+  snetIpExists(rule, value, callback) {
     if (!value) {
       callback()
     } else {
@@ -39,7 +39,7 @@ export default class AddSnat extends React.Component {
       }
     }
   }
-  snatPortExists(rule, value, callback) {
+  snetPortExists(rule, value, callback) {
     if (!value) {
       callback();
     } else {
@@ -51,9 +51,9 @@ export default class AddSnat extends React.Component {
     }
   }
   handleSubmit(e) {
-    const {form, snatStore} = this.props
+    const {form, snetStore} = this.props
     const {validateFields} = form
-    const {params} = snatStore
+    const {params} = snetStore
 
     validateFields((errors, values) => {
       if (!!errors) {
@@ -66,31 +66,31 @@ export default class AddSnat extends React.Component {
       form.resetFields()
       this.hideModal()
       
-      values.id ? snatStore.putServer(data) : snatStore.postServer(data)
+      values.id ? snetStore.putServer(data) : snetStore.postServer(data)
     })
   }
   hideModal() {
-    const {snatStore} = this.props
-    snatStore.toggleVisible()
+    const {snetStore} = this.props
+    snetStore.toggleVisible()
   }
 
   render() {
-    const {form, snatStore} = this.props
-    const paramsData = snatStore.params
-    const snat = snatStore.list.getById(paramsData.id) || {}
+    const {form, snetStore} = this.props
+    const paramsData = snetStore.params
+    const snet = snetStore.list.getById(paramsData.id) || {}
 
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: snat.id
+        initialValue: snet.id
       }
     }, {
       name: 'hostname',
       label: '主机名',
       fieldOptions: {
-        initialValue: snat.hostname,
+        initialValue: snet.hostname,
         rules: [
           { required: true, whitespace: true, message: '请输入主机名' }
         ],
@@ -100,10 +100,10 @@ export default class AddSnat extends React.Component {
       name: 'ext_ip',
       label: '公网IP',
       fieldOptions: {
-        initialValue: snat.ext_ip,
+        initialValue: snet.ext_ip,
         rules: [
           { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.snatIpExists },
+          { validator: ::this.snetIpExists },
         ],
       },
       placeholder: '如：123.125.114.144',
@@ -113,10 +113,10 @@ export default class AddSnat extends React.Component {
       name: 'ext_port',
       label: '公网端口',
       fieldOptions: {
-        initialValue: snat.ext_port,
+        initialValue: snet.ext_port,
         rules: [
           { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.snatPortExists },
+          { validator: ::this.snetPortExists },
         ],
       },
       placeholder: '如：80',
@@ -124,10 +124,10 @@ export default class AddSnat extends React.Component {
       name: 'int_ip',
       label: '内网IP',
       fieldOptions: {
-        initialValue: snat.int_ip,
+        initialValue: snet.int_ip,
         rules: [
           { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.snatIpExists },
+          { validator: ::this.snetIpExists },
         ],
       },
       placeholder: '如：192.168.1.1'
@@ -135,10 +135,10 @@ export default class AddSnat extends React.Component {
       name: 'int_port',
       label: '内网端口',
       fieldOptions: {
-        initialValue: snat.int_port,
+        initialValue: snet.int_port,
         rules: [
           { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.snatPortExists },
+          { validator: ::this.snetPortExists },
         ],
       },
       placeholder: '如：80'
@@ -146,12 +146,12 @@ export default class AddSnat extends React.Component {
 
     return (
       <Modal title="操作S-NAT信息"
-          visible={snatStore.visible}
+          visible={snetStore.visible}
           onCancel={::this.hideModal}
           onOk={::this.handleSubmit}>
         <Form horizontal>
           <ModalForm form={form}
-            store={snatStore}
+            store={snetStore}
             title={formDataTitileServer}/>
         </Form>
       </Modal>)

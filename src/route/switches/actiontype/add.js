@@ -28,28 +28,6 @@ export default class AddActiontype extends React.Component {
   constructor(props) {
     super(props)
   }
-  actiontypeIpExists(rule, value, callback) {
-    if (!value) {
-      callback()
-    } else {
-      if (!ipReg.test(value)) {
-        callback([new Error("IP 格式不正确")]);
-      } else {
-        callback()
-      }
-    }
-  }
-  actiontypePortExists(rule, value, callback) {
-    if (!value) {
-      callback();
-    } else {
-      if (!portReg.test(value)) {
-        callback([new Error("端口格式不正确")]);
-      } else {
-        callback()
-      }
-    }
-  }
   handleSubmit(e) {
     const {form, actiontypeStore} = this.props
     const {validateFields} = form
@@ -87,61 +65,15 @@ export default class AddActiontype extends React.Component {
         initialValue: actiontype.id
       }
     }, {
-      name: 'hostname',
-      label: '主机名',
+      name: 'type',
+      label: '操作类型',
       fieldOptions: {
-        initialValue: actiontype.hostname,
+        initialValue: actiontype.type,
         rules: [
-          { required: true, whitespace: true, message: '请输入主机名' }
+          { required: true, whitespace: true, message: '请输入操作类型' }
         ],
       },
-      placeholder: '请输入搜索主机名'
-    }, {
-      name: 'ext_ip',
-      label: '公网IP',
-      fieldOptions: {
-        initialValue: actiontype.ext_ip,
-        rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.actiontypeIpExists },
-        ],
-      },
-      placeholder: '如：123.125.114.144',
-      labelCol: 4,
-      wrapperCol: 20
-    }, {
-      name: 'ext_port',
-      label: '公网端口',
-      fieldOptions: {
-        initialValue: actiontype.ext_port,
-        rules: [
-          { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.actiontypePortExists },
-        ],
-      },
-      placeholder: '如：80',
-    }, {
-      name: 'int_ip',
-      label: '内网IP',
-      fieldOptions: {
-        initialValue: actiontype.int_ip,
-        rules: [
-          { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.actiontypeIpExists },
-        ],
-      },
-      placeholder: '如：192.168.1.1'
-    }, {
-      name: 'int_port',
-      label: '内网端口',
-      fieldOptions: {
-        initialValue: actiontype.int_port,
-        rules: [
-          { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.actiontypePortExists },
-        ],
-      },
-      placeholder: '如：80'
+      placeholder: '请输入操作类型'
     }]
 
     return (

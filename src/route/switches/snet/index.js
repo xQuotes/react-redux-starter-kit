@@ -17,14 +17,14 @@ import Url from 'Url'
 
 import SearchTable from './search'
 import DataTable from '../../components/table'
-import AddDnatModal from './add'
+import AddSnetModal from './add'
 import UploadBtn from '../../components/uploadBtn'
 
 @inject(
-  'dnatStore', 'dashboardStore'
+  'snetStore', 'dashboardStore'
   )
 @observer
-export default class Dnats extends React.Component {
+export default class Snets extends React.Component {
   constructor(props) {
     super(props)
 
@@ -33,30 +33,30 @@ export default class Dnats extends React.Component {
     }
   }
   componentWillMount() {
-    const bcData = ['首页', '常用信息', 'D-NAT信息信息']
+    const bcData = ['首页', '常用信息', 'S-NAT信息信息']
     const {dashboardStore} = this.props
     dashboardStore.putDashboard(bcData)
   }
-  addDnat(e) {
-    const {dnatStore} = this.props
-    dnatStore.toggleVisible()
-    dnatStore.setParams({})
+  addSnet(e) {
+    const {snetStore} = this.props
+    snetStore.toggleVisible()
+    snetStore.setParams({})
   }
-  updateDnat(formData) {
-    const {dnatStore} = this.props
-    dnatStore.toggleVisible()
-    dnatStore.setParams(formData)
+  updateSnet(formData) {
+    const {snetStore} = this.props
+    snetStore.toggleVisible()
+    snetStore.setParams(formData)
   }
   handleDeleteConfirm(formData) {
-    const {dnatStore} = this.props
-    dnatStore.deleteServer(formData)
+    const {snetStore} = this.props
+    snetStore.deleteServer(formData)
   }
   render() {
     const that = this
-    const {dnatStore} = this.props
-    let dataList = dnatStore.toJS()
-    let fields = dnatStore.fields
-    let searchFields = dnatStore.searchFields
+    const {snetStore} = this.props
+    let dataList = snetStore.toJS()
+    let fields = snetStore.fields
+    let searchFields = snetStore.searchFields
 
     let tableHeader = _.map(fields, (v, k) => {
       return {
@@ -77,7 +77,7 @@ export default class Dnats extends React.Component {
         width: 100,
         render: (text, record, index) => {
           return <div>  
-            <a href="#" onClick={that.updateDnat.bind(this,{
+            <a href="#" onClick={that.updateSnet.bind(this,{
               id: record.id
             })}>修改</a>　
             <Popconfirm title="确定要删除这个操作类型吗？" onConfirm={that.handleDeleteConfirm.bind(this, {
@@ -93,21 +93,21 @@ export default class Dnats extends React.Component {
     return(
       <div className="switches-network">
         <div className="table-search">
-          <SearchTable searchFields={searchFields} store={dnatStore}/>
+          <SearchTable searchFields={searchFields} store={snetStore}/>
         </div>
         <div className="switches-action-type">
-          <Button type="primary" onClick={::this.addDnat}>添加D-NAT信息</Button>
+          <Button type="primary" onClick={::this.addSnet}>添加S-NAT信息</Button>
           <UploadBtn
-            store={dnatStore} 
+            store={snetStore} 
             params={{
-              type: "dnat"
+              type: "snet"
             }}/>
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}
             dataSource={dataList}/>
         </div>
-        <AddDnatModal />
+        <AddSnetModal />
       </div>
       )
   }

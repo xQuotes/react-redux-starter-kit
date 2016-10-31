@@ -6,7 +6,7 @@ import Fetch from 'Fetch'
 import Api from 'Api'
 import 'Arr'
 
-export default class DnatStore {
+export default class SnetStore {
   @observable isLoading = false
   @observable list = []
   @observable fields = {}
@@ -27,7 +27,7 @@ export default class DnatStore {
     this.setSearchDatas(formData)
     
     Fetch({
-      url: Api.getDnats,
+      url: Api.getSnets,
       data: {
         conditions: formData,
         params: {}
@@ -49,7 +49,7 @@ export default class DnatStore {
   @action deleteServer(formData) {
     this.isLoading = true
     Fetch({
-      url: Api.deleteDnat,
+      url: Api.deleteSnet,
       data: {
         conditions: {
           id: formData.id
@@ -71,7 +71,7 @@ export default class DnatStore {
   @action postServer(formData) {
     this.isLoading = true
     Fetch({
-      url: Api.postDnat,
+      url: Api.postSnet,
       data: {
         conditions: formData,
         params: {}
@@ -110,7 +110,7 @@ export default class DnatStore {
   @action putServer(formData) {
     this.isLoading = true
     Fetch({
-      url: Api.putDnat,
+      url: Api.putSnet,
       data: {
         conditions: formData,
         params: {}
@@ -140,7 +140,7 @@ export default class DnatStore {
   }
 
   static fromJS(array = []) {
-    return new DnatStore()
+    return new SnetStore()
   }
 }
 

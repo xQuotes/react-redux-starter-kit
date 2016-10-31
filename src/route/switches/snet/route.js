@@ -1,4 +1,4 @@
 module.exports = {
-  path: 'dnats',
+  path: 'snets',
   component: require('./index')['default']
 }

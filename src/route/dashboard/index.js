@@ -130,13 +130,13 @@ export default class Dashboard extends React.Component {
                   <Icon type="appstore-o"/>网络安全策略
                 </Link>
               </Menu.Item>
-              <Menu.Item key={`${Url.switchesDnats}`}>
-                <Link to={`${Url.switchesDnats}`}>
+              <Menu.Item key={`${Url.switchesDnets}`}>
+                <Link to={`${Url.switchesDnets}`}>
                   <Icon type="appstore-o"/>D-NAT信息
                 </Link>
               </Menu.Item>
-              <Menu.Item key={`${Url.switchesSnats}`}>
-                <Link to={`${Url.switchesSnats}`}>
+              <Menu.Item key={`${Url.switchesSnets}`}>
+                <Link to={`${Url.switchesSnets}`}>
                   <Icon type="appstore-o"/>S-NAT信息
                 </Link>
               </Menu.Item>

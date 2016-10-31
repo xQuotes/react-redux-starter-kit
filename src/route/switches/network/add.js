@@ -28,26 +28,30 @@ export default class AddNetwork extends React.Component {
   constructor(props) {
     super(props)
   }
-  networkIpExists(rule, value, callback) {
-    if (!value) {
-      callback()
-    } else {
-      if (!ipReg.test(value)) {
-        callback([new Error("IP 格式不正确")]);
-      } else {
-        callback()
-      }
-    }
-  }
-  networkPortExists(rule, value, callback) {
+  networkExists(rule, value, callback) {
     if (!value) {
       callback();
     } else {
-      if (!portReg.test(value)) {
-        callback([new Error("端口格式不正确")]);
-      } else {
-        callback()
-      }
+      const {form} = this.props
+
+      // dispatch(checkNetworkError({
+      //   network: value
+      // }, (rs)=> {
+      //   if(rs) {
+      //     dispatch(checkNetworkExist({
+      //       network: value,
+      //       id: form.getFieldValue('id')
+      //     }, (rs) => {
+      //       if(rs) {
+      //         callback()
+      //       } else {
+      //         callback([new Error("该网段信息重复")]);
+      //       }
+      //     }))
+      //   } else {
+      //     callback([new Error("该网段信息填写错误,正确格式为:192.168.1.1/24")])
+      //   }
+      // }))
     }
   }
   handleSubmit(e) {
@@ -87,61 +91,27 @@ export default class AddNetwork extends React.Component {
         initialValue: network.id
       }
     }, {
-      name: 'hostname',
-      label: '主机名',
+      name: 'network',
+      label: '网段',
       fieldOptions: {
-        initialValue: network.hostname,
+        initialValue: network.network,
         rules: [
-          { required: true, whitespace: true, message: '请输入主机名' }
+          { required: true, whitespace: true, message: '请输入网段' }
         ],
       },
-      placeholder: '请输入搜索主机名'
+      placeholder: '如：192.168.1.1/24'
     }, {
-      name: 'ext_ip',
-      label: '公网IP',
+      name: 'type',
+      label: '操作类型',
       fieldOptions: {
-        initialValue: network.ext_ip,
+        initialValue: network.type,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.networkIpExists },
+          { required: true, whitespace: true, message: '请输入操作类型' },
         ],
       },
-      placeholder: '如：123.125.114.144',
+      placeholder: '请输入操作类型',
       labelCol: 4,
       wrapperCol: 20
-    }, {
-      name: 'ext_port',
-      label: '公网端口',
-      fieldOptions: {
-        initialValue: network.ext_port,
-        rules: [
-          { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.networkPortExists },
-        ],
-      },
-      placeholder: '如：80',
-    }, {
-      name: 'int_ip',
-      label: '内网IP',
-      fieldOptions: {
-        initialValue: network.int_ip,
-        rules: [
-          { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.networkIpExists },
-        ],
-      },
-      placeholder: '如：192.168.1.1'
-    }, {
-      name: 'int_port',
-      label: '内网端口',
-      fieldOptions: {
-        initialValue: network.int_port,
-        rules: [
-          { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.networkPortExists },
-        ],
-      },
-      placeholder: '如：80'
     }]
 
     return (

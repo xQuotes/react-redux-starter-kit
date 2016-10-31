@@ -21,14 +21,14 @@ import ModalForm from '../../components/form'
 
 @Form.create()
 @inject(
-  'dnatStore'
+  'dnetStore'
   )
 @observer
-export default class AddDnat extends React.Component {
+export default class AddDnet extends React.Component {
   constructor(props) {
     super(props)
   }
-  dnatIpExists(rule, value, callback) {
+  dnetIpExists(rule, value, callback) {
     if (!value) {
       callback()
     } else {
@@ -39,7 +39,7 @@ export default class AddDnat extends React.Component {
       }
     }
   }
-  dnatPortExists(rule, value, callback) {
+  dnetPortExists(rule, value, callback) {
     if (!value) {
       callback();
     } else {
@@ -51,9 +51,9 @@ export default class AddDnat extends React.Component {
     }
   }
   handleSubmit(e) {
-    const {form, dnatStore} = this.props
+    const {form, dnetStore} = this.props
     const {validateFields} = form
-    const {params} = dnatStore
+    const {params} = dnetStore
 
     validateFields((errors, values) => {
       if (!!errors) {
@@ -66,31 +66,31 @@ export default class AddDnat extends React.Component {
       form.resetFields()
       this.hideModal()
       
-      values.id ? dnatStore.putServer(data) : dnatStore.postServer(data)
+      values.id ? dnetStore.putServer(data) : dnetStore.postServer(data)
     })
   }
   hideModal() {
-    const {dnatStore} = this.props
-    dnatStore.toggleVisible()
+    const {dnetStore} = this.props
+    dnetStore.toggleVisible()
   }
 
   render() {
-    const {form, dnatStore} = this.props
-    const paramsData = dnatStore.params
-    const dnat = dnatStore.list.getById(paramsData.id) || {}
+    const {form, dnetStore} = this.props
+    const paramsData = dnetStore.params
+    const dnet = dnetStore.list.getById(paramsData.id) || {}
 
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: dnat.id
+        initialValue: dnet.id
       }
     }, {
       name: 'hostname',
       label: '主机名',
       fieldOptions: {
-        initialValue: dnat.hostname,
+        initialValue: dnet.hostname,
         rules: [
           { required: true, whitespace: true, message: '请输入主机名' }
         ],
@@ -100,10 +100,10 @@ export default class AddDnat extends React.Component {
       name: 'ext_ip',
       label: '公网IP',
       fieldOptions: {
-        initialValue: dnat.ext_ip,
+        initialValue: dnet.ext_ip,
         rules: [
           { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.dnatIpExists },
+          { validator: ::this.dnetIpExists },
         ],
       },
       placeholder: '如：123.125.114.144',
@@ -113,10 +113,10 @@ export default class AddDnat extends React.Component {
       name: 'ext_port',
       label: '公网端口',
       fieldOptions: {
-        initialValue: dnat.ext_port,
+        initialValue: dnet.ext_port,
         rules: [
           { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.dnatPortExists },
+          { validator: ::this.dnetPortExists },
         ],
       },
       placeholder: '如：80',
@@ -124,10 +124,10 @@ export default class AddDnat extends React.Component {
       name: 'int_ip',
       label: '内网IP',
       fieldOptions: {
-        initialValue: dnat.int_ip,
+        initialValue: dnet.int_ip,
         rules: [
           { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.dnatIpExists },
+          { validator: ::this.dnetIpExists },
         ],
       },
       placeholder: '如：192.168.1.1'
@@ -135,10 +135,10 @@ export default class AddDnat extends React.Component {
       name: 'int_port',
       label: '内网端口',
       fieldOptions: {
-        initialValue: dnat.int_port,
+        initialValue: dnet.int_port,
         rules: [
           { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.dnatPortExists },
+          { validator: ::this.dnetPortExists },
         ],
       },
       placeholder: '如：80'
@@ -146,12 +146,12 @@ export default class AddDnat extends React.Component {
 
     return (
       <Modal title="操作D-NAT信息"
-          visible={dnatStore.visible}
+          visible={dnetStore.visible}
           onCancel={::this.hideModal}
           onOk={::this.handleSubmit}>
         <Form horizontal>
           <ModalForm form={form}
-            store={dnatStore}
+            store={dnetStore}
             title={formDataTitileServer}/>
         </Form>
       </Modal>)
