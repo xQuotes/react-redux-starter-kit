@@ -16,9 +16,9 @@ import {
 import Url from 'Url'
 
 import SearchTable from './search'
+import DataTable from '../../components/table'
 import AddMappingModal from './add'
 import UploadBtn from '../../components/uploadBtn'
-import DataTable from '../../components/table'
 
 @inject(
   'mappingStore', 'dashboardStore'
