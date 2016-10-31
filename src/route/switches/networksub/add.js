@@ -87,61 +87,93 @@ export default class AddNetworksub extends React.Component {
         initialValue: networksub.id
       }
     }, {
-      name: 'hostname',
-      label: '主机名',
+      name: 'vlan',
+      label: 'VLAN',
       fieldOptions: {
-        initialValue: networksub.hostname,
+        initialValue: networksub.vlan,
         rules: [
-          { required: true, whitespace: true, message: '请输入主机名' }
+          { required: true, whitespace: true, message: '请输入VLAN' }
         ],
       },
-      placeholder: '请输入主机名'
+      placeholder: '请输入VLAN'
     }, {
-      name: 'ext_ip',
-      label: '公网IP',
+      name: 'port',
+      label: '端口',
       fieldOptions: {
-        initialValue: networksub.ext_ip,
+        initialValue: networksub.port,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.networksubIpExists },
-        ],
-      },
-      placeholder: '如：123.125.114.144',
-      labelCol: 4,
-      wrapperCol: 20
-    }, {
-      name: 'ext_port',
-      label: '公网端口',
-      fieldOptions: {
-        initialValue: networksub.ext_port,
-        rules: [
-          { required: true, whitespace: true, message: '请输入公网端口' },
+          { required: true, whitespace: true, message: '请输入端口' },
           { validator: ::this.networksubPortExists },
         ],
       },
       placeholder: '如：80',
     }, {
-      name: 'int_ip',
-      label: '内网IP',
+      name: 'mask',
+      label: '子网掩码',
       fieldOptions: {
-        initialValue: networksub.int_ip,
+        initialValue: networksub.mask,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.networksubIpExists },
+          { required: true, whitespace: true, message: '请输入子网掩码' }
         ],
       },
-      placeholder: '如：192.168.1.1'
+      placeholder: '请输入子网掩码'
     }, {
-      name: 'int_port',
-      label: '内网端口',
+      name: 'gateway',
+      label: '网关',
       fieldOptions: {
-        initialValue: networksub.int_port,
+        initialValue: networksub.gateway,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.networksubPortExists },
+          { required: true, whitespace: true, message: '请输入网关' }
         ],
       },
-      placeholder: '如：80'
+      placeholder: '请输入网关'
+    }, {
+      name: 'a_port_info',
+      label: 'A端信息',
+      fieldOptions: {
+        initialValue: networksub.a_port_info,
+        rules: [
+          { required: true, whitespace: true, message: '请输入A端信息' }
+        ],
+      },
+      placeholder: '请输入A端信息'
+    }, {
+      name: 'b_port_info',
+      label: 'B端信息',
+      fieldOptions: {
+        initialValue: networksub.b_port_info,
+        rules: [
+          { required: true, whitespace: true, message: '请输入B端信息' }
+        ],
+      },
+      placeholder: '请输入B端信息'
+    }, {
+      name: 'is_ospf',
+      label: '是否是ospf',
+      fieldOptions: {
+        initialValue: networksub.is_ospf,
+        rules: [
+          { required: true, whitespace: true, message: '请输入是否是ospf' }
+        ],
+      },
+      placeholder: '请输入是否是ospf'
+    }, {
+      name: 'equipment',
+      label: '所属设备',
+      fieldOptions: {
+        initialValue: networksub.equipment,
+        rules: [
+          { required: true, whitespace: true, message: '请输入所属设备' }
+        ],
+      },
+      placeholder: '请输入所属设备'
+    }, {
+      name: 'remark',
+      label: '备注',
+      fieldOptions: {
+        initialValue: networksub.remark
+      },
+      placeholder: '请输入备注'
     }]
 
     return (

@@ -157,20 +157,14 @@ export default class AddDnet extends React.Component {
       name: 'deadline',
       label: '截止日期',
       fieldOptions: {
-        initialValue: dnet.deadline,
-        rules: [
-          { required: true, whitespace: true, message: '请输入截止日期' }
-        ],
+        initialValue: dnet.deadline
       },
       placeholder: '请输入截止日期'
     }, {
       name: 'remark',
       label: '备注',
       fieldOptions: {
-        initialValue: dnet.remark,
-        rules: [
-          { required: true, whitespace: true, message: '请输入备注' }
-        ],
+        initialValue: dnet.remark
       },
       placeholder: '请输入备注'
     }]

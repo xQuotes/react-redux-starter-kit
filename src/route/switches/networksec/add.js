@@ -28,28 +28,6 @@ export default class AddNetworksec extends React.Component {
   constructor(props) {
     super(props)
   }
-  networksecIpExists(rule, value, callback) {
-    if (!value) {
-      callback()
-    } else {
-      if (!ipReg.test(value)) {
-        callback([new Error("IP 格式不正确")]);
-      } else {
-        callback()
-      }
-    }
-  }
-  networksecPortExists(rule, value, callback) {
-    if (!value) {
-      callback();
-    } else {
-      if (!portReg.test(value)) {
-        callback([new Error("端口格式不正确")]);
-      } else {
-        callback()
-      }
-    }
-  }
   handleSubmit(e) {
     const {form, networksecStore} = this.props
     const {validateFields} = form
@@ -87,61 +65,52 @@ export default class AddNetworksec extends React.Component {
         initialValue: networksec.id
       }
     }, {
-      name: 'hostname',
-      label: '主机名',
+      name: 'acl_no',
+      label: 'ACL编号',
       fieldOptions: {
-        initialValue: networksec.hostname,
+        initialValue: networksec.acl_no,
         rules: [
-          { required: true, whitespace: true, message: '请输入主机名' }
+          { required: true, whitespace: true, message: '请输入ACL编号' }
         ],
       },
-      placeholder: '请输入主机名'
+      placeholder: '请输入ACL编号'
     }, {
-      name: 'ext_ip',
-      label: '公网IP',
+      name: 'dep_locate',
+      label: '部署位置',
       fieldOptions: {
-        initialValue: networksec.ext_ip,
+        initialValue: networksec.dep_locate,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.networksecIpExists },
+          { required: true, whitespace: true, message: '请输入部署位置' }
         ],
       },
-      placeholder: '如：123.125.114.144',
-      labelCol: 4,
-      wrapperCol: 20
+      placeholder: '请输入部署位置'
     }, {
-      name: 'ext_port',
-      label: '公网端口',
+      name: 'dep_purpose',
+      label: '部署目的',
       fieldOptions: {
-        initialValue: networksec.ext_port,
+        initialValue: networksec.dep_purpose,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.networksecPortExists },
+          { required: true, whitespace: true, message: '请输入部署目的' }
         ],
       },
-      placeholder: '如：80',
+      placeholder: '请输入部署目的'
     }, {
-      name: 'int_ip',
-      label: '内网IP',
+      name: 'equipment',
+      label: '所属设备',
       fieldOptions: {
-        initialValue: networksec.int_ip,
+        initialValue: networksec.equipment,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.networksecIpExists },
+          { required: true, whitespace: true, message: '请输入所属设备' }
         ],
       },
-      placeholder: '如：192.168.1.1'
+      placeholder: '请输入所属设备'
     }, {
-      name: 'int_port',
-      label: '内网端口',
+      name: 'remark',
+      label: '备注',
       fieldOptions: {
-        initialValue: networksec.int_port,
-        rules: [
-          { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.networksecPortExists },
-        ],
+        initialValue: networksec.remark
       },
-      placeholder: '如：80'
+      placeholder: '请输入备注'
     }]
 
     return (

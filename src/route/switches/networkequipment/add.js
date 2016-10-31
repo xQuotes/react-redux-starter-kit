@@ -15,7 +15,7 @@ import {
 const FormItem = Form.Item
 const Option = Select.Option
 
-import {ipReg, portReg} from '../../../common/utils/regex'
+import {ipReg} from '../../../common/utils/regex'
 
 import ModalForm from '../../components/form'
 
@@ -34,17 +34,6 @@ export default class AddNetworkequipment extends React.Component {
     } else {
       if (!ipReg.test(value)) {
         callback([new Error("IP 格式不正确")]);
-      } else {
-        callback()
-      }
-    }
-  }
-  networkequipmentPortExists(rule, value, callback) {
-    if (!value) {
-      callback();
-    } else {
-      if (!portReg.test(value)) {
-        callback([new Error("端口格式不正确")]);
       } else {
         callback()
       }
@@ -87,20 +76,20 @@ export default class AddNetworkequipment extends React.Component {
         initialValue: networkequipment.id
       }
     }, {
-      name: 'hostname',
-      label: '主机名',
+      name: 'equ_name',
+      label: '设备名称',
       fieldOptions: {
-        initialValue: networkequipment.hostname,
+        initialValue: networkequipment.equ_name,
         rules: [
-          { required: true, whitespace: true, message: '请输入主机名' }
+          { required: true, whitespace: true, message: '请输入设备名称' }
         ],
       },
-      placeholder: '请输入主机名'
+      placeholder: '请输入设备名称'
     }, {
-      name: 'ext_ip',
+      name: 'equ_ip',
       label: '公网IP',
       fieldOptions: {
-        initialValue: networkequipment.ext_ip,
+        initialValue: networkequipment.equ_ip,
         rules: [
           { required: true, whitespace: true, message: '请输入公网IP' },
           { validator: ::this.networkequipmentIpExists },
@@ -110,38 +99,92 @@ export default class AddNetworkequipment extends React.Component {
       labelCol: 4,
       wrapperCol: 20
     }, {
-      name: 'ext_port',
-      label: '公网端口',
+      name: 'ser_no',
+      label: 'SN号',
       fieldOptions: {
-        initialValue: networkequipment.ext_port,
+        initialValue: networkequipment.ser_no,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.networkequipmentPortExists },
+          { required: true, whitespace: true, message: '请输入SN号' }
         ],
       },
-      placeholder: '如：80',
+      placeholder: '请输入SN号',
     }, {
-      name: 'int_ip',
-      label: '内网IP',
+      name: 'area',
+      label: '所属区域',
       fieldOptions: {
-        initialValue: networkequipment.int_ip,
+        initialValue: networkequipment.area,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.networkequipmentIpExists },
+          { required: true, whitespace: true, message: '请输入所属区域' }
         ],
       },
-      placeholder: '如：192.168.1.1'
+      placeholder: '请输入所属区域'
     }, {
-      name: 'int_port',
-      label: '内网端口',
+      name: 'datacenter',
+      label: '所属机房',
       fieldOptions: {
-        initialValue: networkequipment.int_port,
+        initialValue: networkequipment.datacenter,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.networkequipmentPortExists },
+          { required: true, whitespace: true, message: '请输入所属机房' }
         ],
       },
-      placeholder: '如：80'
+      placeholder: '请输入所属机房'
+    }, {
+      name: 'cabinet',
+      label: '所属机柜',
+      fieldOptions: {
+        initialValue: networkequipment.cabinet,
+        rules: [
+          { required: true, whitespace: true, message: '请输入所属机柜' }
+        ],
+      },
+      placeholder: '请输入所属机柜'
+    }, {
+      name: 'model',
+      label: '设备型号',
+      fieldOptions: {
+        initialValue: networkequipment.model,
+        rules: [
+          { required: true, whitespace: true, message: '请输入设备型号' }
+        ],
+      },
+      placeholder: '请输入设备型号'
+    }, {
+      name: 'brand',
+      label: '设备品牌',
+      fieldOptions: {
+        initialValue: networkequipment.brand,
+        rules: [
+          { required: true, whitespace: true, message: '请输入设备品牌' }
+        ],
+      },
+      placeholder: '请输入设备品牌'
+    }, {
+      name: 'category',
+      label: '设备类型',
+      fieldOptions: {
+        initialValue: networkequipment.category,
+        rules: [
+          { required: true, whitespace: true, message: '请输入设备类型' }
+        ],
+      },
+      placeholder: '请输入设备类型'
+    }, {
+      name: 'cpu_nums',
+      label: 'CPU数',
+      fieldOptions: {
+        initialValue: networkequipment.cpu_nums,
+        rules: [
+          { required: true, whitespace: true, message: '请输入CPU数' }
+        ],
+      },
+      placeholder: '请输入CPU数'
+    }, {
+      name: 'remark',
+      label: '备注',
+      fieldOptions: {
+        initialValue: networkequipment.remark
+      },
+      placeholder: '请输入备注'
     }]
 
     return (

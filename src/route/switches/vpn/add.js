@@ -15,8 +15,6 @@ import {
 const FormItem = Form.Item
 const Option = Select.Option
 
-import {ipReg, portReg} from '../../../common/utils/regex'
-
 import ModalForm from '../../components/form'
 
 @Form.create()
@@ -27,28 +25,6 @@ import ModalForm from '../../components/form'
 export default class AddVpn extends React.Component {
   constructor(props) {
     super(props)
-  }
-  vpnIpExists(rule, value, callback) {
-    if (!value) {
-      callback()
-    } else {
-      if (!ipReg.test(value)) {
-        callback([new Error("IP 格式不正确")]);
-      } else {
-        callback()
-      }
-    }
-  }
-  vpnPortExists(rule, value, callback) {
-    if (!value) {
-      callback();
-    } else {
-      if (!portReg.test(value)) {
-        callback([new Error("端口格式不正确")]);
-      } else {
-        callback()
-      }
-    }
   }
   handleSubmit(e) {
     const {form, vpnStore} = this.props
@@ -87,61 +63,62 @@ export default class AddVpn extends React.Component {
         initialValue: vpn.id
       }
     }, {
-      name: 'hostname',
-      label: '主机名',
+      name: 'a_datacenter',
+      label: 'A端机房',
       fieldOptions: {
-        initialValue: vpn.hostname,
+        initialValue: vpn.a_datacenter,
         rules: [
-          { required: true, whitespace: true, message: '请输入主机名' }
+          { required: true, whitespace: true, message: '请输入A端机房' }
         ],
       },
-      placeholder: '请输入主机名'
+      placeholder: '请输入A端机房'
     }, {
-      name: 'ext_ip',
-      label: '公网IP',
+      name: 'b_datacenter',
+      label: 'B端机房',
       fieldOptions: {
-        initialValue: vpn.ext_ip,
+        initialValue: vpn.b_datacenter,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.vpnIpExists },
+          { required: true, whitespace: true, message: '请输入B端机房' }
         ],
       },
-      placeholder: '如：123.125.114.144',
-      labelCol: 4,
-      wrapperCol: 20
+      placeholder: '请输入B端机房'
     }, {
-      name: 'ext_port',
-      label: '公网端口',
+      name: 'vpn_type',
+      label: 'vpn类型',
       fieldOptions: {
-        initialValue: vpn.ext_port,
+        initialValue: vpn.vpn_type,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.vpnPortExists },
+          { required: true, whitespace: true, message: '请输入vpn类型' }
         ],
       },
-      placeholder: '如：80',
+      placeholder: '请输入vpn类型'
     }, {
-      name: 'int_ip',
-      label: '内网IP',
+      name: 'a_intet_addr',
+      label: 'A端互联地址',
       fieldOptions: {
-        initialValue: vpn.int_ip,
+        initialValue: vpn.a_intet_addr,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.vpnIpExists },
+          { required: true, whitespace: true, message: '请输入A端互联地址' }
         ],
       },
-      placeholder: '如：192.168.1.1'
+      placeholder: '请输入A端互联地址'
     }, {
-      name: 'int_port',
-      label: '内网端口',
+      name: 'b_intet_addr',
+      label: 'B端互联地址',
       fieldOptions: {
-        initialValue: vpn.int_port,
+        initialValue: vpn.b_intet_addr,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.vpnPortExists },
+          { required: true, whitespace: true, message: '请输入B端互联地址' }
         ],
       },
-      placeholder: '如：80'
+      placeholder: '请输入B端互联地址'
+    }, {
+      name: 'remark',
+      label: '备注',
+      fieldOptions: {
+        initialValue: vpn.remark
+      },
+      placeholder: '请输入备注'
     }]
 
     return (

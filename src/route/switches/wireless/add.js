@@ -15,8 +15,6 @@ import {
 const FormItem = Form.Item
 const Option = Select.Option
 
-import {ipReg, portReg} from '../../../common/utils/regex'
-
 import ModalForm from '../../components/form'
 
 @Form.create()
@@ -27,28 +25,6 @@ import ModalForm from '../../components/form'
 export default class AddWireless extends React.Component {
   constructor(props) {
     super(props)
-  }
-  wirelessIpExists(rule, value, callback) {
-    if (!value) {
-      callback()
-    } else {
-      if (!ipReg.test(value)) {
-        callback([new Error("IP 格式不正确")]);
-      } else {
-        callback()
-      }
-    }
-  }
-  wirelessPortExists(rule, value, callback) {
-    if (!value) {
-      callback();
-    } else {
-      if (!portReg.test(value)) {
-        callback([new Error("端口格式不正确")]);
-      } else {
-        callback()
-      }
-    }
   }
   handleSubmit(e) {
     const {form, wirelessStore} = this.props
@@ -87,61 +63,82 @@ export default class AddWireless extends React.Component {
         initialValue: wireless.id
       }
     }, {
-      name: 'hostname',
-      label: '主机名',
+      name: 'signal',
+      label: '无线信号',
       fieldOptions: {
-        initialValue: wireless.hostname,
+        initialValue: wireless.signal,
         rules: [
-          { required: true, whitespace: true, message: '请输入主机名' }
+          { required: true, whitespace: true, message: '请输入无线信号' }
         ],
       },
-      placeholder: '请输入主机名'
+      placeholder: '请输入无线信号'
     }, {
-      name: 'ext_ip',
-      label: '公网IP',
+      name: 'auth_mode',
+      label: '认证方式',
       fieldOptions: {
-        initialValue: wireless.ext_ip,
+        initialValue: wireless.auth_mode,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.wirelessIpExists },
+          { required: true, whitespace: true, message: '请输入认证方式' }
         ],
       },
-      placeholder: '如：123.125.114.144',
-      labelCol: 4,
-      wrapperCol: 20
+      placeholder: '请输入认证方式'
     }, {
-      name: 'ext_port',
-      label: '公网端口',
+      name: 'password',
+      label: '密码',
       fieldOptions: {
-        initialValue: wireless.ext_port,
+        initialValue: wireless.password,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.wirelessPortExists },
+          { required: true, whitespace: true, message: '请输入密码' }
         ],
       },
-      placeholder: '如：80',
+      placeholder: '请输入密码'
     }, {
-      name: 'int_ip',
-      label: '内网IP',
+      name: 'sec_plo',
+      label: '安全策略',
       fieldOptions: {
-        initialValue: wireless.int_ip,
+        initialValue: wireless.sec_plo,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.wirelessIpExists },
+          { required: true, whitespace: true, message: '请输入安全策略' }
         ],
       },
-      placeholder: '如：192.168.1.1'
+      placeholder: '请输入安全策略'
     }, {
-      name: 'int_port',
-      label: '内网端口',
+      name: 'broadband',
+      label: '限速宽带',
       fieldOptions: {
-        initialValue: wireless.int_port,
+        initialValue: wireless.broadband,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.wirelessPortExists },
+          { required: true, whitespace: true, message: '请输入限速宽带' }
         ],
       },
-      placeholder: '如：80'
+      placeholder: '请输入限速宽带'
+    }, {
+      name: 'equipment',
+      label: '所在设备',
+      fieldOptions: {
+        initialValue: wireless.equipment,
+        rules: [
+          { required: true, whitespace: true, message: '请输入所在设备' }
+        ],
+      },
+      placeholder: '请输入所在设备'
+    }, {
+      name: 'is_hidden',
+      label: '是否隐藏',
+      fieldOptions: {
+        initialValue: wireless.is_hidden,
+        rules: [
+          { required: true, whitespace: true, message: '请输入是否隐藏' }
+        ],
+      },
+      placeholder: '请输入是否隐藏'
+    }, {
+      name: 'remark',
+      label: '备注',
+      fieldOptions: {
+        initialValue: wireless.remark,
+      },
+      placeholder: '请输入备注'
     }]
 
     return (
