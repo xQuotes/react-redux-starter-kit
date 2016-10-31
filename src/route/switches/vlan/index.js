@@ -22,7 +22,7 @@ export default class Vlans extends React.Component {
     super(props)
   }
   componentWillMount() {
-    const bcData = ['首页', '常用服务', 'vlan信息']
+    const bcData = ['首页', '收集信息', 'vlan信息']
     const {dashboardStore} = this.props
     dashboardStore.putDashboard(bcData)
   }
