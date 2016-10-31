@@ -17,7 +17,7 @@ export default class Search extends React.Component {
         fieldOptions: {
           initialValue: searchDatas[k]
         },
-        placeholder: `请输入搜索${v}`
+        placeholder: `请输入${v}`
       }
     })
     return(

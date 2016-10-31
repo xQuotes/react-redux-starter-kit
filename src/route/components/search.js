@@ -51,8 +51,8 @@ export default class SearchForm extends React.Component {
         formType: 'Input',
         type: 'text',
         sm: 4,
-        labelCol: 8,
-        wrapperCol: 16,
+        labelCol: 10,
+        wrapperCol: 14,
         fieldOptions: {
           initialValue: ''
         },

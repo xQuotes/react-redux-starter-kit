@@ -15,8 +15,6 @@ import {
 const FormItem = Form.Item
 const Option = Select.Option
 
-import {ipReg, portReg} from '../../../common/utils/regex'
-
 import ModalForm from '../../components/form'
 
 @Form.create()
@@ -27,28 +25,6 @@ import ModalForm from '../../components/form'
 export default class AddServer extends React.Component {
   constructor(props) {
     super(props)
-  }
-  serverIpExists(rule, value, callback) {
-    if (!value) {
-      callback()
-    } else {
-      if (!ipReg.test(value)) {
-        callback([new Error("IP 格式不正确")]);
-      } else {
-        callback()
-      }
-    }
-  }
-  serverPortExists(rule, value, callback) {
-    if (!value) {
-      callback();
-    } else {
-      if (!portReg.test(value)) {
-        callback([new Error("端口格式不正确")]);
-      } else {
-        callback()
-      }
-    }
   }
   handleSubmit(e) {
     const {form, serverStore} = this.props
@@ -87,15 +63,27 @@ export default class AddServer extends React.Component {
         initialValue: server.id
       }
     }, {
+      name: 'ser_no',
+      label: 'SN号',
+      fieldOptions: {
+        initialValue: server.ser_no,
+        rules: [
+          { required: true, whitespace: true, message: '请输入SN号' }
+        ],
+      },
+      placeholder: '请输入SN号'
+    }, {
       name: 'hostname',
       label: '主机名',
       fieldOptions: {
         initialValue: server.hostname,
         rules: [
-          { required: true, whitespace: true, message: '请输入主机名' }
+          { required: true, whitespace: true, message: '请输入主机名' },
         ],
       },
-      placeholder: '请输入搜索主机名'
+      placeholder: '请输入主机名',
+      labelCol: 4,
+      wrapperCol: 20
     }, {
       name: 'ext_ip',
       label: '公网IP',
@@ -103,23 +91,9 @@ export default class AddServer extends React.Component {
         initialValue: server.ext_ip,
         rules: [
           { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.serverIpExists },
         ],
       },
-      placeholder: '如：123.125.114.144',
-      labelCol: 4,
-      wrapperCol: 20
-    }, {
-      name: 'ext_port',
-      label: '公网端口',
-      fieldOptions: {
-        initialValue: server.ext_port,
-        rules: [
-          { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.serverPortExists },
-        ],
-      },
-      placeholder: '如：80',
+      placeholder: '请输入公网IP'
     }, {
       name: 'int_ip',
       label: '内网IP',
@@ -127,21 +101,106 @@ export default class AddServer extends React.Component {
         initialValue: server.int_ip,
         rules: [
           { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.serverIpExists },
         ],
       },
       placeholder: '如：192.168.1.1'
     }, {
-      name: 'int_port',
-      label: '内网端口',
+      name: 'man_card_ip',
+      label: '管理卡IP',
       fieldOptions: {
-        initialValue: server.int_port,
+        initialValue: server.man_card_ip,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.serverPortExists },
+          { required: true, whitespace: true, message: '请输入管理卡IP' },
         ],
       },
-      placeholder: '如：80'
+      placeholder: '请输入管理卡IP'
+    }, {
+      name: 'brand',
+      label: '服务器品牌',
+      fieldOptions: {
+        initialValue: server.brand,
+        rules: [
+          { required: true, whitespace: true, message: '请输入服务器品牌' },
+        ],
+      },
+      placeholder: '请输入服务器品牌'
+    }, {
+      name: 'category',
+      label: '服务器类型',
+      fieldOptions: {
+        initialValue: server.category,
+        rules: [
+          { required: true, whitespace: true, message: '请输入服务器类型' },
+        ],
+      },
+      placeholder: '请输入服务器类型'
+    }, {
+      name: 'datacenter',
+      label: '所属机房',
+      fieldOptions: {
+        initialValue: server.datacenter,
+        rules: [
+          { required: true, whitespace: true, message: '请输入所属机房' },
+        ],
+      },
+      placeholder: '请输入所属机房'
+    }, {
+      name: 'area',
+      label: '所属区域',
+      fieldOptions: {
+        initialValue: server.area,
+        rules: [
+          { required: true, whitespace: true, message: '请输入所属区域' },
+        ],
+      },
+      placeholder: '请输入所属区域'
+    }, {
+      name: 'cabinet',
+      label: '所属机柜',
+      fieldOptions: {
+        initialValue: server.cabinet,
+        rules: [
+          { required: true, whitespace: true, message: '请输入所属机柜' },
+        ],
+      },
+      placeholder: '请输入所属机柜'
+    }, {
+      name: 'u_loc',
+      label: 'U位',
+      fieldOptions: {
+        initialValue: server.u_loc,
+        rules: [
+          { required: true, whitespace: true, message: '请输入U位' },
+        ],
+      },
+      placeholder: '请输入U位'
+    }, {
+      name: 'acc_man',
+      label: '大客户经理',
+      fieldOptions: {
+        initialValue: server.acc_man,
+        rules: [
+          { required: true, whitespace: true, message: '请输入大客户经理' },
+        ],
+      },
+      placeholder: '请输入大客户经理'
+    }, {
+      name: 'fix_phone',
+      label: '保修电话',
+      fieldOptions: {
+        initialValue: server.fix_phone,
+        rules: [
+          { required: true, whitespace: true, message: '请输入保修电话' },
+        ],
+      },
+      placeholder: '请输入保修电话'
+    }, {
+      name: 'remark',
+      label: '备注',
+      fieldOptions: {
+        initialValue: server.remark
+      },
+      placeholder: '请输入备注'
     }]
 
     return (

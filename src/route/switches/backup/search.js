@@ -21,28 +21,28 @@ export default class Search extends React.Component {
       fieldOptions: {
         initialValue: searchDatas.name
       },
-      placeholder: '请输入搜索主机名'
+      placeholder: '请输入主机名'
     }, {
       name: 'host',
       label: 'IP',
       fieldOptions: {
         initialValue: searchDatas.host
       },
-      placeholder: '请输入搜索IP'
+      placeholder: '请输入IP'
     }, {
       name: 'brand',
       label: '品牌',
       fieldOptions: {
         initialValue: searchDatas.brand
       },
-      placeholder: '请输入搜索品牌'
+      placeholder: '请输入品牌'
     }, {
       name: 'sn',
       label: 'SN',
       fieldOptions: {
         initialValue: searchDatas.sn
       },
-      placeholder: '请输入搜索SN'
+      placeholder: '请输入SN'
     }, {
       formType: 'DatePicker',
       name: 'day',

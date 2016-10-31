@@ -20,28 +20,28 @@ export default class Search extends React.Component {
       fieldOptions: {
         initialValue: searchDatas.hostname
       },
-      placeholder: '请输入搜索主机名'
+      placeholder: '请输入主机名'
     }, {
       name: 'switchIp',
       label: '交换机IP',
       fieldOptions: {
         initialValue: searchDatas.switchIp
       },
-      placeholder: '请输入搜索交换机IP'
+      placeholder: '请输入交换机IP'
     }, {
       name: 'mac',
       label: '品牌',
       fieldOptions: {
         initialValue: searchDatas.brand
       },
-      placeholder: '请输入搜索MAC地址'
+      placeholder: '请输入MAC地址'
     }, {
       name: 'serverIp',
       label: '服务器IP',
       fieldOptions: {
         initialValue: searchDatas.serverIp
       },
-      placeholder: '请输入搜索服务器IP'
+      placeholder: '请输入服务器IP'
     }]
 
     return(

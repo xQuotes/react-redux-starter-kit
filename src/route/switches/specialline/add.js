@@ -95,7 +95,7 @@ export default class AddSpecialline extends React.Component {
           { required: true, whitespace: true, message: '请输入主机名' }
         ],
       },
-      placeholder: '请输入搜索主机名'
+      placeholder: '请输入主机名'
     }, {
       name: 'ext_ip',
       label: '公网IP',
