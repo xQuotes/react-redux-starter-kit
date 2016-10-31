@@ -15,9 +15,17 @@ const Url = {
   switchesMappings: `/${switches}/mappings`,
   switchesServers: `/${switches}/servers`,
   switchesNetworksubs: `/${switches}/networksubs`,
+  switchesNetworksecs: `/${switches}/networksecs`,
+  switchesDnats: `/${switches}/dnats`,
+  switchesSnats: `/${switches}/snats`,
+  switchesVpns: `/${switches}/vpns`,
+  switchesWirelesss: `/${switches}/wirelesss`,
+  switchesDatacenters: `/${switches}/datacenters`,
+  switchesSpeciallines: `/${switches}/speciallines`,
+  switchesNetworkequipments: `/${switches}/networkequipments`,
 
-  switchesNetwork: `/${switches}/network`,
-  switchesActions: `/${switches}/actions`,
+  switchesNetworks: `/${switches}/networks`,
+  switchesActiontypes: `/${switches}/actiontypes`,
 }
 
 export default Url

@@ -11,7 +11,19 @@ module.exports = {
 
         require('./mapping/route'),
         require('./server/route'),
-        require('./networksub/route')
+        require('./networksub/route'),
+        require('./networksec/route'),
+        require('./dnat/route'),
+        require('./snat/route'),
+        require('./vpn/route'),
+        require('./wireless/route'),
+        require('./server/route'),
+        require('./datacenter/route'),
+        require('./specialline/route'),
+        require('./networkequipment/route'),
+
+        require('./network/route'),
+        require('./actiontype/route')
       ])
     })
   },

@@ -40,6 +40,60 @@ const Api = {
   deleteNetworksub: `${url}/sw_config_networksub/deleteInfo`,
   putNetworksub: `${url}/sw_config_networksub/updateInfo`,
 
+  postNetworksec: `${url}/sw_config_networksec/addInfo`,
+  getNetworksecs: `${url}/sw_config_networksec/getList`,
+  getNetworksec: `${url}/sw_config_networksec/getInfo`,
+  deleteNetworksec: `${url}/sw_config_networksec/deleteInfo`,
+  putNetworksec: `${url}/sw_config_networksec/updateInfo`,
+
+  postDnat: `${url}/sw_config_dnat/addInfo`,
+  getDnats: `${url}/sw_config_dnat/getList`,
+  getDnat: `${url}/sw_config_dnat/getInfo`,
+  deleteDnat: `${url}/sw_config_dnat/deleteInfo`,
+  putDnat: `${url}/sw_config_dnat/updateInfo`,
+
+  postSnat: `${url}/sw_config_snat/addInfo`,
+  getSnats: `${url}/sw_config_snat/getList`,
+  getSnat: `${url}/sw_config_snat/getInfo`,
+  deleteSnat: `${url}/sw_config_snat/deleteInfo`,
+  putSnat: `${url}/sw_config_snat/updateInfo`,
+
+  postVpn: `${url}/sw_config_vpn/addInfo`,
+  getVpns: `${url}/sw_config_vpn/getList`,
+  getVpn: `${url}/sw_config_vpn/getInfo`,
+  deleteVpn: `${url}/sw_config_vpn/deleteInfo`,
+  putVpn: `${url}/sw_config_vpn/updateInfo`,
+
+  postWireless: `${url}/sw_config_wireless/addInfo`,
+  getWirelesss: `${url}/sw_config_wireless/getList`,
+  getWireless: `${url}/sw_config_wireless/getInfo`,
+  deleteWireless: `${url}/sw_config_wireless/deleteInfo`,
+  putWireless: `${url}/sw_config_wireless/updateInfo`,
+
+  postDatacenter: `${url}/sw_config_datacenter/addInfo`,
+  getDatacenters: `${url}/sw_config_datacenter/getList`,
+  getDatacenter: `${url}/sw_config_datacenter/getInfo`,
+  deleteDatacenter: `${url}/sw_config_datacenter/deleteInfo`,
+  putDatacenter: `${url}/sw_config_datacenter/updateInfo`,
+
+  postSpecialline: `${url}/sw_config_specialline/addInfo`,
+  getSpeciallines: `${url}/sw_config_specialline/getList`,
+  getSpecialline: `${url}/sw_config_specialline/getInfo`,
+  deleteSpecialline: `${url}/sw_config_specialline/deleteInfo`,
+  putSpecialline: `${url}/sw_config_specialline/updateInfo`,
+
+  postNetwork: `${url}/sw_config_network/addInfo`,
+  getNetworks: `${url}/sw_config_network/getList`,
+  getNetwork: `${url}/sw_config_network/getInfo`,
+  deleteNetwork: `${url}/sw_config_network/deleteInfo`,
+  putNetwork: `${url}/sw_config_network/updateInfo`,
+
+  postActiontype: `${url}/sw_config_actiontype/addInfo`,
+  getActiontypes: `${url}/sw_config_actiontype/getList`,
+  getActiontype: `${url}/sw_config_actiontype/getInfo`,
+  deleteActiontype: `${url}/sw_config_actiontype/deleteInfo`,
+  putActiontype: `${url}/sw_config_actiontype/updateInfo`,
+
   uploadCsvFile: `${url}/sw_config_upload/uploadAndCheckCsvFile`,
   uploadCsvData: `${url}/sw_config_upload/uploadCsvData`,
 

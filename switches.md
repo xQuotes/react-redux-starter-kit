@@ -8,20 +8,20 @@
 
 ＊ 品牌信息（sheet1）
 
-子网信息 networksub
+服务器 server Server
 
-网络安全策略 networksec
+子网信息 networksub Networksub
 
-D-NAT信息  dnat
+网络安全策略 networksec Networksec
 
-S-NAT信息  snat
+D-NAT信息  dnat Dnat
 
-VPN   vpn
+S-NAT信息  snat Snat
 
-无线信息  wireless
+VPN   vpn Vpn
 
-服务器 server
+无线信息  wireless Wireless
 
-机房信息 datacenter
+机房信息 datacenter Datacenter
 
-专线信息  specialline
+专线信息  specialline Specialline

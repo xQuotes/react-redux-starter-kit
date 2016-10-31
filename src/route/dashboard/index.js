@@ -61,7 +61,7 @@ export default class Dashboard extends React.Component {
     const menu = (
       <Menu>
         <Menu.Item key="0">
-          <a href="http://ifos.ifengidc.com/index" target="_blank">工作流管理</a>
+          <a href="http://pms.ifos.ifengidc.com/" target="_blank">工作流管理</a>
         </Menu.Item>
         <Menu.Divider />
       </Menu>
@@ -124,19 +124,60 @@ export default class Dashboard extends React.Component {
                   <Icon type="appstore-o"/>子网信息
                 </Link>
               </Menu.Item>
+              
+              <Menu.Item key={`${Url.switchesNetworksecs}`}>
+                <Link to={`${Url.switchesNetworksecs}`}>
+                  <Icon type="appstore-o"/>网络安全策略
+                </Link>
+              </Menu.Item>
+              <Menu.Item key={`${Url.switchesDnats}`}>
+                <Link to={`${Url.switchesDnats}`}>
+                  <Icon type="appstore-o"/>D-NAT信息
+                </Link>
+              </Menu.Item>
+              <Menu.Item key={`${Url.switchesSnats}`}>
+                <Link to={`${Url.switchesSnats}`}>
+                  <Icon type="appstore-o"/>S-NAT信息
+                </Link>
+              </Menu.Item>
+              <Menu.Item key={`${Url.switchesVpns}`}>
+                <Link to={`${Url.switchesVpns}`}>
+                  <Icon type="appstore-o"/>VPN
+                </Link>
+              </Menu.Item>
+              <Menu.Item key={`${Url.switchesWirelesss}`}>
+                <Link to={`${Url.switchesWirelesss}`}>
+                  <Icon type="appstore-o"/>无线信息
+                </Link>
+              </Menu.Item>
+              <Menu.Item key={`${Url.switchesDatacenters}`}>
+                <Link to={`${Url.switchesDatacenters}`}>
+                  <Icon type="appstore-o"/>机房信息
+                </Link>
+              </Menu.Item>
+              <Menu.Item key={`${Url.switchesSpeciallines}`}>
+                <Link to={`${Url.switchesSpeciallines}`}>
+                  <Icon type="appstore-o"/>专线信息
+                </Link>
+              </Menu.Item>
+              <Menu.Item key={`${Url.switchesNetworkequipments}`}>
+                <Link to={`${Url.switchesNetworkequipments}`}>
+                  <Icon type="appstore-o"/>网络设备
+                </Link>
+              </Menu.Item>
             </SubMenu>
-            {/*<SubMenu key="sub3" title={<span><Icon type="bars"/>配置管理</span>}>
-              <Menu.Item key={`${Url.switchesNetwork}`}>
-                <Link to={`${Url.switchesNetwork}`}>
+            <SubMenu key="sub3" title={<span><Icon type="bars"/>配置管理</span>}>
+              <Menu.Item key={`${Url.switchesNetworks}`}>
+                <Link to={`${Url.switchesNetworks}`}>
                   <Icon type="appstore-o"/>网段管理
                 </Link>
               </Menu.Item>
-              <Menu.Item key={`${Url.switchesActions}`}>
-                <Link to={`${Url.switchesActions}`}>
+              <Menu.Item key={`${Url.switchesActiontypes}`}>
+                <Link to={`${Url.switchesActiontypes}`}>
                   <Icon type="appstore-o"/>操作类型
                 </Link>
               </Menu.Item>
-            </SubMenu>*/}
+            </SubMenu>
           </Menu>
         </aside>
         <div className="ant-layout-main">
