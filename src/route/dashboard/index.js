@@ -132,12 +132,12 @@ export default class Dashboard extends React.Component {
               </Menu.Item>
               <Menu.Item key={`${Url.switchesDnets}`}>
                 <Link to={`${Url.switchesDnets}`}>
-                  <Icon type="appstore-o"/>D-NAT信息
+                  <Icon type="appstore-o"/>D-NET信息
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesSnets}`}>
                 <Link to={`${Url.switchesSnets}`}>
-                  <Icon type="appstore-o"/>S-NAT信息
+                  <Icon type="appstore-o"/>S-NET信息
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesVpns}`}>

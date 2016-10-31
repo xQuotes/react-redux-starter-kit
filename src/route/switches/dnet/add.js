@@ -145,7 +145,7 @@ export default class AddDnet extends React.Component {
     }]
 
     return (
-      <Modal title="操作D-NAT信息"
+      <Modal title="操作D-NET信息"
           visible={dnetStore.visible}
           onCancel={::this.hideModal}
           onOk={::this.handleSubmit}>

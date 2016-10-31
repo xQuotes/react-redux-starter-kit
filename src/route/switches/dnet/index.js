@@ -33,7 +33,7 @@ export default class Dnets extends React.Component {
     }
   }
   componentWillMount() {
-    const bcData = ['首页', '常用信息', 'D-NAT信息信息']
+    const bcData = ['首页', '常用信息', 'D-NET信息信息']
     const {dashboardStore} = this.props
     dashboardStore.putDashboard(bcData)
   }
@@ -96,7 +96,7 @@ export default class Dnets extends React.Component {
           <SearchTable searchFields={searchFields} store={dnetStore}/>
         </div>
         <div className="switches-action-type">
-          <Button type="primary" onClick={::this.addDnet}>添加D-NAT信息</Button>
+          <Button type="primary" onClick={::this.addDnet}>添加D-NET信息</Button>
           <UploadBtn
             store={dnetStore} 
             params={{

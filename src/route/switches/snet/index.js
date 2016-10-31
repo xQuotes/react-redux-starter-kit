@@ -33,7 +33,7 @@ export default class Snets extends React.Component {
     }
   }
   componentWillMount() {
-    const bcData = ['首页', '常用信息', 'S-NAT信息信息']
+    const bcData = ['首页', '常用信息', 'S-NET信息信息']
     const {dashboardStore} = this.props
     dashboardStore.putDashboard(bcData)
   }
@@ -96,7 +96,7 @@ export default class Snets extends React.Component {
           <SearchTable searchFields={searchFields} store={snetStore}/>
         </div>
         <div className="switches-action-type">
-          <Button type="primary" onClick={::this.addSnet}>添加S-NAT信息</Button>
+          <Button type="primary" onClick={::this.addSnet}>添加S-NET信息</Button>
           <UploadBtn
             store={snetStore} 
             params={{

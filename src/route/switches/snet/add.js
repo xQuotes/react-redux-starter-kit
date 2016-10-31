@@ -145,7 +145,7 @@ export default class AddSnet extends React.Component {
     }]
 
     return (
-      <Modal title="操作S-NAT信息"
+      <Modal title="操作S-NET信息"
           visible={snetStore.visible}
           onCancel={::this.hideModal}
           onOk={::this.handleSubmit}>

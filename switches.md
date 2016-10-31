@@ -1,5 +1,3 @@
-＊ 网络设备 networkequipment 
-
 ＊ 监控系统
 
 ＊ 视频信息
@@ -8,15 +6,17 @@
 
 ＊ 品牌信息（sheet1）
 
+＊ 网络设备 networkequipment  Networkequipment
+
 服务器 server Server
 
 子网信息 networksub Networksub
 
 网络安全策略 networksec Networksec
 
-D-NAT信息  dnat Dnat
+D-NET信息  dnet Dnet
 
-S-NAT信息  snat Snat
+S-NET信息  snet Snet
 
 VPN   vpn Vpn
 
