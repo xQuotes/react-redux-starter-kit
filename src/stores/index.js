@@ -17,9 +17,10 @@ module.exports = {
   speciallineStore: require('../route/switches/specialline/store')['default'].fromJS(),
   networkequipmentStore: require('../route/switches/networkequipment/store')['default'].fromJS(),
 
-
   networkStore: require('../route/switches/network/store')['default'].fromJS(),
   actiontypeStore: require('../route/switches/actiontype/store')['default'].fromJS(),
+  
+  /*file_append*/
 
   permissionStore: require('../route/permission/store')['default'].fromJS()
 }

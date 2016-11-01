@@ -23,7 +23,8 @@ module.exports = {
         require('./networkequipment/route'),
 
         require('./network/route'),
-        require('./actiontype/route')
+        require('./actiontype/route'),
+        /*file_append*/
       ])
     })
   },

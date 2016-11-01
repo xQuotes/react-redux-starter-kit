@@ -93,6 +93,8 @@ const Api = {
 
   uploadCsvFile: `${url}/sw_config_upload/uploadAndCheckCsvFile`,
   uploadCsvData: `${url}/sw_config_upload/uploadCsvData`,
+
+/*file_append*/
   
   downloadActiontypeCSV: `/csv_templates/actiontype.csv`,
   downloadDatacenterCSV: `/csv_templates/datacenter.csv`,
