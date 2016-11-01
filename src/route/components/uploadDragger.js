@@ -50,7 +50,7 @@ export default class UploadDragger extends React.Component {
       accept: ".csv",
       headers: {
         authorization: 'authorization-text',
-        AuthToken: Auth.getAuthCookie('UserIfosSession') || ''
+        AuthToken: Auth.getAuthCookie('UserIfosSession') || '',
       },
       onChange: (info) => {
         if (info.file.status === 'done') {
