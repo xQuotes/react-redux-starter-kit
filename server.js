@@ -17,6 +17,13 @@ var server = new webpackDevServer(compiler, {
       // port: "8080",
       secure: false
     },
+    '/csv_templates/**': {
+      // target: 'http://172.30.205.224:8081',
+      target: 'http://172.30.200.163:8082',
+      crossOrigin: true,
+      // port: "8080",
+      secure: false
+    },
   }
 });
 
