@@ -16,6 +16,7 @@ export default class VlanStore {
     
     Fetch({
       url: Api.getVlans,
+      contentType: 'application/x-www-form-urlencoded',
       data: formData,
       method: 'post',
       success: (data) => {

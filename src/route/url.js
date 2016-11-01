@@ -2,7 +2,7 @@ export const switches = 's' // 交换机自动化
 
 const Url = {
   ads: '/',
-  index: `/${switches}/network`,
+  index: `/${switches}/backups`,
   login: '/login',
   logout: '/logout',
   register: '/register',

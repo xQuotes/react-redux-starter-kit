@@ -75,6 +75,23 @@ export default class AddActiontype extends React.Component {
         ],
       },
       placeholder: '请输入操作类型'
+    }, {
+      formType: 'select',
+      name: 'status',
+      label: '状态',
+      optionData: _.map(['停用', '启用'], (v, k)=> {
+        return {
+          id: k,
+          value: v
+        }
+      }),
+      fieldOptions: {
+        initialValue: !actiontype.status ? '0' : actiontype.status+'',
+        rules: [
+          { required: true, whitespace: true, message: '请选择状态' }
+        ],
+      },
+      placeholder: '请选择状态'
     }]
 
     return (

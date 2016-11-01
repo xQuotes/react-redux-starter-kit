@@ -10,6 +10,21 @@ const Api = {
 
   getVlans: `${url}/sw_control/getVlanList`,
 
+  postNetwork: `${url}/sw_admin/addNetwork`,  //网段查询接口  post 参数 network 支持模糊查询
+  getNetworks: `${url}/sw_admin/getNetworkList`,  //网段查询接口  post 参数 network 支持模糊查询
+  getNetwork: `${url}/sw_admin/getNetworkInfo`,
+  deleteNetwork: `${url}/sw_admin/deleteNetwork`, //删除网段接口 post 参数 id
+  putNetwork: `${url}/sw_admin/updateNetwork`, //更新网段接口 post 参数id network type
+  checkNetworkExist: `${url}/sw_admin/checkNetworkExist`, //查询网段知否存在 post 参数 network
+  checkNetworkError: `${url}/sw_admin/checkNetworkError`, //检测网段是否正确  post 参数 network
+  changeNetworkStatus: `${url}/sw_admin/setNetworkStatus`,
+
+  getActiontypes: `${url}/sw_admin/getActionTypeList`,
+  postActiontype: `${url}/sw_admin/addActionType`,
+  deleteActiontype: `${url}/sw_admin/deleteActionType`,
+  putActiontype: `${url}/sw_admin/updateActionType`,
+  checkAction: `${url}/sw_admin/checkAction`,
+
   postMapping: `${url}/sw_config_mapping/addInfo`,
   getMappings: `${url}/sw_config_mapping/getList`,
   getMapping: `${url}/sw_config_mapping/getInfo`,
@@ -69,28 +84,6 @@ const Api = {
   getSpecialline: `${url}/sw_config_specialline/getInfo`,
   deleteSpecialline: `${url}/sw_config_specialline/deleteInfo`,
   putSpecialline: `${url}/sw_config_specialline/updateInfo`,
-
-  postNetwork: `${url}/sw_config_network/addInfo`,
-  getNetworks: `${url}/sw_config_network/getList`,
-  getNetwork: `${url}/sw_config_network/getInfo`,
-  deleteNetwork: `${url}/sw_config_network/deleteInfo`,
-  putNetwork: `${url}/sw_config_network/updateInfo`,
-
-  // addNetwork: `${url}/sw_admin/addNetwork`,  //网段查询接口  post 参数 network 支持模糊查询
-  // getNetworks: `${url}/sw_admin/getNetworkList`,  //网段查询接口  post 参数 network 支持模糊查询
-  // getNetwork: `${url}/sw_admin/getNetworkInfo`,
-  // deleteNetwork: `${url}/sw_admin/deleteNetwork`, //删除网段接口 post 参数 id
-  // updateNetwork: `${url}/sw_admin/updateNetwork`, //更新网段接口 post 参数id network type
-  // checkNetworkExist: `${url}/sw_admin/checkNetworkExist`, //查询网段知否存在 post 参数 network
-  // checkNetworkError: `${url}/sw_admin/checkNetworkError`, //检测网段是否正确  post 参数 network
-  // changeNetworkStatus: `${url}/sw_admin/setNetworkStatus`, 
-
-  postActiontype: `${url}/sw_config_actiontype/addInfo`,
-  getActiontypes: `${url}/sw_config_actiontype/getList`,
-  getActiontype: `${url}/sw_config_actiontype/getInfo`,
-  deleteActiontype: `${url}/sw_config_actiontype/deleteInfo`,
-  putActiontype: `${url}/sw_config_actiontype/updateInfo`,
-  checkAction: `${url}/sw_admin/checkAction`,
 
   postNetworkequipment: `${url}/sw_config_networkequipment/addInfo`,
   getNetworkequipments: `${url}/sw_config_networkequipment/getList`,

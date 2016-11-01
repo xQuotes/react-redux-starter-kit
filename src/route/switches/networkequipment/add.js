@@ -96,9 +96,7 @@ export default class AddNetworkequipment extends React.Component {
           { validator: ::this.networkequipmentIpExists },
         ],
       },
-      placeholder: '如：123.125.114.144',
-      labelCol: 4,
-      wrapperCol: 20
+      placeholder: '如：123.125.114.144'
     }, {
       name: 'ser_no',
       label: 'SN号',

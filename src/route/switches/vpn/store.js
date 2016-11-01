@@ -28,10 +28,10 @@ export default class VpnStore {
     
     Fetch({
       url: Api.getVpns,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -50,12 +50,12 @@ export default class VpnStore {
     this.isLoading = true
     Fetch({
       url: Api.deleteVpn,
-      data: {
+      data: JSON.stringify({
         conditions: {
           id: formData.id
         },
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -72,10 +72,10 @@ export default class VpnStore {
     this.isLoading = true
     Fetch({
       url: Api.postVpn,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -92,10 +92,10 @@ export default class VpnStore {
     this.isLoading = true
     Fetch({
       url: Api.uploadCsvData,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -111,10 +111,10 @@ export default class VpnStore {
     this.isLoading = true
     Fetch({
       url: Api.putVpn,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false

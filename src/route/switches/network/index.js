@@ -4,7 +4,8 @@ import {
 import {
   Button,
   Popconfirm,
-  Modal
+  Modal,
+  Switch
 } from 'antd'
 import {
   Link
@@ -18,10 +19,11 @@ import Url from 'Url'
 import SearchTable from './search'
 import DataTable from '../../components/table'
 import AddNetworkModal from './add'
-import UploadBtn from '../../components/uploadBtn'
 
 @inject(
-  'networkStore', 'dashboardStore'
+  'networkStore',
+  'dashboardStore',
+  'actiontypeStore'
   )
 @observer
 export default class Networks extends React.Component {
@@ -34,8 +36,11 @@ export default class Networks extends React.Component {
   }
   componentWillMount() {
     const bcData = ['首页', '常用信息', '网段信息']
-    const {dashboardStore} = this.props
+    const {dashboardStore, actiontypeStore} = this.props
     dashboardStore.putDashboard(bcData)
+    if (_.isEmpty(actiontypeStore.list)) {
+      actiontypeStore.getServers()
+    }
   }
   addNetwork(e) {
     const {networkStore} = this.props
@@ -51,13 +56,31 @@ export default class Networks extends React.Component {
     const {networkStore} = this.props
     networkStore.deleteServer(formData)
   }
+  handleChangeStatus(formData) {
+    const {networkStore} = this.props
+    networkStore.putServer(formData)
+  }
   render() {
     const that = this
-    const {networkStore} = this.props
+    const {networkStore, actiontypeStore} = this.props
     let dataList = networkStore.toJS()
     let fields = networkStore.fields
+    fields = {
+      id: "ID",
+      network: "网断地址",
+      start_ip: "开始IP",
+      end_ip: "结束IP",
+      status: "状态", // 0 禁用 1 启用
+      user: "操作人员",
+      c_time: "创建时间",
+      type: "操作类型"
+    }
     let searchFields = networkStore.searchFields
-
+    searchFields = {
+      network: "网断地址",
+      start_ip: "开始IP",
+      end_ip: "结束IP"
+    }
     let tableHeader = _.map(fields, (v, k) => {
       return {
         title: v,
@@ -65,6 +88,23 @@ export default class Networks extends React.Component {
         key: k,
         width: 80,
         render: (text, record, index) => {
+          if (k == 'status') {
+            return <Switch checkedChildren="启" unCheckedChildren="停"
+                      defaultChecked={text == "1" && 'checked'}
+                      onChange={(checked) => {
+                        that.handleChangeStatus({
+                          id: record.id,
+                          status: checked ? 1 : 0
+                        })
+                      }}/>
+          }
+          if (k == 'type') {
+            let data = _.compact(_.map(actiontypeStore.list, function(v, k) {
+              if(_.includes(text, v.id)) return v.type
+            }))
+
+            return _.join(data, ', ')
+          }
           return text
         }
       }
@@ -92,16 +132,11 @@ export default class Networks extends React.Component {
 
     return(
       <div className="switches-network">
-        <div className="table-search">
+        {searchFields &&<div className="table-search">
           <SearchTable searchFields={searchFields} store={networkStore}/>
-        </div>
+        </div>}
         <div className="switches-action-type">
           <Button type="primary" onClick={::this.addNetwork}>添加网段</Button>
-          <UploadBtn
-            store={networkStore} 
-            params={{
-              type: "network"
-            }}/>
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}

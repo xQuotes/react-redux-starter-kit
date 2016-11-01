@@ -82,9 +82,7 @@ export default class AddSnet extends React.Component {
           { required: true, whitespace: true, message: '请输入Net类型' }
         ],
       },
-      placeholder: '请输入Net类型',
-      labelCol: 4,
-      wrapperCol: 20
+      placeholder: '请输入Net类型'
     }, {
       name: 'des_addr',
       label: '目的地址',

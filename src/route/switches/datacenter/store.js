@@ -28,10 +28,10 @@ export default class DatacenterStore {
     
     Fetch({
       url: Api.getDatacenters,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -50,12 +50,12 @@ export default class DatacenterStore {
     this.isLoading = true
     Fetch({
       url: Api.deleteDatacenter,
-      data: {
+      data: JSON.stringify({
         conditions: {
           id: formData.id
         },
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -72,10 +72,10 @@ export default class DatacenterStore {
     this.isLoading = true
     Fetch({
       url: Api.postDatacenter,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -92,10 +92,10 @@ export default class DatacenterStore {
     this.isLoading = true
     Fetch({
       url: Api.uploadCsvData,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -111,10 +111,10 @@ export default class DatacenterStore {
     this.isLoading = true
     Fetch({
       url: Api.putDatacenter,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false

@@ -82,9 +82,7 @@ export default class AddServer extends React.Component {
           { required: true, whitespace: true, message: '请输入主机名' },
         ],
       },
-      placeholder: '请输入主机名',
-      labelCol: 4,
-      wrapperCol: 20
+      placeholder: '请输入主机名'
     }, {
       name: 'ext_ip',
       label: '公网IP',

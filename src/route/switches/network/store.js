@@ -28,10 +28,8 @@ export default class NetworkStore {
     
     Fetch({
       url: Api.getNetworks,
-      data: {
-        conditions: formData,
-        params: {}
-      },
+      contentType: 'application/x-www-form-urlencoded',
+      data: formData,
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -50,11 +48,9 @@ export default class NetworkStore {
     this.isLoading = true
     Fetch({
       url: Api.deleteNetwork,
+      contentType: 'application/x-www-form-urlencoded',
       data: {
-        conditions: {
-          id: formData.id
-        },
-        params: {}
+        id: formData.id
       },
       method: 'post',
       success: (data) => {
@@ -72,10 +68,8 @@ export default class NetworkStore {
     this.isLoading = true
     Fetch({
       url: Api.postNetwork,
-      data: {
-        conditions: formData,
-        params: {}
-      },
+      contentType: 'application/x-www-form-urlencoded',
+      data: formData,
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -87,34 +81,12 @@ export default class NetworkStore {
     })
   }
 
-  // 保存多条
-  @action postServers(formData) {
-    this.isLoading = true
-    Fetch({
-      url: Api.uploadCsvData,
-      data: {
-        conditions: formData,
-        params: {}
-      },
-      method: 'post',
-      success: (data) => {
-        this.isLoading = false
-        this.list = data
-      },
-      error: (data) => {
-        this.isLoading = false
-      }
-    })
-  }
-
   @action putServer(formData) {
     this.isLoading = true
     Fetch({
       url: Api.putNetwork,
-      data: {
-        conditions: formData,
-        params: {}
-      },
+      contentType: 'application/x-www-form-urlencoded',
+      data: formData,
       method: 'post',
       success: (data) => {
         this.isLoading = false

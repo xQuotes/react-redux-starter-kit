@@ -21,7 +21,8 @@ import ModalForm from '../../components/form'
 
 @Form.create()
 @inject(
-  'networkStore'
+  'networkStore',
+  'actiontypeStore'
   )
 @observer
 export default class AddNetwork extends React.Component {
@@ -80,7 +81,7 @@ export default class AddNetwork extends React.Component {
   }
 
   render() {
-    const {form, networkStore} = this.props
+    const {form, networkStore, actiontypeStore} = this.props
     const paramsData = networkStore.params
     const network = networkStore.list.getById(paramsData.id) || {}
 
@@ -102,17 +103,24 @@ export default class AddNetwork extends React.Component {
       },
       placeholder: '如：192.168.1.1/24'
     }, {
+      formType: 'multipleSelect',
       name: 'type',
       label: '操作类型',
+      optionData: _.map(actiontypeStore.list, (v, k)=> {
+        return {
+          id: v.id,
+          value: v.type
+        }
+      }),
       fieldOptions: {
-        initialValue: network.type,
+        initialValue: _.map(network.type, (v, k)=> {
+          return v+''
+        }),
         rules: [
-          { required: true, whitespace: true, message: '请输入操作类型' },
+          { required: true, message: '请输入选择类型', type: 'array' },
         ],
       },
-      placeholder: '请输入操作类型',
-      labelCol: 4,
-      wrapperCol: 20
+      placeholder: '请输入选择类型'
     }]
 
     return (

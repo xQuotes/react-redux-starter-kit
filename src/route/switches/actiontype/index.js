@@ -19,8 +19,6 @@ import Api from 'Api'
 import SearchTable from './search'
 import DataTable from '../../components/table'
 import AddActiontypeModal from './add'
-import UploadBtn from '../../components/uploadBtn'
-import DownloadBtn from '../../components/downloadBtn'
 
 @inject(
   'actiontypeStore', 'dashboardStore'
@@ -57,17 +55,39 @@ export default class Actiontypes extends React.Component {
     const that = this
     const {actiontypeStore} = this.props
     let dataList = actiontypeStore.toJS()
+    console.log(dataList)
     let fields = actiontypeStore.fields
+    fields = {
+      id: 'ID',
+      type: '类型',
+      status: '状态',
+      c_time: '创建时间',
+      user: '创建人'
+    }
     let searchFields = actiontypeStore.searchFields
+    
+    const statusData = ['停用', '启用']
 
     let tableHeader = _.map(fields, (v, k) => {
-      return {
-        title: v,
-        dataIndex: k,
-        key: k,
-        width: 80,
-        render: (text, record, index) => {
-          return text
+      if(k == 'status') {
+        return {
+          title: v,
+          dataIndex: k,
+          key: k,
+          width: 80,
+          render: (text, record, index) => {
+            return statusData[text]
+          }
+        }
+      } else {
+        return {
+          title: v,
+          dataIndex: k,
+          key: k,
+          width: 80,
+          render: (text, record, index) => {
+            return text
+          }
         }
       }
     })
@@ -94,17 +114,11 @@ export default class Actiontypes extends React.Component {
 
     return(
       <div className="switches-network">
-        <div className="table-search">
+        {searchFields && <div className="table-search">
           <SearchTable searchFields={searchFields} store={actiontypeStore}/>
-        </div>
+        </div>}
         <div className="switches-action-type">
           <Button type="primary" onClick={::this.addActiontype}>添加操作类型</Button>
-          <UploadBtn
-            store={actiontypeStore} 
-            params={{
-              type: "actiontype"
-            }}/>
-          <DownloadBtn downloadUrl={Api.downloadActiontypeCSV}/>
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}

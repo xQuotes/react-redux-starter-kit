@@ -28,10 +28,10 @@ export default class NetworksubStore {
     
     Fetch({
       url: Api.getNetworksubs,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -50,12 +50,12 @@ export default class NetworksubStore {
     this.isLoading = true
     Fetch({
       url: Api.deleteNetworksub,
-      data: {
+      data: JSON.stringify({
         conditions: {
           id: formData.id
         },
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -72,10 +72,10 @@ export default class NetworksubStore {
     this.isLoading = true
     Fetch({
       url: Api.postNetworksub,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -92,10 +92,10 @@ export default class NetworksubStore {
     this.isLoading = true
     Fetch({
       url: Api.uploadCsvData,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -111,10 +111,10 @@ export default class NetworksubStore {
     this.isLoading = true
     Fetch({
       url: Api.putNetworksub,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false

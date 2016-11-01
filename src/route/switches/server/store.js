@@ -28,10 +28,10 @@ export default class ServerStore {
     
     Fetch({
       url: Api.getServers,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -50,12 +50,12 @@ export default class ServerStore {
     this.isLoading = true
     Fetch({
       url: Api.deleteServer,
-      data: {
+      data: JSON.stringify({
         conditions: {
           id: formData.id
         },
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -72,10 +72,10 @@ export default class ServerStore {
     this.isLoading = true
     Fetch({
       url: Api.postServer,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -92,10 +92,10 @@ export default class ServerStore {
     this.isLoading = true
     Fetch({
       url: Api.uploadCsvData,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -111,10 +111,10 @@ export default class ServerStore {
     this.isLoading = true
     Fetch({
       url: Api.putServer,
-      data: {
+      data: JSON.stringify({
         conditions: formData,
         params: {}
-      },
+      }),
       method: 'post',
       success: (data) => {
         this.isLoading = false

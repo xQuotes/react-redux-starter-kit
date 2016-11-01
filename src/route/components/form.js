@@ -1,9 +1,10 @@
 import moment from 'moment'
 import {
   Form, Input, Row, Col, Button,
-  DatePicker
+  DatePicker, Select
 } from 'antd'
 const FormItem = Form.Item
+const Option = Select.Option;
 
 export default class ModalForm extends React.Component {
   constructor(props) {
@@ -38,9 +39,21 @@ export default class ModalForm extends React.Component {
       }, value)
     })
 
-    function formJsxType(formType, placeholder) {
+    function formJsxType(formType, placeholder, optionData) {
       if(formType == 'DatePicker') {
         return <DatePicker />
+      } else if (formType == 'select') {
+        return <Select id="select" size="large">
+                  {_.map(optionData, (v, k)=> {
+                    return <Option key={k+""} value={v.id+""}>{v.value}</Option>
+                  })}
+                </Select>
+      } else if (formType == 'multipleSelect') {
+        return <Select multiple id="select" size="large">
+                  {_.map(optionData, (v, k)=> {
+                    return <Option key={k+""} value={v.id+""}>{v.value}</Option>
+                  })}
+                </Select>
       } else {
         return <Input autoCapitalize="off"
           placeholder={placeholder}
@@ -61,7 +74,7 @@ export default class ModalForm extends React.Component {
               labelCol={{ span: v.labelCol }}
               wrapperCol={{ span: v.wrapperCol }}>
               {getFieldDecorator(v.name, v.fieldOptions)(
-                formJsxType(v.formType, v.placeholder)
+                formJsxType(v.formType, v.placeholder, v.optionData)
               )}
             </FormItem>
           })}

@@ -108,9 +108,7 @@ export default class AddMapping extends React.Component {
             { validator: ::this.mappingIpExists },
           ],
         },
-        placeholder: '如：123.125.114.144',
-        labelCol: 4,
-        wrapperCol: 20
+        placeholder: '如：123.125.114.144'
       }, {
         name: 'ext_port',
         label: '公网端口',

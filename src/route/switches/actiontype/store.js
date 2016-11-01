@@ -28,12 +28,11 @@ export default class ActiontypeStore {
     
     Fetch({
       url: Api.getActiontypes,
-      data: {
-        conditions: formData,
-        params: {}
-      },
+      contentType: 'application/x-www-form-urlencoded',
+      data: formData,
       method: 'post',
       success: (data) => {
+        console.log(data)
         this.isLoading = false
         this.list = data.list
         this.fields = data.fields
@@ -50,11 +49,9 @@ export default class ActiontypeStore {
     this.isLoading = true
     Fetch({
       url: Api.deleteActiontype,
+      contentType: 'application/x-www-form-urlencoded',
       data: {
-        conditions: {
-          id: formData.id
-        },
-        params: {}
+        id: formData.id
       },
       method: 'post',
       success: (data) => {
@@ -72,12 +69,11 @@ export default class ActiontypeStore {
     this.isLoading = true
     Fetch({
       url: Api.postActiontype,
-      data: {
-        conditions: formData,
-        params: {}
-      },
+      contentType: 'application/x-www-form-urlencoded',
+      data: formData,
       method: 'post',
       success: (data) => {
+        console.log(data)
         this.isLoading = false
         this.list.push(data)
       },
@@ -92,10 +88,8 @@ export default class ActiontypeStore {
     this.isLoading = true
     Fetch({
       url: Api.uploadCsvData,
-      data: {
-        conditions: formData,
-        params: {}
-      },
+      contentType: 'application/x-www-form-urlencoded',
+      data: formData,
       method: 'post',
       success: (data) => {
         this.isLoading = false
@@ -111,10 +105,8 @@ export default class ActiontypeStore {
     this.isLoading = true
     Fetch({
       url: Api.putActiontype,
-      data: {
-        conditions: formData,
-        params: {}
-      },
+      contentType: 'application/x-www-form-urlencoded',
+      data: formData,
       method: 'post',
       success: (data) => {
         this.isLoading = false

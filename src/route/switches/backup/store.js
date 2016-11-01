@@ -21,6 +21,7 @@ export default class BackupStore {
     
     Fetch({
       url: Api.getBackups,
+      contentType: 'application/x-www-form-urlencoded',
       data: formData,
       method: 'post',
       success: (data) => {
@@ -37,6 +38,7 @@ export default class BackupStore {
     this.isLoading = true
     Fetch({
       url: Api.getBackup,
+      contentType: 'application/x-www-form-urlencoded',
       data: formData,
       method: 'post',
       success: (data) => {

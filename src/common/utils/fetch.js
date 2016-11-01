@@ -11,12 +11,11 @@ export default function fetching(action) {
   reqwest({
     url: action.url,
     method: action.method || 'post',
-    contentType: 'application/json',
+    contentType: action.contentType || 'application/json',
     headers: {
       AuthToken: Auth.getAuthCookie('UserIfosSession') || '',
     },
-    data: JSON.stringify(action.data),
-    // data: action.data,
+    data: action.data,
     type: 'json',
     success: (res) => {
       if (res.statuscode === 200) {
