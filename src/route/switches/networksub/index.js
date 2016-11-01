@@ -14,11 +14,13 @@ import {
 } from 'antd'
 
 import Url from 'Url'
+import Api from 'Api'
 
 import SearchTable from './search'
 import DataTable from '../../components/table'
 import AddNetworksubModal from './add'
 import UploadBtn from '../../components/uploadBtn'
+import DownloadBtn from '../../components/downloadBtn'
 
 @inject(
   'networksubStore', 'dashboardStore'
@@ -102,6 +104,7 @@ export default class Networksubs extends React.Component {
             params={{
               type: "networksub"
             }}/>
+          <DownloadBtn downloadUrl={Api.downloadNetworksubCSV}/>
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}

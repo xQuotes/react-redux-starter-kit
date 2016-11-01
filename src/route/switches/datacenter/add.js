@@ -61,7 +61,8 @@ export default class AddDatacenter extends React.Component {
         return;
       }
 
-      var data = _.pickBy(values)
+      //var data = _.pickBy(values)
+      var data = values
 
       form.resetFields()
       this.hideModal()
@@ -87,61 +88,112 @@ export default class AddDatacenter extends React.Component {
         initialValue: datacenter.id
       }
     }, {
-      name: 'hostname',
-      label: '主机名',
+      name: 'name',
+      label: '机房名称',
       fieldOptions: {
-        initialValue: datacenter.hostname,
+        initialValue: datacenter.name,
         rules: [
-          { required: true, whitespace: true, message: '请输入主机名' }
+          { required: true, whitespace: true, message: '请输入机房名称' }
         ],
       },
-      placeholder: '请输入主机名'
+      placeholder: '请输入机房名称'
     }, {
-      name: 'ext_ip',
-      label: '公网IP',
+      name: 'short_tag',
+      label: '机房缩写',
       fieldOptions: {
-        initialValue: datacenter.ext_ip,
+        initialValue: datacenter.short_tag,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' },
-          { validator: ::this.datacenterIpExists },
+          { required: true, whitespace: true, message: '请输入机房缩写' }
         ],
       },
-      placeholder: '如：123.125.114.144',
-      labelCol: 4,
-      wrapperCol: 20
+      placeholder: '请输入机房缩写'
     }, {
-      name: 'ext_port',
-      label: '公网端口',
+      name: 'area',
+      label: '区域名称',
       fieldOptions: {
-        initialValue: datacenter.ext_port,
+        initialValue: datacenter.area,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网端口' },
-          { validator: ::this.datacenterPortExists },
+          { required: true, whitespace: true, message: '请输入区域名称' }
         ],
       },
-      placeholder: '如：80',
+      placeholder: '请输入区域名称'
     }, {
-      name: 'int_ip',
-      label: '内网IP',
+      name: 'pro_city',
+      label: '省市',
       fieldOptions: {
-        initialValue: datacenter.int_ip,
+        initialValue: datacenter.pro_city,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网IP' },
-          { validator: ::this.datacenterIpExists },
+          { required: true, whitespace: true, message: '请输入省市' }
         ],
       },
-      placeholder: '如：192.168.1.1'
+      placeholder: '请输入省市'
     }, {
-      name: 'int_port',
-      label: '内网端口',
+      name: 'detail_addr',
+      label: '详细地址',
       fieldOptions: {
-        initialValue: datacenter.int_port,
+        initialValue: datacenter.detail_addr,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网端口' },
-          { validator: ::this.datacenterPortExists },
+          { required: true, whitespace: true, message: '请输入详细地址' }
         ],
       },
-      placeholder: '如：80'
+      placeholder: '请输入详细地址'
+    }, {
+      name: 'charge',
+      label: '机房负责人',
+      fieldOptions: {
+        initialValue: datacenter.charge,
+        rules: [
+          { required: true, whitespace: true, message: '请输入机房负责人' }
+        ],
+      },
+      placeholder: '请输入机房负责人'
+    }, {
+      name: 'net_charge',
+      label: '网络负责人',
+      fieldOptions: {
+        initialValue: datacenter.net_charge,
+        rules: [
+          { required: true, whitespace: true, message: '请输入网络负责人' }
+        ],
+      },
+      placeholder: '请输入网络负责人'
+    }, {
+      name: 'acc_man',
+      label: '大客户经理',
+      fieldOptions: {
+        initialValue: datacenter.acc_man,
+        rules: [
+          { required: true, whitespace: true, message: '请输入大客户经理' }
+        ],
+      },
+      placeholder: '请输入大客户经理'
+    }, {
+      name: 'acc_man_phone',
+      label: '大客户经理电话',
+      fieldOptions: {
+        initialValue: datacenter.acc_man_phone,
+        rules: [
+          { required: true, whitespace: true, message: '请输入大客户经理电话' }
+        ],
+      },
+      placeholder: '请输入大客户经理电话'
+    }, {
+      name: 'duty_phone',
+      label: '值班电话',
+      fieldOptions: {
+        initialValue: datacenter.duty_phone,
+        rules: [
+          { required: true, whitespace: true, message: '请输入值班电话' }
+        ],
+      },
+      placeholder: '请输入值班电话'
+    }, {
+      name: 'remark',
+      label: '备注',
+      fieldOptions: {
+        initialValue: datacenter.remark
+      },
+      placeholder: '请输入备注'
     }]
 
     return (

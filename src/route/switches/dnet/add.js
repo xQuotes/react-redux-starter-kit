@@ -16,6 +16,9 @@ const FormItem = Form.Item
 const Option = Select.Option
 
 import {ipReg, portReg} from '../../../common/utils/regex'
+import {
+  checkData, checkServerData
+} from '../../components/checkout'
 
 import ModalForm from '../../components/form'
 
@@ -29,26 +32,10 @@ export default class AddDnet extends React.Component {
     super(props)
   }
   dnetIpExists(rule, value, callback) {
-    if (!value) {
-      callback()
-    } else {
-      if (!ipReg.test(value)) {
-        callback([new Error("IP 格式不正确")]);
-      } else {
-        callback()
-      }
-    }
+    checkData(rule, value, callback, ipReg, "IP 格式不正确")
   }
-  dnetPortExists(rule, value, callback) {
-    if (!value) {
-      callback();
-    } else {
-      if (!portReg.test(value)) {
-        callback([new Error("端口格式不正确")]);
-      } else {
-        callback()
-      }
-    }
+  dnetPortExists(rule, value, callback, source, options) {
+    checkData(rule, value, callback, portReg, "端口格式不正确")
   }
   handleSubmit(e) {
     const {form, dnetStore} = this.props
@@ -61,7 +48,10 @@ export default class AddDnet extends React.Component {
         return;
       }
 
-      var data = _.pickBy(values)
+      //var data = _.pickBy(values)
+      var data = values
+      // DatePicker 插件获取数据格式 为 moment
+      data['deadline'] = data['deadline'] && data['deadline'].format('YYYY-MM-DD h:mm:ss')
 
       form.resetFields()
       this.hideModal()

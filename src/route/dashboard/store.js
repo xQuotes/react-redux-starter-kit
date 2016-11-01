@@ -5,8 +5,6 @@ import {
 import Api from 'Api'
 import Fetch from 'Fetch'
 
-import Store from './Store'
-
 export default class DashboardStore {
   @observable bcData = []
   

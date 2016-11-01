@@ -11,7 +11,7 @@ import Url from 'Url'
 import Auth from 'Auth'
 import Api from 'Api'
 
-import DataTable from './/table'
+import DataTable from './table'
 
 export default class UploadBtn extends React.Component {
   constructor(props) {

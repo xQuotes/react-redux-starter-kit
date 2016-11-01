@@ -99,7 +99,22 @@ const Api = {
   putNetworkequipment: `${url}/sw_config_networkequipment/updateInfo`,
 
   uploadCsvFile: `${url}/sw_config_upload/uploadAndCheckCsvFile`,
-  uploadCsvData: `${url}/sw_config_upload/uploadCsvData`
+  uploadCsvData: `${url}/sw_config_upload/uploadCsvData`,
+  
+  downloadActiontypeCSV: `/csv_templates/actiontype.csv`,
+  downloadDatacenterCSV: `/csv_templates/datacenter.csv`,
+  downloadDnetCSV: `/csv_templates/dnet.csv`,
+  downloadMappingCSV: `/csv_templates/mapping.csv`,
+  downloadNetworkCSV: `/csv_templates/network.csv`,
+  downloadNetworkequipmentCSV: `/csv_templates/networkequipment.csv`,
+  downloadNetworksecCSV: `/csv_templates/networksec.csv`,
+  downloadNetworksubCSV: `/csv_templates/networksub.csv`,
+  downloadServerCSV: `/csv_templates/server.csv`,
+  downloadSnetCSV: `/csv_templates/snet.csv`,
+  downloadSpeciallineCSV: `/csv_templates/specialline.csv`,
+  downloadVlanCSV: `/csv_templates/vlan.csv`,
+  downloadVpnCSV: `/csv_templates/vpn.csv`,
+  downloadWirelessCSV: `/csv_templates/wireless.csv`
 }
 
 export default Api

@@ -65,7 +65,8 @@ export default class AddNetwork extends React.Component {
         return;
       }
 
-      var data = _.pickBy(values)
+      //var data = _.pickBy(values)
+      var data = values
 
       form.resetFields()
       this.hideModal()

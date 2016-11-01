@@ -61,7 +61,8 @@ export default class AddNetworksub extends React.Component {
         return;
       }
 
-      var data = _.pickBy(values)
+      //var data = _.pickBy(values)
+      var data = values
 
       form.resetFields()
       this.hideModal()
@@ -96,6 +97,16 @@ export default class AddNetworksub extends React.Component {
         ],
       },
       placeholder: '请输入VLAN'
+    }, {
+      name: 'ip',
+      label: '子网IP',
+      fieldOptions: {
+        initialValue: networksub.ip,
+        rules: [
+          { required: true, whitespace: true, message: '请输入子网IP' }
+        ],
+      },
+      placeholder: '请输入子网IP'
     }, {
       name: 'port',
       label: '端口',

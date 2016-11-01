@@ -29,8 +29,8 @@ export default class ModalForm extends React.Component {
         label: '',
         type: 'text',
         sm: 4,
-        labelCol: 4,
-        wrapperCol: 20,
+        labelCol: 6,
+        wrapperCol: 18,
         fieldOptions: {
           initialValue: ''
         },

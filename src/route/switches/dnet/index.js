@@ -14,11 +14,13 @@ import {
 } from 'antd'
 
 import Url from 'Url'
+import Api from 'Api'
 
 import SearchTable from './search'
 import DataTable from '../../components/table'
 import AddDnetModal from './add'
 import UploadBtn from '../../components/uploadBtn'
+import DownloadBtn from '../../components/downloadBtn'
 
 @inject(
   'dnetStore', 'dashboardStore'
@@ -102,6 +104,7 @@ export default class Dnets extends React.Component {
             params={{
               type: "dnet"
             }}/>
+          <DownloadBtn downloadUrl={Api.downloadDnetCSV}/>
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}

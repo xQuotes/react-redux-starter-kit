@@ -14,11 +14,13 @@ import {
 } from 'antd'
 
 import Url from 'Url'
+import Api from 'Api'
 
 import SearchTable from './search'
 import DataTable from '../../components/table'
 import AddMappingModal from './add'
 import UploadBtn from '../../components/uploadBtn'
+import DownloadBtn from '../../components/downloadBtn'
 
 @inject(
   'mappingStore', 'dashboardStore'
@@ -102,6 +104,7 @@ export default class Mappings extends React.Component {
             params={{
               type: "mapping"
             }}/>
+          <DownloadBtn downloadUrl={Api.downloadMappingCSV}/>
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}

@@ -14,11 +14,13 @@ import {
 } from 'antd'
 
 import Url from 'Url'
+import Api from 'Api'
 
 import SearchTable from './search'
 import DataTable from '../../components/table'
 import AddServerModal from './add'
 import UploadBtn from '../../components/uploadBtn'
+import DownloadBtn from '../../components/downloadBtn'
 
 @inject(
   'serverStore', 'dashboardStore'
@@ -102,6 +104,7 @@ export default class Servers extends React.Component {
             params={{
               type: "server"
             }}/>
+          <DownloadBtn downloadUrl={Api.downloadServerCSV}/>
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}
