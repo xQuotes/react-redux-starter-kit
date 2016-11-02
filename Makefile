@@ -30,3 +30,7 @@ dev:
 
 deploy: 
 	export NODE_ENV=production && webpack -p --config webpack.config.js
+
+delete:
+	git checkout -- .
+	rm -rf src/route/switches/newfunc/
