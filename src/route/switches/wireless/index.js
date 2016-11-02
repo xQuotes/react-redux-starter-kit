@@ -113,7 +113,8 @@ export default class Wirelesss extends React.Component {
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}
-            dataSource={dataList}/>
+            dataSource={dataList}
+            store={mappingStore}/>
         </div>
         <AddWirelessModal />
       </div>

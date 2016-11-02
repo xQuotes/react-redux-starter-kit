@@ -108,7 +108,8 @@ export default class /*File_append*/s extends React.Component {
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}
-            dataSource={dataList}/>
+            dataSource={dataList}
+            store={mappingStore}/>
         </div>
         <Add/*File_append*/Modal />
       </div>
