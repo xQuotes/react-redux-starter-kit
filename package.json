@@ -10,7 +10,7 @@
     "deploy": "export NODE_ENV=production && node server",
     "dev": "export NODE_ENV=development && node server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "n": "node xq-tools/newfunc.js"
+    "n": "node xq-tools/n.js"
   },
   "keywords": [
     "ant",

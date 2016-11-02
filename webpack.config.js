@@ -114,7 +114,7 @@ var config = {
     vendors: [
       'react',
       'react-router'],
-    common: ['Utils', 'Url', 'Api', 'Auth', 'Arr', 'Obj', 'Fetch', 'Img']
+    common: ['Utils', 'Url', 'Api', 'Auth', 'Arr', 'Str', 'Obj', 'Fetch', 'Img']
   },
   output: {
     path: path.resolve(__dirname, build.dir),
@@ -165,6 +165,7 @@ var config = {
       //后续直接 require('Utils') 即可
       Utils : path.resolve(__dirname, './src/common/utils/utils.js'),
       Arr: path.resolve(__dirname, './src/common/utils/array.js'),
+      Str: path.resolve(__dirname, './src/common/utils/string.js'),
       Obj: path.resolve(__dirname, './src/common/utils/object.js'),
       Fetch: path.resolve(__dirname, './src/common/utils/fetch.js'),
       Auth : path.resolve(__dirname, './src/common/utils/auth.js'),
