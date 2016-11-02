@@ -108,7 +108,7 @@ export default class AddMapping extends React.Component {
         fieldOptions: {
           initialValue: mapping.hostname,
           rules: [
-            // { required: true, whitespace: true, message: '请输入主机名' }
+            // // { required: true, whitespace: true, message: '请输入主机名' }
           ],
         },
         placeholder: '请输入主机名'
@@ -118,7 +118,7 @@ export default class AddMapping extends React.Component {
         fieldOptions: {
           initialValue: mapping.ext_ip,
           rules: [
-            // { required: true, whitespace: true, message: '请输入公网IP' },
+            // // { required: true, whitespace: true, message: '请输入公网IP' },
             { validator: ::this.mappingIpExists },
           ],
         },
@@ -129,7 +129,7 @@ export default class AddMapping extends React.Component {
         fieldOptions: {
           initialValue: mapping.ext_port,
           rules: [
-            // { required: true, whitespace: true, message: '请输入公网端口' },
+            // // { required: true, whitespace: true, message: '请输入公网端口' },
             { validator: ::this.mappingPortExists },
           ],
         },
@@ -140,7 +140,7 @@ export default class AddMapping extends React.Component {
         fieldOptions: {
           initialValue: mapping.int_ip,
           rules: [
-            // { required: true, whitespace: true, message: '请输入内网IP' },
+            // // { required: true, whitespace: true, message: '请输入内网IP' },
             { validator: ::this.mappingIpExists },
           ],
         },
@@ -151,7 +151,7 @@ export default class AddMapping extends React.Component {
         fieldOptions: {
           initialValue: mapping.int_port,
           rules: [
-            // { required: true, whitespace: true, message: '请输入内网端口' },
+            // // { required: true, whitespace: true, message: '请输入内网端口' },
             { validator: ::this.mappingPortExists },
           ],
         },

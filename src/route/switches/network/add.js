@@ -98,7 +98,7 @@ export default class AddNetwork extends React.Component {
       fieldOptions: {
         initialValue: network.network,
         rules: [
-          { required: true, whitespace: true, message: '请输入网段' }
+          // { required: true, whitespace: true, message: '请输入网段' }
         ],
       },
       placeholder: '如：192.168.1.1/24'

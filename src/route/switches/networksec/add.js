@@ -83,7 +83,7 @@ export default class AddNetworksec extends React.Component {
       fieldOptions: {
         initialValue: networksec.acl_no,
         rules: [
-          { required: true, whitespace: true, message: '请输入ACL编号' }
+          // { required: true, whitespace: true, message: '请输入ACL编号' }
         ],
       },
       placeholder: '请输入ACL编号'
@@ -93,7 +93,7 @@ export default class AddNetworksec extends React.Component {
       fieldOptions: {
         initialValue: networksec.dep_locate,
         rules: [
-          { required: true, whitespace: true, message: '请输入部署位置' }
+          // { required: true, whitespace: true, message: '请输入部署位置' }
         ],
       },
       placeholder: '请输入部署位置'
@@ -103,7 +103,7 @@ export default class AddNetworksec extends React.Component {
       fieldOptions: {
         initialValue: networksec.dep_purpose,
         rules: [
-          { required: true, whitespace: true, message: '请输入部署目的' }
+          // { required: true, whitespace: true, message: '请输入部署目的' }
         ],
       },
       placeholder: '请输入部署目的'
@@ -113,7 +113,7 @@ export default class AddNetworksec extends React.Component {
       fieldOptions: {
         initialValue: networksec.equipment,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属设备' }
+          // { required: true, whitespace: true, message: '请输入所属设备' }
         ],
       },
       placeholder: '请输入所属设备'

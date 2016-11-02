@@ -105,7 +105,7 @@ export default class AddNetworksub extends React.Component {
       fieldOptions: {
         initialValue: networksub.vlan,
         rules: [
-          { required: true, whitespace: true, message: '请输入VLAN' }
+          // { required: true, whitespace: true, message: '请输入VLAN' }
         ],
       },
       placeholder: '请输入VLAN'
@@ -115,7 +115,7 @@ export default class AddNetworksub extends React.Component {
       fieldOptions: {
         initialValue: networksub.ip,
         rules: [
-          { required: true, whitespace: true, message: '请输入子网IP' }
+          // { required: true, whitespace: true, message: '请输入子网IP' }
         ],
       },
       placeholder: '请输入子网IP'
@@ -125,7 +125,7 @@ export default class AddNetworksub extends React.Component {
       fieldOptions: {
         initialValue: networksub.port,
         rules: [
-          { required: true, whitespace: true, message: '请输入端口' },
+          // { required: true, whitespace: true, message: '请输入端口' },
           { validator: ::this.networksubPortExists },
         ],
       },
@@ -136,7 +136,7 @@ export default class AddNetworksub extends React.Component {
       fieldOptions: {
         initialValue: networksub.mask,
         rules: [
-          { required: true, whitespace: true, message: '请输入子网掩码' }
+          // { required: true, whitespace: true, message: '请输入子网掩码' }
         ],
       },
       placeholder: '请输入子网掩码'
@@ -146,7 +146,7 @@ export default class AddNetworksub extends React.Component {
       fieldOptions: {
         initialValue: networksub.gateway,
         rules: [
-          { required: true, whitespace: true, message: '请输入网关' }
+          // { required: true, whitespace: true, message: '请输入网关' }
         ],
       },
       placeholder: '请输入网关'
@@ -156,7 +156,7 @@ export default class AddNetworksub extends React.Component {
       fieldOptions: {
         initialValue: networksub.a_port_info,
         rules: [
-          { required: true, whitespace: true, message: '请输入A端信息' }
+          // { required: true, whitespace: true, message: '请输入A端信息' }
         ],
       },
       placeholder: '请输入A端信息'
@@ -166,7 +166,7 @@ export default class AddNetworksub extends React.Component {
       fieldOptions: {
         initialValue: networksub.b_port_info,
         rules: [
-          { required: true, whitespace: true, message: '请输入B端信息' }
+          // { required: true, whitespace: true, message: '请输入B端信息' }
         ],
       },
       placeholder: '请输入B端信息'
@@ -176,7 +176,7 @@ export default class AddNetworksub extends React.Component {
       fieldOptions: {
         initialValue: networksub.is_ospf,
         rules: [
-          { required: true, whitespace: true, message: '请输入是否是ospf' }
+          // { required: true, whitespace: true, message: '请输入是否是ospf' }
         ],
       },
       placeholder: '请输入是否是ospf'
@@ -186,7 +186,7 @@ export default class AddNetworksub extends React.Component {
       fieldOptions: {
         initialValue: networksub.equipment,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属设备' }
+          // { required: true, whitespace: true, message: '请输入所属设备' }
         ],
       },
       placeholder: '请输入所属设备'

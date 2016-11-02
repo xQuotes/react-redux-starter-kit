@@ -81,7 +81,7 @@ export default class AddSnet extends React.Component {
       fieldOptions: {
         initialValue: snet.sou_addr,
         rules: [
-          { required: true, whitespace: true, message: '请输入源地址' }
+          // { required: true, whitespace: true, message: '请输入源地址' }
         ],
       },
       placeholder: '请输入源地址'
@@ -91,7 +91,7 @@ export default class AddSnet extends React.Component {
       fieldOptions: {
         initialValue: snet.net_type,
         rules: [
-          { required: true, whitespace: true, message: '请输入Net类型' }
+          // { required: true, whitespace: true, message: '请输入Net类型' }
         ],
       },
       placeholder: '请输入Net类型'
@@ -101,7 +101,7 @@ export default class AddSnet extends React.Component {
       fieldOptions: {
         initialValue: snet.des_addr,
         rules: [
-          { required: true, whitespace: true, message: '请输入目的地址' }
+          // { required: true, whitespace: true, message: '请输入目的地址' }
         ],
       },
       placeholder: '请输入目的地址',
@@ -111,7 +111,7 @@ export default class AddSnet extends React.Component {
       fieldOptions: {
         initialValue: snet.equipment,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属设备' }
+          // { required: true, whitespace: true, message: '请输入所属设备' }
         ],
       },
       placeholder: '请输入所属设备'

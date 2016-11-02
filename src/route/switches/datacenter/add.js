@@ -105,7 +105,7 @@ export default class AddDatacenter extends React.Component {
       fieldOptions: {
         initialValue: datacenter.name,
         rules: [
-          { required: true, whitespace: true, message: '请输入机房名称' }
+          // { required: true, whitespace: true, message: '请输入机房名称' }
         ],
       },
       placeholder: '请输入机房名称'
@@ -115,7 +115,7 @@ export default class AddDatacenter extends React.Component {
       fieldOptions: {
         initialValue: datacenter.short_tag,
         rules: [
-          { required: true, whitespace: true, message: '请输入机房缩写' }
+          // { required: true, whitespace: true, message: '请输入机房缩写' }
         ],
       },
       placeholder: '请输入机房缩写'
@@ -125,7 +125,7 @@ export default class AddDatacenter extends React.Component {
       fieldOptions: {
         initialValue: datacenter.area,
         rules: [
-          { required: true, whitespace: true, message: '请输入区域名称' }
+          // { required: true, whitespace: true, message: '请输入区域名称' }
         ],
       },
       placeholder: '请输入区域名称'
@@ -135,7 +135,7 @@ export default class AddDatacenter extends React.Component {
       fieldOptions: {
         initialValue: datacenter.pro_city,
         rules: [
-          { required: true, whitespace: true, message: '请输入省市' }
+          // { required: true, whitespace: true, message: '请输入省市' }
         ],
       },
       placeholder: '请输入省市'
@@ -145,7 +145,7 @@ export default class AddDatacenter extends React.Component {
       fieldOptions: {
         initialValue: datacenter.detail_addr,
         rules: [
-          { required: true, whitespace: true, message: '请输入详细地址' }
+          // { required: true, whitespace: true, message: '请输入详细地址' }
         ],
       },
       placeholder: '请输入详细地址'
@@ -155,7 +155,7 @@ export default class AddDatacenter extends React.Component {
       fieldOptions: {
         initialValue: datacenter.charge,
         rules: [
-          { required: true, whitespace: true, message: '请输入机房负责人' }
+          // { required: true, whitespace: true, message: '请输入机房负责人' }
         ],
       },
       placeholder: '请输入机房负责人'
@@ -165,7 +165,7 @@ export default class AddDatacenter extends React.Component {
       fieldOptions: {
         initialValue: datacenter.net_charge,
         rules: [
-          { required: true, whitespace: true, message: '请输入网络负责人' }
+          // { required: true, whitespace: true, message: '请输入网络负责人' }
         ],
       },
       placeholder: '请输入网络负责人'
@@ -175,7 +175,7 @@ export default class AddDatacenter extends React.Component {
       fieldOptions: {
         initialValue: datacenter.acc_man,
         rules: [
-          { required: true, whitespace: true, message: '请输入大客户经理' }
+          // { required: true, whitespace: true, message: '请输入大客户经理' }
         ],
       },
       placeholder: '请输入大客户经理'
@@ -185,7 +185,7 @@ export default class AddDatacenter extends React.Component {
       fieldOptions: {
         initialValue: datacenter.acc_man_phone,
         rules: [
-          { required: true, whitespace: true, message: '请输入大客户经理电话' }
+          // { required: true, whitespace: true, message: '请输入大客户经理电话' }
         ],
       },
       placeholder: '请输入大客户经理电话'
@@ -195,7 +195,7 @@ export default class AddDatacenter extends React.Component {
       fieldOptions: {
         initialValue: datacenter.duty_phone,
         rules: [
-          { required: true, whitespace: true, message: '请输入值班电话' }
+          // { required: true, whitespace: true, message: '请输入值班电话' }
         ],
       },
       placeholder: '请输入值班电话'

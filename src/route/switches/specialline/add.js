@@ -81,7 +81,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.supplier,
         rules: [
-          { required: true, whitespace: true, message: '请输入供应商' }
+          // { required: true, whitespace: true, message: '请输入供应商' }
         ],
       },
       placeholder: '请输入供应商'
@@ -91,7 +91,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.short_tag,
         rules: [
-          { required: true, whitespace: true, message: '请输入专线缩写' }
+          // { required: true, whitespace: true, message: '请输入专线缩写' }
         ],
       },
       placeholder: '请输入专线缩写'
@@ -101,7 +101,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.broadband,
         rules: [
-          { required: true, whitespace: true, message: '请输入宽带' }
+          // { required: true, whitespace: true, message: '请输入宽带' }
         ],
       },
       placeholder: '请输入宽带'
@@ -111,7 +111,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.area,
         rules: [
-          { required: true, whitespace: true, message: '请输入区域名称' }
+          // { required: true, whitespace: true, message: '请输入区域名称' }
         ],
       },
       placeholder: '请输入区域名称'
@@ -121,7 +121,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.a_name,
         rules: [
-          { required: true, whitespace: true, message: '请输入甲方名称' }
+          // { required: true, whitespace: true, message: '请输入甲方名称' }
         ],
       },
       placeholder: '请输入甲方名称'
@@ -131,7 +131,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.b_name,
         rules: [
-          { required: true, whitespace: true, message: '请输入乙方名称' }
+          // { required: true, whitespace: true, message: '请输入乙方名称' }
         ],
       },
       placeholder: '请输入乙方名称'
@@ -141,7 +141,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.acc_man,
         rules: [
-          { required: true, whitespace: true, message: '请输入大客户经理' }
+          // { required: true, whitespace: true, message: '请输入大客户经理' }
         ],
       },
       placeholder: '请输入大客户经理'
@@ -151,7 +151,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.acc_man_phone,
         rules: [
-          { required: true, whitespace: true, message: '请输入大客户经理电话' }
+          // { required: true, whitespace: true, message: '请输入大客户经理电话' }
         ],
       },
       placeholder: '请输入大客户经理电话'
@@ -161,7 +161,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.datacenter,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属机房' }
+          // { required: true, whitespace: true, message: '请输入所属机房' }
         ],
       },
       placeholder: '请输入所属机房'
@@ -171,7 +171,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.ext_ip,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' }
+          // { required: true, whitespace: true, message: '请输入公网IP' }
         ],
       },
       placeholder: '请输入公网IP'
@@ -181,7 +181,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.mask,
         rules: [
-          { required: true, whitespace: true, message: '请输入子网掩码' }
+          // { required: true, whitespace: true, message: '请输入子网掩码' }
         ],
       },
       placeholder: '请输入子网掩码'
@@ -191,7 +191,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.gateway,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网网关' }
+          // { required: true, whitespace: true, message: '请输入公网网关' }
         ],
       },
       placeholder: '请输入公网网关'
@@ -201,7 +201,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.is_inter_ip,
         rules: [
-          { required: true, whitespace: true, message: '请输入是否为互联IP' }
+          // { required: true, whitespace: true, message: '请输入是否为互联IP' }
         ],
       },
       placeholder: '请输入是否为互联IP'
@@ -211,7 +211,7 @@ export default class AddSpecialline extends React.Component {
       fieldOptions: {
         initialValue: specialline.gat_net_equipment,
         rules: [
-          { required: true, whitespace: true, message: '请输入网关所在网络设备' }
+          // { required: true, whitespace: true, message: '请输入网关所在网络设备' }
         ],
       },
       placeholder: '请输入网关所在网络设备'

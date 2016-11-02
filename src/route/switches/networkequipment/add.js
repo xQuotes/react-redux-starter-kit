@@ -94,7 +94,7 @@ export default class AddNetworkequipment extends React.Component {
       fieldOptions: {
         initialValue: networkequipment.equ_name,
         rules: [
-          { required: true, whitespace: true, message: '请输入设备名称' }
+          // { required: true, whitespace: true, message: '请输入设备名称' }
         ],
       },
       placeholder: '请输入设备名称'
@@ -104,7 +104,7 @@ export default class AddNetworkequipment extends React.Component {
       fieldOptions: {
         initialValue: networkequipment.equ_ip,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' },
+          // { required: true, whitespace: true, message: '请输入公网IP' },
           { validator: ::this.networkequipmentIpExists },
         ],
       },
@@ -115,7 +115,7 @@ export default class AddNetworkequipment extends React.Component {
       fieldOptions: {
         initialValue: networkequipment.ser_no,
         rules: [
-          { required: true, whitespace: true, message: '请输入SN号' }
+          // { required: true, whitespace: true, message: '请输入SN号' }
         ],
       },
       placeholder: '请输入SN号',
@@ -125,7 +125,7 @@ export default class AddNetworkequipment extends React.Component {
       fieldOptions: {
         initialValue: networkequipment.area,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属区域' }
+          // { required: true, whitespace: true, message: '请输入所属区域' }
         ],
       },
       placeholder: '请输入所属区域'
@@ -135,7 +135,7 @@ export default class AddNetworkequipment extends React.Component {
       fieldOptions: {
         initialValue: networkequipment.datacenter,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属机房' }
+          // { required: true, whitespace: true, message: '请输入所属机房' }
         ],
       },
       placeholder: '请输入所属机房'
@@ -145,7 +145,7 @@ export default class AddNetworkequipment extends React.Component {
       fieldOptions: {
         initialValue: networkequipment.cabinet,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属机柜' }
+          // { required: true, whitespace: true, message: '请输入所属机柜' }
         ],
       },
       placeholder: '请输入所属机柜'
@@ -155,7 +155,7 @@ export default class AddNetworkequipment extends React.Component {
       fieldOptions: {
         initialValue: networkequipment.model,
         rules: [
-          { required: true, whitespace: true, message: '请输入设备型号' }
+          // { required: true, whitespace: true, message: '请输入设备型号' }
         ],
       },
       placeholder: '请输入设备型号'
@@ -165,7 +165,7 @@ export default class AddNetworkequipment extends React.Component {
       fieldOptions: {
         initialValue: networkequipment.brand,
         rules: [
-          { required: true, whitespace: true, message: '请输入设备品牌' }
+          // { required: true, whitespace: true, message: '请输入设备品牌' }
         ],
       },
       placeholder: '请输入设备品牌'
@@ -175,7 +175,7 @@ export default class AddNetworkequipment extends React.Component {
       fieldOptions: {
         initialValue: networkequipment.category,
         rules: [
-          { required: true, whitespace: true, message: '请输入设备类型' }
+          // { required: true, whitespace: true, message: '请输入设备类型' }
         ],
       },
       placeholder: '请输入设备类型'
@@ -185,7 +185,7 @@ export default class AddNetworkequipment extends React.Component {
       fieldOptions: {
         initialValue: networkequipment.cpu_nums,
         rules: [
-          { required: true, whitespace: true, message: '请输入CPU数' }
+          // { required: true, whitespace: true, message: '请输入CPU数' }
         ],
       },
       placeholder: '请输入CPU数'

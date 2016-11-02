@@ -94,7 +94,7 @@ export default class AddDnet extends React.Component {
       fieldOptions: {
         initialValue: dnet.ext_ip,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' },
+          // { required: true, whitespace: true, message: '请输入公网IP' },
           { validator: ::this.dnetIpExists },
         ],
       },
@@ -105,7 +105,7 @@ export default class AddDnet extends React.Component {
       fieldOptions: {
         initialValue: dnet.ext_port,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网端口' },
+          // { required: true, whitespace: true, message: '请输入公网端口' },
           { validator: ::this.dnetPortExists },
         ],
       },
@@ -116,7 +116,7 @@ export default class AddDnet extends React.Component {
       fieldOptions: {
         initialValue: dnet.int_ip,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网IP' },
+          // { required: true, whitespace: true, message: '请输入内网IP' },
           { validator: ::this.dnetIpExists },
         ],
       },
@@ -127,7 +127,7 @@ export default class AddDnet extends React.Component {
       fieldOptions: {
         initialValue: dnet.int_port,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网端口' },
+          // { required: true, whitespace: true, message: '请输入内网端口' },
           { validator: ::this.dnetPortExists },
         ],
       },
@@ -138,7 +138,7 @@ export default class AddDnet extends React.Component {
       fieldOptions: {
         initialValue: dnet.applicant,
         rules: [
-          { required: true, whitespace: true, message: '请输入申请人' }
+          // { required: true, whitespace: true, message: '请输入申请人' }
         ],
       },
       placeholder: '请输入申请人'
@@ -148,7 +148,7 @@ export default class AddDnet extends React.Component {
       fieldOptions: {
         initialValue: dnet.equipment,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属设备' }
+          // { required: true, whitespace: true, message: '请输入所属设备' }
         ],
       },
       placeholder: '请输入所属设备'

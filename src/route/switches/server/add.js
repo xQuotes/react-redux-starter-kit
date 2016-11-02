@@ -81,7 +81,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.ser_no,
         rules: [
-          { required: true, whitespace: true, message: '请输入SN号' }
+          // { required: true, whitespace: true, message: '请输入SN号' }
         ],
       },
       placeholder: '请输入SN号'
@@ -91,7 +91,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.hostname,
         rules: [
-          { required: true, whitespace: true, message: '请输入主机名' },
+          // { required: true, whitespace: true, message: '请输入主机名' },
         ],
       },
       placeholder: '请输入主机名'
@@ -101,7 +101,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.ext_ip,
         rules: [
-          { required: true, whitespace: true, message: '请输入公网IP' },
+          // { required: true, whitespace: true, message: '请输入公网IP' },
         ],
       },
       placeholder: '请输入公网IP'
@@ -111,7 +111,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.int_ip,
         rules: [
-          { required: true, whitespace: true, message: '请输入内网IP' },
+          // { required: true, whitespace: true, message: '请输入内网IP' },
         ],
       },
       placeholder: '如：192.168.1.1'
@@ -121,7 +121,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.man_card_ip,
         rules: [
-          { required: true, whitespace: true, message: '请输入管理卡IP' },
+          // { required: true, whitespace: true, message: '请输入管理卡IP' },
         ],
       },
       placeholder: '请输入管理卡IP'
@@ -131,7 +131,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.brand,
         rules: [
-          { required: true, whitespace: true, message: '请输入服务器品牌' },
+          // { required: true, whitespace: true, message: '请输入服务器品牌' },
         ],
       },
       placeholder: '请输入服务器品牌'
@@ -141,7 +141,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.category,
         rules: [
-          { required: true, whitespace: true, message: '请输入服务器类型' },
+          // { required: true, whitespace: true, message: '请输入服务器类型' },
         ],
       },
       placeholder: '请输入服务器类型'
@@ -151,7 +151,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.datacenter,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属机房' },
+          // { required: true, whitespace: true, message: '请输入所属机房' },
         ],
       },
       placeholder: '请输入所属机房'
@@ -161,7 +161,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.area,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属区域' },
+          // { required: true, whitespace: true, message: '请输入所属区域' },
         ],
       },
       placeholder: '请输入所属区域'
@@ -171,7 +171,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.cabinet,
         rules: [
-          { required: true, whitespace: true, message: '请输入所属机柜' },
+          // { required: true, whitespace: true, message: '请输入所属机柜' },
         ],
       },
       placeholder: '请输入所属机柜'
@@ -181,7 +181,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.u_loc,
         rules: [
-          { required: true, whitespace: true, message: '请输入U位' },
+          // { required: true, whitespace: true, message: '请输入U位' },
         ],
       },
       placeholder: '请输入U位'
@@ -191,7 +191,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.acc_man,
         rules: [
-          { required: true, whitespace: true, message: '请输入大客户经理' },
+          // { required: true, whitespace: true, message: '请输入大客户经理' },
         ],
       },
       placeholder: '请输入大客户经理'
@@ -201,7 +201,7 @@ export default class AddServer extends React.Component {
       fieldOptions: {
         initialValue: server.fix_phone,
         rules: [
-          { required: true, whitespace: true, message: '请输入保修电话' },
+          // { required: true, whitespace: true, message: '请输入保修电话' },
         ],
       },
       placeholder: '请输入保修电话'

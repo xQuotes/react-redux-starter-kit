@@ -94,7 +94,7 @@ export default class Add/*File_append*/ extends React.Component {
         fieldOptions: {
           initialValue: /*file_append*/.hostname,
           rules: [
-            { required: true, whitespace: true, message: '请输入主机名' }
+            // { required: true, whitespace: true, message: '请输入主机名' }
           ],
         },
         placeholder: '请输入主机名'
@@ -104,7 +104,7 @@ export default class Add/*File_append*/ extends React.Component {
         fieldOptions: {
           initialValue: /*file_append*/.ext_ip,
           rules: [
-            { required: true, whitespace: true, message: '请输入公网IP' },
+            // { required: true, whitespace: true, message: '请输入公网IP' },
             { validator: ::this./*file_append*/IpExists },
           ],
         },
@@ -115,7 +115,7 @@ export default class Add/*File_append*/ extends React.Component {
         fieldOptions: {
           initialValue: /*file_append*/.ext_port,
           rules: [
-            { required: true, whitespace: true, message: '请输入公网端口' },
+            // { required: true, whitespace: true, message: '请输入公网端口' },
             { validator: ::this./*file_append*/PortExists },
           ],
         },
@@ -126,7 +126,7 @@ export default class Add/*File_append*/ extends React.Component {
         fieldOptions: {
           initialValue: /*file_append*/.int_ip,
           rules: [
-            { required: true, whitespace: true, message: '请输入内网IP' },
+            // { required: true, whitespace: true, message: '请输入内网IP' },
             { validator: ::this./*file_append*/IpExists },
           ],
         },
@@ -137,7 +137,7 @@ export default class Add/*File_append*/ extends React.Component {
         fieldOptions: {
           initialValue: /*file_append*/.int_port,
           rules: [
-            { required: true, whitespace: true, message: '请输入内网端口' },
+            // { required: true, whitespace: true, message: '请输入内网端口' },
             { validator: ::this./*file_append*/PortExists },
           ],
         },

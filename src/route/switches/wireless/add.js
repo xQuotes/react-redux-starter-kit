@@ -81,7 +81,7 @@ export default class AddWireless extends React.Component {
       fieldOptions: {
         initialValue: wireless.signal,
         rules: [
-          { required: true, whitespace: true, message: '请输入无线信号' }
+          // { required: true, whitespace: true, message: '请输入无线信号' }
         ],
       },
       placeholder: '请输入无线信号'
@@ -91,7 +91,7 @@ export default class AddWireless extends React.Component {
       fieldOptions: {
         initialValue: wireless.auth_mode,
         rules: [
-          { required: true, whitespace: true, message: '请输入认证方式' }
+          // { required: true, whitespace: true, message: '请输入认证方式' }
         ],
       },
       placeholder: '请输入认证方式'
@@ -101,7 +101,7 @@ export default class AddWireless extends React.Component {
       fieldOptions: {
         initialValue: wireless.password,
         rules: [
-          { required: true, whitespace: true, message: '请输入密码' }
+          // { required: true, whitespace: true, message: '请输入密码' }
         ],
       },
       placeholder: '请输入密码'
@@ -111,7 +111,7 @@ export default class AddWireless extends React.Component {
       fieldOptions: {
         initialValue: wireless.sec_plo,
         rules: [
-          { required: true, whitespace: true, message: '请输入安全策略' }
+          // { required: true, whitespace: true, message: '请输入安全策略' }
         ],
       },
       placeholder: '请输入安全策略'
@@ -121,7 +121,7 @@ export default class AddWireless extends React.Component {
       fieldOptions: {
         initialValue: wireless.broadband,
         rules: [
-          { required: true, whitespace: true, message: '请输入限速宽带' }
+          // { required: true, whitespace: true, message: '请输入限速宽带' }
         ],
       },
       placeholder: '请输入限速宽带'
@@ -131,7 +131,7 @@ export default class AddWireless extends React.Component {
       fieldOptions: {
         initialValue: wireless.equipment,
         rules: [
-          { required: true, whitespace: true, message: '请输入所在设备' }
+          // { required: true, whitespace: true, message: '请输入所在设备' }
         ],
       },
       placeholder: '请输入所在设备'
@@ -141,7 +141,7 @@ export default class AddWireless extends React.Component {
       fieldOptions: {
         initialValue: wireless.is_hidden,
         rules: [
-          { required: true, whitespace: true, message: '请输入是否隐藏' }
+          // { required: true, whitespace: true, message: '请输入是否隐藏' }
         ],
       },
       placeholder: '请输入是否隐藏'

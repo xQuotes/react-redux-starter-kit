@@ -81,7 +81,7 @@ export default class AddVpn extends React.Component {
       fieldOptions: {
         initialValue: vpn.a_datacenter,
         rules: [
-          { required: true, whitespace: true, message: '请输入A端机房' }
+          // { required: true, whitespace: true, message: '请输入A端机房' }
         ],
       },
       placeholder: '请输入A端机房'
@@ -91,7 +91,7 @@ export default class AddVpn extends React.Component {
       fieldOptions: {
         initialValue: vpn.b_datacenter,
         rules: [
-          { required: true, whitespace: true, message: '请输入B端机房' }
+          // { required: true, whitespace: true, message: '请输入B端机房' }
         ],
       },
       placeholder: '请输入B端机房'
@@ -101,7 +101,7 @@ export default class AddVpn extends React.Component {
       fieldOptions: {
         initialValue: vpn.vpn_type,
         rules: [
-          { required: true, whitespace: true, message: '请输入vpn类型' }
+          // { required: true, whitespace: true, message: '请输入vpn类型' }
         ],
       },
       placeholder: '请输入vpn类型'
@@ -111,7 +111,7 @@ export default class AddVpn extends React.Component {
       fieldOptions: {
         initialValue: vpn.a_intet_addr,
         rules: [
-          { required: true, whitespace: true, message: '请输入A端互联地址' }
+          // { required: true, whitespace: true, message: '请输入A端互联地址' }
         ],
       },
       placeholder: '请输入A端互联地址'
@@ -121,7 +121,7 @@ export default class AddVpn extends React.Component {
       fieldOptions: {
         initialValue: vpn.b_intet_addr,
         rules: [
-          { required: true, whitespace: true, message: '请输入B端互联地址' }
+          // { required: true, whitespace: true, message: '请输入B端互联地址' }
         ],
       },
       placeholder: '请输入B端互联地址'

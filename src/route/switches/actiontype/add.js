@@ -71,7 +71,7 @@ export default class AddActiontype extends React.Component {
       fieldOptions: {
         initialValue: actiontype.type,
         rules: [
-          { required: true, whitespace: true, message: '请输入操作类型' }
+          // { required: true, whitespace: true, message: '请输入操作类型' }
         ],
       },
       placeholder: '请输入操作类型'
@@ -88,7 +88,7 @@ export default class AddActiontype extends React.Component {
       fieldOptions: {
         initialValue: !actiontype.status ? '0' : actiontype.status+'',
         rules: [
-          { required: true, whitespace: true, message: '请选择状态' }
+          // { required: true, whitespace: true, message: '请选择状态' }
         ],
       },
       placeholder: '请选择状态'
