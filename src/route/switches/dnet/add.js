@@ -81,6 +81,8 @@ export default class AddDnet extends React.Component {
     const paramsData = dnetStore.params
     const dnet = dnetStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',

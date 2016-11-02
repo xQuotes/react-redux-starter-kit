@@ -114,7 +114,7 @@ export default class Networksecs extends React.Component {
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}
             dataSource={dataList}
-            store={mappingStore}/>
+            store={networksecStore}/>
         </div>
         <AddNetworksecModal />
       </div>

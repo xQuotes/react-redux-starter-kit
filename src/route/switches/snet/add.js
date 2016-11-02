@@ -68,6 +68,8 @@ export default class AddSnet extends React.Component {
     const paramsData = snetStore.params
     const snet = snetStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',

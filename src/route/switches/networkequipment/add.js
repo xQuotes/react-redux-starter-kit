@@ -81,6 +81,8 @@ export default class AddNetworkequipment extends React.Component {
     const paramsData = networkequipmentStore.params
     const networkequipment = networkequipmentStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',

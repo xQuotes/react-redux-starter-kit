@@ -92,6 +92,8 @@ export default class AddNetworksub extends React.Component {
     const paramsData = networksubStore.params
     const networksub = networksubStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',

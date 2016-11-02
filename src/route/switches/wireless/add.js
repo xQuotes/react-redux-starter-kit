@@ -68,6 +68,8 @@ export default class AddWireless extends React.Component {
     const paramsData = wirelessStore.params
     const wireless = wirelessStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',

@@ -68,6 +68,8 @@ export default class AddSpecialline extends React.Component {
     const paramsData = speciallineStore.params
     const specialline = speciallineStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',

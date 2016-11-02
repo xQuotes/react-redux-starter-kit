@@ -68,6 +68,8 @@ export default class AddServer extends React.Component {
     const paramsData = serverStore.params
     const server = serverStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',

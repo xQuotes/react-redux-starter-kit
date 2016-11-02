@@ -92,6 +92,8 @@ export default class AddDatacenter extends React.Component {
     const paramsData = datacenterStore.params
     const datacenter = datacenterStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',

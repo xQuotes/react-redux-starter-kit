@@ -70,6 +70,8 @@ export default class AddNetworksec extends React.Component {
     const paramsData = networksecStore.params
     const networksec = networksecStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',

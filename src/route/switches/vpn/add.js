@@ -68,6 +68,8 @@ export default class AddVpn extends React.Component {
     const paramsData = vpnStore.params
     const vpn = vpnStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     var formDataTitileServer = [{
       type: 'hidden',
       name: 'id',

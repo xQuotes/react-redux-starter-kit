@@ -114,7 +114,7 @@ export default class Datacenters extends React.Component {
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}
             dataSource={dataList}
-            store={mappingStore}/>
+            store={datacenterStore}/>
         </div>
         <AddDatacenterModal />
       </div>

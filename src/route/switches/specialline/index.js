@@ -114,7 +114,7 @@ export default class Speciallines extends React.Component {
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}
             dataSource={dataList}
-            store={mappingStore}/>
+            store={speciallineStore}/>
         </div>
         <AddSpeciallineModal />
       </div>
