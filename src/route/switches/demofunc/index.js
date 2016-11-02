@@ -17,7 +17,7 @@ import Url from 'Url'
 import Api from 'Api'
 
 import SearchTable from './search'
-import DataTable from '../../components/table'
+import DataTable from '../../components/updateAllTable'
 import Add/*File_append*/Modal from './add'
 import UploadBtn from '../../components/uploadBtn'
 import DownloadBtn from '../../components/downloadBtn'
