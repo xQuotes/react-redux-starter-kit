@@ -29,6 +29,26 @@ export default class VlanStore {
     })
   }
 
+  @action putServers(formData) {
+    this.isLoading = true
+    Fetch({
+      url: Api.putMappings,
+      data: JSON.stringify({
+        conditions: formData,
+        params: {}
+      }),
+      method: 'post',
+      success: (data) => {
+        this.isLoading = false
+        let index = this.list.getIndexById(data.id)
+        this.list[index] = data
+      },
+      error: (data) => {
+        this.isLoading = false
+      }
+    })
+  }
+
   @action setSearchDatas(formData) {
     this.searchDatas = formData
   }
