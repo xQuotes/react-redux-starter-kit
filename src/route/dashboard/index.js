@@ -108,7 +108,14 @@ export default class Dashboard extends React.Component {
                 </Link>
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" title={<span><Icon type="bars"/>常用信息</span>}>
+            <SubMenu key="sub2" title={<span><Icon type="bars"/>基础信息</span>}>
+              <Menu.Item key={`${Url.switchesBrands}`}>
+                <Link to={`${Url.switchesBrands}`}>
+                  <Icon type="appstore-o"/>品牌客户
+                </Link>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub3" title={<span><Icon type="bars"/>常用信息</span>}>
               <Menu.Item key={`${Url.switchesMappings}`}>
                 <Link to={`${Url.switchesMappings}`}>
                   <Icon type="appstore-o"/>映射信息
@@ -166,7 +173,7 @@ export default class Dashboard extends React.Component {
                 </Link>
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="sub3" title={<span><Icon type="bars"/>配置管理</span>}>
+            <SubMenu key="sub4" title={<span><Icon type="bars"/>配置管理</span>}>
               <Menu.Item key={`${Url.switchesNetworks}`}>
                 <Link to={`${Url.switchesNetworks}`}>
                   <Icon type="appstore-o"/>网段管理
