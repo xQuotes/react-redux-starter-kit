@@ -86,7 +86,7 @@ export default class AddNetworkequipment extends React.Component {
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: networkequipment.id
+        initialValue: paramsData.actionType == 'clone' ? undefined : networkequipment.id
       }
     }, {
       name: 'equ_name',

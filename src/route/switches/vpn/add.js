@@ -73,7 +73,7 @@ export default class AddVpn extends React.Component {
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: vpn.id
+        initialValue: paramsData.actionType == 'clone' ? undefined : vpn.id
       }
     }, {
       name: 'a_datacenter',

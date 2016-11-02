@@ -86,7 +86,7 @@ export default class AddDnet extends React.Component {
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: dnet.id
+        initialValue: paramsData.actionType == 'clone' ? undefined : dnet.id
       }
     }, {
       name: 'ext_ip',

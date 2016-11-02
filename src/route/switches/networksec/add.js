@@ -75,7 +75,7 @@ export default class AddNetworksec extends React.Component {
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: networksec.id
+        initialValue: paramsData.actionType == 'clone' ? undefined : networksec.id
       }
     }, {
       name: 'acl_no',

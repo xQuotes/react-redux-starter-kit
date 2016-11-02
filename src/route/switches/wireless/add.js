@@ -73,7 +73,7 @@ export default class AddWireless extends React.Component {
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: wireless.id
+        initialValue: paramsData.actionType == 'clone' ? undefined : wireless.id
       }
     }, {
       name: 'signal',

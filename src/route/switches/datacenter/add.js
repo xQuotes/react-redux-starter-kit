@@ -97,7 +97,7 @@ export default class AddDatacenter extends React.Component {
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: datacenter.id
+        initialValue: paramsData.actionType == 'clone' ? undefined : datacenter.id
       }
     }, {
       name: 'name',

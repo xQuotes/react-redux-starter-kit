@@ -73,7 +73,7 @@ export default class AddSpecialline extends React.Component {
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: specialline.id
+        initialValue: paramsData.actionType == 'clone' ? undefined : specialline.id
       }
     }, {
       name: 'supplier',

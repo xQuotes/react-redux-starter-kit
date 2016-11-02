@@ -73,7 +73,7 @@ export default class AddSnet extends React.Component {
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: snet.id
+        initialValue: paramsData.actionType == 'clone' ? undefined : snet.id
       }
     }, {
       name: 'sou_addr',

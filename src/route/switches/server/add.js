@@ -73,7 +73,7 @@ export default class AddServer extends React.Component {
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: server.id
+        initialValue: paramsData.actionType == 'clone' ? undefined : server.id
       }
     }, {
       name: 'ser_no',

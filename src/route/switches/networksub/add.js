@@ -97,7 +97,7 @@ export default class AddNetworksub extends React.Component {
       name: 'id',
       label: 'id',
       fieldOptions: {
-        initialValue: networksub.id
+        initialValue: paramsData.actionType == 'clone' ? undefined : networksub.id
       }
     }, {
       name: 'vlan',
