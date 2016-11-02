@@ -56,7 +56,12 @@ export default class Dnets extends React.Component {
   render() {
     const that = this
     const {dnetStore} = this.props
-    let dataList = dnetStore.toJS()
+    let dataList = _.map(dnetStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = dnetStore.fields
     let searchFields = dnetStore.searchFields
 

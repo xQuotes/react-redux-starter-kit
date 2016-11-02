@@ -56,7 +56,12 @@ export default class Networksubs extends React.Component {
   render() {
     const that = this
     const {networksubStore} = this.props
-    let dataList = networksubStore.toJS()
+    let dataList = _.map(networksubStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = networksubStore.fields
     let searchFields = networksubStore.searchFields
 

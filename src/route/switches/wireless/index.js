@@ -56,7 +56,12 @@ export default class Wirelesss extends React.Component {
   render() {
     const that = this
     const {wirelessStore} = this.props
-    let dataList = wirelessStore.toJS()
+    let dataList = _.map(wirelessStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = wirelessStore.fields
     let searchFields = wirelessStore.searchFields
 

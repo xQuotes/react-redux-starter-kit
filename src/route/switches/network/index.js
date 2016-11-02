@@ -63,7 +63,12 @@ export default class Networks extends React.Component {
   render() {
     const that = this
     const {networkStore, actiontypeStore} = this.props
-    let dataList = networkStore.toJS()
+    let dataList = _.map(networkStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = networkStore.fields
     fields = {
       id: "ID",

@@ -56,7 +56,12 @@ export default class Networkequipments extends React.Component {
   render() {
     const that = this
     const {networkequipmentStore} = this.props
-    let dataList = networkequipmentStore.toJS()
+    let dataList = _.map(networkequipmentStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = networkequipmentStore.fields
     let searchFields = networkequipmentStore.searchFields
 

@@ -56,7 +56,12 @@ export default class Speciallines extends React.Component {
   render() {
     const that = this
     const {speciallineStore} = this.props
-    let dataList = speciallineStore.toJS()
+    let dataList = _.map(speciallineStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = speciallineStore.fields
     let searchFields = speciallineStore.searchFields
 

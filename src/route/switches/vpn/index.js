@@ -56,7 +56,12 @@ export default class Vpns extends React.Component {
   render() {
     const that = this
     const {vpnStore} = this.props
-    let dataList = vpnStore.toJS()
+    let dataList = _.map(vpnStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = vpnStore.fields
     let searchFields = vpnStore.searchFields
 

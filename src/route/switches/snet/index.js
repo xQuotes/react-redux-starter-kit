@@ -56,7 +56,12 @@ export default class Snets extends React.Component {
   render() {
     const that = this
     const {snetStore} = this.props
-    let dataList = snetStore.toJS()
+    let dataList = _.map(snetStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = snetStore.fields
     let searchFields = snetStore.searchFields
 

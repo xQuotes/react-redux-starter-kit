@@ -56,7 +56,12 @@ export default class Servers extends React.Component {
   render() {
     const that = this
     const {serverStore} = this.props
-    let dataList = serverStore.toJS()
+    let dataList = _.map(serverStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = serverStore.fields
     let searchFields = serverStore.searchFields
 

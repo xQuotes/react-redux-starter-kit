@@ -56,7 +56,12 @@ export default class Networksecs extends React.Component {
   render() {
     const that = this
     const {networksecStore} = this.props
-    let dataList = networksecStore.toJS()
+    let dataList = _.map(networksecStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = networksecStore.fields
     let searchFields = networksecStore.searchFields
 

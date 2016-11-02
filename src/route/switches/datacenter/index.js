@@ -56,7 +56,12 @@ export default class Datacenters extends React.Component {
   render() {
     const that = this
     const {datacenterStore} = this.props
-    let dataList = datacenterStore.toJS()
+    let dataList = _.map(datacenterStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = datacenterStore.fields
     let searchFields = datacenterStore.searchFields
 
