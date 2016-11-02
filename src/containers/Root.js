@@ -32,10 +32,10 @@ export default class Root extends React.Component {
     super(props)
 
     // 判断是否登录
-    // Auth.checkAuthCookie('UserIfosSession')
+    Auth.checkAuthCookie('UserIfosSession')
   }
   componentDidMount() {
-    // this.props.userStore.getMeServer()
+    this.props.userStore.getMeServer()
   }
   render() {
     return(
