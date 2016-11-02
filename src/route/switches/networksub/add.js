@@ -1,4 +1,7 @@
 import {
+  toJS
+} from 'mobx'
+import {
   inject, observer
 } from 'mobx-react'
 import {
@@ -66,8 +69,17 @@ export default class AddNetworksub extends React.Component {
 
       form.resetFields()
       this.hideModal()
-      
-      values.id ? networksubStore.putServer(data) : networksubStore.postServer(data)
+
+      if(!_.isEmpty(toJS(networksubStore.params.ids))) {
+        networksubStore.putServers({
+          ids: toJS(networksubStore.params.ids),
+          data: _.pickBy(values)
+        })
+      } else if(values.id) {
+        networksubStore.putServer(data)
+      } else {
+        networksubStore.postServer(data)
+      }
     })
   }
   hideModal() {

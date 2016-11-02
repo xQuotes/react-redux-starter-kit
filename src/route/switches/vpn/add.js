@@ -1,4 +1,7 @@
 import {
+  toJS
+} from 'mobx'
+import {
   inject, observer
 } from 'mobx-react'
 import {
@@ -42,8 +45,17 @@ export default class AddVpn extends React.Component {
 
       form.resetFields()
       this.hideModal()
-      
-      values.id ? vpnStore.putServer(data) : vpnStore.postServer(data)
+
+      if(!_.isEmpty(toJS(vpnStore.params.ids))) {
+        vpnStore.putServers({
+          ids: toJS(vpnStore.params.ids),
+          data: _.pickBy(values)
+        })
+      } else if(values.id) {
+        vpnStore.putServer(data)
+      } else {
+        vpnStore.postServer(data)
+      }
     })
   }
   hideModal() {

@@ -1,4 +1,7 @@
 import {
+  toJS
+} from 'mobx'
+import {
   inject, observer
 } from 'mobx-react'
 import {
@@ -44,8 +47,17 @@ export default class AddNetworksec extends React.Component {
 
       form.resetFields()
       this.hideModal()
-      
-      values.id ? networksecStore.putServer(data) : networksecStore.postServer(data)
+
+      if(!_.isEmpty(toJS(networksecStore.params.ids))) {
+        networksecStore.putServers({
+          ids: toJS(networksecStore.params.ids),
+          data: _.pickBy(values)
+        })
+      } else if(values.id) {
+        networksecStore.putServer(data)
+      } else {
+        networksecStore.postServer(data)
+      }
     })
   }
   hideModal() {

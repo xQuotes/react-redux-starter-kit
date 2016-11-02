@@ -1,4 +1,7 @@
 import {
+  toJS
+} from 'mobx'
+import {
   inject, observer
 } from 'mobx-react'
 import {
@@ -42,8 +45,17 @@ export default class AddSpecialline extends React.Component {
 
       form.resetFields()
       this.hideModal()
-      
-      values.id ? speciallineStore.putServer(data) : speciallineStore.postServer(data)
+
+      if(!_.isEmpty(toJS(speciallineStore.params.ids))) {
+        speciallineStore.putServers({
+          ids: toJS(speciallineStore.params.ids),
+          data: _.pickBy(values)
+        })
+      } else if(values.id) {
+        speciallineStore.putServer(data)
+      } else {
+        speciallineStore.postServer(data)
+      }
     })
   }
   hideModal() {

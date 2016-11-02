@@ -1,4 +1,7 @@
 import {
+  toJS
+} from 'mobx'
+import {
   inject, observer
 } from 'mobx-react'
 import {
@@ -42,8 +45,17 @@ export default class AddServer extends React.Component {
 
       form.resetFields()
       this.hideModal()
-      
-      values.id ? serverStore.putServer(data) : serverStore.postServer(data)
+
+      if(!_.isEmpty(toJS(serverStore.params.ids))) {
+        serverStore.putServers({
+          ids: toJS(serverStore.params.ids),
+          data: _.pickBy(values)
+        })
+      } else if(values.id) {
+        serverStore.putServer(data)
+      } else {
+        serverStore.postServer(data)
+      }
     })
   }
   hideModal() {

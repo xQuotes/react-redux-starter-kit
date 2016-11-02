@@ -1,4 +1,7 @@
 import {
+  toJS
+} from 'mobx'
+import {
   inject, observer
 } from 'mobx-react'
 import {
@@ -55,8 +58,17 @@ export default class AddDnet extends React.Component {
 
       form.resetFields()
       this.hideModal()
-      
-      values.id ? dnetStore.putServer(data) : dnetStore.postServer(data)
+
+      if(!_.isEmpty(toJS(dnetStore.params.ids))) {
+        dnetStore.putServers({
+          ids: toJS(dnetStore.params.ids),
+          data: _.pickBy(values)
+        })
+      } else if(values.id) {
+        dnetStore.putServer(data)
+      } else {
+        dnetStore.postServer(data)
+      }
     })
   }
   hideModal() {

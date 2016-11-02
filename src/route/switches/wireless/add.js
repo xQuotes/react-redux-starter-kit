@@ -1,4 +1,7 @@
 import {
+  toJS
+} from 'mobx'
+import {
   inject, observer
 } from 'mobx-react'
 import {
@@ -42,8 +45,17 @@ export default class AddWireless extends React.Component {
 
       form.resetFields()
       this.hideModal()
-      
-      values.id ? wirelessStore.putServer(data) : wirelessStore.postServer(data)
+
+      if(!_.isEmpty(toJS(wirelessStore.params.ids))) {
+        wirelessStore.putServers({
+          ids: toJS(wirelessStore.params.ids),
+          data: _.pickBy(values)
+        })
+      } else if(values.id) {
+        wirelessStore.putServer(data)
+      } else {
+        wirelessStore.postServer(data)
+      }
     })
   }
   hideModal() {

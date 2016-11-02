@@ -1,4 +1,7 @@
 import {
+  toJS
+} from 'mobx'
+import {
   inject, observer
 } from 'mobx-react'
 import {
@@ -66,8 +69,17 @@ export default class AddDatacenter extends React.Component {
 
       form.resetFields()
       this.hideModal()
-      
-      values.id ? datacenterStore.putServer(data) : datacenterStore.postServer(data)
+
+      if(!_.isEmpty(toJS(datacenterStore.params.ids))) {
+        datacenterStore.putServers({
+          ids: toJS(datacenterStore.params.ids),
+          data: _.pickBy(values)
+        })
+      } else if(values.id) {
+        datacenterStore.putServer(data)
+      } else {
+        datacenterStore.postServer(data)
+      }
     })
   }
   hideModal() {

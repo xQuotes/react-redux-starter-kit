@@ -1,4 +1,7 @@
 import {
+  toJS
+} from 'mobx'
+import {
   inject, observer
 } from 'mobx-react'
 import {
@@ -42,8 +45,17 @@ export default class AddSnet extends React.Component {
 
       form.resetFields()
       this.hideModal()
-      
-      values.id ? snetStore.putServer(data) : snetStore.postServer(data)
+
+      if(!_.isEmpty(toJS(snetStore.params.ids))) {
+        snetStore.putServers({
+          ids: toJS(snetStore.params.ids),
+          data: _.pickBy(values)
+        })
+      } else if(values.id) {
+        snetStore.putServer(data)
+      } else {
+        snetStore.postServer(data)
+      }
     })
   }
   hideModal() {
