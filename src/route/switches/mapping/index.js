@@ -17,7 +17,7 @@ import Url from 'Url'
 import Api from 'Api'
 
 import SearchTable from './search'
-import DataTable from '../../components/table'
+import DataTable from '../../components/updateAllTable'
 import AddMappingModal from './add'
 import UploadBtn from '../../components/uploadBtn'
 import DownloadBtn from '../../components/downloadBtn'
@@ -56,7 +56,12 @@ export default class Mappings extends React.Component {
   render() {
     const that = this
     const {mappingStore} = this.props
-    let dataList = mappingStore.toJS()
+    let dataList = _.map(mappingStore.toJS(), (v, k)=> {
+      return {
+        key: v.id,
+        ...v
+      }
+    })
     let fields = mappingStore.fields
     let searchFields = mappingStore.searchFields
 
@@ -82,6 +87,10 @@ export default class Mappings extends React.Component {
             <a href="#" onClick={that.updateMapping.bind(this,{
               id: record.id
             })}>修改</a>　
+            <Button type="dashed" onClick={that.updateMapping.bind(this,{
+              id: record.id,
+              actionType: 'clone'
+            })}>克隆</Button>　
             <Popconfirm title="确定要删除这个操作类型吗？" onConfirm={that.handleDeleteConfirm.bind(this, {
               id: record.id
             })}>
@@ -108,7 +117,8 @@ export default class Mappings extends React.Component {
         </div>
         <div className={classNames({"tables": true})}>
           <DataTable columns={columns}
-            dataSource={dataList}/>
+            dataSource={dataList}
+            store={mappingStore}/>
         </div>
         <AddMappingModal />
       </div>

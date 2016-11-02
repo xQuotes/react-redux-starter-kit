@@ -30,6 +30,7 @@ const Api = {
   getMapping: `${url}/sw_config_mapping/getInfo`,
   deleteMapping: `${url}/sw_config_mapping/deleteInfo`,
   putMapping: `${url}/sw_config_mapping/updateInfo`,
+  putMappings: `${url}/sw_config_mapping/updateList`,
 
   postServer: `${url}/sw_config_server/addInfo`,
   getServers: `${url}/sw_config_server/getList`,

@@ -1,4 +1,7 @@
 import {
+  toJS
+} from 'mobx'
+import {
   inject, observer
 } from 'mobx-react'
 import {
@@ -66,8 +69,17 @@ export default class AddMapping extends React.Component {
 
       form.resetFields()
       this.hideModal()
-      
-      values.id ? mappingStore.putServer(data) : mappingStore.postServer(data)
+
+      if(!_.isEmpty(toJS(mappingStore.params.ids))) {
+        mappingStore.putServers({
+          ids: toJS(mappingStore.params.ids),
+          data: _.pickBy(values)
+        })
+      } else if(values.id) {
+        mappingStore.putServer(data)
+      } else {
+        mappingStore.postServer(data)
+      }
     })
   }
   hideModal() {
@@ -80,13 +92,15 @@ export default class AddMapping extends React.Component {
     const paramsData = mappingStore.params
     const mapping = mappingStore.list.getById(paramsData.id) || {}
 
+    const ids = toJS(paramsData.ids) || []
+
     let formDataTitileServer = [
       {
         type: 'hidden',
         name: 'id',
         label: 'id',
         fieldOptions: {
-          initialValue: mapping.id
+          initialValue: paramsData.actionType == 'clone' ? undefined : mapping.id
         }
       }, {
         name: 'hostname',
@@ -94,7 +108,7 @@ export default class AddMapping extends React.Component {
         fieldOptions: {
           initialValue: mapping.hostname,
           rules: [
-            { required: true, whitespace: true, message: '请输入主机名' }
+            // { required: true, whitespace: true, message: '请输入主机名' }
           ],
         },
         placeholder: '请输入主机名'
@@ -104,7 +118,7 @@ export default class AddMapping extends React.Component {
         fieldOptions: {
           initialValue: mapping.ext_ip,
           rules: [
-            { required: true, whitespace: true, message: '请输入公网IP' },
+            // { required: true, whitespace: true, message: '请输入公网IP' },
             { validator: ::this.mappingIpExists },
           ],
         },
@@ -115,7 +129,7 @@ export default class AddMapping extends React.Component {
         fieldOptions: {
           initialValue: mapping.ext_port,
           rules: [
-            { required: true, whitespace: true, message: '请输入公网端口' },
+            // { required: true, whitespace: true, message: '请输入公网端口' },
             { validator: ::this.mappingPortExists },
           ],
         },
@@ -126,7 +140,7 @@ export default class AddMapping extends React.Component {
         fieldOptions: {
           initialValue: mapping.int_ip,
           rules: [
-            { required: true, whitespace: true, message: '请输入内网IP' },
+            // { required: true, whitespace: true, message: '请输入内网IP' },
             { validator: ::this.mappingIpExists },
           ],
         },
@@ -137,7 +151,7 @@ export default class AddMapping extends React.Component {
         fieldOptions: {
           initialValue: mapping.int_port,
           rules: [
-            { required: true, whitespace: true, message: '请输入内网端口' },
+            // { required: true, whitespace: true, message: '请输入内网端口' },
             { validator: ::this.mappingPortExists },
           ],
         },
@@ -161,6 +175,10 @@ export default class AddMapping extends React.Component {
           visible={mappingStore.visible}
           onCancel={::this.hideModal}
           onOk={::this.handleSubmit}>
+        {!_.isEmpty(ids) && <div className="update-ids">
+          批量修改的对象 ID 为：<span className="ids-span">{ids.join(',  ')}</span>，<br/>
+          请修改对应的字段，不填写字段为不修改字段。
+        </div>}
         <Form horizontal>
           <ModalForm form={form}
             store={mappingStore}
