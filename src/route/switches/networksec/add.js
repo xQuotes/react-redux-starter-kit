@@ -131,6 +131,10 @@ export default class AddNetworksec extends React.Component {
           visible={networksecStore.visible}
           onCancel={::this.hideModal}
           onOk={::this.handleSubmit}>
+        {!_.isEmpty(ids) && <div className="update-ids">
+          批量修改的对象 ID 为：<span className="ids-span">{ids.join(',  ')}</span>，<br/>
+          请修改对应的字段，不填写字段为不修改字段。
+        </div>}
         <Form horizontal>
           <ModalForm form={form}
             store={networksecStore}
