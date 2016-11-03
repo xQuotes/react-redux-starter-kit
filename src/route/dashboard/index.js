@@ -169,7 +169,7 @@ export default class Dashboard extends React.Component {
               </Menu.Item>
               <Menu.Item key={`${Url.switchesNetworkequipments}`}>
                 <Link to={`${Url.switchesNetworkequipments}`}>
-                  <Icon type="appstore-o"/>网络
+                  <Icon type="appstore-o"/>网络设备
                 </Link>
               </Menu.Item>
             </SubMenu>
