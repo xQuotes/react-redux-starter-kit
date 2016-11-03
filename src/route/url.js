@@ -26,6 +26,7 @@ const Url = {
 
   switchesNetworks: `/${switches}/networks`,
   switchesActiontypes: `/${switches}/actiontypes`,
+  /*file_append*/
 }
 
 export default Url
