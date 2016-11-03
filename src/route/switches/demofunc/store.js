@@ -158,8 +158,7 @@ export default class /*File_append*/Store {
       method: 'post',
       success: (data) => {
         this.isLoading = false
-        let index = this.list.getIndexById(data.id)
-        this.list[index] = data
+        this.list = data
       },
       error: (data) => {
         this.isLoading = false
