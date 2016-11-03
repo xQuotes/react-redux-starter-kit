@@ -16,7 +16,7 @@ export default class Dnets extends React.Component {
     super(props)
   }
   render() {
-    const bcData = ['首页', '常用信息', '映射信息']
+    const bcData = ['首页', '常用信息', 'D-NET']
     return(
       <div className="switches-network">
         <FuncList 

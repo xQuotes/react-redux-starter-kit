@@ -16,7 +16,7 @@ export default class Networksecs extends React.Component {
     super(props)
   }
   render() {
-    const bcData = ['首页', '常用信息', '映射信息']
+    const bcData = ['首页', '常用信息', '网络安全']
     return(
       <div className="switches-network">
         <FuncList 
