@@ -16,7 +16,7 @@ export default class Networkequipments extends React.Component {
     super(props)
   }
   render() {
-    const bcData = ['首页', '常用信息', '']
+    const bcData = ['首页', '常用信息', '网络设备']
     return(
       <div className="switches-network">
         <FuncList 
