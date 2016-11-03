@@ -118,33 +118,33 @@ export default class Dashboard extends React.Component {
             <SubMenu key="sub3" title={<span><Icon type="bars"/>常用信息</span>}>
               <Menu.Item key={`${Url.switchesMappings}`}>
                 <Link to={`${Url.switchesMappings}`}>
-                  <Icon type="appstore-o"/>映射信息
+                  <Icon type="appstore-o"/>映射
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesServers}`}>
                 <Link to={`${Url.switchesServers}`}>
-                  <Icon type="appstore-o"/>服务器信息
+                  <Icon type="appstore-o"/>服务器
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesNetworksubs}`}>
                 <Link to={`${Url.switchesNetworksubs}`}>
-                  <Icon type="appstore-o"/>子网信息
+                  <Icon type="appstore-o"/>子网
                 </Link>
               </Menu.Item>
               
               <Menu.Item key={`${Url.switchesNetworksecs}`}>
                 <Link to={`${Url.switchesNetworksecs}`}>
-                  <Icon type="appstore-o"/>网络安全策略
+                  <Icon type="appstore-o"/>网络安全
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesDnets}`}>
                 <Link to={`${Url.switchesDnets}`}>
-                  <Icon type="appstore-o"/>D-NET信息
+                  <Icon type="appstore-o"/>D-NET
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesSnets}`}>
                 <Link to={`${Url.switchesSnets}`}>
-                  <Icon type="appstore-o"/>S-NET信息
+                  <Icon type="appstore-o"/>S-NET
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesVpns}`}>
@@ -154,22 +154,22 @@ export default class Dashboard extends React.Component {
               </Menu.Item>
               <Menu.Item key={`${Url.switchesWirelesss}`}>
                 <Link to={`${Url.switchesWirelesss}`}>
-                  <Icon type="appstore-o"/>无线信息
+                  <Icon type="appstore-o"/>无线
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesDatacenters}`}>
                 <Link to={`${Url.switchesDatacenters}`}>
-                  <Icon type="appstore-o"/>机房信息
+                  <Icon type="appstore-o"/>机房
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesSpeciallines}`}>
                 <Link to={`${Url.switchesSpeciallines}`}>
-                  <Icon type="appstore-o"/>专线信息
+                  <Icon type="appstore-o"/>专线
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesNetworkequipments}`}>
                 <Link to={`${Url.switchesNetworkequipments}`}>
-                  <Icon type="appstore-o"/>网络设备
+                  <Icon type="appstore-o"/>网络
                 </Link>
               </Menu.Item>
             </SubMenu>
