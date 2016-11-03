@@ -127,6 +127,46 @@ export default class /*File_append*/Store {
     })
   }
 
+  @action putServers(formData) {
+    this.isLoading = true
+    Fetch({
+      url: Api.put/*File_append*/s,
+      data: JSON.stringify({
+        conditions: formData,
+        params: {}
+      }),
+      method: 'post',
+      success: (data) => {
+        this.isLoading = false
+        let index = this.list.getIndexById(data.id)
+        this.list[index] = data
+      },
+      error: (data) => {
+        this.isLoading = false
+      }
+    })
+  }
+
+  @action putServers(formData) {
+    this.isLoading = true
+    Fetch({
+      url: Api.put/*File_append*/s,
+      data: JSON.stringify({
+        conditions: formData,
+        params: {}
+      }),
+      method: 'post',
+      success: (data) => {
+        this.isLoading = false
+        let index = this.list.getIndexById(data.id)
+        this.list[index] = data
+      },
+      error: (data) => {
+        this.isLoading = false
+      }
+    })
+  }
+
   toggleVisible() {
     this.visible = !this.visible
   }
