@@ -1,28 +1,9 @@
 import {
-  toJS
-} from 'mobx'
-import {
   inject, observer
 } from 'mobx-react'
-import {
-  Table,
-  Input,
-  Button,
-  Form,
-  Modal,
-  Select,
-  Popconfirm,
-  Upload,
-  Icon
-} from 'antd'
-const FormItem = Form.Item
-const Option = Select.Option
 
-import {ipReg, portReg} from '../../../common/utils/regex'
+import AddForm from '../../components/switches/commonInfoAdd'
 
-import ModalForm from '../../components/form'
-
-@Form.create()
 @inject(
   'networksubStore'
   )
@@ -53,168 +34,39 @@ export default class AddNetworksub extends React.Component {
       }
     }
   }
-  handleSubmit(e) {
-    const {form, networksubStore} = this.props
-    const {validateFields} = form
-    const {params} = networksubStore
-
-    validateFields((errors, values) => {
-      if (!!errors) {
-        console.log('Errors in form!!!');
-        return;
-      }
-
-      //var data = _.pickBy(values)
-      var data = values
-
-      form.resetFields()
-      this.hideModal()
-
-      if(!_.isEmpty(toJS(networksubStore.params.ids))) {
-        networksubStore.putServers({
-          ids: toJS(networksubStore.params.ids),
-          data: _.pickBy(values)
-        })
-      } else if(values.id) {
-        networksubStore.putServer(data)
-      } else {
-        networksubStore.postServer(data)
-      }
-    })
-  }
-  hideModal() {
-    const {networksubStore} = this.props
-    networksubStore.toggleVisible()
-  }
 
   render() {
-    const {form, networksubStore} = this.props
+    const {networksubStore} = this.props
     const paramsData = networksubStore.params
     const networksub = networksubStore.list.getById(paramsData.id) || {}
-
-    const ids = toJS(paramsData.ids) || []
-
-    var formDataTitileServer = [{
-      type: 'hidden',
-      name: 'id',
-      label: 'id',
-      fieldOptions: {
-        initialValue: paramsData.actionType == 'clone' ? undefined : networksub.id
-      }
-    }, {
-      name: 'vlan',
-      label: 'VLAN',
-      fieldOptions: {
-        initialValue: networksub.vlan,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入VLAN' }
-        ],
+    let formDataTitileServer = _.map(networksubStore.updateFields, (v, k) => {
+      return _.assign({}, {
+        name: k,
+        label: v,
+        fieldOptions: {
+          initialValue: networksub[k],
+          rules: [
+            // { required: true, whitespace: true, message: '请输入主机名' }
+          ],
+        },
+        placeholder: `请输入${v}`
+      })
+    })
+    formDataTitileServer = [
+      {
+        type: 'hidden',
+        name: 'id',
+        label: 'id',
+        fieldOptions: {
+          initialValue: paramsData.actionType == 'clone' ? undefined : networksub.id
+        }
       },
-      placeholder: '请输入VLAN'
-    }, {
-      name: 'ip',
-      label: '子网IP',
-      fieldOptions: {
-        initialValue: networksub.ip,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入子网IP' }
-        ],
-      },
-      placeholder: '请输入子网IP'
-    }, {
-      name: 'port',
-      label: '端口',
-      fieldOptions: {
-        initialValue: networksub.port,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入端口' },
-          { validator: ::this.networksubPortExists },
-        ],
-      },
-      placeholder: '如：80',
-    }, {
-      name: 'mask',
-      label: '子网掩码',
-      fieldOptions: {
-        initialValue: networksub.mask,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入子网掩码' }
-        ],
-      },
-      placeholder: '请输入子网掩码'
-    }, {
-      name: 'gateway',
-      label: '网关',
-      fieldOptions: {
-        initialValue: networksub.gateway,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入网关' }
-        ],
-      },
-      placeholder: '请输入网关'
-    }, {
-      name: 'a_port_info',
-      label: 'A端信息',
-      fieldOptions: {
-        initialValue: networksub.a_port_info,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入A端信息' }
-        ],
-      },
-      placeholder: '请输入A端信息'
-    }, {
-      name: 'b_port_info',
-      label: 'B端信息',
-      fieldOptions: {
-        initialValue: networksub.b_port_info,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入B端信息' }
-        ],
-      },
-      placeholder: '请输入B端信息'
-    }, {
-      name: 'is_ospf',
-      label: '是否是ospf',
-      fieldOptions: {
-        initialValue: networksub.is_ospf,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入是否是ospf' }
-        ],
-      },
-      placeholder: '请输入是否是ospf'
-    }, {
-      name: 'equipment',
-      label: '所属设备',
-      fieldOptions: {
-        initialValue: networksub.equipment,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入所属设备' }
-        ],
-      },
-      placeholder: '请输入所属设备'
-    }, {
-      name: 'remark',
-      label: '备注',
-      fieldOptions: {
-        initialValue: networksub.remark
-      },
-      placeholder: '请输入备注'
-    }]
+      ...formDataTitileServer
+    ]
 
     return (
-      <Modal title="操作子网"
-          visible={networksubStore.visible}
-          onCancel={::this.hideModal}
-          onOk={::this.handleSubmit}>
-        {!_.isEmpty(ids) && <div className="update-ids">
-          批量修改的对象 ID 为：<span className="ids-span">{ids.join(',  ')}</span>，<br/>
-          请修改对应的字段，不填写字段为不修改字段。
-        </div>}
-        <Form horizontal>
-          <ModalForm form={form}
-            store={networksubStore}
-            title={formDataTitileServer}/>
-        </Form>
-      </Modal>)
+      <AddForm
+        store={networksubStore}
+        title={formDataTitileServer}/>)
   }
 }

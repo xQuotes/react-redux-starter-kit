@@ -1,26 +1,9 @@
 import {
-  toJS
-} from 'mobx'
-import {
   inject, observer
 } from 'mobx-react'
-import {
-  Table,
-  Input,
-  Button,
-  Form,
-  Modal,
-  Select,
-  Popconfirm,
-  Upload,
-  Icon
-} from 'antd'
-const FormItem = Form.Item
-const Option = Select.Option
 
-import ModalForm from '../../components/form'
+import AddForm from '../../components/switches/commonInfoAdd'
 
-@Form.create()
 @inject(
   'snetStore'
   )
@@ -29,117 +12,61 @@ export default class AddSnet extends React.Component {
   constructor(props) {
     super(props)
   }
-  handleSubmit(e) {
-    const {form, snetStore} = this.props
-    const {validateFields} = form
-    const {params} = snetStore
-
-    validateFields((errors, values) => {
-      if (!!errors) {
-        console.log('Errors in form!!!');
-        return;
-      }
-
-      //var data = _.pickBy(values)
-      var data = values
-
-      form.resetFields()
-      this.hideModal()
-
-      if(!_.isEmpty(toJS(snetStore.params.ids))) {
-        snetStore.putServers({
-          ids: toJS(snetStore.params.ids),
-          data: _.pickBy(values)
-        })
-      } else if(values.id) {
-        snetStore.putServer(data)
+  snetIpExists(rule, value, callback) {
+    if (!value) {
+      callback()
+    } else {
+      if (!ipReg.test(value)) {
+        callback([new Error("IP 格式不正确")]);
       } else {
-        snetStore.postServer(data)
+        callback()
       }
-    })
+    }
   }
-  hideModal() {
-    const {snetStore} = this.props
-    snetStore.toggleVisible()
+  snetPortExists(rule, value, callback) {
+    if (!value) {
+      callback();
+    } else {
+      if (!portReg.test(value)) {
+        callback([new Error("端口格式不正确")]);
+      } else {
+        callback()
+      }
+    }
   }
 
   render() {
-    const {form, snetStore} = this.props
+    const {snetStore} = this.props
     const paramsData = snetStore.params
     const snet = snetStore.list.getById(paramsData.id) || {}
-
-    const ids = toJS(paramsData.ids) || []
-
-    var formDataTitileServer = [{
-      type: 'hidden',
-      name: 'id',
-      label: 'id',
-      fieldOptions: {
-        initialValue: paramsData.actionType == 'clone' ? undefined : snet.id
-      }
-    }, {
-      name: 'sou_addr',
-      label: '源地址',
-      fieldOptions: {
-        initialValue: snet.sou_addr,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入源地址' }
-        ],
+    let formDataTitileServer = _.map(snetStore.updateFields, (v, k) => {
+      return _.assign({}, {
+        name: k,
+        label: v,
+        fieldOptions: {
+          initialValue: snet[k],
+          rules: [
+            // { required: true, whitespace: true, message: '请输入主机名' }
+          ],
+        },
+        placeholder: `请输入${v}`
+      })
+    })
+    formDataTitileServer = [
+      {
+        type: 'hidden',
+        name: 'id',
+        label: 'id',
+        fieldOptions: {
+          initialValue: paramsData.actionType == 'clone' ? undefined : snet.id
+        }
       },
-      placeholder: '请输入源地址'
-    }, {
-      name: 'net_type',
-      label: 'Net类型',
-      fieldOptions: {
-        initialValue: snet.net_type,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入Net类型' }
-        ],
-      },
-      placeholder: '请输入Net类型'
-    }, {
-      name: 'des_addr',
-      label: '目的地址',
-      fieldOptions: {
-        initialValue: snet.des_addr,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入目的地址' }
-        ],
-      },
-      placeholder: '请输入目的地址',
-    }, {
-      name: 'equipment',
-      label: '所属设备',
-      fieldOptions: {
-        initialValue: snet.equipment,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入所属设备' }
-        ],
-      },
-      placeholder: '请输入所属设备'
-    }, {
-      name: 'remark',
-      label: '备注',
-      fieldOptions: {
-        initialValue: snet.remark
-      },
-      placeholder: '请输入备注'
-    }]
+      ...formDataTitileServer
+    ]
 
     return (
-      <Modal title="操作S-NET信息"
-          visible={snetStore.visible}
-          onCancel={::this.hideModal}
-          onOk={::this.handleSubmit}>
-        {!_.isEmpty(ids) && <div className="update-ids">
-          批量修改的对象 ID 为：<span className="ids-span">{ids.join(',  ')}</span>，<br/>
-          请修改对应的字段，不填写字段为不修改字段。
-        </div>}
-        <Form horizontal>
-          <ModalForm form={form}
-            store={snetStore}
-            title={formDataTitileServer}/>
-        </Form>
-      </Modal>)
+      <AddForm
+        store={snetStore}
+        title={formDataTitileServer}/>)
   }
 }

@@ -130,7 +130,27 @@ export default class DnetStore {
   @action putServers(formData) {
     this.isLoading = true
     Fetch({
-      url: Api.putMappings,
+      url: Api.putDnets,
+      data: JSON.stringify({
+        conditions: formData,
+        params: {}
+      }),
+      method: 'post',
+      success: (data) => {
+        this.isLoading = false
+        let index = this.list.getIndexById(data.id)
+        this.list[index] = data
+      },
+      error: (data) => {
+        this.isLoading = false
+      }
+    })
+  }
+
+  @action putServers(formData) {
+    this.isLoading = true
+    Fetch({
+      url: Api.putDnets,
       data: JSON.stringify({
         conditions: formData,
         params: {}

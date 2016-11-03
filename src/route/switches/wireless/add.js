@@ -1,26 +1,9 @@
 import {
-  toJS
-} from 'mobx'
-import {
   inject, observer
 } from 'mobx-react'
-import {
-  Table,
-  Input,
-  Button,
-  Form,
-  Modal,
-  Select,
-  Popconfirm,
-  Upload,
-  Icon
-} from 'antd'
-const FormItem = Form.Item
-const Option = Select.Option
 
-import ModalForm from '../../components/form'
+import AddForm from '../../components/switches/commonInfoAdd'
 
-@Form.create()
 @inject(
   'wirelessStore'
   )
@@ -29,147 +12,61 @@ export default class AddWireless extends React.Component {
   constructor(props) {
     super(props)
   }
-  handleSubmit(e) {
-    const {form, wirelessStore} = this.props
-    const {validateFields} = form
-    const {params} = wirelessStore
-
-    validateFields((errors, values) => {
-      if (!!errors) {
-        console.log('Errors in form!!!');
-        return;
-      }
-
-      //var data = _.pickBy(values)
-      var data = values
-
-      form.resetFields()
-      this.hideModal()
-
-      if(!_.isEmpty(toJS(wirelessStore.params.ids))) {
-        wirelessStore.putServers({
-          ids: toJS(wirelessStore.params.ids),
-          data: _.pickBy(values)
-        })
-      } else if(values.id) {
-        wirelessStore.putServer(data)
+  wirelessIpExists(rule, value, callback) {
+    if (!value) {
+      callback()
+    } else {
+      if (!ipReg.test(value)) {
+        callback([new Error("IP 格式不正确")]);
       } else {
-        wirelessStore.postServer(data)
+        callback()
       }
-    })
+    }
   }
-  hideModal() {
-    const {wirelessStore} = this.props
-    wirelessStore.toggleVisible()
+  wirelessPortExists(rule, value, callback) {
+    if (!value) {
+      callback();
+    } else {
+      if (!portReg.test(value)) {
+        callback([new Error("端口格式不正确")]);
+      } else {
+        callback()
+      }
+    }
   }
 
   render() {
-    const {form, wirelessStore} = this.props
+    const {wirelessStore} = this.props
     const paramsData = wirelessStore.params
     const wireless = wirelessStore.list.getById(paramsData.id) || {}
-
-    const ids = toJS(paramsData.ids) || []
-
-    var formDataTitileServer = [{
-      type: 'hidden',
-      name: 'id',
-      label: 'id',
-      fieldOptions: {
-        initialValue: paramsData.actionType == 'clone' ? undefined : wireless.id
-      }
-    }, {
-      name: 'signal',
-      label: '无线信号',
-      fieldOptions: {
-        initialValue: wireless.signal,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入无线信号' }
-        ],
+    let formDataTitileServer = _.map(wirelessStore.updateFields, (v, k) => {
+      return _.assign({}, {
+        name: k,
+        label: v,
+        fieldOptions: {
+          initialValue: wireless[k],
+          rules: [
+            // { required: true, whitespace: true, message: '请输入主机名' }
+          ],
+        },
+        placeholder: `请输入${v}`
+      })
+    })
+    formDataTitileServer = [
+      {
+        type: 'hidden',
+        name: 'id',
+        label: 'id',
+        fieldOptions: {
+          initialValue: paramsData.actionType == 'clone' ? undefined : wireless.id
+        }
       },
-      placeholder: '请输入无线信号'
-    }, {
-      name: 'auth_mode',
-      label: '认证方式',
-      fieldOptions: {
-        initialValue: wireless.auth_mode,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入认证方式' }
-        ],
-      },
-      placeholder: '请输入认证方式'
-    }, {
-      name: 'password',
-      label: '密码',
-      fieldOptions: {
-        initialValue: wireless.password,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入密码' }
-        ],
-      },
-      placeholder: '请输入密码'
-    }, {
-      name: 'sec_plo',
-      label: '安全策略',
-      fieldOptions: {
-        initialValue: wireless.sec_plo,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入安全策略' }
-        ],
-      },
-      placeholder: '请输入安全策略'
-    }, {
-      name: 'broadband',
-      label: '限速宽带',
-      fieldOptions: {
-        initialValue: wireless.broadband,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入限速宽带' }
-        ],
-      },
-      placeholder: '请输入限速宽带'
-    }, {
-      name: 'equipment',
-      label: '所在设备',
-      fieldOptions: {
-        initialValue: wireless.equipment,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入所在设备' }
-        ],
-      },
-      placeholder: '请输入所在设备'
-    }, {
-      name: 'is_hidden',
-      label: '是否隐藏',
-      fieldOptions: {
-        initialValue: wireless.is_hidden,
-        rules: [
-          // { required: true, whitespace: true, message: '请输入是否隐藏' }
-        ],
-      },
-      placeholder: '请输入是否隐藏'
-    }, {
-      name: 'remark',
-      label: '备注',
-      fieldOptions: {
-        initialValue: wireless.remark,
-      },
-      placeholder: '请输入备注'
-    }]
+      ...formDataTitileServer
+    ]
 
     return (
-      <Modal title="操作无线信息"
-          visible={wirelessStore.visible}
-          onCancel={::this.hideModal}
-          onOk={::this.handleSubmit}>
-        {!_.isEmpty(ids) && <div className="update-ids">
-          批量修改的对象 ID 为：<span className="ids-span">{ids.join(',  ')}</span>，<br/>
-          请修改对应的字段，不填写字段为不修改字段。
-        </div>}
-        <Form horizontal>
-          <ModalForm form={form}
-            store={wirelessStore}
-            title={formDataTitileServer}/>
-        </Form>
-      </Modal>)
+      <AddForm
+        store={wirelessStore}
+        title={formDataTitileServer}/>)
   }
 }

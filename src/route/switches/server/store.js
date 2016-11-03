@@ -130,7 +130,27 @@ export default class ServerStore {
   @action putServers(formData) {
     this.isLoading = true
     Fetch({
-      url: Api.putMappings,
+      url: Api.putServers,
+      data: JSON.stringify({
+        conditions: formData,
+        params: {}
+      }),
+      method: 'post',
+      success: (data) => {
+        this.isLoading = false
+        let index = this.list.getIndexById(data.id)
+        this.list[index] = data
+      },
+      error: (data) => {
+        this.isLoading = false
+      }
+    })
+  }
+
+  @action putServers(formData) {
+    this.isLoading = true
+    Fetch({
+      url: Api.putServers,
       data: JSON.stringify({
         conditions: formData,
         params: {}
