@@ -1,3 +1,6 @@
+import {
+  observer
+} from 'mobx-react'
 import classNames from 'classnames'
 import {
   Upload,
@@ -13,6 +16,7 @@ import Api from 'Api'
 
 import DataTable from './table'
 
+@observer
 export default class UploadBtn extends React.Component {
   constructor(props) {
     super(props)
