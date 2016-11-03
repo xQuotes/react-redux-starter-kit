@@ -111,7 +111,12 @@ export default class Dashboard extends React.Component {
             <SubMenu key="sub2" title={<span><Icon type="bars"/>基础信息</span>}>
               <Menu.Item key={`${Url.switchesBrands}`}>
                 <Link to={`${Url.switchesBrands}`}>
-                  <Icon type="appstore-o"/>品牌客户
+                  <Icon type="appstore-o"/>品牌信息
+                </Link>
+              </Menu.Item>
+              <Menu.Item key={`${Url.switchesAccountmanagers}`}>
+                <Link to={`${Url.switchesAccountmanagers}`}>
+                  <Icon type="appstore-o"/>客户经理
                 </Link>
               </Menu.Item>
             </SubMenu>

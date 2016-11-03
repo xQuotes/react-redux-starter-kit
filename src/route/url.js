@@ -27,6 +27,7 @@ const Url = {
   switchesNetworks: `/${switches}/networks`,
   switchesActiontypes: `/${switches}/actiontypes`,
   switchesBrands: `/${switches}/brands`,
+  switchesAccountmanagers: `/${switches}/accountmanagers`,
   /*file_append*/
 }
 

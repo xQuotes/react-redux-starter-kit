@@ -25,6 +25,7 @@ module.exports = {
         require('./network/route'),
         require('./actiontype/route'),
         require('./brand/route'),
+        require('./accountmanager/route'),
         /*file_append*/
       ])
     })

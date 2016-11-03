@@ -21,6 +21,7 @@ module.exports = {
   actiontypeStore: require('../route/switches/actiontype/store')['default'].fromJS(),
   
   brandStore: require('../route/switches/brand/store')['default'].fromJS(),
+  accountmanagerStore: require('../route/switches/accountmanager/store')['default'].fromJS(),
   /*file_append*/
 
   permissionStore: require('../route/permission/store')['default'].fromJS()

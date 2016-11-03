@@ -111,6 +111,12 @@ postBrand: `${url}/sw_config_brand/addInfo`,
   getBrand: `${url}/sw_config_brand/deleteInfo`,
   getBrand: `${url}/sw_config_brand/updateInfo`,
 
+postAccountmanager: `${url}/sw_config_accountmanager/addInfo`,
+  getAccountmanagers: `${url}/sw_config_accountmanager/getList`,
+  getAccountmanager: `${url}/sw_config_accountmanager/getInfo`,
+  getAccountmanager: `${url}/sw_config_accountmanager/deleteInfo`,
+  getAccountmanager: `${url}/sw_config_accountmanager/updateInfo`,
+
 /*file_append*/
   
   downloadActiontypeCSV: `/csv_templates/actiontype.csv`,
