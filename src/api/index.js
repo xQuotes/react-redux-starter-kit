@@ -105,6 +105,12 @@ const Api = {
   uploadCsvFile: `${url}/sw_config_upload/uploadAndCheckCsvFile`,
   uploadCsvData: `${url}/sw_config_upload/uploadCsvData`,
 
+postBrand: `${url}/sw_config_brand/addInfo`,
+  getBrands: `${url}/sw_config_brand/getList`,
+  getBrand: `${url}/sw_config_brand/getInfo`,
+  getBrand: `${url}/sw_config_brand/deleteInfo`,
+  getBrand: `${url}/sw_config_brand/updateInfo`,
+
 /*file_append*/
   
   downloadActiontypeCSV: `/csv_templates/actiontype.csv`,

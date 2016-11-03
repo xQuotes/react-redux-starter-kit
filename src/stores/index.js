@@ -20,6 +20,7 @@ module.exports = {
   networkStore: require('../route/switches/network/store')['default'].fromJS(),
   actiontypeStore: require('../route/switches/actiontype/store')['default'].fromJS(),
   
+  brandStore: require('../route/switches/brand/store')['default'].fromJS(),
   /*file_append*/
 
   permissionStore: require('../route/permission/store')['default'].fromJS()
