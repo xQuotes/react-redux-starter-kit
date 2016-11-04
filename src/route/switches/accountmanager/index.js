@@ -16,7 +16,7 @@ export default class Accountmanagers extends React.Component {
     super(props)
   }
   render() {
-    const bcData = ['首页', '常用信息', /*file_title*/]
+    const bcData = ['首页', '常用信息', '客户经理']
     return(
       <div className="switches-network">
         <FuncList 

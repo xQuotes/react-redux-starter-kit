@@ -108,14 +108,16 @@ const Api = {
 postBrand: `${url}/sw_config_brand/addInfo`,
   getBrands: `${url}/sw_config_brand/getList`,
   getBrand: `${url}/sw_config_brand/getInfo`,
-  getBrand: `${url}/sw_config_brand/deleteInfo`,
-  getBrand: `${url}/sw_config_brand/updateInfo`,
+  deleteBrand: `${url}/sw_config_brand/deleteInfo`,
+  putBrand: `${url}/sw_config_brand/updateInfo`,
+  putBrands: `${url}/sw_config_brand/updateList`,
 
 postAccountmanager: `${url}/sw_config_accountmanager/addInfo`,
   getAccountmanagers: `${url}/sw_config_accountmanager/getList`,
   getAccountmanager: `${url}/sw_config_accountmanager/getInfo`,
-  getAccountmanager: `${url}/sw_config_accountmanager/deleteInfo`,
-  getAccountmanager: `${url}/sw_config_accountmanager/updateInfo`,
+  deleteAccountmanager: `${url}/sw_config_accountmanager/deleteInfo`,
+  putAccountmanager: `${url}/sw_config_accountmanager/updateInfo`,
+  putAccountmanagers: `${url}/sw_config_accountmanager/updateList`,
 
 /*file_append*/
   

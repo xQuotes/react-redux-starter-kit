@@ -16,7 +16,7 @@ export default class Brands extends React.Component {
     super(props)
   }
   render() {
-    const bcData = ['首页', '常用信息', /*file_title*/]
+    const bcData = ['首页', '常用信息', '品牌']
     return(
       <div className="switches-network">
         <FuncList 
