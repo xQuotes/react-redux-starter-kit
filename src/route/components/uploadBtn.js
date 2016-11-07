@@ -7,8 +7,10 @@ import {
   Button,
   Icon,
   message,
-  Modal
+  Modal,
+  Select
 } from 'antd'
+const Option = Select.Option
 
 import Url from 'Url'
 import Auth from 'Auth'
@@ -24,6 +26,8 @@ export default class UploadBtn extends React.Component {
     this.state = {
       visible: false,
       validate: true,
+
+      insertType: '',
       uploadData: {
         columns: [],
         dataList: []
@@ -33,12 +37,18 @@ export default class UploadBtn extends React.Component {
   hideModal() {
     this.setState({ visible: false });
   }
+  handleChange(e) {
+    this.setState({
+      insertType: e
+    })
+  }
   handleSubmit(e) {
     const { store, params } = this.props
     const paramsData = params || {}
     const {uploadData, validate} = this.state
     console.log(store)
     console.log(uploadData)
+    // this.state.insertType &&  
     validate && store.postServers({
       type: paramsData.type,
       list: uploadData.dataList
@@ -129,6 +139,15 @@ export default class UploadBtn extends React.Component {
           onOk={::this.handleSubmit}
           onCancel={::this.hideModal}>
           {!validate && <div className="table-header-warning"><span className="item-error">橙色</span>为验证有错的字段，请在CSV中修改后重新上传！</div>}
+          <div style={{
+            margin: '10px 0'
+          }}>
+            <Select size="large" defaultValue="" style={{ width: 200 }} onChange={::this.handleChange}>
+              <Option value="" >请选择导入方式</Option>
+              <Option value="just_insert">追加导入</Option>
+              <Option value="delete_before_insert">清空导入</Option>
+            </Select>
+          </div>
           <DataTable
             columns={uploadData.columns}
             dataSource={uploadData.dataList}/>
