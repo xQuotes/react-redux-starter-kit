@@ -2,17 +2,17 @@ import {
   inject, observer
 } from 'mobx-react'
 
-import AddForm from '../../components/switches/commonInfoAdd'
+import AddForm from '../../../components/switches/commonInfoAdd'
 
 @inject(
-  'snetStore'
+  'dnatStore'
   )
 @observer
-export default class AddSnet extends React.Component {
+export default class AddDnat extends React.Component {
   constructor(props) {
     super(props)
   }
-  snetIpExists(rule, value, callback) {
+  dnatIpExists(rule, value, callback) {
     if (!value) {
       callback()
     } else {
@@ -23,7 +23,7 @@ export default class AddSnet extends React.Component {
       }
     }
   }
-  snetPortExists(rule, value, callback) {
+  dnatPortExists(rule, value, callback) {
     if (!value) {
       callback();
     } else {
@@ -34,17 +34,23 @@ export default class AddSnet extends React.Component {
       }
     }
   }
-
+  
   render() {
-    const {snetStore} = this.props
-    const paramsData = snetStore.params
-    const snet = snetStore.list.getById(paramsData.id) || {}
-    let formDataTitileServer = _.map(snetStore.updateFields, (v, k) => {
+    const {dnatStore} = this.props
+
+    var formType = {
+      'deadline': 'DatePicker'
+    }
+
+    const paramsData = dnatStore.params
+    const dnat = dnatStore.list.getById(paramsData.id) || {}
+    let formDataTitileServer = _.map(dnatStore.updateFields, (v, k) => {
       return _.assign({}, {
+        formType: formType[k],
         name: k,
         label: v,
         fieldOptions: {
-          initialValue: snet[k],
+          initialValue: dnat[k],
           rules: [
             // { required: true, whitespace: true, message: '请输入主机名' }
           ],
@@ -58,7 +64,7 @@ export default class AddSnet extends React.Component {
         name: 'id',
         label: 'id',
         fieldOptions: {
-          initialValue: paramsData.actionType == 'clone' ? undefined : snet.id
+          initialValue: paramsData.actionType == 'clone' ? undefined : dnat.id
         }
       },
       ...formDataTitileServer
@@ -66,7 +72,7 @@ export default class AddSnet extends React.Component {
 
     return (
       <AddForm
-        store={snetStore}
+        store={dnatStore}
         title={formDataTitileServer}/>)
   }
 }

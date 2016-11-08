@@ -5,26 +5,26 @@ import {
 import Api from 'Api'
 
 import FuncList from '../../components/switches/commonInfoList'
-import AddDnetModal from './add'
+import AddSnatModal from './add'
 
 @inject(
-  'dnetStore'
+  'snatStore'
   )
 @observer
-export default class Dnets extends React.Component {
+export default class Snats extends React.Component {
   constructor(props) {
     super(props)
   }
   render() {
-    const bcData = ['首页', '常用信息', 'D-NET']
+    const bcData = ['首页', '常用信息', 'S-NAT']
     return(
       <div className="switches-network">
         <FuncList 
-          store={this.props.dnetStore}
+          store={this.props.snatStore}
           bcData={bcData}
-          downloadCSV={Api.downloadDnetCSV}
-          funcEnName={'dnet'}/>
-        <AddDnetModal />
+          downloadCSV={Api.downloadSnatCSV}
+          funcEnName={'snat'}/>
+        <AddSnatModal />
       </div>
       )
   }

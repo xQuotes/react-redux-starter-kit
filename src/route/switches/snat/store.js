@@ -6,7 +6,7 @@ import Fetch from 'Fetch'
 import Api from 'Api'
 import 'Arr'
 
-export default class DnetStore {
+export default class SnatStore {
   @observable isLoading = false
   @observable list = []
   @observable fields = {}
@@ -24,10 +24,10 @@ export default class DnetStore {
 
   @action getServers(formData={}, params={}) {
     this.isLoading = true
-    this.setSearchDatas(formData={}, params={})
+    this.setSearchDatas(formData, params)
     
     Fetch({
-      url: Api.getDnets,
+      url: Api.getSnats,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -49,7 +49,7 @@ export default class DnetStore {
   @action deleteServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.deleteDnet,
+      url: Api.deleteSnat,
       data: JSON.stringify({
         conditions: {
           id: formData.id
@@ -71,7 +71,7 @@ export default class DnetStore {
   @action postServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.postDnet,
+      url: Api.postSnat,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -110,7 +110,7 @@ export default class DnetStore {
   @action putServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.putDnet,
+      url: Api.putSnat,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -130,7 +130,7 @@ export default class DnetStore {
   @action putServers(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.putDnets,
+      url: Api.putSnats,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -159,7 +159,7 @@ export default class DnetStore {
   }
 
   static fromJS(array = []) {
-    return new DnetStore()
+    return new SnatStore()
   }
 }
 

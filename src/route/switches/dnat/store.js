@@ -6,7 +6,7 @@ import Fetch from 'Fetch'
 import Api from 'Api'
 import 'Arr'
 
-export default class SnetStore {
+export default class DnatStore {
   @observable isLoading = false
   @observable list = []
   @observable fields = {}
@@ -24,10 +24,10 @@ export default class SnetStore {
 
   @action getServers(formData={}, params={}) {
     this.isLoading = true
-    this.setSearchDatas(formData={}, params={})
+    this.setSearchDatas(formData, params)
     
     Fetch({
-      url: Api.getSnets,
+      url: Api.getDnats,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -49,7 +49,7 @@ export default class SnetStore {
   @action deleteServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.deleteSnet,
+      url: Api.deleteDnat,
       data: JSON.stringify({
         conditions: {
           id: formData.id
@@ -70,8 +70,11 @@ export default class SnetStore {
   // 保存单条
   @action postServer(formData={}, params={}) {
     this.isLoading = true
+
+    formData['deadline'] = formData['deadline'] && formData['deadline'].format('YYYY-MM-DD')
+    
     Fetch({
-      url: Api.postSnet,
+      url: Api.postDnat,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -110,7 +113,7 @@ export default class SnetStore {
   @action putServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.putSnet,
+      url: Api.putDnat,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -130,7 +133,7 @@ export default class SnetStore {
   @action putServers(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.putSnets,
+      url: Api.putDnats,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -159,7 +162,7 @@ export default class SnetStore {
   }
 
   static fromJS(array = []) {
-    return new SnetStore()
+    return new DnatStore()
   }
 }
 

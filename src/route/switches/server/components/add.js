@@ -71,9 +71,6 @@ export default class AddServer extends React.Component {
     const paramsData = serverStore.params
     const server = serverStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(serverStore.updateFields, (v, k) => {
-      console.log(k)
-      console.log(formType[k])
-      console.log(optionData[k])
       return _.assign({}, {
         formType: formType[k],
         optionData: optionData[k],

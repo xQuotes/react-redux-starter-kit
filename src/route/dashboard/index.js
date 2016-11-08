@@ -68,10 +68,10 @@ export default class Dashboard extends React.Component {
     )
     const userMenu = (
       <Menu>
-        <Menu.Divider />
+        {/*<Menu.Divider />
         <Menu.Item key="1">
           <div onClick={::this.logout}>退出</div>
-        </Menu.Item>
+        </Menu.Item>*/}
       </Menu>
     )
     return(
@@ -121,11 +121,11 @@ export default class Dashboard extends React.Component {
               </Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" title={<span><Icon type="bars"/>常用信息</span>}>
-              <Menu.Item key={`${Url.switchesMappings}`}>
+              {/*<Menu.Item key={`${Url.switchesMappings}`}>
                 <Link to={`${Url.switchesMappings}`}>
                   <Icon type="appstore-o"/>映射
                 </Link>
-              </Menu.Item>
+              </Menu.Item>*/}
               <Menu.Item key={`${Url.switchesServers}`}>
                 <Link to={`${Url.switchesServers}`}>
                   <Icon type="appstore-o"/>服务器
@@ -143,13 +143,13 @@ export default class Dashboard extends React.Component {
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesDnets}`}>
-                <Link to={`${Url.switchesDnets}`}>
-                  <Icon type="appstore-o"/>D-NET
+                <Link to={`${Url.switchesDnats}`}>
+                  <Icon type="appstore-o"/>D-NAT
                 </Link>
               </Menu.Item>
-              <Menu.Item key={`${Url.switchesSnets}`}>
-                <Link to={`${Url.switchesSnets}`}>
-                  <Icon type="appstore-o"/>S-NET
+              <Menu.Item key={`${Url.switchesSnats}`}>
+                <Link to={`${Url.switchesSnats}`}>
+                  <Icon type="appstore-o"/>S-NAT
                 </Link>
               </Menu.Item>
               <Menu.Item key={`${Url.switchesVpns}`}>

@@ -46,8 +46,6 @@ export default class UploadBtn extends React.Component {
     const { store, params } = this.props
     const paramsData = params || {}
     const {uploadData, validate, insertType} = this.state
-    console.log(insertType)
-    console.log(uploadData)
     !insertType && Modal.error({
       title: ' ',
       content: '导入方式不能为空',

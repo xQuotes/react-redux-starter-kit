@@ -24,7 +24,7 @@ export default class /*File_append*/Store {
 
   @action getServers(formData={}, params={}) {
     this.isLoading = true
-    this.setSearchDatas(formData={}, params={})
+    this.setSearchDatas(formData, params)
     
     Fetch({
       url: Api.get/*File_append*/s,

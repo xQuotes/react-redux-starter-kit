@@ -27,6 +27,7 @@ export default class SearchForm extends React.Component {
       }
       var searchData = _.pickBy(values)
 
+      console.log(searchData)
       store.getServers(searchData)
     })
   }
@@ -35,12 +36,10 @@ export default class SearchForm extends React.Component {
     store.getServers(store.searchDatas)
   }
   handleReset(e) {
-    console.log(e)
     e.preventDefault()
     const {form, store} = this.props
     form.resetFields()
     store.setSearchDatas({})
-    console.log(store)
   }
   render() {
     const {form, store, title} = this.props
@@ -60,13 +59,24 @@ export default class SearchForm extends React.Component {
       }, value)
     })
 
-    function formJsxType(formType, placeholder, type) {
+    function formJsxType(formType, placeholder, optionData) {
       if(formType == 'DatePicker') {
         return <DatePicker />
+      } else if (formType == 'select') {
+        return <Select id="select" size="large">
+                  {_.map(optionData, (v, k)=> {
+                    return <Option key={k+""} value={v.id+""}>{v.value}</Option>
+                  })}
+                </Select>
+      } else if (formType == 'multipleSelect') {
+        return <Select multiple id="select" size="large">
+                  {_.map(optionData, (v, k)=> {
+                    return <Option key={k+""} value={v.id+""}>{v.value}</Option>
+                  })}
+                </Select>
       } else {
         return <Input autoCapitalize="off"
           placeholder={placeholder}
-          type={type}
           size="default"/> 
       }
     }

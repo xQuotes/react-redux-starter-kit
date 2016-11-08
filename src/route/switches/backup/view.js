@@ -31,6 +31,7 @@ export default class BackupView extends React.Component {
   }
   componentDidMount() {
     const { backupStore, params } = this.props
+    console.log(params.id)
     backupStore.getBackupServer({
       id: params.id
     })

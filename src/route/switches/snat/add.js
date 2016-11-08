@@ -5,14 +5,14 @@ import {
 import AddForm from '../../components/switches/commonInfoAdd'
 
 @inject(
-  'dnetStore'
+  'snatStore'
   )
 @observer
-export default class AddDnet extends React.Component {
+export default class AddSnat extends React.Component {
   constructor(props) {
     super(props)
   }
-  dnetIpExists(rule, value, callback) {
+  snatIpExists(rule, value, callback) {
     if (!value) {
       callback()
     } else {
@@ -23,7 +23,7 @@ export default class AddDnet extends React.Component {
       }
     }
   }
-  dnetPortExists(rule, value, callback) {
+  snatPortExists(rule, value, callback) {
     if (!value) {
       callback();
     } else {
@@ -36,15 +36,15 @@ export default class AddDnet extends React.Component {
   }
 
   render() {
-    const {dnetStore} = this.props
-    const paramsData = dnetStore.params
-    const dnet = dnetStore.list.getById(paramsData.id) || {}
-    let formDataTitileServer = _.map(dnetStore.updateFields, (v, k) => {
+    const {snatStore} = this.props
+    const paramsData = snatStore.params
+    const snat = snatStore.list.getById(paramsData.id) || {}
+    let formDataTitileServer = _.map(snatStore.updateFields, (v, k) => {
       return _.assign({}, {
         name: k,
         label: v,
         fieldOptions: {
-          initialValue: dnet[k],
+          initialValue: snat[k],
           rules: [
             // { required: true, whitespace: true, message: '请输入主机名' }
           ],
@@ -58,7 +58,7 @@ export default class AddDnet extends React.Component {
         name: 'id',
         label: 'id',
         fieldOptions: {
-          initialValue: paramsData.actionType == 'clone' ? undefined : dnet.id
+          initialValue: paramsData.actionType == 'clone' ? undefined : snat.id
         }
       },
       ...formDataTitileServer
@@ -66,7 +66,7 @@ export default class AddDnet extends React.Component {
 
     return (
       <AddForm
-        store={dnetStore}
+        store={snatStore}
         title={formDataTitileServer}/>)
   }
 }

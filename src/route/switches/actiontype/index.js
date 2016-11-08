@@ -55,7 +55,7 @@ export default class Actiontypes extends React.Component {
     const that = this
     const {actiontypeStore} = this.props
     let dataList = actiontypeStore.toJS()
-    console.log(dataList)
+    
     let fields = actiontypeStore.fields
     fields = {
       id: 'ID',
