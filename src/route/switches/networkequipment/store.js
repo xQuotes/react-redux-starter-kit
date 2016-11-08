@@ -18,13 +18,13 @@ export default class NetworkequipmentStore {
   @observable visible = false
   @observable params = {}
 
-  @action setSearchDatas(formData, params={}) {
+  @action setSearchDatas(formData={}, params={}) {
     this.searchDatas = formData
   }
 
-  @action getServers(formData, params={}) {
+  @action getServers(formData={}, params={}) {
     this.isLoading = true
-    this.setSearchDatas(formData, params={})
+    this.setSearchDatas(formData={}, params={})
     
     Fetch({
       url: Api.getNetworkequipments,
@@ -46,7 +46,7 @@ export default class NetworkequipmentStore {
     })
   }
 
-  @action deleteServer(formData, params={}) {
+  @action deleteServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.deleteNetworkequipment,
@@ -68,7 +68,7 @@ export default class NetworkequipmentStore {
   }
 
   // 保存单条
-  @action postServer(formData, params={}) {
+  @action postServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.postNetworkequipment,
@@ -88,7 +88,7 @@ export default class NetworkequipmentStore {
   }
 
   // 保存多条
-  @action postServers(formData, params={}) {
+  @action postServers(formData={}, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.uploadCsvData,
@@ -107,7 +107,7 @@ export default class NetworkequipmentStore {
     })
   }
 
-  @action putServer(formData, params={}) {
+  @action putServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.putNetworkequipment,
@@ -127,27 +127,7 @@ export default class NetworkequipmentStore {
     })
   }
 
-  @action putServers(formData, params={}) {
-    this.isLoading = true
-    Fetch({
-      url: Api.putNetworkequipments,
-      data: JSON.stringify({
-        conditions: formData,
-        params: params
-      }),
-      method: 'post',
-      success: (data) => {
-        this.isLoading = false
-        let index = this.list.getIndexById(data.id)
-        this.list[index] = data
-      },
-      error: (data) => {
-        this.isLoading = false
-      }
-    })
-  }
-
-  @action putServers(formData, params={}) {
+  @action putServers(formData={}, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.putNetworkequipments,

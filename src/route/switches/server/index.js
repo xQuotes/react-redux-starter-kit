@@ -5,7 +5,7 @@ import {
 import Api from 'Api'
 
 import FuncList from '../../components/switches/commonInfoList'
-import AddServerModal from './add'
+import AddServerModal from './components/add'
 
 @inject(
   'serverStore'

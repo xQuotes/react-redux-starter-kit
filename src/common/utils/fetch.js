@@ -21,6 +21,15 @@ export default function fetching(action) {
       if (res.statuscode === 200) {
         message.success(res.msg);
         return successCb(res.data, res.msg, res.statuscode)
+      } else if (res.statuscode === 401) {
+        Modal.error({
+          title: '',
+          content: res.msg,
+          onOk() {
+            
+          }
+        })
+        return errorCb(res.data, res.msg, res.statuscode)
       } else {
         Modal.error({
           title: '',

@@ -2,11 +2,12 @@ import {
   inject, observer
 } from 'mobx-react'
 
-import AddForm from '../../components/switches/commonInfoAdd'
+import AddForm from '../../../components/switches/commonInfoAdd'
 
 @inject(
   'serverStore',
-  'brandStore'
+  'brandStore',
+  'accountmanagerStore'
   )
 @observer
 export default class AddServer extends React.Component {
@@ -14,8 +15,14 @@ export default class AddServer extends React.Component {
     super(props)
   }
   componentWillMount() {
+    const {
+      accountmanagerStore,
+      brandStore
+    } = this.props
     // brandStore.list.length = 0 && brandStore.getServers()
-    this.props.brandStore.getServers()
+    
+    brandStore.list.length == 0 && brandStore.getServers()
+    accountmanagerStore.list.length == 0 && accountmanagerStore.getServers()
   }
   serverIpExists(rule, value, callback) {
     if (!value) {
@@ -41,14 +48,35 @@ export default class AddServer extends React.Component {
   }
 
   render() {
-    const {serverStore, brandStore} = this.props
-    console.log(brandStore.list)
+    const {serverStore, brandStore, accountmanagerStore} = this.props
+
+    var formType = {
+      'brand': 'select',
+      'acc_man': 'select'
+    }
+    var optionData = {
+      'brand': _.map(brandStore.list, (v, k) => {
+          return {
+            id: v.name,
+            value: v.name
+          }
+        }),
+      'acc_man': _.map(accountmanagerStore.list, (v, k) => {
+          return {
+            id: v.name,
+            value: v.name
+          }
+        }),
+    }
     const paramsData = serverStore.params
     const server = serverStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(serverStore.updateFields, (v, k) => {
+      console.log(k)
+      console.log(formType[k])
+      console.log(optionData[k])
       return _.assign({}, {
-        formType: k == 'brand' ? 'multipleSelect' : 'Input',
-        optionData: brandStore.list,
+        formType: formType[k],
+        optionData: optionData[k],
         name: k,
         label: v,
         fieldOptions: {
