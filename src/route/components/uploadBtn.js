@@ -45,15 +45,20 @@ export default class UploadBtn extends React.Component {
   handleSubmit(e) {
     const { store, params } = this.props
     const paramsData = params || {}
-    const {uploadData, validate} = this.state
-    console.log(store)
+    const {uploadData, validate, insertType} = this.state
+    console.log(insertType)
     console.log(uploadData)
-    // this.state.insertType &&  
-    validate && store.postServers({
+    !insertType && Modal.error({
+      title: ' ',
+      content: '导入方式不能为空',
+    });  
+    insertType && validate && store.postServers({
       type: paramsData.type,
       list: uploadData.dataList
+    }, {
+      insert_type: insertType
     })
-    validate && this.hideModal()
+    insertType && validate && this.hideModal()
   }
   render() {
     const { params } = this.props

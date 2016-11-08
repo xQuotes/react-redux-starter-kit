@@ -18,19 +18,19 @@ export default class NetworksecStore {
   @observable visible = false
   @observable params = {}
 
-  @action setSearchDatas(formData) {
+  @action setSearchDatas(formData, params={}) {
     this.searchDatas = formData
   }
 
-  @action getServers(formData) {
+  @action getServers(formData, params={}) {
     this.isLoading = true
-    this.setSearchDatas(formData)
+    this.setSearchDatas(formData, params={})
     
     Fetch({
       url: Api.getNetworksecs,
       data: JSON.stringify({
         conditions: formData,
-        params: {}
+        params: params
       }),
       method: 'post',
       success: (data) => {
@@ -46,7 +46,7 @@ export default class NetworksecStore {
     })
   }
 
-  @action deleteServer(formData) {
+  @action deleteServer(formData, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.deleteNetworksec,
@@ -54,7 +54,7 @@ export default class NetworksecStore {
         conditions: {
           id: formData.id
         },
-        params: {}
+        params: params
       }),
       method: 'post',
       success: (data) => {
@@ -68,13 +68,13 @@ export default class NetworksecStore {
   }
 
   // 保存单条
-  @action postServer(formData) {
+  @action postServer(formData, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.postNetworksec,
       data: JSON.stringify({
         conditions: formData,
-        params: {}
+        params: params
       }),
       method: 'post',
       success: (data) => {
@@ -88,13 +88,13 @@ export default class NetworksecStore {
   }
 
   // 保存多条
-  @action postServers(formData) {
+  @action postServers(formData, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.uploadCsvData,
       data: JSON.stringify({
         conditions: formData,
-        params: {}
+        params: params
       }),
       method: 'post',
       success: (data) => {
@@ -107,13 +107,13 @@ export default class NetworksecStore {
     })
   }
 
-  @action putServer(formData) {
+  @action putServer(formData, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.putNetworksec,
       data: JSON.stringify({
         conditions: formData,
-        params: {}
+        params: params
       }),
       method: 'post',
       success: (data) => {
@@ -127,13 +127,13 @@ export default class NetworksecStore {
     })
   }
 
-  @action putServers(formData) {
+  @action putServers(formData, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.putNetworksecs,
       data: JSON.stringify({
         conditions: formData,
-        params: {}
+        params: params
       }),
       method: 'post',
       success: (data) => {
@@ -147,13 +147,13 @@ export default class NetworksecStore {
     })
   }
 
-  @action putServers(formData) {
+  @action putServers(formData, params={}) {
     this.isLoading = true
     Fetch({
       url: Api.putNetworksecs,
       data: JSON.stringify({
         conditions: formData,
-        params: {}
+        params: params
       }),
       method: 'post',
       success: (data) => {
