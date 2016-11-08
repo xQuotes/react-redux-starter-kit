@@ -28,7 +28,9 @@ export default class DataTable extends React.Component {
     const {columns, dataSource} = this.props
     const pagination = {
       total: dataSource.length,
+      showTotal: () => `总共 ${dataSource.length} 条`,
       showSizeChanger: true,
+      pageSizeOptions: [dataSource.length+'', '10', '20', '50', '100'],
       // onShowSizeChange(current, pageSize) {
       //   console.log('Current: ', current, '; PageSize: ', pageSize);
       // },
