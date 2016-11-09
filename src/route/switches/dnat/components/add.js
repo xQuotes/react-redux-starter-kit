@@ -1,6 +1,7 @@
 import {
   inject, observer
 } from 'mobx-react'
+import moment from 'moment';
 
 import AddForm from '../../../components/switches/commonInfoAdd'
 
@@ -38,19 +39,19 @@ export default class AddDnat extends React.Component {
   render() {
     const {dnatStore} = this.props
 
+    const paramsData = dnatStore.params
+    const dnat = dnatStore.list.getById(paramsData.id) || {}
+
     var formType = {
       'deadline': 'DatePicker'
     }
-
-    const paramsData = dnatStore.params
-    const dnat = dnatStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(dnatStore.updateFields, (v, k) => {
       return _.assign({}, {
-        formType: formType[k],
+        formType: formType[k] || 'Input',
         name: k,
         label: v,
         fieldOptions: {
-          initialValue: dnat[k],
+          initialValue: k == 'deadline' ? (moment(dnat[k]) || moment(new Date())) : dnat[k],
           rules: [
             // { required: true, whitespace: true, message: '请输入主机名' }
           ],

@@ -70,6 +70,7 @@ export default class DnatStore {
   // 保存单条
   @action postServer(formData={}, params={}) {
     this.isLoading = true
+    console.log(formData['deadline'])
 
     formData['deadline'] = formData['deadline'] && formData['deadline'].format('YYYY-MM-DD')
     
@@ -111,6 +112,9 @@ export default class DnatStore {
   }
 
   @action putServer(formData={}, params={}) {
+    
+    formData['deadline'] = formData['deadline'] && formData['deadline'].format('YYYY-MM-DD')
+    
     this.isLoading = true
     Fetch({
       url: Api.putDnat,
@@ -131,6 +135,9 @@ export default class DnatStore {
   }
 
   @action putServers(formData={}, params={}) {
+    console.log(formData)
+    // formData['deadline'] = formData['deadline'] && formData['deadline'].format('YYYY-MM-DD')
+    
     this.isLoading = true
     Fetch({
       url: Api.putDnats,

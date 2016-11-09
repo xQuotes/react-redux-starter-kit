@@ -81,7 +81,7 @@ export default class FuncList extends React.Component {
       {
         title: '操作',
         key: 'operation',
-        width: 100,
+        width: 150,
         render: (text, record, index) => {
           return <div>  
             <a href="#" onClick={that.updateFunc.bind(this,{

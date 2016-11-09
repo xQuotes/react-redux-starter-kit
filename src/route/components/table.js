@@ -29,7 +29,7 @@ export default class DataTable extends React.Component {
       <Table columns={columns}
         dataSource={dataSource}
         pagination={pagination}
-        scroll={{ x: 1000 }}/>
+        scroll={{ x: 1200 }}/>
       )
   }
 }

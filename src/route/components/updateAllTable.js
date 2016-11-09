@@ -57,7 +57,7 @@ export default class DataTable extends React.Component {
         rowSelection={rowSelection}
         dataSource={dataSource}
         pagination={pagination}
-        scroll={{ x: 1000 }}
+        scroll={{ x: 1200 }}
         title={() => {
           return <Button type="primary" onClick={::this.updateAll}>批量修改</Button>
         }}/>
