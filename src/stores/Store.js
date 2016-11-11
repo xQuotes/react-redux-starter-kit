@@ -16,7 +16,7 @@ export default class Store {
 
   @observable visible = false
   @observable params = {}
-  @observable Api = {
+  api = {
     gets: '',
     delete: '',
     post: '',
@@ -34,7 +34,7 @@ export default class Store {
     this.setSearchDatas(formData, params)
     
     Fetch({
-      url: Api.gets,
+      url: this.api.gets,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -56,7 +56,7 @@ export default class Store {
   @action deleteServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.delete,
+      url: this.api.delete,
       data: JSON.stringify({
         conditions: {
           id: formData.id
@@ -78,7 +78,7 @@ export default class Store {
   @action postServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.post,
+      url: this.api.post,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -98,7 +98,7 @@ export default class Store {
   @action postServers(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.uploadCsvData,
+      url: this.api.uploadCsvData,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -117,7 +117,7 @@ export default class Store {
   @action putServer(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.put,
+      url: this.api.put,
       data: JSON.stringify({
         conditions: formData,
         params: params
@@ -137,7 +137,7 @@ export default class Store {
   @action putServers(formData={}, params={}) {
     this.isLoading = true
     Fetch({
-      url: Api.puts,
+      url: this.api.puts,
       data: JSON.stringify({
         conditions: formData,
         params: params

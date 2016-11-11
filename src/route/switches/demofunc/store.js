@@ -11,7 +11,7 @@ export default class /*File_append*/Store extends Store {
   constructor(props) {
     super(props)
   }
-  @observable Api = {
+  api = {
     gets: Api.get/*File_append*/s,
     delete: Api.delete/*File_append*/,
     post: Api.post/*File_append*/,
