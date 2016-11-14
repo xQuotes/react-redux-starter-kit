@@ -8,8 +8,6 @@ import {
   Form,
   Modal
 } from 'antd'
-const FormItem = Form.Item
-const Option = Select.Option
 
 import {ipReg, portReg} from '../../../common/utils/regex'
 

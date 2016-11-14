@@ -3,6 +3,7 @@ module.exports = {
   dashboardStore: require('../route/dashboard/store')['default'].fromJS(),
   permissionStore: require('../route/permission/store')['default'].fromJS(),
 
+  tableStore: require('../route/cmdb/table/store')['default'].fromJS(),
   /*file_append*/
 
 }
