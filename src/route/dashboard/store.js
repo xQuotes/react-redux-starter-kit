@@ -11,30 +11,12 @@ export default class DashboardStore {
   name = 'DEMO 系统'
   menus = [{
     subMenu: {
-      name: 'DEMO 1',
+      name: '数据库管理',
       icon: 'bars'
     },
     menuItem: [{
-      url: Url.item1,
-      name: 'ITEM 1',
-      icon: 'appstore-o'
-    }, {
-      url: Url.item2,
-      name: 'ITEM 2',
-      icon: 'appstore-o'
-    }]
-  }, {
-    subMenu: {
-      name: 'DEMO 1',
-      icon: 'bars'
-    },
-    menuItem: [{
-      url: Url.item3,
-      name: 'ITEM 1',
-      icon: 'appstore-o'
-    }, {
-      url: Url.item4,
-      name: 'ITEM 2',
+      url: Url.cmdbTables,
+      name: '表单管理',
       icon: 'appstore-o'
     }]
   }]
