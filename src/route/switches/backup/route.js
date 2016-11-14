@@ -1,7 +1,15 @@
 module.exports = [{
   path: 'backups',
-  component: require('./index')['default']
+  getComponent(nextState, cb) {
+   require.ensure([], (require) => {
+     cb(null, require('./index')['default'])
+   })
+  }
 }, {
   path: 'backup/:id',
-  component: require('./view')['default']
+  getComponent(nextState, cb) {
+   require.ensure([], (require) => {
+     cb(null, require('./view')['default'])
+   })
+  }
 }]

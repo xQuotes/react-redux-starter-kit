@@ -1,6 +1,10 @@
 module.exports = {
   path: 'register',
-  component: require('./index')['default'],
+  getComponent(nextState, cb) {
+   require.ensure([], (require) => {
+     cb(null, require('./index')['default'])
+   })
+  },
   // getIndexRoute(location, callback) {
   //   require.ensure([], function (require) {
   //     callback(null, require('./mainPage/route'))
