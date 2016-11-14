@@ -33,4 +33,4 @@ deploy:
 
 delete:
 	git checkout -- .
-	rm -rf src/route/switches/newfunc/
+	rm -rf src/route/cmdb/
