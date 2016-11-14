@@ -33,4 +33,4 @@ deploy:
 
 delete:
 	git checkout -- .
-	rm -rf src/route/cmdb/
+	rm -rf src/route/cmdb/db
