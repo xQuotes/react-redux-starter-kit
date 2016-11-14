@@ -7,7 +7,7 @@ import {
 const createForm = Form.create
 const FormItem = Form.Item
 
-import './login.less'
+// import './login.less'
 
 @createForm()
 @inject("userStore") @observer
