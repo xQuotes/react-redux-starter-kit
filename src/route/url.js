@@ -1,33 +1,16 @@
-export const switches = 's' // 交换机自动化 
+export const demofunc = 's' // 交换机自动化 
 
 const Url = {
   ads: '/',
-  index: `/${switches}/backups`,
+  index: `/index`,
   login: '/login',
   logout: '/logout',
   register: '/register',
 
-  // 利用率
-  switchesBackups: `/${switches}/backups`,
-  switchesBackup: `/${switches}/backup`,
-  switchesVlans: `/${switches}/vlans`,
-
-  switchesMappings: `/${switches}/mappings`,
-  switchesServers: `/${switches}/servers`,
-  switchesNetworksubs: `/${switches}/networksubs`,
-  switchesNetworksecs: `/${switches}/networksecs`,
-  switchesDnats: `/${switches}/dnats`,
-  switchesSnats: `/${switches}/snats`,
-  switchesVpns: `/${switches}/vpns`,
-  switchesWirelesss: `/${switches}/wirelesss`,
-  switchesDatacenters: `/${switches}/datacenters`,
-  switchesSpeciallines: `/${switches}/speciallines`,
-  switchesNetworkequipments: `/${switches}/networkequipments`,
-
-  switchesNetworks: `/${switches}/networks`,
-  switchesActiontypes: `/${switches}/actiontypes`,
-  switchesBrands: `/${switches}/brands`,
-  switchesAccountmanagers: `/${switches}/accountmanagers`,
+  item1: '/item1',
+  item2: '/item2',
+  item3: '/item3',
+  item4: '/item4'
   /*file_append*/
 }
 

@@ -55,7 +55,8 @@ export default class Dashboard extends React.Component {
   }
   render() {
     const {dashboardStore, userStore} = this.props
-    const {bcData} = dashboardStore
+    const {bcData, name, menus} = dashboardStore
+    console.log(menus)
     const my = userStore
     
     const menu = (
@@ -89,107 +90,26 @@ export default class Dashboard extends React.Component {
           <Link to={Url.index}><div className="ant-layout-logo">
             <img className="logo-img" src={Img.LogoImg} />
             <span className="logo-text">
-              {`IFOS 交换机自动化`}
+              {name}
             </span>
           </div></Link>
           <Menu mode="inline" theme="dark"
             onClick={this.handleClick.bind(this)}
-            defaultOpenKeys={['sub1', 'sub2', 'sub3']}
+            defaultOpenKeys={[]}
             selectedKeys={[this.state.current]}>
-            <SubMenu key="sub1" title={<span><Icon type="bars"/>收集信息</span>}>
-              <Menu.Item key={`${Url.switchesBackups}`}>
-                <Link to={`${Url.switchesBackups}`}>
-                  <Icon type="appstore-o"/>备份管理
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesVlans}`}>
-                <Link to={`${Url.switchesVlans}`}>
-                  <Icon type="appstore-o"/>vlan信息
-                </Link>
-              </Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub2" title={<span><Icon type="bars"/>基础信息</span>}>
-              <Menu.Item key={`${Url.switchesBrands}`}>
-                <Link to={`${Url.switchesBrands}`}>
-                  <Icon type="appstore-o"/>品牌信息
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesAccountmanagers}`}>
-                <Link to={`${Url.switchesAccountmanagers}`}>
-                  <Icon type="appstore-o"/>客户经理
-                </Link>
-              </Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub3" title={<span><Icon type="bars"/>常用信息</span>}>
-              {/*<Menu.Item key={`${Url.switchesMappings}`}>
-                <Link to={`${Url.switchesMappings}`}>
-                  <Icon type="appstore-o"/>映射
-                </Link>
-              </Menu.Item>*/}
-              <Menu.Item key={`${Url.switchesServers}`}>
-                <Link to={`${Url.switchesServers}`}>
-                  <Icon type="appstore-o"/>服务器
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesNetworksubs}`}>
-                <Link to={`${Url.switchesNetworksubs}`}>
-                  <Icon type="appstore-o"/>子网
-                </Link>
-              </Menu.Item>
-              
-              <Menu.Item key={`${Url.switchesNetworksecs}`}>
-                <Link to={`${Url.switchesNetworksecs}`}>
-                  <Icon type="appstore-o"/>网络安全
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesDnets}`}>
-                <Link to={`${Url.switchesDnats}`}>
-                  <Icon type="appstore-o"/>D-NAT
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesSnats}`}>
-                <Link to={`${Url.switchesSnats}`}>
-                  <Icon type="appstore-o"/>S-NAT
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesVpns}`}>
-                <Link to={`${Url.switchesVpns}`}>
-                  <Icon type="appstore-o"/>VPN
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesWirelesss}`}>
-                <Link to={`${Url.switchesWirelesss}`}>
-                  <Icon type="appstore-o"/>无线
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesDatacenters}`}>
-                <Link to={`${Url.switchesDatacenters}`}>
-                  <Icon type="appstore-o"/>机房
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesSpeciallines}`}>
-                <Link to={`${Url.switchesSpeciallines}`}>
-                  <Icon type="appstore-o"/>专线
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesNetworkequipments}`}>
-                <Link to={`${Url.switchesNetworkequipments}`}>
-                  <Icon type="appstore-o"/>网络设备
-                </Link>
-              </Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub4" title={<span><Icon type="bars"/>配置管理</span>}>
-              <Menu.Item key={`${Url.switchesNetworks}`}>
-                <Link to={`${Url.switchesNetworks}`}>
-                  <Icon type="appstore-o"/>网段管理
-                </Link>
-              </Menu.Item>
-              <Menu.Item key={`${Url.switchesActiontypes}`}>
-                <Link to={`${Url.switchesActiontypes}`}>
-                  <Icon type="appstore-o"/>操作类型
-                </Link>
-              </Menu.Item>
-            </SubMenu>
+            {_.map(menus, (val, key) => {
+              return <SubMenu key={key} title={<span>
+                  <Icon type={val.subMenu.icon}/>{val.subMenu.name}
+                </span>}>
+              {_.map(val.menuItem, (v, k) => {
+                return <Menu.Item key={`${v.url}`}>
+                  <Link to={`${v.url}`}>
+                    <Icon type={v.icon}/>{v.name}
+                  </Link>
+                </Menu.Item>
+              })}
+              </SubMenu>
+            })}
           </Menu>
         </aside>
         <div className="ant-layout-main">
