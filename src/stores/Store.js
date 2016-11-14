@@ -20,7 +20,6 @@ export default class Store {
     gets: '',
     delete: '',
     post: '',
-    uploadCsvData: '',
     put: '',
     puts: '',
   }
@@ -87,26 +86,6 @@ export default class Store {
       success: (data) => {
         this.isLoading = false
         this.list.push(data)
-      },
-      error: (data) => {
-        this.isLoading = false
-      }
-    })
-  }
-
-  // 保存多条
-  @action postServers(formData={}, params={}) {
-    this.isLoading = true
-    Fetch({
-      url: this.api.uploadCsvData,
-      data: JSON.stringify({
-        conditions: formData,
-        params: params
-      }),
-      method: 'post',
-      success: (data) => {
-        this.isLoading = false
-        this.list = data
       },
       error: (data) => {
         this.isLoading = false
