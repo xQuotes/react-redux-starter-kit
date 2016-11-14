@@ -1,11 +1,11 @@
-import './demofunc.less'
+import './cmdb.less'
 
 import Dashboard from '../dashboard/index'
 
-export default class Demofunc extends React.Component {
+export default class Cmdb extends React.Component {
   render() {
     return(
-      <div className="switches">
+      <div className="cmdb">
         <Dashboard {...this.props}/>
       </div>
       )

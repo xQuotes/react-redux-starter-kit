@@ -1,7 +1,7 @@
-import {demofunc} from 'Url'
+import {cmdb} from 'Url'
 
 module.exports = {
-  path: `/${demofunc}`,
+  path: `/${cmdb}`,
   getComponent(nextState, cb) {
    require.ensure([], (require) => {
      cb(null, require('./index')['default'])

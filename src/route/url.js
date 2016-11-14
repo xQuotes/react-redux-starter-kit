@@ -1,4 +1,4 @@
-export const demofunc = 's' // 交换机自动化 
+export const cmdb = 'c' // 交换机自动化 
 
 const Url = {
   ads: '/',
@@ -6,11 +6,7 @@ const Url = {
   login: '/login',
   logout: '/logout',
   register: '/register',
-
-  item1: '/item1',
-  item2: '/item2',
-  item3: '/item3',
-  item4: '/item4'
+  
   /*file_append*/
 }
 
