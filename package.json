@@ -21,7 +21,7 @@
   "author": "FuYin",
   "license": "ISC",
   "dependencies": {
-    "antd": "^2.2.1",
+    "antd": "^2.4.2",
     "brace": "^0.8.0",
     "classnames": "^2.2.3",
     "lodash": "^4.11.1",
