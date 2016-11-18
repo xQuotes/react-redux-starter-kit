@@ -10,7 +10,6 @@ module.exports = {
   getChildRoutes(location, callback) {
     require.ensure([], function (require) {
       callback(null, [
-        require('./table/route'),
         require('./db/route'),
         require('./mulsearch/route'),
         require('./quicksearch/route'),

@@ -7,7 +7,6 @@ const Url = {
   logout: '/logout',
   register: '/register',
   
-  cmdbTables: `/${cmdb}/tables`,
   cmdbDbs: `/${cmdb}/dbs`,
   cmdbMulsearchs: `/${cmdb}/mulsearchs`,
   cmdbQuicksearchs: `/${cmdb}/quicksearchs`,

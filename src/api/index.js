@@ -6,12 +6,6 @@ const Api = {
   logout: `${url}/sw_user/logout`,
   getMe: `${url}/sw_user/getUserInfo`,
 
-  postTable: `${url}/sw_cmdb_table/addInfo`,
-  getTables: `${url}/sw_cmdb_table/getList`,
-  getTable: `${url}/sw_cmdb_table/getInfo`,
-  getTable: `${url}/sw_cmdb_table/deleteInfo`,
-  getTable: `${url}/sw_cmdb_table/updateInfo`,
-
   postDb: `${url}/sw_cmdb_db/addInfo`,
   getDbs: `${url}/sw_cmdb_db/getList`,
   getDb: `${url}/sw_cmdb_db/getInfo`,

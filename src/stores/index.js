@@ -3,7 +3,6 @@ module.exports = {
   dashboardStore: require('../route/dashboard/store')['default'].fromJS(),
   permissionStore: require('../route/permission/store')['default'].fromJS(),
 
-  tableStore: require('../route/cmdb/table/store')['default'].fromJS(),
   dbStore: require('../route/cmdb/db/store')['default'].fromJS(),
   mulsearchStore: require('../route/cmdb/mulsearch/store')['default'].fromJS(),
   quicksearchStore: require('../route/cmdb/quicksearch/store')['default'].fromJS(),
