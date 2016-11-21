@@ -12,52 +12,33 @@ export default class DashboardStore {
   menus = [{
     subMenu: {
       name: '表单管理',
-      icon: 'bars',
-      url: ''
+      icon: 'bars'
     },
-    // menuItem: [{
-    //   url: Url.cmdbMulsearchs,
-    //   name: '综合查询',
-    //   icon: 'appstore-o'
-    // },{
-    //   url: Url.cmdbQuicksearchs,
-    //   name: '快速查询',
-    //   icon: 'appstore-o'
-    // },{
-    //   url: Url.cmdbMysettings,
-    //   name: '我的设置',
-    //   icon: 'appstore-o'
-    // }]
+    menuItem: [{
+      url: Url.cmdbTables,
+      name: '表单列表',
+      icon: 'appstore-o'
+    }]
   },{
     subMenu: {
       name: '权限管理',
-      icon: 'bars',
-      url: ''
+      icon: 'bars'
     },
-    // menuItem: [{
-    //   url: Url.cmdbIPmanages,
-    //   name: 'IP管理',
-    //   icon: 'appstore-o'
-    // },{
-    //   url: Url.cmdbNetworkmanages,
-    //   name: '网段管理',
-    //   icon: 'appstore-o'
-    // }]
+    menuItem: [{
+      url: Url.cmdbPermissions,
+      name: '权限列表',
+      icon: 'appstore-o'
+    }]
   },{
     subMenu: {
       name: '日志管理',
-      icon: 'bars',
-      url: ''
+      icon: 'bars'
     },
-    // menuItem: [{
-    //   url: Url.cmdbIPmanages,
-    //   name: 'IP管理',
-    //   icon: 'appstore-o'
-    // },{
-    //   url: Url.cmdbNetworkmanages,
-    //   name: '网段管理',
-    //   icon: 'appstore-o'
-    // }]
+    menuItem: [{
+      url: Url.cmdbLogs,
+      name: '日志列表',
+      icon: 'appstore-o'
+    }]
   }]
   
   @action putDashboard(formData) {
