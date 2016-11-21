@@ -10,6 +10,9 @@ module.exports = {
   getChildRoutes(location, callback) {
     require.ensure([], function (require) {
       callback(null, [
+        require('./log/route'),
+        require('./permission/route'),
+        require('./table/route'),
         /*file_append*/
       ])
     })

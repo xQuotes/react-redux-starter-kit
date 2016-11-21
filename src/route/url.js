@@ -7,6 +7,9 @@ const Url = {
   logout: '/logout',
   register: '/register',
   
+  cmdbLogs: `/${cmdb}/logs`,
+  cmdbPermissions: `/${cmdb}/permissions`,
+  cmdbTables: `/${cmdb}/tables`,
   /*file_append*/
 }
 
