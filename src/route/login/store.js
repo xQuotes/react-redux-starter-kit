@@ -2,8 +2,8 @@ import {
   observable, computed, reaction, action
 } from 'mobx'
 
-import Api from 'Api'
-import Fetch from 'Fetch'
+import Api from '../../api/'
+import Fetch from '../../common/utils/fetch'
 
 export default class UserStore {
   @observable name = ''

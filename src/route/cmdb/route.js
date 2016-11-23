@@ -1,4 +1,4 @@
-import {cmdb} from 'Url'
+import {cmdb} from '../url'
 
 module.exports = {
   path: `/${cmdb}`,

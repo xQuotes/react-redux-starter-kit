@@ -4,7 +4,9 @@ import {
 } from 'mobx-react'
 
 // String特殊方法不兼容问题
-import 'Str'
+import './common/utils/string'
+import './common/utils/array'
+
 import Root from './containers/index'
 
 import store from './stores/index'

@@ -2,7 +2,7 @@ import {
   inject, observer
 } from 'mobx-react'
 
-import Api from 'Api'
+import Api from '../../../api/'
 
 import FuncList from '../../components/cmdb/tableList'
 import AddPermissionModal from './add'
@@ -16,7 +16,7 @@ export default class Permissions extends React.Component {
     super(props)
   }
   render() {
-    const bcData = ['首页', '常用信息', '权限管理']
+    const bcData = ['首页', '权限管理', '权限列表']
     return(
       <div className="switches-network">
         <FuncList 

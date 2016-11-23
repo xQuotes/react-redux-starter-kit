@@ -1,7 +1,7 @@
 import { Modal, message } from 'antd'
 import reqwest from 'reqwest'
 
-import Auth from 'Auth'
+import Auth from './auth'
 
 export default function fetching(action) {
   const loop = (data, msg, statuscode) => data

@@ -2,8 +2,7 @@ import {
   observable, computed, action
 } from 'mobx'
 
-import Fetch from 'Fetch'
-import 'Arr'
+import Fetch from '../common/utils/fetch'
 
 export default class Store {
   @observable isLoading = false

@@ -2,9 +2,9 @@ import {
   observable, computed, reaction, action
 } from 'mobx'
 
-import Api from 'Api'
-import Url from 'Url'
-import Fetch from 'Fetch'
+import Api from '../../api/'
+import Url from '../url'
+import Fetch from '../../common/utils/fetch'
 
 export default class DashboardStore {
   @observable bcData = []

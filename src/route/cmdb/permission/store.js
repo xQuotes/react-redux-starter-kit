@@ -2,9 +2,8 @@ import {
   observable, computed, action
 } from 'mobx'
 
-import Fetch from 'Fetch'
-import Api from 'Api'
-import 'Arr'
+import Fetch from '../../../common/utils/fetch'
+import Api from '../../../api/'
 import Store from '../../../stores/Store'
 
 export default class PermissionStore extends Store {

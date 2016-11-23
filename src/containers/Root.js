@@ -8,7 +8,7 @@ import {
 import App from './App'
 import routes from '../route/route'
 
-import Auth from 'Auth'
+import Auth from '../common/utils/auth'
 
 const rootRoute = {
   childRoutes: [{

@@ -3,8 +3,8 @@ import {
 } from 'react-router'
 import cookie from 'react-cookie'
 
-import Url from 'Url'
-import Api from 'Api'
+import Url from '../../route/url'
+import Api from '../../api/'
 
 const Auth = {}
 

@@ -12,11 +12,11 @@ import cookie from 'react-cookie'
 import { TreeSelect } from 'antd'
 const TreeNode = TreeSelect.TreeNode;
 const SubMenu = Menu.SubMenu
-import Img from 'Img'
+import Img from '../../common/img/'
 import './dashboard.less'
 
-import Url from 'Url'
-import Auth from 'Auth'
+import Url from '../url'
+import Auth from '../../common/utils/auth'
 
 @inject(
   'dashboardStore',

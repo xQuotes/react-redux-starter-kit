@@ -2,7 +2,7 @@ import {
   inject, observer
 } from 'mobx-react'
 
-import Api from 'Api'
+import Api from '../../../api/'
 
 import FuncList from '../../components/cmdb/tableList'
 import AddLogModal from './add'
@@ -16,7 +16,7 @@ export default class Logs extends React.Component {
     super(props)
   }
   render() {
-    const bcData = ['首页', '常用信息', '日志管理']
+    const bcData = ['首页', '日志管理', '日志列表']
     return(
       <div className="switches-network">
         <FuncList 

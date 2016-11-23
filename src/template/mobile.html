@@ -2,7 +2,23 @@
 <html lang="zh">
   <head>
       <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      <meta name="format-detection" content="telephone=no, email=no" />
+      <meta name="renderer" content="webkit">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="HandheldFriendly" content="true">
+      <meta name="MobileOptimized" content="320">
+      <meta name="screen-orientation" content="portrait">
+      <meta name="x5-orientation" content="portrait">
+      <meta name="full-screen" content="yes">
+      <meta name="x5-fullscreen" content="true">
+      <meta name="browsermode" content="application">
+      <meta name="x5-page-mode" content="app">
+      <meta name="msapplication-tap-highlight" content="no">
+      <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>">
+      <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
       <title><%= htmlWebpackPlugin.options.title %></title>
       <style type="text/css">
       .index-loading {
@@ -46,9 +62,6 @@
       .loading span:nth-child(4){ -webkit-animation-delay:0.6s; }
       .loading span:nth-child(5){ -webkit-animation-delay:0.8s; }
       </style>
-      <!--[if lt IE 10]>
-      <script src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,es5-shim/4.5.7/es5-shim.min.js,es5-shim/4.5.7/es5-sham.min.js,html5shiv/3.7.2/html5shiv.min.js,media-match/2.0.2/media.match.min.js"></script>
-      <![endif]-->
   </head>
   <body>
       <div id="react" class="react"></div>
