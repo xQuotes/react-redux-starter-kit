@@ -8,14 +8,14 @@ config.entries = {
     template: 'src/template/index.html',
 
     filename: 'index.html',
-    title: 'CMDB super',
+    title: 'title',
     description: '',
     keywords: ''
   }
 }
 
 config.proxy = {
-  '/web/*': 'http://172.30.205.224:8081'
+  '/web/*': 'http://localhost:8081'
 }
 
 module.exports = config;
