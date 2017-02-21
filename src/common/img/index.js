@@ -1,8 +1,6 @@
 import BgImg1 from './background/bg.jpg'
-import LogoImg from './logo.png'
 
 let Images = {
-  LoginBgImg: BgImg1,
-  LogoImg
+  LoginBgImg: BgImg1
 }
 export default Images

@@ -60,11 +60,11 @@ var plugins = [
     filename: build.HTML1.filename,
     title: build.HTML1.title,
     template: build.HTML1.template,
-    chunks: ['vendors', 'app'],
+    chunks: ['config', 'common', 'vendors', 'app'],
     inject: 'body'
   }),
   new TransferWebpackPlugin([
-    {from: 'json'}
+    {from: 'src/json'}
   ], path.resolve(__dirname,'')),
   new OpenBrowserPlugin({ url: httpUrl })
 ]
@@ -79,20 +79,21 @@ if( isProduction() ) {
       "process.env": {
         NODE_ENV: JSON.stringify("production")
       }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      test: /(\.jsx|\.js)$/,
-      mangle: {
-          except: ['exports', 'require']
-      },
-      compress: {
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        screw_ie8: true,
-        warnings: false
-      },
     })
+    // ,
+    // new webpack.optimize.UglifyJsPlugin({
+    //   test: /(\.jsx|\.js)$/,
+    //   mangle: {
+    //       except: ['exports', 'require']
+    //   },
+    //   compress: {
+    //     pure_getters: true,
+    //     unsafe: true,
+    //     unsafe_comps: true,
+    //     screw_ie8: true,
+    //     warnings: false
+    //   },
+    // })
   )
 } else {
   entryApp.push(
@@ -110,11 +111,13 @@ var public_path = isProduction() ? '/' : '/'
 var config = {
   entry: {
     app: entryApp,
-    // mobile: entryMobile,
+    config: [
+      'Api'
+    ],
     vendors: [
       'react',
       'react-router'],
-    common: ['Utils', 'Url', 'Api', 'Auth', 'Arr', 'Str', 'Obj', 'Fetch', 'Img']
+    common: ['Utils', 'Url', 'Auth', 'Arr', 'Str', 'Obj', 'Fetch', 'Img']
   },
   output: {
     path: path.resolve(__dirname, build.dir),
