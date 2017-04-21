@@ -46,9 +46,18 @@ export default class UserStore {
       usr: this.usr
     }
   }
-  
+  /*
+  getInstance () {
+    let instance;
+    if(user === undefined) {
+      instance = new UserStore();
+    }
+    return instance;
+  }
+  */
+  // static 静态
   static fromJS() {
-    return new UserStore()
+    return new UserStore();
   }
 
 }
