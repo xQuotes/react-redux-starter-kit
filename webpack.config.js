@@ -63,9 +63,9 @@ var plugins = [
     chunks: ['config', 'common', 'vendors', 'app'],
     inject: 'body'
   }),
-  new TransferWebpackPlugin([
-    {from: 'src/json'}
-  ], path.resolve(__dirname,'')),
+  // new TransferWebpackPlugin([
+  //   {from: 'src/json'}
+  // ], path.resolve(__dirname,'')),
   new OpenBrowserPlugin({ url: httpUrl })
 ]
 

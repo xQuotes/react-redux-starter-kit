@@ -44,7 +44,7 @@ export default class Dashboard extends React.Component {
 
     Auth.removeAuthCookie('UserIfosSession', {
       path: '/',
-      domain: 'ifos.ifengidc.com',
+      domain: 'xxx.com',
     })
     Auth.checkAuthCookie('UserIfosSession')
   }
@@ -62,7 +62,7 @@ export default class Dashboard extends React.Component {
     const menu = (
       <Menu>
         <Menu.Item key="0">
-          <a href="http://pms.ifos.ifengidc.com/" target="_blank">工作流管理</a>
+          <a href="#" target="_blank">DEMO</a>
         </Menu.Item>
         <Menu.Divider />
       </Menu>
@@ -146,7 +146,7 @@ export default class Dashboard extends React.Component {
             </div>
           </div>
           <div className="ant-layout-footer">
-          ifeng.com 版权所有 © 2016 凤凰网运维中心
+          xxxx.com 版权所有 © 2016 XXXX
           </div>
         </div>
       </div>
