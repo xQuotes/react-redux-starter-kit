@@ -52,7 +52,8 @@ export default class FuncList extends React.Component {
       }
     })
     let fields = toJS(store.fields)
-    let searchFields = _.map(toJS(store.searchFields), (v, k)=> {
+    console.log(store.searchFields)
+    let searchFields = _.map(store.searchFields, (v, k)=> {
       return {
         name: k,
         label: v,
@@ -63,7 +64,7 @@ export default class FuncList extends React.Component {
       }
     })
 
-    let tableHeader = _.map(fields, (v, k) => {
+    let tableHeader = _.map(store.fields, (v, k) => {
       return {
         title: v,
         dataIndex: k,
