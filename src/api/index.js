@@ -1,10 +1,7 @@
-const url = '/web';
+const url = 'http://localhost:4444/api/demo/collection';
 
 const Api = {
   login: '',
-
-  logout: `${url}/sw_user/logout`,
-  getMe: `${url}/sw_user/getUserInfo`,
 
   /*file_append*/
 }

@@ -39,7 +39,7 @@ export default class Store {
         conditions: formData,
         params: params
       }),
-      method: 'post',
+      method: 'get',
       success: (data) => {
         this.isLoading = false
         this.list = data.list
@@ -63,7 +63,7 @@ export default class Store {
         },
         params: params
       }),
-      method: 'post',
+      method: 'delete',
       success: (data) => {
         this.isLoading = false
         this.list = this.list.deleteById(formData.id)
@@ -122,7 +122,7 @@ export default class Store {
         conditions: formData,
         params: params
       }),
-      method: 'post',
+      method: 'put',
       success: (data) => {
         this.isLoading = false
         let index = this.list.getIndexById(data.id)
@@ -142,7 +142,7 @@ export default class Store {
         conditions: formData,
         params: params
       }),
-      method: 'post',
+      method: 'put',
       success: (data) => {
         this.isLoading = false
         this.list = data
