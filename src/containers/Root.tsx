@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-export interface Props {}
-
 import Index from '../route/Index'
 
-export default (props: Props) => {
-  return <Index compiler="TypeScript" framework="React" />
-}
+export interface Props {}
+
+export default (props: Props) => (
+  <Index {...props} compiler="TypeScript" framework="React" />
+)

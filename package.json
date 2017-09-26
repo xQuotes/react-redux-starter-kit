@@ -7,7 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env ./node_modules/.bin/webpack",
     "server": "cross-env ./node_modules/.bin/webpack-dev-server --hot",
-    "dev": "cross-env npm run build && npm run server"
+    "dev": "cross-env npm run build && npm run server",
+    "lint":
+      "./node_modules/.bin/eslint --cache --cache-location=.eslintcache --ext .js,.jsx,.ts,.tsx src/",
+    "slint":
+      "./node_modules/.bin/stylelint **/*.less --cache --cache-location .stylelintcache --config .stylelintrc.js",
+    "fix":
+      "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx src/ --fix && ./node_modules/.bin/stylelint **/*.less --config .stylelintrc.js --fix",
+    "precommit": "npm run lint && npm run slint"
   },
   "author": "",
   "license": "ISC",
