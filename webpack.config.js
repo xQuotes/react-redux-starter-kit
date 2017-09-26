@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: './src/index.tsx',
+    app: './src/App.tsx',
   },
   output: {
     filename: '[name].bundle.js',
@@ -75,6 +75,7 @@ module.exports = {
       // proxy URLs to backend development server
       '/api': 'http://localhost:3000',
     },
+    open: 'http://localhost:3001',
     historyApiFallback: true, // true for index.html upon 404, object for multiple paths
     hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
     https: false, // true for self-signed, object for cert authority
