@@ -16,7 +16,7 @@ module.exports = {
   },
   rules: {
     // 禁止不必要的分号
-    'no-extra-semi': 2,
+    // 'no-extra-semi': 2,
     // 要求或禁止使用分号而不是 ASI（这个才是控制行尾部分号的，）
     semi: [2, 'never'],
   },

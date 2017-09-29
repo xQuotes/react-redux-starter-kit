@@ -1,18 +1,31 @@
-import { action } from 'mobx'
+import { action, observable } from 'mobx'
+import R from 'r2'
+
+interface Api {
+  gets: string
+  get: string
+  post: string
+  put: string
+  delete: string
+  [propName: string]: string
+}
+interface FormData {}
+interface Params {}
+interface Item {
+  readonly id: number
+  [propName: string]: any
+}
+interface Func {
+  (formData: FormData, params: Params): void
+}
 
 interface store {
-  api: {
-    gets: string
-    get: string
-    post: string
-    put: string
-    delete: string
-  }
-  getServers(): void
-  getServer(): void
-  putServer(): void
-  postServer(): void
-  deleteServer(): void
+  api: Api
+  getServers: Func
+  getServer: Func
+  putServer: Func
+  postServer: Func
+  deleteServer: Func
 }
 
 export default class Store implements store {
@@ -23,14 +36,18 @@ export default class Store implements store {
     put: '',
     delete: ''
   }
+
+  @observable item: Item
+  @observable list: Item[] // Array<Item>
+
   @action
-  getServers(formData = {}, params = {}) {}
+  getServers(formData: FormData, params: Params) {}
   @action
-  getServer(formData = {}, params = {}) {}
+  getServer(formData: FormData, params: Params) {}
   @action
-  postServer(formData = {}, params = {}) {}
+  postServer(formData: FormData, params: Params) {}
   @action
-  putServer(formData = {}, params = {}) {}
+  putServer(formData: FormData, params: Params) {}
   @action
-  deleteServer(formData = {}, params = {}) {}
+  deleteServer(formData: FormData, params: Params) {}
 }
