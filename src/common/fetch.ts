@@ -1,34 +1,28 @@
-import ifetch from 'isomorphic-fetch'
+import * as ifetch from 'isomorphic-fetch'
+import * as es6Promise from 'es6-promise'
 
-require('es6-promise').polyfill()
+es6Promise.polyfill()
 
 interface Options {
   url: string
   [params: string]: any
 }
 
-function promise({ url: string, ...options }: Options) {
-  return ifetch(
-    url,
-    Object.assign(
-      {},
-      {
-        method: 'GET',
-        header: {
-          'Content-Type': 'application/json'
-        }
-      },
-      options
-    )
-  ).then(response => response.json())
+function promise({ url, ...options }: Options) {
+  return ifetch(url, {
+    ...{
+      method: 'GET'
+    },
+    ...options
+  }).then((response: any) => response.json())
 }
 
-function fetch({ url: string, ...options }) {
+export function fetch({ url, ...options }: Options) {
   return promise({ url, ...options })
-    .then(data => {
+    .then((data: any) => {
       console.log('request succeeded with JSON response', data)
     })
-    .catch(error => {
+    .catch((error: any) => {
       console.log('request failed', error)
     })
 }
