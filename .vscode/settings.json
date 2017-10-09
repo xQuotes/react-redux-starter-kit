@@ -2,9 +2,6 @@
   "editor.fontSize": 16,
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
-  "eslint.options": {
-    "configFile": ".eslintrc.js"
-  },
   "stylelint.enable": true,
   "css.validate": false,
   "prettier.eslintIntegration": true,

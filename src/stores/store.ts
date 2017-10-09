@@ -75,11 +75,11 @@ export default class Store implements store {
     return promise({
       url: `${this.api.put}/${params.id}`
     }).then(data => {
-      const index = this.list.findIndex((item, key, arr) => {
-        if (item.id === params.id) {
-          return item
-        }
-      })
+      // const index = this.list.findIndex((item, key, arr) => {
+      //   if (item.id === params.id) {
+      //     return item
+      //   }
+      // })
     })
   }
   @action
