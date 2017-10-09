@@ -10,9 +10,7 @@ interface Options {
 
 function promise({ url, ...options }: Options) {
   return ifetch(url, {
-    ...{
-      method: 'GET'
-    },
+    method: 'GET',
     ...options
   }).then((response: any) => response.json())
 }

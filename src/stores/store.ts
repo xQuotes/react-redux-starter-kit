@@ -51,43 +51,63 @@ export default class Store implements store {
     return promise({
       url: this.api.gets
     }).then(data => {
-      this.list = data
+      this.list = data || []
     })
   }
+
   @action
   getServer(formData: FormData, params: Params) {
     return promise({
       url: this.api.get
-    }).then(data => {
-      this.item = data
     })
+      .then(data => {
+        this.item = data || { name: '1' }
+      })
+      .catch(data => {
+        console.log(data)
+      })
   }
+
   @action
   postServer(formData: FormData, params: Params) {
     return promise({
       url: this.api.post
-    }).then(data => {
-      this.item = data
     })
+      .then(data => {
+        this.item = data
+      })
+      .catch(data => {
+        console.log(data)
+      })
   }
+
   @action
   putServer(formData: FormData, params: Params) {
     return promise({
       url: `${this.api.put}/${params.id}`
-    }).then(data => {
-      // const index = this.list.findIndex((item, key, arr) => {
-      //   if (item.id === params.id) {
-      //     return item
-      //   }
-      // })
     })
+      .then(data => {
+        // const index = this.list.findIndex((item, key, arr) => {
+        //   if (item.id === params.id) {
+        //     return item
+        //   }
+        // })
+      })
+      .catch(data => {
+        console.log(data)
+      })
   }
+
   @action
   deleteServer(formData: FormData, params: Params) {
     return promise({
       url: `${this.api.delete}/${params.id}`
-    }).then(data => {
-      this.list = this.list.filter(item => item.id !== params.id)
     })
+      .then(data => {
+        this.list = this.list.filter(item => item.id !== params.id)
+      })
+      .catch(data => {
+        console.log(data)
+      })
   }
 }
