@@ -5,11 +5,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: './src/App.tsx',
+    app: './src/App.tsx'
   },
   output: {
     filename: '[name].bundle.js',
-    path: `${__dirname}/dist`,
+    path: `${__dirname}/dist`
   },
 
   // Enable sourcemaps for debugging webpack's output.
@@ -17,13 +17,16 @@ module.exports = {
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.json']
   },
 
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'node_modules/react/dist/react.js', to: './' },
-      { from: 'node_modules/react-dom/dist/react-dom.js', to: './' },
+      { from: 'node_modules/react/umd/react.production.min.js', to: './' },
+      {
+        from: 'node_modules/react-dom/umd/react-dom.production.min.js',
+        to: './'
+      }
     ]),
     new HtmlWebpackPlugin({
       title: 'My App',
@@ -33,7 +36,7 @@ module.exports = {
         const sort = {
           react: 0,
           'react-dom': 1,
-          index: 2,
+          index: 2
         }
         console.log(a.names[0], b.names[0], sort[a.names[0]], sort[b.names[0]])
         if (sort[a.names[0]] > sort[b.names[0]]) {
@@ -43,12 +46,12 @@ module.exports = {
           return -1
         }
         return 0
-      },
+      }
     }),
     new HtmlWebpackIncludeAssetsPlugin({
-      assets: ['react.js', 'react-dom.js'],
-      append: false,
-    }),
+      assets: ['react.production.min.js', 'react-dom.production.min.js'],
+      append: false
+    })
   ],
 
   module: {
@@ -57,8 +60,8 @@ module.exports = {
       { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
 
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
-    ],
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
+    ]
   },
 
   // When importing a module whose path matches one of the following, just
@@ -67,13 +70,13 @@ module.exports = {
   // dependencies, which allows browsers to cache those libraries between builds.
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM',
+    'react-dom': 'ReactDOM'
   },
 
   devServer: {
     proxy: {
       // proxy URLs to backend development server
-      '/api': 'http://localhost:3000',
+      '/api': 'http://localhost:3000'
     },
     open: 'http://localhost:3001',
     historyApiFallback: true, // true for index.html upon 404, object for multiple paths
@@ -84,6 +87,6 @@ module.exports = {
 
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 3001,
-  },
+    port: 3001
+  }
 }
