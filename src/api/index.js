@@ -1,4 +1,4 @@
-const url = '/web'
+const url = 'http://47.93.50.131:8080/api'
 
 const Api = {
   login: 'http://locahost:3332/login',
