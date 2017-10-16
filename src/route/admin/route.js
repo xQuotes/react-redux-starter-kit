@@ -10,7 +10,7 @@ module.exports = {
   getChildRoutes(location, callback) {
     require.ensure([], function(require) {
       callback(null, [
-        require('./caculator/route'),
+        require('./table/route'),
         require('./user/route'),
         require('./news/route')
         /*file_append*/

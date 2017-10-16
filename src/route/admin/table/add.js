@@ -2,13 +2,13 @@ import { inject, observer } from 'mobx-react'
 
 import AddForm from '../../components/switches/commonInfoAdd'
 
-@inject('caculatorStore')
+@inject('tableStore')
 @observer
-export default class AddCaculator extends React.Component {
+export default class AddTable extends React.Component {
   constructor(props) {
     super(props)
   }
-  caculatorIpExists(rule, value, callback) {
+  tableIpExists(rule, value, callback) {
     if (!value) {
       callback()
     } else {
@@ -19,7 +19,7 @@ export default class AddCaculator extends React.Component {
       }
     }
   }
-  caculatorPortExists(rule, value, callback) {
+  tablePortExists(rule, value, callback) {
     if (!value) {
       callback()
     } else {
@@ -32,17 +32,17 @@ export default class AddCaculator extends React.Component {
   }
 
   render() {
-    const { caculatorStore } = this.props
-    const paramsData = caculatorStore.params
-    const caculator = caculatorStore.list.getById(paramsData.id) || {}
-    let formDataTitileServer = _.map(caculatorStore.updateFields, (v, k) => {
+    const { tableStore } = this.props
+    const paramsData = tableStore.params
+    const table = tableStore.list.getById(paramsData.id) || {}
+    let formDataTitileServer = _.map(tableStore.updateFields, (v, k) => {
       return _.assign(
         {},
         {
           name: k,
           label: v,
           fieldOptions: {
-            initialValue: caculator[k],
+            initialValue: table[k],
             rules: [
               // { required: true, whitespace: true, message: '请输入主机名' }
             ]
@@ -57,13 +57,12 @@ export default class AddCaculator extends React.Component {
         name: 'id',
         label: 'id',
         fieldOptions: {
-          initialValue:
-            paramsData.actionType == 'clone' ? undefined : caculator.id
+          initialValue: paramsData.actionType == 'clone' ? undefined : table.id
         }
       },
       ...formDataTitileServer
     ]
 
-    return <AddForm store={caculatorStore} title={formDataTitileServer} />
+    return <AddForm store={tableStore} title={formDataTitileServer} />
   }
 }

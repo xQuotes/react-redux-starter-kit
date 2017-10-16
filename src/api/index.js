@@ -6,12 +6,12 @@ const Api = {
   logout: `${url}/sw_user/logout`,
   getMe: `${url}/sw_user/getUserInfo`,
 
-  postCaculator: `${url}/sw_config_datacenter/addInfo`,
-  getCaculators: `${url}/sw_config_datacenter/getList`,
+  postCaculator: `${url}/table/savetable`,
+  getCaculators: `${url}/table/list`,
   getCaculator: `${url}/sw_config_datacenter/getInfo`,
   deleteCaculator: `${url}/sw_config_datacenter/deleteInfo`,
-  putCaculator: `${url}/sw_config_datacenter/updateInfo`,
-  putCaculators: `${url}/sw_config_datacenter/updateList`,
+  putCaculator: `${url}/table/savetable`,
+  putCaculators: `${url}/table/savetable`,
 
   postUser: `${url}/sw_config_datacenter/addInfo`,
   getUsers: `${url}/sw_config_datacenter/getList`,

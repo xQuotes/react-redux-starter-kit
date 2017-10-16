@@ -5,20 +5,20 @@ import Api from 'Api'
 import 'Arr'
 import Store from '../../../stores/Store'
 
-export default class CaculatorStore extends Store {
+export default class TableStore extends Store {
   constructor(props) {
     super(props)
   }
   api = {
-    gets: Api.getCaculators,
-    delete: Api.deleteCaculator,
-    post: Api.postCaculator,
+    gets: Api.getTables,
+    delete: Api.deleteTable,
+    post: Api.postTable,
     uploadCsvData: Api.uploadCsvData,
-    put: Api.putCaculator,
-    puts: Api.putCaculators,
+    put: Api.putTable,
+    puts: Api.putTables,
     exports: Api.exports
   }
   static fromJS(array = []) {
-    return new CaculatorStore()
+    return new TableStore()
   }
 }

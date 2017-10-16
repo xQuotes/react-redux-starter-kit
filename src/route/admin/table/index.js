@@ -3,11 +3,11 @@ import { inject, observer } from 'mobx-react'
 import Api from 'Api'
 
 import FuncList from '../../components/switches/commonInfoList'
-import AddCaculatorModal from './add'
+import AddTableModal from './add'
 
-@inject('caculatorStore')
+@inject('tableStore')
 @observer
-export default class Caculators extends React.Component {
+export default class Tables extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -16,12 +16,12 @@ export default class Caculators extends React.Component {
     return (
       <div className="switches-network">
         <FuncList
-          store={this.props.caculatorStore}
+          store={this.props.tableStore}
           bcData={bcData}
-          downloadCSV={Api.downloadCaculatorCSV}
-          funcEnName={'caculator'}
+          downloadCSV={Api.downloadTableCSV}
+          funcEnName={'table'}
         />
-        <AddCaculatorModal />
+        <AddTableModal />
       </div>
     )
   }
