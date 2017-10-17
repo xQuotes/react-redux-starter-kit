@@ -2,25 +2,25 @@ import { inject, observer } from 'mobx-react'
 
 import AddForm from '../../components/switches/commonInfoAdd'
 
-@inject('tableStore')
+@inject('formulaStore')
 @observer
-export default class AddTable extends React.Component {
+export default class AddFormula extends React.Component {
   constructor(props) {
     super(props)
   }
 
   render() {
-    const { tableStore } = this.props
-    const paramsData = tableStore.params
-    const table = tableStore.list.getById(paramsData.id) || {}
-    let formDataTitileServer = _.map(tableStore.updateFields, (v, k) => {
+    const { formulaStore } = this.props
+    const paramsData = formulaStore.params
+    const formula = formulaStore.list.getById(paramsData.id) || {}
+    let formDataTitileServer = _.map(formulaStore.updateFields, (v, k) => {
       return _.assign(
         {},
         {
           name: k,
           label: v,
           fieldOptions: {
-            initialValue: table[k],
+            initialValue: formula[k],
             rules: [
               // { required: true, whitespace: true, message: '请输入主机名' }
             ]
@@ -35,12 +35,13 @@ export default class AddTable extends React.Component {
         name: 'id',
         label: 'id',
         fieldOptions: {
-          initialValue: paramsData.actionType == 'clone' ? undefined : table.id
+          initialValue:
+            paramsData.actionType == 'clone' ? undefined : formula.id
         }
       },
       ...formDataTitileServer
     ]
 
-    return <AddForm store={tableStore} title={formDataTitileServer} />
+    return <AddForm store={formulaStore} title={formDataTitileServer} />
   }
 }

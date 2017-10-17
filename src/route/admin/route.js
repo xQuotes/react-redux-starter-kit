@@ -11,6 +11,7 @@ module.exports = {
     require.ensure([], function(require) {
       callback(null, [
         require('./table/route'),
+        require('./formula/route'),
         require('./user/route'),
         require('./news/route')
         /*file_append*/

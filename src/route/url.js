@@ -9,6 +9,8 @@ const Url = {
 
   calculatorList: `/${caculator}/list`,
   calculatorAdd: `/${caculator}/add`,
+  formulaList: `/${caculator}/formula/list`,
+  formulaAdd: `/${caculator}/formula/add`,
   userList: `/${caculator}/user/list`,
   userAdd: `/${caculator}/user/add`,
   newsList: `/${caculator}/news/list`,

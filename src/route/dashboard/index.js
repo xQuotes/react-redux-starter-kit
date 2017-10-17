@@ -99,12 +99,26 @@ export default class Dashboard extends React.Component {
               key="sub0"
               title={
                 <span>
-                  <Icon type="bars" />计算器管理
+                  <Icon type="bars" />计算器
                 </span>
               }
             >
               <Menu.Item key={`${Url.calculatorList}`}>
                 <Link to={`${Url.calculatorList}`}>
+                  <Icon type="appstore-o" />列表
+                </Link>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub3"
+              title={
+                <span>
+                  <Icon type="bars" />计算公式
+                </span>
+              }
+            >
+              <Menu.Item key={`${Url.formulaList}`}>
+                <Link to={`${Url.formulaList}`}>
                   <Icon type="appstore-o" />列表
                 </Link>
               </Menu.Item>

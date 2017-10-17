@@ -5,7 +5,7 @@ import Api from 'Api'
 import 'Arr'
 import Store from '../../../stores/Store'
 
-export default class TableStore extends Store {
+export default class FormulaStore extends Store {
   constructor(props) {
     super(props)
   }
@@ -16,7 +16,7 @@ export default class TableStore extends Store {
     contentType: '内容类型',
     parameters: '参数名称',
     presetValue: '预置值',
-    tableType: '表类型',
+    formulaType: '表类型',
     type: '计算器类型',
     unit: '单位',
     valueRange: '取值范围',
@@ -28,15 +28,15 @@ export default class TableStore extends Store {
   updateFields = _.omit(this.fields, ['id', 'updateTime'])
   // searchFields = _.omit(this.fields, ['id', 'updateTime'])
   api = {
-    gets: Api.getTables,
-    delete: Api.deleteTable,
-    post: Api.postTable,
+    gets: Api.getFormulas,
+    delete: Api.deleteFormula,
+    post: Api.postFormula,
     uploadCsvData: Api.uploadCsvData,
-    put: Api.putTable,
-    puts: Api.putTables,
+    put: Api.putFormula,
+    puts: Api.putFormulas,
     exports: Api.exports
   }
   static fromJS(array = []) {
-    return new TableStore()
+    return new FormulaStore()
   }
 }

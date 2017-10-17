@@ -3,18 +3,20 @@ import { inject, observer } from 'mobx-react'
 import Api from 'Api'
 
 import FuncList from '../../components/switches/commonInfoList'
-import AddTableModal from './add'
+import AddFormulaModal from './add'
 
-@inject('tableStore')
+@inject('formulaStore')
 @observer
-export default class Tables extends React.Component {
+export default class Formulas extends React.Component {
   constructor(props) {
     super(props)
   }
   componentWillMount() {
-    const { tableStore } = this.props
-    tableStore.getServers({
-      type: 1
+    const { formulaStore } = this.props
+    formulaStore.getServers({
+      calculatorType: 1
+      //pageNum
+      //pageSize
     })
   }
   render() {
@@ -22,12 +24,12 @@ export default class Tables extends React.Component {
     return (
       <div className="switches-network">
         <FuncList
-          store={this.props.tableStore}
+          store={this.props.formulaStore}
           bcData={bcData}
-          downloadCSV={Api.downloadTableCSV}
-          funcEnName={'table'}
+          downloadCSV={Api.downloadFormulaCSV}
+          funcEnName={'formula'}
         />
-        <AddTableModal />
+        <AddFormulaModal />
       </div>
     )
   }
