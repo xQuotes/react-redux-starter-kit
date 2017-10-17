@@ -9,19 +9,15 @@ export default class FormulaStore extends Store {
   constructor(props) {
     super(props)
   }
+
   fields = {
     id: '造价指标id',
-    item: '表行名',
-    itemKey: '表行名key',
-    contentType: '内容类型',
-    parameters: '参数名称',
-    presetValue: '预置值',
-    formulaType: '表类型',
-    type: '计算器类型',
-    unit: '单位',
-    valueRange: '取值范围',
-    defaultValue: '默认',
-    orderNumber: '序号',
+    calculatorItem: '表行名',
+    calculatorType: '表行名key',
+    contentType: '计算器类型',
+    price: '价格',
+    rate: '公式',
+    rateLevel: '公式级别',
     updateTime: '更新时间',
     remark: '备注'
   }
