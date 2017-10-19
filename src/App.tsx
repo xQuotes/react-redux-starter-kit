@@ -1,24 +1,36 @@
-import * as React from 'react';
-import './App.css';
-import { Button } from 'antd';
+import * as React from 'react'
+import { Provider } from 'mobx-react'
+import { Router, Route, Switch } from 'react-router'
+import { RouterStore } from 'mobx-react-router'
+import createBrowserHistory from 'history/createBrowserHistory'
 
-const logo = require('./logo.svg');
+const browserHistory = createBrowserHistory()
+const routingStore = new RouterStore()
 
-class App extends React.Component<{}, {}> {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Button type="primary">Test</Button>
-      </div>
-    );
-  }
+import Root from './containers/Root'
+import store from './stores/index'
+
+import Index from './route/Index/'
+import Caculator from './route/Caculator/'
+
+const stores = {
+  routing: routingStore,
+  ...store
 }
 
-export default App;
+export default class App extends React.Component<{}, {}> {
+  render() {
+    return (
+      <Provider {...stores}>
+        <Root>
+          <Router history={browserHistory}>
+            <Switch>
+              <Route path="/index" component={Index} />
+              <Route path="/caculator" component={Caculator} />
+            </Switch>
+          </Router>
+        </Root>
+      </Provider>
+    )
+  }
+}
