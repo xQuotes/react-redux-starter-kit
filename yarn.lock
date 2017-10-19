@@ -40,6 +40,10 @@
   dependencies:
     "@types/babel-types" "*"
 
+"@types/echarts@0.0.8":
+  version "0.0.8"
+  resolved "http://registry.npm.taobao.org/@types/echarts/download/@types/echarts-0.0.8.tgz#f2d876b37b1dfd87e53031f6a2784833bfcec2cc"
+
 "@types/history@*", "@types/history@^4.6.0":
   version "4.6.1"
   resolved "http://registry.npm.taobao.org/@types/history/download/@types/history-4.6.1.tgz#0dbaef4febad5d074d06dbdfae6b027d1d701d25"
@@ -2151,6 +2155,19 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
+"echarts-for-react@github:yywork/echarts-for-react":
+  version "2.0.0"
+  resolved "https://codeload.github.com/yywork/echarts-for-react/tar.gz/1491eb08c1a8bf8357f565d51b0f8aae6e6c46ef"
+  dependencies:
+    "@types/echarts" "0.0.8"
+    element-resize-event "2.0.7"
+
+echarts@^3.7.2:
+  version "3.7.2"
+  resolved "http://registry.npm.taobao.org/echarts/download/echarts-3.7.2.tgz#3b37764d8bc0c8ab49cbea16bc0b55726451caaa"
+  dependencies:
+    zrender "^3.6.2"
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -2158,6 +2175,10 @@ ee-first@1.1.1:
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.16:
   version "1.3.16"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.16.tgz#d0e026735754770901ae301a21664cba45d92f7d"
+
+element-resize-event@2.0.7:
+  version "2.0.7"
+  resolved "http://registry.npm.taobao.org/element-resize-event/download/element-resize-event-2.0.7.tgz#8b63953715967cd2241620245573e79e684e07b0"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -4158,6 +4179,10 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
 mobx-react-devtools@^4.2.15:
   version "4.2.15"
   resolved "http://registry.npm.taobao.org/mobx-react-devtools/download/mobx-react-devtools-4.2.15.tgz#881c038fb83db4dffd1e72bbaf5374d26b2fdebb"
+
+mobx-react-router@^4.0.1:
+  version "4.0.1"
+  resolved "http://registry.npm.taobao.org/mobx-react-router/download/mobx-react-router-4.0.1.tgz#72f67b5c637d187595415500e8afa5cddb2231ab"
 
 mobx-react@^4.3.2:
   version "4.3.3"
@@ -7266,3 +7291,7 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+zrender@^3.6.2:
+  version "3.6.3"
+  resolved "http://registry.npm.taobao.org/zrender/download/zrender-3.6.3.tgz#e3a06ba105cc45eb36492a818e7b7ae879a7b15b"
