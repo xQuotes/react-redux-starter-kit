@@ -1,4 +1,6 @@
 import * as React from 'react'
+import Header from '../../components/Header/'
+import Footer from '../../components/Footer'
 
 export interface HelloProps {
   compiler: string
@@ -9,6 +11,10 @@ export interface HelloProps {
 // State is never set so we use the 'undefined' type.
 export default class Hello extends React.Component<{}, {}> {
   render() {
-    return <h1>Hello from and!</h1>
+    return <div>
+      <Header />
+      {this.props.children}
+      <Footer />
+    </div>
   }
 }
