@@ -50,6 +50,7 @@ export default class AddForm extends React.Component {
           data: _.pickBy(values)
         })
       } else if(values.id) {
+        console.log(values.id)
         store.putServer(data)
       } else {
         store.postServer(data)

@@ -10,7 +10,7 @@ var server = new webpackDevServer(compiler, {
   inline: true,
   historyApiFallback: true,
   proxy: {
-    '/gczj/api/*': {
+    '/api/*': {
       target: 'http://47.93.50.131:8080',
       // target: 'http://172.30.200.163:8082',
       crossOrigin: true,

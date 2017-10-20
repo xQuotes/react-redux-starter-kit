@@ -31,6 +31,7 @@ export default class ModalForm extends React.Component {
         type: 'text',
         sm: 4,
         labelCol: 6,
+        component: '',
         wrapperCol: 18,
         fieldOptions: {
           initialValue: ''
@@ -39,7 +40,7 @@ export default class ModalForm extends React.Component {
       }, value)
     })
 
-    function formJsxType(formType, placeholder, optionData) {
+    function formJsxType(formType, placeholder, optionData, component) {
       if(formType == 'DatePicker') {
         return <DatePicker format="YYYY-MM-DD"/>
       } else if (formType == 'select') {
@@ -54,6 +55,13 @@ export default class ModalForm extends React.Component {
                     return <Option key={k+""} value={v.id+""}>{v.value}</Option>
                   })}
                 </Select>
+      } else if (formType == 'component') {
+        return <div>{component()}</div>
+      } else if (formType == 'textarea') {
+        return <Input.TextArea autoCapitalize="off"
+          rows={4}
+          placeholder={placeholder}
+          size="default"/> 
       } else {
         return <Input autoCapitalize="off"
           placeholder={placeholder}
@@ -74,7 +82,7 @@ export default class ModalForm extends React.Component {
               labelCol={{ span: v.labelCol }}
               wrapperCol={{ span: v.wrapperCol }}>
               {getFieldDecorator(v.name, v.fieldOptions)(
-                formJsxType(v.formType, v.placeholder, v.optionData)
+                formJsxType(v.formType, v.placeholder, v.optionData, v.component)
               )}
             </FormItem>
           })}

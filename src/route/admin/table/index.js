@@ -4,6 +4,7 @@ import Api from 'Api'
 
 import FuncList from '../../components/switches/commonInfoList'
 import AddTableModal from './add'
+import JSONView from '../../components/jsonview/'
 
 @inject('tableStore')
 @observer
@@ -19,6 +20,31 @@ export default class Tables extends React.Component {
   }
   render() {
     const bcData = ['首页', '计算器管理', '列表']
+    const { tableStore } = this.props
+    const { fields } = tableStore
+
+    const tableHeader = _.map(fields, (v, k) => {
+      if(k === 'presetValue') {
+        return {
+          title: v,
+          dataIndex: k,
+          key: k,
+          width: 300,
+          render: (text, record, index) => {
+            return <JSONView value={JSON.parse(text)} />
+          }
+        }
+      }
+      return {
+        title: v,
+        dataIndex: k,
+        key: k,
+        width: 105,
+        render: (text, record, index) => {
+          return text
+        }
+      }
+    })
     return (
       <div className="switches-network">
         <FuncList
@@ -26,6 +52,7 @@ export default class Tables extends React.Component {
           bcData={bcData}
           downloadCSV={Api.downloadTableCSV}
           funcEnName={'table'}
+          tableHeader={tableHeader}
         />
         <AddTableModal />
       </div>

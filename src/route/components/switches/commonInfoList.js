@@ -53,7 +53,7 @@ export default class FuncList extends React.Component {
       }
     })
 
-    let tableHeader = _.map(fields, (v, k) => {
+    let tableHeader = this.props.tableHeader || _.map(fields, (v, k) => {
       return {
         title: v,
         dataIndex: k,

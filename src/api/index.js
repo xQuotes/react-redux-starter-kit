@@ -1,4 +1,5 @@
-const url = 'http://47.93.50.131:8080/gczj/api'
+const admin = 'http://47.93.50.131:8080/api'
+const url = '/api'
 
 const Api = {
   login: 'http://locahost:3332/login',
@@ -8,13 +9,13 @@ const Api = {
 
   postTable: `${url}/table/savetable`,
   getTables: `${url}/table/list`,
-  getTable: `${url}/sw_config_datacenter/getInfo`,
-  deleteTable: `${url}/sw_config_datacenter/deleteInfo`,
+  getTable: `${url}/table/getInfo`,
+  deleteTable: `${url}/table/deletedtable`,
   putTable: `${url}/table/savetable`,
   putTables: `${url}/table/savetable`,
 
   postFormula: `${url}/calculationformula/saveformula`,
-  getFormulas: `/calculationformula/list`,
+  getFormulas: `${url}/calculationformula/list`,
   getFormula: `${url}/sw_config_datacenter/getInfo`,
   deleteFormula: `${url}/sw_config_datacenter/deleteInfo`,
   putFormula: `${url}/calculationformula/saveformula`,

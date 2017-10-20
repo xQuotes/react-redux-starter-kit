@@ -39,8 +39,8 @@ export default class Store {
 
     Fetch({
       url: this.api.gets,
-      data: formData,
-      //JSON.stringify(formData),
+      data: formData,//JSON.stringify(formData),
+      withCredentials: false,
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       method: 'get',
       success: data => {
@@ -62,12 +62,9 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.delete,
-      data: JSON.stringify({
-        conditions: {
-          id: formData.id
-        },
-        params: params
-      }),
+      data: {
+        id: formData.id
+      },
       method: 'post',
       success: data => {
         this.isLoading = false
@@ -83,17 +80,12 @@ export default class Store {
   // 保存单条
   @action
   postServer(formData = {}, params = {}) {
-    formData['deadline'] &&
-      (formData['deadline'] = formData['deadline'].format(
-        'YYYY-MM-DD HH:mm:ss'
-      ))
     this.isLoading = true
+    delete formData.id
     Fetch({
       url: this.api.post,
-      data: JSON.stringify({
-        conditions: formData,
-        params: params
-      }),
+      data: formData,
+      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       method: 'post',
       success: data => {
         this.isLoading = false
@@ -112,10 +104,8 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.uploadCsvData,
-      data: JSON.stringify({
-        conditions: formData,
-        params: params
-      }),
+      data: JSON.stringify(formData),
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       method: 'post',
       success: data => {
         this.isLoading = false
@@ -130,18 +120,10 @@ export default class Store {
 
   @action
   putServer(formData = {}, params = {}) {
-    console.log(formData['deadline'])
     this.isLoading = true
-    formData['deadline'] &&
-      (formData['deadline'] = formData['deadline'].format(
-        'YYYY-MM-DD HH:mm:ss'
-      ))
     Fetch({
       url: this.api.put,
-      data: JSON.stringify({
-        conditions: formData,
-        params: params
-      }),
+      data: formData,
       method: 'post',
       success: data => {
         this.isLoading = false

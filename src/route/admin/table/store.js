@@ -10,17 +10,18 @@ export default class TableStore extends Store {
     super(props)
   }
   fields = {
-    id: '造价指标id',
+    // id: '造价指标id',
     item: '表行名',
     itemKey: '表行名key',
     contentType: '内容类型',
     parameters: '参数名称',
     presetValue: '预置值',
+    defaultValue: '预制选项',
+    optionsValue: '预制按钮选项',
     tableType: '表类型',
     type: '计算器类型',
     unit: '单位',
     valueRange: '取值范围',
-    defaultValue: '默认',
     orderNumber: '序号',
     updateTime: '更新时间',
     remark: '备注'
