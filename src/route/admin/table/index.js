@@ -4,7 +4,7 @@ import Api from 'Api'
 
 import FuncList from '../../components/switches/commonInfoList'
 import AddTableModal from './add'
-import JSONView from '../../components/jsonview/'
+import JSONView from '../../components/jsonview/edit'
 
 @inject('tableStore')
 @observer
