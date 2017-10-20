@@ -1,4 +1,4 @@
-const url = 'http://47.93.50.131:8080/api'
+const url = 'http://47.93.50.131:8080/gczj/api'
 
 const Api = {
   login: 'http://locahost:3332/login',
@@ -7,7 +7,7 @@ const Api = {
   getMe: `${url}/sw_user/getUserInfo`,
 
   postTable: `${url}/table/savetable`,
-  getTables: `/table/list`,
+  getTables: `${url}/table/list`,
   getTable: `${url}/sw_config_datacenter/getInfo`,
   deleteTable: `${url}/sw_config_datacenter/deleteInfo`,
   putTable: `${url}/table/savetable`,
