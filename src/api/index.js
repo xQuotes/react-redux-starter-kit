@@ -14,12 +14,12 @@ const Api = {
   putTable: `${url}/table/savetable`,
   putTables: `${url}/table/savetable`,
 
-  postFormula: `${url}/calculationformula/saveformula`,
+  postFormula: `${url}/calculationformula/savecalculationformula`,
   getFormulas: `${url}/calculationformula/list`,
   getFormula: `${url}/calculationformula/tail`,
-  deleteFormula: `${url}/calculationformula/deleteformula`,
-  putFormula: `${url}/calculationformula/saveformula`,
-  putFormulas: `${url}/calculationformula/saveformula`,
+  deleteFormula: `${url}/calculationformula/deletecalculationformula`,
+  putFormula: `${url}/calculationformula/savecalculationformula`,
+  putFormulas: `${url}/calculationformula/savecalculationformula`,
 
   postUser: `${url}/sw_config_datacenter/addInfo`,
   getUsers: `${url}/sw_config_datacenter/getList`,
