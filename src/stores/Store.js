@@ -110,7 +110,7 @@ export default class Store {
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       method: 'post',
       success: data => {
-        const id = data.id
+        const id = data.databody.id
         this.isLoading = false
         this.list.unshift({
           id,
@@ -153,7 +153,7 @@ export default class Store {
       method: 'post',
       success: data => {
         this.isLoading = false
-        const id = data.id
+        const id = data.databody.id
         let index = this.list.getIndexById(id)
         this.list[index] = {
           id,

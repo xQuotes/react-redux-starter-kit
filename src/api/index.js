@@ -16,8 +16,8 @@ const Api = {
 
   postFormula: `${url}/calculationformula/saveformula`,
   getFormulas: `${url}/calculationformula/list`,
-  getFormula: `${url}/sw_config_datacenter/getInfo`,
-  deleteFormula: `${url}/sw_config_datacenter/deleteInfo`,
+  getFormula: `${url}/calculationformula/tail`,
+  deleteFormula: `${url}/calculationformula/deleteformula`,
   putFormula: `${url}/calculationformula/saveformula`,
   putFormulas: `${url}/calculationformula/saveformula`,
 
