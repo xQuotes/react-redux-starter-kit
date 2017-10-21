@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import './index.less'
+
 export default class Root extends React.Component<{}, {}> {
   renderDevTool() {
     if (process.env.NODE_ENV !== 'production') {
