@@ -13,20 +13,22 @@ export default class JSONEdit extends React.Component {
     return (
       <ReactJson
         src={this.state.value}
-        collapsed={true}
+        displayObjectSize={false}
+        displayDataTypes={false}
         jsvRoot={false}
         name={false}
         iconStyle={'circle'}
-        onEdit={(e)=>{
-          this.setState({value: e.updated_src});
+        onEdit={e => {
+          this.setState({ value: e.updated_src })
         }}
-        onDelete={(e)=>{
-          this.setState({value: e.updated_src});
+        onDelete={e => {
+          this.setState({ value: e.updated_src })
         }}
-        onAdd={(e)=>{
-          this.setState({value: e.updated_src});
+        onAdd={e => {
+          this.setState({ value: e.updated_src })
         }}
-        {...this.props} />
+        {...this.props}
+      />
     )
   }
 }

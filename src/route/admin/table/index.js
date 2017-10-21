@@ -4,7 +4,9 @@ import Api from 'Api'
 
 import FuncList from '../../components/switches/commonInfoList'
 import AddTableModal from './add'
-import JSONView from '../../components/jsonview/edit'
+import JSONView from '../../components/jsonview/index'
+
+import { defaultOptionsValue } from './model'
 
 @inject('tableStore')
 @observer
@@ -24,7 +26,37 @@ export default class Tables extends React.Component {
     const { fields } = tableStore
 
     const tableHeader = _.map(fields, (v, k) => {
-      if(k === 'presetValue') {
+      if (k === 'presetValue') {
+        return {
+          title: v,
+          dataIndex: k,
+          key: k,
+          width: 300,
+          render: (text, record, index) => {
+            return <JSONView value={JSON.parse(text)} />
+          }
+        }
+      }
+      if (k === 'defaultValue') {
+        return {
+          title: v,
+          dataIndex: k,
+          key: k,
+          width: 300,
+          render: (text, record, index) => {
+            let val = {}
+            try {
+              val = JSON.parse(text) || defaultOptionsValue
+            } catch (err) {
+              val = defaultOptionsValue
+            }
+            console.log(val)
+            return <JSONView value={val} />
+          }
+        }
+      }
+
+      if (k === 'presetValue') {
         return {
           title: v,
           dataIndex: k,

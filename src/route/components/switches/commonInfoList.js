@@ -71,7 +71,7 @@ export default class FuncList extends React.Component {
           {
             title: '操作',
             key: 'operation',
-            width: 150,
+            width: 200,
             render: (text, record, index) => {
               return (
                 <div>

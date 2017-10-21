@@ -6,11 +6,14 @@ export default class JSONView extends React.Component {
     return (
       <ReactJson
         src={this.props.value}
+        displayObjectSize={false}
+        displayDataTypes={false}
         collapsed={true}
         jsvRoot={false}
         name={false}
         iconStyle={'circle'}
-        {...this.props} />
+        {...this.props}
+      />
     )
   }
 }

@@ -122,7 +122,10 @@ export default class UploadDragger extends React.Component {
           width="800"
           onOk={::this.handleSubmit}
           onCancel={::this.hideModal}>
-          {!validate && <div className="table-header-warning"><span className="item-error">橙色</span>为验证有错的字段，请在CSV中修改后重新上传！</div>}
+          {!validate && <div className="table-header-warning">
+            <span className="item-error">橙色</span>
+            为验证有错的字段，请在CSV中修改后重新上传！
+          </div>}
           <Table columns={uploadData.columns} dataSource={uploadData.dataList}/>
         </Modal>
       </div>

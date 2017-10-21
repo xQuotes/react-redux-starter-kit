@@ -1,23 +1,25 @@
 import { inject, observer } from 'mobx-react'
 
 import AddForm from '../../components/switches/commonInfoAdd'
-import Editor from '../../components/editor/'
+// import Editor from '../../components/editor/'
+
+import JSONView from '../../components/jsonview/edit'
 
 @inject('tableStore')
 @observer
 export default class AddTable extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      code: '// type your code...',
+      code: '// type your code...'
     }
   }
   editorDidMount(editor, monaco) {
-    console.log('editorDidMount', editor);
-    editor.focus();
+    console.log('editorDidMount', editor)
+    editor.focus()
   }
   onChange(newValue, e) {
-    console.log('onChange', newValue, e);
+    console.log('onChange', newValue, e)
   }
 
   render() {
@@ -28,7 +30,7 @@ export default class AddTable extends React.Component {
     const paramsData = tableStore.params
     const table = tableStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(tableStore.updateFields, (v, k) => {
-      if(k === 'presetValue') {
+      if (k === 'presetValue') {
         return _.assign(
           {},
           {
@@ -36,11 +38,16 @@ export default class AddTable extends React.Component {
             label: v,
             formType: 'component',
             component: () => {
-              return <Editor
-                width="300px"
-                height="300px"
-                defaultValue={JSON.stringify(JSON.parse(table[k]), null, 2)} 
-                mode="json" />
+              return <JSONView value={JSON.parse(table[k])} />
+              {
+                /*
+                  <Editor
+                    width="300px"
+                    height="300px"
+                    defaultValue={JSON.stringify(JSON.parse(table[k]), null, 2)} 
+                    mode="json" />
+                */
+              }
             },
             fieldOptions: {
               initialValue: table[k],
@@ -50,7 +57,7 @@ export default class AddTable extends React.Component {
             },
             placeholder: `请输入${v}`
           }
-        ) 
+        )
       }
       return _.assign(
         {},
@@ -79,8 +86,10 @@ export default class AddTable extends React.Component {
       ...formDataTitileServer
     ]
 
-    return <div>
-      <AddForm store={tableStore} title={formDataTitileServer} />
-    </div>
+    return (
+      <div>
+        <AddForm store={tableStore} title={formDataTitileServer} />
+      </div>
+    )
   }
 }
