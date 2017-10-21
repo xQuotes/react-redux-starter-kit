@@ -4,6 +4,7 @@ import AddForm from '../../components/switches/commonInfoAdd'
 // import Editor from '../../components/editor/'
 
 import JSONView from '../../components/jsonview/edit'
+import { defaultOptionsValue } from './model'
 
 @inject('tableStore')
 @observer
@@ -37,8 +38,16 @@ export default class AddTable extends React.Component {
             name: k,
             label: v,
             formType: 'component',
-            component: () => {
-              return <JSONView value={JSON.parse(table[k])} />
+            component: props => {
+              console.log(props)
+              let val = {}
+
+              try {
+                val = JSON.parse(table[k]) || defaultOptionsValue
+              } catch (err) {
+                val = defaultOptionsValue
+              }
+              return <JSONView value={val} field={'presetValue'} {...props} />
               {
                 /*
                   <Editor

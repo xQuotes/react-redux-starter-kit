@@ -10,6 +10,7 @@ export default class JSONEdit extends React.Component {
     }
   }
   render() {
+    const { form, field } = this.props
     return (
       <ReactJson
         src={this.state.value}
@@ -20,12 +21,21 @@ export default class JSONEdit extends React.Component {
         iconStyle={'circle'}
         onEdit={e => {
           this.setState({ value: e.updated_src })
+          form.setFieldsValue({
+            [field]: e.updated_src
+          })
         }}
         onDelete={e => {
           this.setState({ value: e.updated_src })
+          form.setFieldsValue({
+            [field]: e.updated_src
+          })
         }}
         onAdd={e => {
           this.setState({ value: e.updated_src })
+          form.setFieldsValue({
+            [field]: e.updated_src
+          })
         }}
         {...this.props}
       />

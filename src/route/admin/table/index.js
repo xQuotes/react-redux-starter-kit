@@ -33,24 +33,14 @@ export default class Tables extends React.Component {
           key: k,
           width: 300,
           render: (text, record, index) => {
-            return <JSONView value={JSON.parse(text)} />
-          }
-        }
-      }
-      if (k === 'defaultValue') {
-        return {
-          title: v,
-          dataIndex: k,
-          key: k,
-          width: 300,
-          render: (text, record, index) => {
             let val = {}
+
             try {
               val = JSON.parse(text) || defaultOptionsValue
             } catch (err) {
               val = defaultOptionsValue
             }
-            console.log(val)
+
             return <JSONView value={val} />
           }
         }
