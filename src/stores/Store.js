@@ -110,8 +110,12 @@ export default class Store {
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       method: 'post',
       success: data => {
+        const id = data.id
         this.isLoading = false
-        this.list.push(data)
+        this.list.unshift({
+          id,
+          ...formData
+        })
       },
       error: data => {
         errorAlert('服务器出错！')
@@ -149,8 +153,12 @@ export default class Store {
       method: 'post',
       success: data => {
         this.isLoading = false
-        let index = this.list.getIndexById(data.id)
-        this.list[index] = data
+        const id = data.id
+        let index = this.list.getIndexById(id)
+        this.list[index] = {
+          id,
+          ...formData
+        }
       },
       error: data => {
         errorAlert('服务器出错！')
