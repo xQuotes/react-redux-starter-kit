@@ -39,7 +39,6 @@ export default class AddTable extends React.Component {
             label: v,
             formType: 'component',
             component: props => {
-              console.log(props)
               let val = {}
 
               try {

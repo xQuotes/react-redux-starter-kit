@@ -9,7 +9,7 @@ const Api = {
 
   postTable: `${url}/table/savetable`,
   getTables: `${url}/table/list`,
-  getTable: `${url}/table/getInfo`,
+  getTable: `${url}/table/tail`,
   deleteTable: `${url}/table/deletedtable`,
   putTable: `${url}/table/savetable`,
   putTables: `${url}/table/savetable`,

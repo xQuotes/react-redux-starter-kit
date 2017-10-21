@@ -35,6 +35,10 @@ export default class AddForm extends React.Component {
         return
       }
 
+      if (values['presetValue']) {
+        values['presetValue'] = JSON.stringify(values['presetValue'])
+      }
+
       //var data = _.pickBy(values)
 
       var data = values
@@ -47,7 +51,6 @@ export default class AddForm extends React.Component {
           data: _.pickBy(values)
         })
       } else if (values.id) {
-        console.log(values.id)
         store.putServer(data)
       } else {
         store.postServer(data)

@@ -19,12 +19,13 @@ export default class Store {
   @observable exportUrl = ''
   api = {
     gets: '',
+    get: '',
     delete: '',
     post: '',
-    uploadCsvData: Api.uploadCsvData,
+    uploadCsvData: '',
     put: '',
     puts: '',
-    exports: Api.exportsCSV
+    exports: ''
   }
 
   @action
@@ -39,16 +40,36 @@ export default class Store {
 
     Fetch({
       url: this.api.gets,
-      data: formData,//JSON.stringify(formData),
-      withCredentials: false,
+      data: JSON.stringify(formData), //JSON.stringify(formData),
+      // withCredentials: false,
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-      method: 'get',
+      method: 'post',
       success: data => {
         this.isLoading = false
         this.list = data.databody
         // this.fields = data.fields
         // this.searchFields = data.search_fields
         // this.updateFields = data.update_fields
+      },
+      error: data => {
+        errorAlert('服务器出错！')
+        this.isLoading = false
+      }
+    })
+  }
+
+  @action
+  getServer(formData = {}, params = {}) {
+    this.isLoading = true
+    this.setSearchDatas(formData, params)
+
+    Fetch({
+      url: this.api.get,
+      data: JSON.stringify(formData),
+      method: 'post',
+      success: data => {
+        this.isLoading = false
+        this.item = data.databody
       },
       error: data => {
         errorAlert('服务器出错！')
@@ -84,7 +105,8 @@ export default class Store {
     delete formData.id
     Fetch({
       url: this.api.post,
-      data: formData,
+      data: JSON.stringify(formData),
+      // contentType: 'multipart/form-data; charset=UTF-8',
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       method: 'post',
       success: data => {
@@ -123,7 +145,7 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.put,
-      data: formData,
+      data: JSON.stringify(formData),
       method: 'post',
       success: data => {
         this.isLoading = false
@@ -142,10 +164,7 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.puts,
-      data: JSON.stringify({
-        conditions: formData,
-        params: params
-      }),
+      data: JSON.stringify(formData),
       method: 'post',
       success: data => {
         this.isLoading = false
