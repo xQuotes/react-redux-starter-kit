@@ -2,7 +2,13 @@ import * as React from 'react'
 import ReactEcharts from 'echarts-for-react'
 import 'echarts/map/js/china.js'
 
-export default class Footer extends React.Component<{}, {}> {
+export default class EchartsComponent extends React.Component<{}, {}> {
+  constructor(props: {}) {
+    super(props)
+    this.state = {
+      echarts: null
+    }
+  }
   getOption() {
     const option = {
       title: {
@@ -189,7 +195,25 @@ export default class Footer extends React.Component<{}, {}> {
             },
             {
               name: '湖北',
-              value: 72
+              value: {
+                咨询标准: {
+                  0: '鄂价工服规[2011]23号'
+                },
+                咨询项目: {
+                  0: '工程项目设计概算编制',
+                  1: '工程项目设计概算审核',
+                  2: '清单计价-工程量清单编制或审核',
+                  3: '清单计价-控制价（标底价）编制(不含工程量清单编制)',
+                  4: '清单计价-控制价（标底价)、工程结算审核',
+                  5: '定额计价-工程预算、标底编制',
+                  6: '定额计价-工程预算、结算、标底审核',
+                  7: '施工阶段全过程工程造价控制',
+                  8: '竣工决算编制或审核',
+                  9: '工程造价纠纷案件鉴定'
+                },
+                概算价: '',
+                优惠折扣: '90'
+              }
             },
             {
               name: '安徽',
