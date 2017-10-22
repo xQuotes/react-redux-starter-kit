@@ -2,7 +2,7 @@ import * as React from 'react'
 import ReactEcharts from 'echarts-for-react'
 import 'echarts/map/js/china.js'
 
-export default class EchartsComponent extends React.Component<{}, {}> {
+export default class EchartsComponent extends React.Component<any, {}> {
   constructor(props: {}) {
     super(props)
     this.state = {
@@ -12,7 +12,7 @@ export default class EchartsComponent extends React.Component<{}, {}> {
   getOption() {
     const option = {
       title: {
-        text: '全国省份景点个数统计',
+        text: '',
         subtext: ''
       },
       tooltip: {
@@ -258,7 +258,22 @@ export default class EchartsComponent extends React.Component<{}, {}> {
 
     return option
   }
+  onChartClick(param: any, echart: any) {
+    console.log(param, echart)
+    alert('chart click')
+  }
+  onChartLegendselectchanged(param: any, echart: any) {
+    console.log(param, echart)
+    alert('chart legendselectchanged')
+  }
+  onChartReady(echart: any) {
+    console.log('echart is ready', echart)
+  }
   render() {
+    const onEvents = {
+      click: this.onChartClick,
+      legendselectchanged: this.onChartLegendselectchanged
+    }
     return (
       <div>
         <ReactEcharts
@@ -268,6 +283,8 @@ export default class EchartsComponent extends React.Component<{}, {}> {
             width: '600px'
           }}
           className="react_for_echarts"
+          onChartReady={this.onChartReady.bind(this)}
+          onEvents={onEvents}
         />
       </div>
     )
