@@ -27,7 +27,7 @@ export default class Header extends React.Component<any, {}> {
             <Button type="primary">注册</Button>
           </Button.Group>
         </div>
-        <div className="nav">
+        <div className="header-nav">
           <Menu
             onClick={this.handleClick}
             selectedKeys={[path]}

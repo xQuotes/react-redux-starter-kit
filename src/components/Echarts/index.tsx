@@ -279,8 +279,8 @@ export default class EchartsComponent extends React.Component<any, {}> {
         <ReactEcharts
           option={this.getOption() || {}}
           style={{
-            height: '600px',
-            width: '600px'
+            height: '400px',
+            width: '400px'
           }}
           className="react_for_echarts"
           onChartReady={this.onChartReady.bind(this)}
