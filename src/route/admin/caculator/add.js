@@ -5,9 +5,9 @@ import AddForm from '../../components/switches/commonInfoAdd'
 
 import JSONView from '../../components/jsonview/edit'
 
-@inject('mapdataStore')
+@inject('caculatorStore')
 @observer
-export default class AddMapdata extends React.Component {
+export default class AddCaculator extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -23,13 +23,13 @@ export default class AddMapdata extends React.Component {
   }
 
   render() {
-    const { mapdataStore, code } = this.props
+    const { caculatorStore, code } = this.props
     const options = {
       selectOnLineNumbers: true
     }
-    const paramsData = mapdataStore.params
-    const mapdata = mapdataStore.list.getById(paramsData.id) || {}
-    let formDataTitileServer = _.map(mapdataStore.updateFields, (v, k) => {
+    const paramsData = caculatorStore.params
+    const caculator = caculatorStore.list.getById(paramsData.id) || {}
+    let formDataTitileServer = _.map(caculatorStore.updateFields, (v, k) => {
       if (k === 'presetValue') {
         return _.assign(
           {},
@@ -41,7 +41,7 @@ export default class AddMapdata extends React.Component {
               let val = {}
 
               try {
-                val = JSON.parse(mapdata[k]) || {}
+                val = JSON.parse(caculator[k]) || {}
               } catch (err) {
                 val = {}
               }
@@ -51,13 +51,13 @@ export default class AddMapdata extends React.Component {
                   <Editor
                     width="300px"
                     height="300px"
-                    defaultValue={JSON.stringify(JSON.parse(mapdata[k]), null, 2)} 
+                    defaultValue={JSON.stringify(JSON.parse(caculator[k]), null, 2)} 
                     mode="json" />
                 */
               }
             },
             fieldOptions: {
-              initialValue: mapdata[k],
+              initialValue: caculator[k],
               rules: [
                 // { required: true, whitespace: true, message: '请输入主机名' }
               ]
@@ -72,7 +72,7 @@ export default class AddMapdata extends React.Component {
           name: k,
           label: v,
           fieldOptions: {
-            initialValue: mapdata[k],
+            initialValue: caculator[k],
             rules: [
               // { required: true, whitespace: true, message: '请输入主机名' }
             ]
@@ -88,7 +88,7 @@ export default class AddMapdata extends React.Component {
         label: 'id',
         fieldOptions: {
           initialValue:
-            paramsData.actionType == 'clone' ? undefined : mapdata.id
+            paramsData.actionType == 'clone' ? undefined : caculator.id
         }
       },
       ...formDataTitileServer
@@ -96,7 +96,7 @@ export default class AddMapdata extends React.Component {
 
     return (
       <div>
-        <AddForm store={mapdataStore} title={formDataTitileServer} />
+        <AddForm store={caculatorStore} title={formDataTitileServer} />
       </div>
     )
   }

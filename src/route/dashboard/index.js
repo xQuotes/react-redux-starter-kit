@@ -103,27 +103,21 @@ export default class Dashboard extends React.Component {
                 </span>
               }
             >
-              <Menu.Item key={`${Url.addCalculatorType}`}>
-                <Link to={`${Url.addCalculatorType}`}>
-                  <Icon type="appstore-o" />添加计算器类型
-                </Link>
-              </Menu.Item>
-
-              <Menu.Item key={`${Url.addCalculatorGCZJType}`}>
-                <Link to={`${Url.addCalculatorGCZJType}`}>
-                  <Icon type="appstore-o" />添加工程造价类型
-                </Link>
-              </Menu.Item>
-
-              <Menu.Item key={`${Url.addCalculatorSGTSCType}`}>
-                <Link to={`${Url.addCalculatorSGTSCType}`}>
-                  <Icon type="appstore-o" />添加施工图审查类型
-                </Link>
-              </Menu.Item>
-
               <Menu.Item key={`${Url.calculatorList}`}>
                 <Link to={`${Url.calculatorList}`}>
-                  <Icon type="appstore-o" />列表
+                  <Icon type="appstore-o" />计算器类型
+                </Link>
+              </Menu.Item>
+
+              <Menu.Item key={`${Url.mapdataList}`}>
+                <Link to={`${Url.mapdataList}`}>
+                  <Icon type="appstore-o" />地图计算器
+                </Link>
+              </Menu.Item>
+
+              <Menu.Item key={`${Url.tableList}`}>
+                <Link to={`${Url.tableList}`}>
+                  <Icon type="appstore-o" />计算器列表
                 </Link>
               </Menu.Item>
             </SubMenu>

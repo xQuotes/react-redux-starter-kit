@@ -3,27 +3,27 @@ import { inject, observer } from 'mobx-react'
 import Api from 'Api'
 
 import FuncList from '../../components/switches/commonInfoList'
-import AddMapdataModal from './add'
+import AddCaculatorModal from './add'
 import JSONView from '../../components/jsonview/index'
 
-@inject('mapdataStore')
+@inject('caculatorStore')
 @observer
-export default class Mapdatas extends React.Component {
+export default class Caculators extends React.Component {
   constructor(props) {
     super(props)
   }
   componentWillMount() {
-    const { mapdataStore } = this.props
-    mapdataStore.getServers({
+    const { caculatorStore } = this.props
+    caculatorStore.getServers({
       type: 11
     })
   }
   render() {
     const bcData = ['首页', '计算器管理', '列表']
-    const { mapdataStore } = this.props
-    const { fields } = mapdataStore
+    const { caculatorStore } = this.props
+    const { fields } = caculatorStore
 
-    const mapdataHeader = _.map(fields, (v, k) => {
+    const caculatorHeader = _.map(fields, (v, k) => {
       if (k === 'presetValue') {
         return {
           title: v,
@@ -68,13 +68,13 @@ export default class Mapdatas extends React.Component {
     return (
       <div className="switches-network">
         <FuncList
-          store={this.props.mapdataStore}
+          store={this.props.caculatorStore}
           bcData={bcData}
-          downloadCSV={Api.downloadMapdataCSV}
-          funcEnName={'mapdata'}
-          mapdataHeader={mapdataHeader}
+          downloadCSV={Api.downloadCaculatorCSV}
+          funcEnName={'caculator'}
+          caculatorHeader={caculatorHeader}
         />
-        <AddMapdataModal />
+        <AddCaculatorModal />
       </div>
     )
   }

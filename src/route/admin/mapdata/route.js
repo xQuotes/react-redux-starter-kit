@@ -1,5 +1,5 @@
 module.exports = {
-  path: 'list',
+  path: 'mapdata/list',
   getComponent(nextState, cb) {
     require.ensure([], require => {
       cb(null, require('./index')['default'])

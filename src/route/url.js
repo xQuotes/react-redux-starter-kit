@@ -2,25 +2,22 @@ export const caculator = 'caculator' // 交换机自动化
 
 const Url = {
   ads: '/',
-  index: `/${caculator}/list`,
+  index: `/${caculator}/type/ist`,
   login: '/login',
   logout: '/logout',
   register: '/register',
 
-  calculatorList: `/${caculator}/list`,
-  calculatorAdd: `/${caculator}/add`,
-
-  formulaList: `/${caculator}/formula/list`,
-  formulaAdd: `/${caculator}/formula/add`,
+  calculatorList: `/${caculator}/type/list`,
 
   mapdataList: `/${caculator}/mapdata/list`,
-  mapdataAdd: `/${caculator}/mapdata/add`,
+
+  tableList: `/${caculator}/table/list`,
+
+  formulaList: `/${caculator}/formula/list`,
 
   userList: `/${caculator}/user/list`,
-  userAdd: `/${caculator}/user/add`,
 
-  newsList: `/${caculator}/news/list`,
-  newsAdd: `/${caculator}/news/add`
+  newsList: `/${caculator}/news/list`
   /*file_append*/
 }
 

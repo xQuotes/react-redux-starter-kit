@@ -10,8 +10,9 @@ module.exports = {
   getChildRoutes(location, callback) {
     require.ensure([], function(require) {
       callback(null, [
+        require('./caculator/route'), // 计算器类型
+        require('./mapdata/route'), // 地图类型
         require('./table/route'),
-        require('./mapdata/route'),
         require('./formula/route'),
         require('./user/route'),
         require('./news/route')
