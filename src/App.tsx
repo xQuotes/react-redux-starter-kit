@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Provider } from 'mobx-react'
-import { Router, Route, Switch } from 'react-router'
+import { Router, Route, Switch, Redirect } from 'react-router'
 import { RouterStore } from 'mobx-react-router'
 import createBrowserHistory from 'history/createBrowserHistory'
 
@@ -25,6 +25,11 @@ export default class App extends React.Component<{}, {}> {
         <Root>
           <Router history={browserHistory}>
             <Switch>
+              <Route
+                exact={true}
+                path="/"
+                render={() => <Redirect to="/index" />}
+              />
               <Route path="/index" component={Index} />
               <Route path="/caculator" component={Caculator} />
             </Switch>
