@@ -1,6 +1,8 @@
 import { inject, observer } from 'mobx-react'
+import { Link } from 'react-router'
 
 import Api from 'Api'
+import Url from 'Url'
 
 import FuncList from '../../components/switches/commonInfoList'
 import AddMapdataModal from './add'
@@ -73,6 +75,9 @@ export default class Mapdatas extends React.Component {
           downloadCSV={Api.downloadMapdataCSV}
           funcEnName={'mapdata'}
           mapdataHeader={mapdataHeader}
+          actions={() => {
+            return <Link to={`${Url.tableList}?type=1`}>计算器列表</Link>
+          }}
         />
         <AddMapdataModal />
       </div>

@@ -34,7 +34,7 @@ export default class FuncList extends React.Component {
   }
   render() {
     const that = this
-    const { store, funcEnName, funcCnName, downloadCSV } = this.props
+    const { store, funcEnName, funcCnName, downloadCSV, actions } = this.props
     let dataList = _.map(store.toJS(), (v, k) => {
       return {
         key: v.id,
@@ -53,17 +53,19 @@ export default class FuncList extends React.Component {
       }
     })
 
-    let tableHeader = this.props.tableHeader || _.map(fields, (v, k) => {
-      return {
-        title: v,
-        dataIndex: k,
-        key: k,
-        width: 105,
-        render: (text, record, index) => {
-          return text
+    let tableHeader =
+      this.props.tableHeader ||
+      _.map(fields, (v, k) => {
+        return {
+          title: v,
+          dataIndex: k,
+          key: k,
+          width: 105,
+          render: (text, record, index) => {
+            return text
+          }
         }
-      }
-    })
+      })
     const columns = _.isEmpty(tableHeader)
       ? []
       : [
@@ -74,7 +76,8 @@ export default class FuncList extends React.Component {
             width: 200,
             render: (text, record, index) => {
               return (
-                <div>
+                <div className="table-actions">
+                  {actions && actions()}
                   <a
                     href="#"
                     onClick={that.updateFunc.bind(this, {

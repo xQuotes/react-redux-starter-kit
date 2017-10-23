@@ -1,6 +1,8 @@
 import { inject, observer } from 'mobx-react'
+import { Link } from 'react-router'
 
 import Api from 'Api'
+import Url from 'Url'
 
 import FuncList from '../../components/switches/commonInfoList'
 import AddCaculatorModal from './add'
@@ -73,6 +75,9 @@ export default class Caculators extends React.Component {
           downloadCSV={Api.downloadCaculatorCSV}
           funcEnName={'caculator'}
           caculatorHeader={caculatorHeader}
+          actions={() => {
+            return <Link to={`${Url.tableList}?type=1`}>计算器列表</Link>
+          }}
         />
         <AddCaculatorModal />
       </div>

@@ -16,6 +16,16 @@ export default class MapdataStore extends Store {
   }
   updateFields = _.omit(this.fields, ['id', 'updateTime'])
   // searchFields = _.omit(this.fields, ['id', 'updateTime'])
+
+  @observable
+  list = [
+    {
+      id: 1,
+      item: '北京',
+      itemKey: 'beijing'
+    }
+  ]
+
   api = {
     gets: Api.getMapdatas,
     delete: Api.deleteMapdata,

@@ -16,6 +16,16 @@ export default class CaculatorStore extends Store {
   }
   updateFields = _.omit(this.fields, ['id', 'updateTime'])
   // searchFields = _.omit(this.fields, ['id', 'updateTime'])
+
+  @observable
+  list = [
+    {
+      id: 1,
+      item: '计算器1',
+      itemKey: 'jisuanqi1'
+    }
+  ]
+
   api = {
     gets: Api.getCaculators,
     delete: Api.deleteCaculator,
