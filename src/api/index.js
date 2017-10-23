@@ -1,4 +1,5 @@
 const admin = 'http://47.93.50.131:8080/api'
+const ip = 'http://192.168.1.107:8080/api'
 const url = '/api'
 
 const Api = {

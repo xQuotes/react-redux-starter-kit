@@ -83,9 +83,9 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.delete,
-      data: {
+      data: JSON.stringify({
         id: formData.id
-      },
+      }),
       method: 'post',
       success: data => {
         this.isLoading = false

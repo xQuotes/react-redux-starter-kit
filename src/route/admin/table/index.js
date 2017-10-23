@@ -17,7 +17,7 @@ export default class Tables extends React.Component {
   componentWillMount() {
     const { tableStore } = this.props
     tableStore.getServers({
-      type: 1
+      type: 11
     })
   }
   render() {
