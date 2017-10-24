@@ -45,6 +45,9 @@ export default class AddCaculator extends React.Component {
               } catch (err) {
                 val = {}
               }
+
+              console.log(caculator[k])
+
               return <JSONView value={val} field={'presetValue'} {...props} />
               {
                 /*

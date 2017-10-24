@@ -68,6 +68,7 @@ export default class AddForm extends React.Component {
 
     return (
       <Modal
+        width={800}
         title="操作映射"
         visible={store.visible}
         onCancel={::this.hideModal}

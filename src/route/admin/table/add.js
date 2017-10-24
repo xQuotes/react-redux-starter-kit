@@ -46,16 +46,18 @@ export default class AddTable extends React.Component {
               } catch (err) {
                 val = defaultOptionsValue
               }
-              return <JSONView value={val} field={'presetValue'} {...props} />
-              {
-                /*
-                  <Editor
-                    width="300px"
-                    height="300px"
-                    defaultValue={JSON.stringify(JSON.parse(table[k]), null, 2)} 
-                    mode="json" />
-                */
-              }
+              return (
+                <div>
+                  <JSONView value={val} field={'presetValue'} {...props} />
+                  <img
+                    src={require('./demo.jpg')}
+                    alt=""
+                    style={{
+                      width: '80%'
+                    }}
+                  />
+                </div>
+              )
             },
             fieldOptions: {
               initialValue: table[k],

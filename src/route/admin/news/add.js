@@ -1,6 +1,7 @@
 import { inject, observer } from 'mobx-react'
 
 import AddForm from '../../components/switches/commonInfoAdd'
+import ReactQuill from '../../components/edit/index'
 
 @inject('newsStore')
 @observer
@@ -36,6 +37,26 @@ export default class AddNews extends React.Component {
     const paramsData = newsStore.params
     const news = newsStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(newsStore.updateFields, (v, k) => {
+      if (k === 'content') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            formType: 'component',
+            component: props => {
+              return <ReactQuill value={news[k]} />
+            },
+            fieldOptions: {
+              initialValue: news[k],
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请输入${v}`
+          }
+        )
+      }
       return _.assign(
         {},
         {
