@@ -46,7 +46,12 @@ export default class Store {
       method: 'post',
       success: data => {
         this.isLoading = false
-        this.list = data.databody
+        if (data.databody.noresult) {
+          this.list = []
+        } else {
+          this.list = data.databody
+        }
+
         // this.fields = data.fields
         // this.searchFields = data.search_fields
         // this.updateFields = data.update_fields

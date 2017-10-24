@@ -3,6 +3,7 @@ import ReactJson from 'react-json-view'
 
 export default class JSONView extends React.Component {
   render() {
+    console.log(this.props.value)
     return (
       <ReactJson
         src={this.props.value}

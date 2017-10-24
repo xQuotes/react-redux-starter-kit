@@ -6,14 +6,15 @@ export default class JSONEdit extends React.Component {
     super(props)
 
     this.state = {
-      value: props.value
+      value: ''
     }
   }
   render() {
-    const { form, field } = this.props
+    const { form, field, value } = this.props
+    console.log(this.state.value, value)
     return (
       <ReactJson
-        src={this.state.value}
+        src={this.state.value || value}
         displayObjectSize={false}
         displayDataTypes={false}
         jsvRoot={false}

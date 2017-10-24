@@ -4,6 +4,7 @@ import Fetch from 'Fetch'
 import Api from 'Api'
 import 'Arr'
 import Store from '../../../stores/Store'
+import MapModel from './model'
 
 export default class MapdataStore extends Store {
   constructor(props) {
@@ -11,20 +12,13 @@ export default class MapdataStore extends Store {
   }
   fields = {
     // id: '造价指标id',
-    item: '省',
-    itemKey: '省 key'
+    label: '名字',
+    id: '值'
   }
-  updateFields = _.omit(this.fields, ['id', 'updateTime'])
+  // updateFields = _.omit(this.fields, ['id', 'updateTime'])
   // searchFields = _.omit(this.fields, ['id', 'updateTime'])
 
-  @observable
-  list = [
-    {
-      id: 1,
-      item: '北京',
-      itemKey: 'beijing'
-    }
-  ]
+  @observable list = MapModel
 
   api = {
     gets: Api.getMapdatas,

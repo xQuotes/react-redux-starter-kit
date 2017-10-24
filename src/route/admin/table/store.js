@@ -10,7 +10,7 @@ export default class TableStore extends Store {
     super(props)
   }
   fields = {
-    // id: '造价指标id',
+    id: '造价指标id',
     item: '表行名',
     itemKey: '表行名key',
     contentType: '内容类型',

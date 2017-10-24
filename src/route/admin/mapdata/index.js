@@ -16,9 +16,9 @@ export default class Mapdatas extends React.Component {
   }
   componentWillMount() {
     const { mapdataStore } = this.props
-    mapdataStore.getServers({
-      type: 11
-    })
+    // mapdataStore.getServers({
+    //   type: 11
+    // })
   }
   render() {
     const bcData = ['首页', '计算器管理', '列表']
@@ -78,6 +78,7 @@ export default class Mapdatas extends React.Component {
           actions={() => {
             return <Link to={`${Url.tableList}?type=1`}>计算器列表</Link>
           }}
+          deleteAction={true}
         />
         <AddMapdataModal />
       </div>

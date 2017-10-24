@@ -34,7 +34,14 @@ export default class FuncList extends React.Component {
   }
   render() {
     const that = this
-    const { store, funcEnName, funcCnName, downloadCSV, actions } = this.props
+    const {
+      store,
+      funcEnName,
+      funcCnName,
+      downloadCSV,
+      actions,
+      deleteAction
+    } = this.props
     let dataList = _.map(store.toJS(), (v, k) => {
       return {
         key: v.id,
@@ -75,6 +82,9 @@ export default class FuncList extends React.Component {
             key: 'operation',
             width: 200,
             render: (text, record, index) => {
+              if (deleteAction) {
+                return actions ? actions() : null
+              }
               return (
                 <div className="table-actions">
                   {actions && actions()}
