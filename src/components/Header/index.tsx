@@ -29,6 +29,7 @@ export default class Header extends React.Component<any, {}> {
         </div>
         <div className="header-nav">
           <Menu
+            className="header-nav-main"
             onClick={this.handleClick}
             selectedKeys={[path]}
             mode="horizontal"

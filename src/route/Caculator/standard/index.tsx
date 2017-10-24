@@ -5,10 +5,7 @@ import Echarts from '../../../components/Echarts/'
 export default class Standard extends React.Component<{}, {}> {
   render() {
     return (
-      <Row className="main-standard">
-        <Col span={24} className="main-title">
-          计算规范
-        </Col>
+      <Row>
         <Col span={12}>
           <Echarts />
         </Col>

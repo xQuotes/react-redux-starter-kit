@@ -26,14 +26,16 @@ export default class Indicator extends React.Component<{}, {}> {
         <Col span={24} className="main-title">
           指标查询
         </Col>
-        {news.map((v, k) => {
-          return (
-            <Col span={24}>
-              <Col span={12}>{v.title}</Col>
-              <Col span={12}>{v.time}</Col>
-            </Col>
-          )
-        })}
+        <Col span={24} className="main-contain">
+          {news.map((v, k) => {
+            return (
+              <Col span={24} className="main-item">
+                <Col span={12}>{v.title}</Col>
+                <Col span={12}>{v.time}</Col>
+              </Col>
+            )
+          })}
+        </Col>
       </Row>
     )
   }

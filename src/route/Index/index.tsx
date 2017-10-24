@@ -7,6 +7,8 @@ import MainCaculator from './caculator/index'
 import MainStandard from './standard/index'
 import Indicator from './indicator/index'
 
+import './index.less'
+
 export default class Hello extends React.Component<{}, {}> {
   render() {
     return (
@@ -14,9 +16,11 @@ export default class Hello extends React.Component<{}, {}> {
         <Header {...this.props} />
         <MainCarousel />
         <MainNav />
-        <MainCaculator />
-        <MainStandard />
-        <Indicator />
+        <div className="main-container">
+          <MainCaculator />
+          <MainStandard />
+          <Indicator />
+        </div>
         <Footer />
       </div>
     )
