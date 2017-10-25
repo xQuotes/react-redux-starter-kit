@@ -36,12 +36,12 @@ const Api = {
   putFormula: `${url}/calculationformula/savecalculationformula`,
   putFormulas: `${url}/calculationformula/savecalculationformula`,
 
-  postUser: `${url}/sw_config_datacenter/addInfo`,
-  getUsers: `${url}/sw_config_datacenter/getList`,
-  getUser: `${url}/sw_config_datacenter/getInfo`,
-  deleteUser: `${url}/sw_config_datacenter/deleteInfo`,
-  putUser: `${url}/sw_config_datacenter/updateInfo`,
-  putUsers: `${url}/sw_config_datacenter/updateList`,
+  postUser: ``,
+  getUsers: `${url}/admin/userlist`,
+  getUser: ``,
+  deleteUser: ``,
+  putUser: ``,
+  putUsers: ``,
 
   postNews: `${url}/answer/saveinfor`,
   getNewss: `${url}/answer/inforlist`,
