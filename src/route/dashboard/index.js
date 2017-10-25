@@ -120,18 +120,38 @@ export default class Dashboard extends React.Component {
                   <Icon type="appstore-o" />计算器列表
                 </Link>
               </Menu.Item>
+
+              <Menu.Item key={`${Url.formulaList}`}>
+                <Link to={`${Url.formulaList}`}>
+                  <Icon type="appstore-o" />计算公式
+                </Link>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub2"
+              title={
+                <span>
+                  <Icon type="bars" />造价指标
+                </span>
+              }
+            >
+              <Menu.Item key={`${Url.newsList}`}>
+                <Link to={`${Url.newsList}`}>
+                  <Icon type="appstore-o" />造价指标列表
+                </Link>
+              </Menu.Item>
             </SubMenu>
             <SubMenu
               key="sub3"
               title={
                 <span>
-                  <Icon type="bars" />计算公式
+                  <Icon type="bars" />问答
                 </span>
               }
             >
-              <Menu.Item key={`${Url.formulaList}`}>
-                <Link to={`${Url.formulaList}`}>
-                  <Icon type="appstore-o" />列表
+              <Menu.Item key={`${Url.QAList}`}>
+                <Link to={`${Url.QAList}`}>
+                  <Icon type="appstore-o" />问答列表
                 </Link>
               </Menu.Item>
             </SubMenu>
@@ -145,20 +165,6 @@ export default class Dashboard extends React.Component {
             >
               <Menu.Item key={`${Url.userList}`}>
                 <Link to={`${Url.userList}`}>
-                  <Icon type="appstore-o" />列表
-                </Link>
-              </Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub2"
-              title={
-                <span>
-                  <Icon type="bars" />资讯管理
-                </span>
-              }
-            >
-              <Menu.Item key={`${Url.newsList}`}>
-                <Link to={`${Url.newsList}`}>
                   <Icon type="appstore-o" />列表
                 </Link>
               </Menu.Item>

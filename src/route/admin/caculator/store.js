@@ -10,9 +10,10 @@ export default class CaculatorStore extends Store {
     super(props)
   }
   fields = {
-    // id: '造价指标id',
-    item: '计算器名称',
-    itemKey: '计算器 key'
+    id: 'id',
+    calculatorName: '计算器名称',
+    type: '计算器类型',
+    updateTime: '更新时间'
   }
   updateFields = _.omit(this.fields, ['id', 'updateTime'])
   // searchFields = _.omit(this.fields, ['id', 'updateTime'])
@@ -21,8 +22,9 @@ export default class CaculatorStore extends Store {
   list = [
     {
       id: 1,
-      item: '计算器1',
-      itemKey: 'jisuanqi1'
+      calculatorName: '计算器1',
+      type: 'jisuanqi1',
+      updateTime: '2017-10-25'
     }
   ]
 

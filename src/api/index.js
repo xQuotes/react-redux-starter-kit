@@ -43,12 +43,21 @@ const Api = {
   putUser: `${url}/sw_config_datacenter/updateInfo`,
   putUsers: `${url}/sw_config_datacenter/updateList`,
 
-  postNews: `${url}/sw_config_datacenter/addInfo`,
-  getNewss: `${url}/sw_config_datacenter/getList`,
-  getNews: `${url}/sw_config_datacenter/getInfo`,
-  deleteNews: `${url}/sw_config_datacenter/deleteInfo`,
-  putNews: `${url}/sw_config_datacenter/updateInfo`,
-  putNewss: `${url}/sw_config_datacenter/updateList`
+  postNews: `${url}/answer/saveinfor`,
+  getNewss: `${url}/answer/inforlist`,
+  getNews: `${url}/answer/infordetails`,
+  deleteNews: `${url}/answer/deletedinfor`,
+  auditNews: `${url}/answer/putawayinfor`,
+  putNews: `${url}/answer/saveinfor`,
+  putNewss: `${url}/answer/saveinfor`,
+
+  postQA: `${url}/answer/saveanswer`,
+  getQAs: `${url}/answer/answerlist`,
+  getQA: `${url}/answer/answerdetails`,
+  deleteQA: `${url}/answer/deletedanswer`,
+  auditQA: `${url}/answer/putawayanswer`,
+  putQA: `${url}/answer/saveanswer`,
+  putQAs: `${url}/answer/saveanswer`
 }
 
 export default Api

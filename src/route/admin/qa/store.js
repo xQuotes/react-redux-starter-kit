@@ -5,30 +5,30 @@ import Api from 'Api'
 import 'Arr'
 import Store from '../../../stores/Store'
 
-export default class NewsStore extends Store {
+export default class QAStore extends Store {
   constructor(props) {
     super(props)
   }
   fields = {
     id: 'id',
-    title: '标题',
-    content: '内容',
-    classify: '结构类型',
-    projectSite: '工程地点',
-    time: '整理时间',
-    type: '类型'
+    question: '提问内容',
+    answerContent: '回答内容',
+    updateTime: '更新时间'
+
+    // totalCount 总数
+    // noresult String  是 如果没有查到信息返回内容
   }
   updateFields = _.omit(this.fields, ['id', 'updateTime'])
   api = {
-    gets: Api.getNewss,
-    delete: Api.deleteNews,
-    post: Api.postNews,
+    gets: Api.getQAs,
+    delete: Api.deleteQA,
+    post: Api.postQA,
     uploadCsvData: Api.uploadCsvData,
-    put: Api.putNews,
-    puts: Api.putNewss,
+    put: Api.putQA,
+    puts: Api.putQAs,
     exports: Api.exports
   }
   static fromJS(array = []) {
-    return new NewsStore()
+    return new QAStore()
   }
 }

@@ -17,7 +17,9 @@ const Url = {
 
   userList: `/${caculator}/user/list`,
 
-  newsList: `/${caculator}/news/list`
+  newsList: `/${caculator}/news/list`,
+
+  QAList: `/${caculator}/QA/list`
   /*file_append*/
 }
 

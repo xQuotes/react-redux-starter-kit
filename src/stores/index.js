@@ -8,6 +8,7 @@ module.exports = {
   userStore: require('../route/admin/user/store')['default'].fromJS(),
   newsStore: require('../route/admin/news/store')['default'].fromJS(),
   mapdataStore: require('../route/admin/mapdata/store')['default'].fromJS(),
+  QAStore: require('../route/admin/qa/store')['default'].fromJS(),
   /*file_append*/
 
   permissionStore: require('../route/permission/store')['default'].fromJS()
