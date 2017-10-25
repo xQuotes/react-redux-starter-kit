@@ -83,11 +83,11 @@ export default class FuncList extends React.Component {
             width: 200,
             render: (text, record, index) => {
               if (deleteAction) {
-                return actions ? actions() : null
+                return actions ? actions(record) : null
               }
               return (
                 <div className="table-actions">
-                  {actions && actions()}
+                  {actions && actions(record)}
                   <a
                     href="#"
                     onClick={that.updateFunc.bind(this, {

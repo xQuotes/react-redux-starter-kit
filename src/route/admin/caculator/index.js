@@ -8,6 +8,9 @@ import FuncList from '../../components/switches/commonInfoList'
 import AddCaculatorModal from './add'
 import JSONView from '../../components/jsonview/index'
 
+var actions = ({ type }) => {
+  return <Link to={`${Url.tableList}?type=${type}`}>计算器列表</Link>
+}
 @inject('caculatorStore')
 @observer
 export default class Caculators extends React.Component {
@@ -75,9 +78,7 @@ export default class Caculators extends React.Component {
           downloadCSV={Api.downloadCaculatorCSV}
           funcEnName={'caculator'}
           caculatorHeader={caculatorHeader}
-          actions={() => {
-            return <Link to={`${Url.tableList}?type=1`}>计算器列表</Link>
-          }}
+          actions={actions}
         />
         <AddCaculatorModal />
       </div>

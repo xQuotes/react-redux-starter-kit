@@ -8,12 +8,12 @@ const Api = {
   logout: `${url}/sw_user/logout`,
   getMe: `${url}/sw_user/getUserInfo`,
 
-  postCaculator: `${url}/caculator/savecaculator`,
-  getCaculators: `${url}/caculator/list`,
-  getCaculator: `${url}/caculator/tail`,
-  deleteCaculator: `${url}/caculator/deletedcaculator`,
-  putCaculator: `${url}/caculator/savecaculator`,
-  putTCaculators: `${url}/caculator/savecaculator`,
+  postCaculator: `${url}/calculator/savecalculator`,
+  getCaculators: `${url}/calculator/list`,
+  getCaculator: `${url}/calculator/tail`,
+  deleteCaculator: `${url}/calculator/deletedcalculator`,
+  putCaculator: `${url}/calculator/savecalculator`,
+  putCaculators: `${url}/calculator/savecalculator`,
 
   postMapdata: `${url}/mapdata/savemapdata`,
   getMapdatas: `${url}/mapdata/list`,

@@ -18,15 +18,15 @@ export default class CaculatorStore extends Store {
   updateFields = _.omit(this.fields, ['id', 'updateTime'])
   // searchFields = _.omit(this.fields, ['id', 'updateTime'])
 
-  @observable
-  list = [
-    {
-      id: 1,
-      calculatorName: '计算器1',
-      type: 'jisuanqi1',
-      updateTime: '2017-10-25'
-    }
-  ]
+  @observable list = []
+  // [
+  //   {
+  //     id: 1,
+  //     calculatorName: '计算器1',
+  //     type: 'jisuanqi1',
+  //     updateTime: '2017-10-25'
+  //   }
+  // ]
 
   api = {
     gets: Api.getCaculators,
