@@ -5,6 +5,8 @@ import MainNav from './nav'
 import MainStandard from './standard/index'
 import MainResult from './result/index'
 
+import './caculator.less'
+
 export default class Caculator extends React.Component<{}, {}> {
   render() {
     return (

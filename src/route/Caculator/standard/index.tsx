@@ -1,22 +1,59 @@
 import * as React from 'react'
-import { Row, Col, Button } from 'antd'
+import { Row, Col, Button, Form, Input } from 'antd'
+import { FormComponentProps } from 'antd/lib/form/Form'
+const FormItem = Form.Item
 import Echarts from '../../../components/Echarts/'
 
-export default class Standard extends React.Component<{}, {}> {
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 6 }
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 14 }
+  }
+}
+
+class Standard extends React.Component<any & FormComponentProps, any> {
+  handleSubmit = (e: any) => {
+    e.preventDefault()
+    this.props.form.validateFieldsAndScroll((err: any, values: any) => {
+      if (!err) {
+        console.log('Received values of form: ', values)
+      }
+    })
+  }
   render() {
+    const { getFieldDecorator } = this.props.form
     return (
-      <Row>
+      <Row className="standard">
         <Col span={12}>
           <Echarts />
         </Col>
         <Col span={12}>
-          <h3>新疆造价规范</h3>
-          <Button.Group>
-            <Button>定额</Button>
-            <Button>清单</Button>
-          </Button.Group>
+          <h3>您已选择： 新疆</h3>
+          <Form onSubmit={this.handleSubmit}>
+            <FormItem {...formItemLayout} label="计算器1">
+              {getFieldDecorator('email', {})(<Input />)}
+            </FormItem>
+            <FormItem {...formItemLayout} label="计算器2">
+              {getFieldDecorator('name', {})(<Input />)}
+            </FormItem>
+            <FormItem {...formItemLayout} label=" ">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+              >
+                计算结果
+              </Button>
+            </FormItem>
+          </Form>
         </Col>
       </Row>
     )
   }
 }
+
+export default Form.create()(Standard)
