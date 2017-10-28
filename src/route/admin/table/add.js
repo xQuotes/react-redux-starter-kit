@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react'
 import AddForm from '../../components/switches/commonInfoAdd'
 // import Editor from '../../components/editor/'
 
-import JSONView from '../../components/jsonview/edit'
+import JSONView from '../../components/jsonview/editForm'
 import { defaultOptionsValue } from './model'
 
 @inject('tableStore')
@@ -24,7 +24,8 @@ export default class AddTable extends React.Component {
   }
 
   render() {
-    const { tableStore, code } = this.props
+    const { tableStore, code, location: { query: { type } } } = this.props
+
     const options = {
       selectOnLineNumbers: true
     }
@@ -48,7 +49,12 @@ export default class AddTable extends React.Component {
               }
               return (
                 <div>
-                  <JSONView value={val} field={'presetValue'} {...props} />
+                  <JSONView
+                    defaultValue={defaultOptionsValue}
+                    value={val}
+                    field={'presetValue'}
+                    {...props}
+                  />
                   <img
                     src={require('./demo.jpg')}
                     alt=""
@@ -69,6 +75,53 @@ export default class AddTable extends React.Component {
           }
         )
       }
+
+      if (k === 'contentType') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            formType: 'select',
+            optionData: [
+              {
+                id: 'select',
+                value: '选项'
+              },
+              {
+                id: 'text',
+                value: '文本'
+              }
+            ],
+            fieldOptions: {
+              initialValue: table[k] || 'text',
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请选择${v}`
+          }
+        )
+      }
+
+      if (k === 'type') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            disabled: !!type,
+            fieldOptions: {
+              initialValue: table[k] || type,
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请选择${v}`
+          }
+        )
+      }
+
       return _.assign(
         {},
         {

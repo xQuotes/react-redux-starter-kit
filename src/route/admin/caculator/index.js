@@ -6,7 +6,7 @@ import Url from 'Url'
 
 import FuncList from '../../components/switches/commonInfoList'
 import AddCaculatorModal from './add'
-import JSONView from '../../components/jsonview/index'
+import JSONView from '../../components/jsonview/edit'
 
 var actions = ({ type }) => {
   return <Link to={`${Url.tableList}?type=${type}`}>计算器列表</Link>

@@ -1,9 +1,5 @@
-import {
-  observer
-} from 'mobx-react'
-import {
-  Table
-} from 'antd'
+import { observer } from 'mobx-react'
+import { Table } from 'antd'
 
 @observer
 export default class DataTable extends React.Component {
@@ -11,12 +7,12 @@ export default class DataTable extends React.Component {
     super(props)
   }
   render() {
-    const {columns, dataSource} = this.props
+    const { columns, dataSource, expandedRowRender } = this.props
     const pagination = {
       total: dataSource.length,
       showTotal: total => `总共 ${dataSource.length} 条`,
       showSizeChanger: true,
-      pageSizeOptions: [dataSource.length+'', '10', '20', '50', '100'],
+      pageSizeOptions: [dataSource.length + '', '10', '20', '50', '100']
       // onShowSizeChange(current, pageSize) {
       //   console.log('Current: ', current, '; PageSize: ', pageSize);
       // },
@@ -25,11 +21,14 @@ export default class DataTable extends React.Component {
       // },
     }
 
-    return(
-      <Table columns={columns}
+    return (
+      <Table
+        columns={columns}
         dataSource={dataSource}
         pagination={pagination}
-        scroll={{ x: 1200 }}/>
-      )
+        expandedRowRender={expandedRowRender}
+        scroll={{ x: 1200 }}
+      />
+    )
   }
 }

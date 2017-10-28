@@ -5,6 +5,7 @@ import Api from 'Api'
 import FuncList from '../../components/switches/commonInfoList'
 import AddTableModal from './add'
 import JSONView from '../../components/jsonview/index'
+import PresetValue from './presetValue'
 
 import { defaultOptionsValue } from './model'
 
@@ -75,8 +76,43 @@ export default class Tables extends React.Component {
           downloadCSV={Api.downloadTableCSV}
           funcEnName={'table'}
           tableHeader={tableHeader}
+          expandedRowRender={record => {
+            return (
+              <PresetValue
+                data={record.list || defaultOptionsValue.list}
+                title={'预置选项'}
+                fields={{
+                  title: '大类型'
+                }}
+                expandedRowRender={record => {
+                  return (
+                    <PresetValue
+                      data={record.options || []}
+                      title={'预置选项'}
+                      fields={{
+                        title: '小类型'
+                      }}
+                      expandedRowRender={record => {
+                        return (
+                          <PresetValue
+                            data={record.selects || []}
+                            title={'预置选项'}
+                            fields={{
+                              label: '文本',
+                              value: '数值',
+                              type: '类型'
+                            }}
+                          />
+                        )
+                      }}
+                    />
+                  )
+                }}
+              />
+            )
+          }}
         />
-        <AddTableModal />
+        <AddTableModal {...this.props} />
       </div>
     )
   }

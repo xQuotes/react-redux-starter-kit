@@ -40,7 +40,8 @@ export default class FuncList extends React.Component {
       funcCnName,
       downloadCSV,
       actions,
-      deleteAction
+      deleteAction,
+      expandedRowRender
     } = this.props
     let dataList = _.map(store.toJS(), (v, k) => {
       return {
@@ -127,7 +128,12 @@ export default class FuncList extends React.Component {
           </Button>
         </div>
         <div className={classNames({ tables: true })}>
-          <DataTable columns={columns} dataSource={dataList} store={store} />
+          <DataTable
+            columns={columns}
+            dataSource={dataList}
+            store={store}
+            expandedRowRender={expandedRowRender}
+          />
         </div>
       </div>
     )

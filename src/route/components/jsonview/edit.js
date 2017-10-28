@@ -11,7 +11,7 @@ export default class JSONEdit extends React.Component {
   }
   render() {
     const { form, field, value } = this.props
-    console.log(this.state.value, value)
+
     return (
       <ReactJson
         src={this.state.value || value}
