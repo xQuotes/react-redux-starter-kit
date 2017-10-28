@@ -115,11 +115,11 @@ export default class Dashboard extends React.Component {
                 </Link>
               </Menu.Item>
 
-              <Menu.Item key={`${Url.tableList}`}>
+              {/* <Menu.Item key={`${Url.tableList}`}>
                 <Link to={`${Url.tableList}`}>
                   <Icon type="appstore-o" />计算器列表
                 </Link>
-              </Menu.Item>
+              </Menu.Item> */}
 
               <Menu.Item key={`${Url.formulaList}`}>
                 <Link to={`${Url.formulaList}`}>
