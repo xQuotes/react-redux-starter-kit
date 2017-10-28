@@ -7,6 +7,7 @@ import Store from '../../../stores/Store'
 let uuid = 1
 
 export default class PresetStore extends Store {
+  @observable butvalue = '查看说明'
   @observable title = '设计复杂程度调整(DEMO)'
   @observable description = '操作指南：直接双击或者单击后点击选择(DEMO)'
   @observable

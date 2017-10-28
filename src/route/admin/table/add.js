@@ -151,7 +151,7 @@ export default class AddTable extends React.Component {
 
     return (
       <div>
-        <AddForm store={tableStore} title={formDataTitileServer} />
+        <AddForm store={tableStore} title={formDataTitileServer} item={table} />
       </div>
     )
   }

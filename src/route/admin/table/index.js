@@ -118,7 +118,16 @@ export default class Tables extends React.Component {
                   </Button>(修改下面内容后，记得点保存)
                 </Col>
                 <Col span={24}>
-                  <Col span={8}>
+                  <Col span={6}>
+                    按钮名称:
+                    <Input
+                      defaultValue={presetStore.butvalue}
+                      onChange={e => {
+                        presetStore.butvalue = e.target.value
+                      }}
+                    />
+                  </Col>
+                  <Col span={6} offset={2}>
                     标题:
                     <Input
                       defaultValue={presetStore.title}
@@ -127,7 +136,7 @@ export default class Tables extends React.Component {
                       }}
                     />
                   </Col>
-                  <Col span={8} offset={2}>
+                  <Col span={6} offset={2}>
                     描述:
                     <Input.TextArea
                       defaultValue={presetStore.description}

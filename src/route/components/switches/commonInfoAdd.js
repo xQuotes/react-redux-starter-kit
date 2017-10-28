@@ -25,7 +25,7 @@ export default class AddForm extends React.Component {
     super(props)
   }
   handleSubmit(e) {
-    const { form, store } = this.props
+    const { form, store, item } = this.props
     const { validateFields } = form
     const { params } = store
 
@@ -51,7 +51,10 @@ export default class AddForm extends React.Component {
           data: _.pickBy(values)
         })
       } else if (values.id) {
-        store.putServer(data)
+        store.putServer({
+          ...item,
+          ...data
+        })
       } else {
         store.postServer(data)
       }
@@ -63,7 +66,7 @@ export default class AddForm extends React.Component {
   }
 
   render() {
-    const { form, store, title } = this.props
+    const { form, store, title, item } = this.props
     const ids = toJS(store.params.ids) || []
 
     return (
@@ -81,7 +84,7 @@ export default class AddForm extends React.Component {
           </div>
         )}
         <Form horizontal>
-          <ModalForm form={form} store={store} title={title} />
+          <ModalForm form={form} store={store} title={title} item={item} />
         </Form>
       </Modal>
     )
