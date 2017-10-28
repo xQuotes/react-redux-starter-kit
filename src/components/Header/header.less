@@ -7,6 +7,12 @@
     height: 60px;
     line-height: 60px;
     text-align: right;
+    .ant-btn-group > .ant-btn:first-child:not(:last-child) {
+      padding-right: 15px;
+    }
+    .ant-btn-group > .ant-btn:last-child:not(:first-child) {
+      padding-left: 15px;
+    }
   }
 
   .header-nav {
@@ -16,6 +22,32 @@
     width: 1000px;
     margin: 0 auto;
     background-color: @primary-color;
-    color: #fff;
+    border-color: @primary-color;
+    color: #eee;
+
+    .ant-menu-item {
+      font-size: 14px;
+      margin: 0 10px;
+      & > a {
+        color: #eee;
+        &:hover {
+          color: #fff;
+        }
+      }
+      &.ant-menu-item-selected {
+        color: #fff;
+        border-color: #fff;
+        &:hover {
+          border-color: #fff;
+        }
+      }
+      &.ant-menu-item-active {
+        color: #fff;
+        border-color: #fff;
+        &:hover {
+          border-color: #fff;
+        }
+      }
+    }
   }
 }

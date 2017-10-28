@@ -23,7 +23,7 @@ export default class Header extends React.Component<any, {}> {
       <div className="header">
         <div className="top">
           <Button.Group>
-            <Button>登录</Button>
+            <Button type="primary" ghost>登录</Button>
             <Button type="primary">注册</Button>
           </Button.Group>
         </div>
