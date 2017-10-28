@@ -15,9 +15,9 @@ export default class Tables extends React.Component {
     super(props)
   }
   componentWillMount() {
-    const { tableStore } = this.props
+    const { tableStore, location: { query } } = this.props
     tableStore.getServers({
-      type: 11
+      type: query.type || ''
     })
   }
   handleSubmit(item) {
@@ -104,7 +104,6 @@ export default class Tables extends React.Component {
           funcEnName={'table'}
           tableHeader={tableHeader}
           expandedRowRender={record => {
-            console.log(record)
             const { presetValue } = record
             if (presetValue) presetStore.setPresetValue(JSON.parse(presetValue))
             return (
@@ -155,7 +154,6 @@ export default class Tables extends React.Component {
                     }}
                     defaultValue={presetStore.item}
                     expandedRowRender={record2 => {
-                      console.log(record2)
                       return (
                         <PresetValue
                           data={record2.options.toJS() || []}
