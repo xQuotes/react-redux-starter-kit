@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Carousel } from 'antd'
+import './carousel.less'
 
 export default class Cacusel extends React.Component<any, any> {
   onChange(a: string, b: string, c: string): void {
@@ -7,18 +8,18 @@ export default class Cacusel extends React.Component<any, any> {
   }
   render() {
     return (
-      <Carousel afterChange={this.onChange.bind(this)}>
-        <div>
-          <h3>1</h3>
+      <Carousel afterChange={this.onChange.bind(this)} className="carousel">
+        <div className="carousel-item">
+          <h3 className="carousel-item-content" />
         </div>
-        <div>
-          <h3>2</h3>
+        <div className="carousel-item">
+          <h3 className="carousel-item-content" />
         </div>
-        <div>
-          <h3>3</h3>
+        <div className="carousel-item">
+          <h3 className="carousel-item-content" />
         </div>
-        <div>
-          <h3>4</h3>
+        <div className="carousel-item">
+          <h3 className="carousel-item-content" />
         </div>
       </Carousel>
     )

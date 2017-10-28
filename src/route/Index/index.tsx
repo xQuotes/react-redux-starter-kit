@@ -12,7 +12,7 @@ import './index.less'
 export default class Hello extends React.Component<{}, {}> {
   render() {
     return (
-      <div>
+      <div className="index">
         <Header {...this.props} />
         <MainCarousel />
         <MainNav />
