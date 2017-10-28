@@ -1,4 +1,5 @@
 import { inject, observer } from 'mobx-react'
+import { Button, Row, Col, Input } from 'antd'
 
 import Api from 'Api'
 
@@ -7,9 +8,7 @@ import AddTableModal from './add'
 import JSONView from '../../components/jsonview/index'
 import PresetValue from './presetValue'
 
-import { defaultOptionsValue } from './model'
-
-@inject('tableStore')
+@inject('tableStore', 'presetStore')
 @observer
 export default class Tables extends React.Component {
   constructor(props) {
@@ -21,43 +20,71 @@ export default class Tables extends React.Component {
       type: 11
     })
   }
+  handleSubmit(item) {
+    const { tableStore, presetStore } = this.props
+    delete item.key
+    item.presetValue = JSON.stringify({
+      title: presetStore.title,
+      description: presetStore.description,
+      list: presetStore.list
+    })
+    tableStore.putServer(item)
+  }
+  onChange(value, options) {
+    const { tableStore, presetStore } = this.props
+    const { type, list_id, options_id, selects_id, key } = options
+    if (type === 'list') {
+      if (list_id === 'addOrDelete') {
+        presetStore.list = value
+      } else {
+        const index = presetStore.list.findIndex(v => v.key === list_id)
+        if (index >= 0) presetStore.list[index] = value
+      }
+    }
+    if (type === 'options') {
+      const list = presetStore.list
+      const index = list.findIndex(v => v.key === list_id)
+      if (index >= 0) {
+        if (options_id === 'addOrDelete') {
+          presetStore.list[index].options = value
+        } else {
+          const options = list[index].options
+          const indexOtions = options.findIndex(v => v.key === options_id)
+          if (indexOtions >= 0) {
+            options[indexOtions] = value
+          }
+        }
+      }
+    }
+    if (type === 'selects') {
+      const list = presetStore.list
+      const index = list.findIndex(v => v.key === list_id)
+      if (index >= 0) {
+        const options = list[index].options
+        const indexOtions = options.findIndex(v => v.key === options_id)
+        if (indexOtions >= 0) {
+          if (selects_id === 'addOrDelete') {
+            presetStore.list[index].options[indexOtions].selects = value
+          } else {
+            const selects = options[indexOtions].selects
+            const indexSelects = selects.findIndex(v => v.key === selects_id)
+            if (indexSelects >= 0) {
+              selects[indexSelects] = value
+              // presetStore.list[index].options[indexOtions].selects[
+              //   indexSelects
+              // ] = value
+            }
+          }
+        }
+      }
+    }
+  }
   render() {
     const bcData = ['首页', '计算器管理', '列表']
-    const { tableStore } = this.props
+    const { tableStore, presetStore } = this.props
     const { fields } = tableStore
 
     const tableHeader = _.map(fields, (v, k) => {
-      if (k === 'presetValue') {
-        return {
-          title: v,
-          dataIndex: k,
-          key: k,
-          width: 300,
-          render: (text, record, index) => {
-            let val = {}
-
-            try {
-              val = JSON.parse(text) || defaultOptionsValue
-            } catch (err) {
-              val = defaultOptionsValue
-            }
-
-            return <JSONView value={val} />
-          }
-        }
-      }
-
-      if (k === 'presetValue') {
-        return {
-          title: v,
-          dataIndex: k,
-          key: k,
-          width: 300,
-          render: (text, record, index) => {
-            return <JSONView value={JSON.parse(text)} />
-          }
-        }
-      }
       return {
         title: v,
         dataIndex: k,
@@ -77,38 +104,105 @@ export default class Tables extends React.Component {
           funcEnName={'table'}
           tableHeader={tableHeader}
           expandedRowRender={record => {
+            console.log(record)
+            const { presetValue } = record
+            if (presetValue) presetStore.setPresetValue(JSON.parse(presetValue))
             return (
-              <PresetValue
-                data={record.list || defaultOptionsValue.list}
-                title={'预置选项'}
-                fields={{
-                  title: '大类型'
-                }}
-                expandedRowRender={record => {
-                  return (
-                    <PresetValue
-                      data={record.options || []}
-                      title={'预置选项'}
-                      fields={{
-                        title: '小类型'
-                      }}
-                      expandedRowRender={record => {
-                        return (
-                          <PresetValue
-                            data={record.selects || []}
-                            title={'预置选项'}
-                            fields={{
-                              label: '文本',
-                              value: '数值',
-                              type: '类型'
-                            }}
-                          />
-                        )
+              <Row>
+                <Col span={24}>
+                  <Button
+                    className="editable-add-btn"
+                    onClick={this.handleSubmit.bind(this, record)}
+                    type="primary"
+                  >
+                    保存
+                  </Button>(修改下面内容后，记得点保存)
+                </Col>
+                <Col span={24}>
+                  <Col span={8}>
+                    标题:
+                    <Input
+                      defaultValue={presetStore.title}
+                      onChange={e => {
+                        presetStore.title = e.target.value
                       }}
                     />
-                  )
-                }}
-              />
+                  </Col>
+                  <Col span={8} offset={2}>
+                    描述:
+                    <Input.TextArea
+                      defaultValue={presetStore.description}
+                      onChange={e => {
+                        presetStore.description = e.target.value
+                      }}
+                    />
+                  </Col>
+                </Col>
+                <Col span={24}>
+                  <PresetValue
+                    data={presetStore.list.toJS()}
+                    onChange={(value, key, id) => {
+                      this.onChange(value, {
+                        key,
+                        list_id: id || 'addOrDelete',
+                        type: 'list'
+                      })
+                    }}
+                    title={''}
+                    fields={{
+                      key: 'ID',
+                      title: '大类型'
+                    }}
+                    defaultValue={presetStore.item}
+                    expandedRowRender={record2 => {
+                      console.log(record2)
+                      return (
+                        <PresetValue
+                          data={record2.options.toJS() || []}
+                          title={'小类型'}
+                          fields={{
+                            key: 'ID',
+                            title: '小类型'
+                          }}
+                          defaultValue={presetStore.option}
+                          onChange={(value, key, id) => {
+                            this.onChange(value, {
+                              key,
+                              list_id: record2.key,
+                              options_id: id || 'addOrDelete',
+                              type: 'options'
+                            })
+                          }}
+                          expandedRowRender={record3 => {
+                            return (
+                              <PresetValue
+                                data={record3.selects.toJS() || []}
+                                title={'基本选项'}
+                                fields={{
+                                  key: 'ID',
+                                  lable: '文本',
+                                  value: '数值',
+                                  type: '类型'
+                                }}
+                                defaultValue={presetStore.select}
+                                onChange={(value, key, id) => {
+                                  this.onChange(value, {
+                                    key,
+                                    list_id: record2.key,
+                                    options_id: record3.key,
+                                    selects_id: id || 'addOrDelete',
+                                    type: 'selects'
+                                  })
+                                }}
+                              />
+                            )
+                          }}
+                        />
+                      )
+                    }}
+                  />
+                </Col>
+              </Row>
             )
           }}
         />

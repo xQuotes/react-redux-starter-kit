@@ -17,6 +17,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
+    // experimentalDecorators: true,
     // experimentalDecorators: 0,
     ecmaFeatures: {
       jsx: true

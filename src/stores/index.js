@@ -4,6 +4,7 @@ module.exports = {
 
   caculatorStore: require('../route/admin/caculator/store')['default'].fromJS(),
   tableStore: require('../route/admin/table/store')['default'].fromJS(),
+  presetStore: require('../route/admin/table/PresetStore')['default'].fromJS(),
   formulaStore: require('../route/admin/formula/store')['default'].fromJS(),
   userStore: require('../route/admin/user/store')['default'].fromJS(),
   newsStore: require('../route/admin/news/store')['default'].fromJS(),
