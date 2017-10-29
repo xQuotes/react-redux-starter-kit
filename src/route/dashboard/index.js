@@ -50,7 +50,28 @@ export default class Dashboard extends React.Component {
       <Menu>
         <Menu.Item key="0">
           <a href="http://d.anyfees.com/#g=1&p=首页新" target="_blank">
-            网站首页
+            画图
+          </a>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="1">
+          <a href="http://www.dulifei.com/kcf/kt.html" target="_blank">
+            竞争对手
+          </a>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="2">
+          <a
+            href="https://note.youdao.com/group/#/47022012/(folder/141298871//full:collab/167018693)?noPush=true"
+            target="_blank"
+          >
+            文档
+          </a>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="3">
+          <a href="http://www.anyfees.com/index" target="_blank">
+            首页
           </a>
         </Menu.Item>
         <Menu.Divider />

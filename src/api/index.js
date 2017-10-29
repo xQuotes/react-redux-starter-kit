@@ -1,6 +1,6 @@
 const admin = 'http://admin.anyfees.com:8080/api'
 const ip = 'http://47.93.50.131:8080/api'
-const url = '/api'
+const url = admin //'/api'
 
 const Api = {
   login: 'http://locahost:3332/login',
