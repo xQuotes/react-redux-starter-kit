@@ -1,19 +1,28 @@
 import * as React from 'react'
 import { Row, Col, Button } from 'antd'
 
+import ResultTable from './table'
+import ResultForm from './form'
+
 export default class CaculatorResult extends React.Component<{}, {}> {
   render() {
     return (
-      <Row>
-        <Col span={24}>
+      <Row className="caculator-result">
+        <Col span={24} className="title">
           <h3>计算结果</h3>
-          <div>THE CALCULATOR RESULTS</div>
+          <h4>THE CALCULATOR RESULTS</h4>
+          <span className="border" />
         </Col>
         <Col span={24}>
-          <Col span={12}>
-            <Button>生成报告</Button>
+          <Col span={12} className="result-table">
+            <ResultTable />
+            <Button size="large" type="primary" className="result-btn">
+              生成报告
+            </Button>
           </Col>
-          <Col span={12}>是否生成报告</Col>
+          <Col span={12} className="result-table">
+            <ResultForm />
+          </Col>
         </Col>
       </Row>
     )

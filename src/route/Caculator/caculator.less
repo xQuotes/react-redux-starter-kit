@@ -1,3 +1,5 @@
+@import '../../style/const.less';
+
 .btn-group {
   .btn-group-item {
     margin: 15px;
@@ -12,5 +14,39 @@
   }
   .login-form-button {
     width: 100%;
+  }
+}
+.caculator-result {
+  margin-top: 50px;
+
+  .title {
+    font-size: 20px;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+
+    h3 {
+      font-weight: 400;
+      color: #333;
+    }
+    h4 {
+      font-weight: 400;
+      color: #777;
+      margin-bottom: -18px;
+    }
+    .border {
+      border: 1px solid @primary-color;
+      display: inline-block;
+      width: 30px;
+    }
+  }
+
+  .result-table {
+    padding: 40px 20px;
+    text-align: center;
+
+    .result-btn {
+      width: 210px;
+      height: 40px;
+    }
   }
 }

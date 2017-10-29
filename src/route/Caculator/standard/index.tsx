@@ -34,13 +34,13 @@ class Standard extends React.Component<any & FormComponentProps, any> {
         <Col span={12}>
           <h3>您已选择： 新疆</h3>
           <Form onSubmit={this.handleSubmit}>
-            <FormItem {...formItemLayout} label="计算器1">
+            <FormItem colon={false} {...formItemLayout} label="计算器1">
               {getFieldDecorator('email', {})(<Input />)}
             </FormItem>
-            <FormItem {...formItemLayout} label="计算器2">
+            <FormItem colon={false} {...formItemLayout} label="计算器2">
               {getFieldDecorator('name', {})(<Input />)}
             </FormItem>
-            <FormItem {...formItemLayout} label=" ">
+            <FormItem colon={false} {...formItemLayout} label=" ">
               <Button
                 type="primary"
                 htmlType="submit"

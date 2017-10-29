@@ -12,6 +12,7 @@ import store from './stores/index'
 
 import Index from './route/Index/'
 import Caculator from './route/Caculator/'
+import News from './route/news/'
 
 const stores = {
   routing: routingStore,
@@ -32,6 +33,7 @@ export default class App extends React.Component<{}, {}> {
               />
               <Route path="/index" component={Index} />
               <Route path="/caculator" component={Caculator} />
+              <Route path="/news" component={News} />
             </Switch>
           </Router>
         </Root>
