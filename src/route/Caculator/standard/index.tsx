@@ -15,7 +15,7 @@ const formItemLayout = {
   }
 }
 
-class Standard extends React.Component<any & FormComponentProps, any> {
+class Standard extends React.Component<{} & FormComponentProps, {}> {
   handleSubmit = (e: any) => {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err: any, values: any) => {
@@ -28,10 +28,15 @@ class Standard extends React.Component<any & FormComponentProps, any> {
     const { getFieldDecorator } = this.props.form
     return (
       <Row className="standard">
-        <Col span={12}>
-          <Echarts />
+        <Col span={14}>
+          <Echarts
+            style={{
+              width: '550px',
+              height: '550px'
+            }}
+          />
         </Col>
-        <Col span={12}>
+        <Col span={10}>
           <h3>您已选择： 新疆</h3>
           <Form onSubmit={this.handleSubmit}>
             <FormItem colon={false} {...formItemLayout} label="计算器1">

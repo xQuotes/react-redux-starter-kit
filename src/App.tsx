@@ -13,6 +13,8 @@ import store from './stores/index'
 import Index from './route/Index/'
 import Caculator from './route/Caculator/'
 import News from './route/news/'
+import Register from './route/Register/'
+import Login from './route/Login/'
 
 const stores = {
   routing: routingStore,
@@ -34,6 +36,8 @@ export default class App extends React.Component<{}, {}> {
               <Route path="/index" component={Index} />
               <Route path="/caculator" component={Caculator} />
               <Route path="/news" component={News} />
+              <Route path="/register" component={Register} />
+              <Route path="/login" component={Login} />
             </Switch>
           </Router>
         </Root>

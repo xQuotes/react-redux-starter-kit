@@ -11,22 +11,24 @@ export default class Header extends React.Component<any, {}> {
     current: 'mail'
   }
   handleClick = (e: any) => {
-    console.log('click ', e)
     this.setState({
       current: e.key
     })
   }
   render() {
-    console.log(this.props)
     const { match: { path } } = this.props
     return (
       <div className="header">
         <div className="top">
           <Button.Group>
-            <Button type="primary" ghost>
-              登录
-            </Button>
-            <Button type="primary">注册</Button>
+            <Link to={`/login`}>
+              <Button type="primary" ghost>
+                登录
+              </Button>
+            </Link>
+            <Link to={`/register`}>
+              <Button type="primary">注册</Button>
+            </Link>
           </Button.Group>
         </div>
         <div className="header-nav">

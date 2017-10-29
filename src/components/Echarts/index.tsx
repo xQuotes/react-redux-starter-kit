@@ -25,45 +25,6 @@ export default class EchartsComponent extends React.Component<any, {}> {
           }
         }
       },
-      visualMap: {
-        type: 'piecewise',
-        pieces: [
-          {
-            gt: 150
-          },
-          {
-            gt: 90,
-            lte: 150
-          },
-          {
-            gt: 51,
-            lte: 100
-          },
-          {
-            gt: 20,
-            lte: 50,
-            label: '10 - 20（全国平均值）'
-          },
-          {
-            gt: 10,
-            lte: 20
-          },
-          {
-            value: 50,
-            label: '123（自定义特殊颜色）',
-            color: 'purple'
-          },
-          {
-            lt: 10
-          }
-        ],
-        inRange: {
-          color: ['green', 'yellow', 'red']
-        },
-        outOfRange: {
-          color: ['#fff']
-        }
-      },
 
       series: [
         {
@@ -73,7 +34,7 @@ export default class EchartsComponent extends React.Component<any, {}> {
           zoom: 1.2,
           label: {
             normal: {
-              show: false,
+              show: true,
               textStyle: {
                 color: '#000'
               }
@@ -88,11 +49,12 @@ export default class EchartsComponent extends React.Component<any, {}> {
           },
           itemStyle: {
             normal: {
-              borderColor: 'gray',
-              borderWidth: 2
+              areaColor: '#ebf0f4',
+              borderColor: '#fff',
+              borderWidth: 1
             },
             emphasis: {
-              areaColor: '#bbb'
+              areaColor: '#3c8cff'
             }
           },
 
@@ -274,14 +236,16 @@ export default class EchartsComponent extends React.Component<any, {}> {
       click: this.onChartClick,
       legendselectchanged: this.onChartLegendselectchanged
     }
+    const estyle = {
+      height: '600px',
+      width: '600px',
+      ...this.props.style
+    }
     return (
       <div>
         <ReactEcharts
           option={this.getOption() || {}}
-          style={{
-            height: '400px',
-            width: '400px'
-          }}
+          style={estyle}
           className="react_for_echarts"
           onChartReady={this.onChartReady.bind(this)}
           onEvents={onEvents}

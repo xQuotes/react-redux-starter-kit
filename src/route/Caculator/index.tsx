@@ -16,8 +16,8 @@ export default class Caculator extends React.Component<{}, {}> {
           <MainNav />
           <MainStandard />
           <MainResult />
-          <Footer />
         </div>
+        <Footer />
       </div>
     )
   }
