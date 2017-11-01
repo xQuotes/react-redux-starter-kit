@@ -12,8 +12,8 @@ export default function fetching(action) {
     url: action.url,
     method: action.method || 'post',
     contentType: action.contentType || 'application/json',
-    // withCredentials: true,
-    // crossOrigin: true,
+    withCredentials: true,
+    crossOrigin: true,
     headers: {
       AuthToken: Auth.getAuthCookie('UserIfosSession') || ''
     },
