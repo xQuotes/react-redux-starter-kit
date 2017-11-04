@@ -11,6 +11,10 @@ export default class QAs extends React.Component {
   constructor(props) {
     super(props)
   }
+  componentWillMount() {
+    const { QAStore } = this.props
+    QAStore.getServers()
+  }
   render() {
     const bcData = ['首页', '资讯管理', '列表']
     return (

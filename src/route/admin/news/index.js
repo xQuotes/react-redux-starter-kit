@@ -1,5 +1,5 @@
 import { inject, observer } from 'mobx-react'
-
+import { Button } from 'antd'
 import Api from 'Api'
 
 import FuncList from '../../components/switches/commonInfoList'
@@ -11,6 +11,10 @@ export default class Newss extends React.Component {
   constructor(props) {
     super(props)
   }
+  componentWillMount() {
+    const { newsStore } = this.props
+    newsStore.getServers()
+  }
   render() {
     const bcData = ['首页', '资讯管理', '列表']
     return (
@@ -20,6 +24,9 @@ export default class Newss extends React.Component {
           bcData={bcData}
           downloadCSV={Api.downloadNewsCSV}
           funcEnName={'news'}
+          actions={() => {
+            return <Button>上架/下架</Button>
+          }}
         />
         <AddNewsModal />
       </div>
