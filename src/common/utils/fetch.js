@@ -11,7 +11,7 @@ export default function fetching(action) {
   reqwest({
     url: action.url,
     method: action.method || 'post',
-    contentType: action.contentType || 'application/json',
+    contentType: action.contentType || 'application/x-www-form-urlencoded', //'application/json',
     withCredentials: true,
     crossOrigin: true,
     headers: {
