@@ -1,87 +1,75 @@
-import {
-  inject, observer
-} from 'mobx-react'
-import {
-  Button, Form, Input
-} from 'antd'
-const createForm = Form.create
+import { inject, observer } from 'mobx-react'
+import { Form, Icon, Input, Button, Checkbox } from 'antd'
+import { Link } from 'react-router'
 const FormItem = Form.Item
 
-// import './login.less'
+import './login.less'
 
-@createForm()
-@inject("userStore") @observer
-export default class Login extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  handleReset(e) {
+@inject('myStore')
+@observer
+class Login extends React.Component {
+  handleSubmit = e => {
     e.preventDefault()
-    this.props.form.resetFields()
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const { userStore, form } = this.props
-
-    form.validateFields((errors, values) => {
-      if (errors) {
-        console.log('Errors in form!!!')
-        return;
+    const { myStore, form } = this.props
+    form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values)
+        myStore.login({
+          ...values
+        })
       }
-      userStore.loginServer(values)
     })
   }
   render() {
-    const {
-      getFieldDecorator, getFieldError, isFieldValidating
-    } = this.props.form
-    const formItemLayout = {
-      labelCol: { span: 7 },
-      wrapperCol: { span: 12 },
-    }
-    return(
-      <div
-        className="login">
-        <Form horizontal>
-          <FormItem
-            {...formItemLayout}
-            label="User name"
-            hasFeedback
-            help={isFieldValidating('username') ? 'validating...' : (getFieldError('name') || []).join(', ')}
-          >
-            {getFieldDecorator('username', {
-              rules: [
-                { required: true, min: 5, message: 'User name for at least 5 characters' }
-              ],
-            })(
-              <Input placeholder="Realtime validation, try to input Jason Wood" />
-            )}
-          </FormItem>
-
-          <FormItem
-            {...formItemLayout}
-            label="Password"
-            hasFeedback
-          >
-            {getFieldDecorator('password', {
-              rules: [
-                { required: true, whitespace: true, message: 'Please enter your password' }
-              ],
-            })(
-              <Input type="password" autoComplete="off"
-              />
-            )}
-          </FormItem>
-
-          <FormItem wrapperCol={{ span: 12, offset: 7 }}>
-            <Button type="primary" onClick={::this.handleSubmit}>OK</Button>
-            &nbsp;&nbsp;&nbsp;
-            <Button type="ghost" onClick={::this.handleReset}>Reset</Button>
-          </FormItem>
-        </Form>
+    const { getFieldDecorator } = this.props.form
+    return (
+      <div className="index">
+        <div className="login">
+          <h3>登 录</h3>
+          <Form className="login-form">
+            <FormItem>
+              {getFieldDecorator('mobile', {
+                rules: [{ required: true, message: '请输入账号！' }]
+              })(
+                <Input
+                  prefix={<Icon type="user" style={{ fontSize: 13 }} />}
+                  placeholder="请输入账号！"
+                />
+              )}
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('password', {
+                rules: [{ required: true, message: '请输入您的密码!' }]
+              })(
+                <Input
+                  prefix={<Icon type="lock" style={{ fontSize: 13 }} />}
+                  type="password"
+                  placeholder="请输入密码！"
+                />
+              )}
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('remember', {
+                valuePropName: 'checked',
+                initialValue: true
+              })(<Checkbox>记住账号</Checkbox>)}
+              <Link className="login-form-forgot" to={`forgetPassword`}>
+                忘记密码
+              </Link>
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                onClick={this.handleSubmit}
+              >
+                登 录
+              </Button>
+            </FormItem>
+          </Form>
+        </div>
       </div>
-      )
+    )
   }
 }
+
+export default Form.create()(Login)

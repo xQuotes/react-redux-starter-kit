@@ -16,7 +16,7 @@ export default class TableStore extends Store {
     contentType: '内容类型',
     // parameters: '参数名称',
     // presetValue: '预置选项',
-    defaultValue: '预置值',
+    defaultValue: '默认值',
     tableType: '表类型',
     type: '计算器类型',
     unit: '单位',
