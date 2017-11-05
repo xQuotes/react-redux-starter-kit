@@ -58,7 +58,7 @@ Auth.login = function(auth) {
 Auth.getToken = function() {
   return localStorage.accessToken || sessionStorage.accessToken
 }
-Auth.getUser = function() {
+Auth.getUserName = function() {
   return localStorage.nickname || sessionStorage.nickname
 }
 Auth.getUid = function() {
