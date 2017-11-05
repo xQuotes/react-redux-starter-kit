@@ -27,7 +27,7 @@ Auth.redirectIndex = function(nextState, replace) {
 }
 Auth.remenber = function(auth) {
   if (!!auth) {
-    localStorage.nickname = auth.nickname || ''
+    localStorage.nickname = auth.nickName || ''
     localStorage.accessToken = auth.accessToken || ''
     localStorage.userId = auth.userId || ''
     localStorage.expiersTime = auth.expiersTime || ''
@@ -42,7 +42,7 @@ Auth.remenber = function(auth) {
 }
 Auth.login = function(auth) {
   if (!!auth) {
-    sessionStorage.nickname = auth.nickname || ''
+    sessionStorage.nickname = auth.nickName || ''
     sessionStorage.accessToken = auth.accessToken || ''
     sessionStorage.userId = auth.userId || ''
     sessionStorage.expiersTime = auth.expiersTime || ''
