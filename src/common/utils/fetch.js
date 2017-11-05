@@ -20,7 +20,14 @@ export default function fetching(action) {
     data: action.data,
     type: 'json',
     success: res => {
-      return successCb(res)
+      if (res.code <= 0) {
+        Modal.error({
+          title: '',
+          content: res.message
+        })
+      } else {
+        return successCb(res)
+      }
       // if (res.statuscode === 200) {
       //   message.success(res.msg);
       //   return successCb(res.data, res.msg, res.statuscode)

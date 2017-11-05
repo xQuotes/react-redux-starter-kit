@@ -2,6 +2,7 @@ import { observable, computed, action } from 'mobx'
 
 import Fetch from 'Fetch'
 import Api from 'Api'
+import Auth from 'Auth'
 import { errorAlert } from 'Utils'
 import 'Arr'
 
@@ -40,7 +41,10 @@ export default class Store {
 
     Fetch({
       url: this.api.gets,
-      data: JSON.stringify(formData), //JSON.stringify(formData),
+      data: JSON.stringify({
+        token: Auth.getAuthToken(),
+        ...formData
+      }), //JSON.stringify(formData),
       // withCredentials: false,
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       method: 'post',
@@ -70,7 +74,10 @@ export default class Store {
 
     Fetch({
       url: this.api.get,
-      data: JSON.stringify(formData),
+      data: JSON.stringify({
+        token: Auth.getAuthToken(),
+        ...formData
+      }),
       method: 'post',
       success: data => {
         this.isLoading = false
@@ -89,6 +96,7 @@ export default class Store {
     Fetch({
       url: this.api.delete,
       data: JSON.stringify({
+        token: Auth.getAuthToken(),
         id: formData.id
       }),
       method: 'post',
@@ -110,7 +118,10 @@ export default class Store {
     delete formData.id
     Fetch({
       url: this.api.post,
-      data: JSON.stringify(formData),
+      data: JSON.stringify({
+        token: Auth.getAuthToken(),
+        ...formData
+      }),
       // contentType: 'multipart/form-data; charset=UTF-8',
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       method: 'post',
@@ -135,7 +146,10 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.uploadCsvData,
-      data: JSON.stringify(formData),
+      data: JSON.stringify({
+        token: Auth.getAuthToken(),
+        ...formData
+      }),
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       method: 'post',
       success: data => {
@@ -154,7 +168,10 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.put,
-      data: JSON.stringify(formData),
+      data: JSON.stringify({
+        token: Auth.getAuthToken(),
+        ...formData
+      }),
       method: 'post',
       success: data => {
         this.isLoading = false
@@ -177,7 +194,10 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.puts,
-      data: JSON.stringify(formData),
+      data: JSON.stringify({
+        token: Auth.getAuthToken(),
+        ...formData
+      }),
       method: 'post',
       success: data => {
         this.isLoading = false

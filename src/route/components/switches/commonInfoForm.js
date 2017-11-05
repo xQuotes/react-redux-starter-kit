@@ -69,7 +69,7 @@ export default class AddForm extends React.Component {
   render() {
     const { form, store, title, item, history } = this.props
     const ids = toJS(store.params.ids) || []
-    console.log(this.props)
+
     return (
       <Form horizontal>
         <ModalForm form={form} store={store} title={title} item={item} />

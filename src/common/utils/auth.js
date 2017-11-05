@@ -55,7 +55,7 @@ Auth.login = function(auth) {
     Auth.logout()
   }
 }
-Auth.getToken = function() {
+Auth.getAuthToken = function() {
   return localStorage.accessToken || sessionStorage.accessToken
 }
 Auth.getUserName = function() {

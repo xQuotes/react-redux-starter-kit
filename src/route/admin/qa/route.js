@@ -11,7 +11,7 @@ module.exports = [
     path: 'QA/add',
     getComponent(nextState, cb) {
       require.ensure([], require => {
-        cb(null, require('./add')['default'])
+        cb(null, require('./infoAdd')['default'])
       })
     }
   }

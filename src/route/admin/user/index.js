@@ -16,9 +16,8 @@ export default class Users extends React.Component {
   componentWillMount() {
     const { userStore } = this.props
     userStore.getServers({
-      role: '1',
-      source: '1',
-      token: '1'
+      role: 1,
+      source: 1
     })
   }
   handleAudit = () => {

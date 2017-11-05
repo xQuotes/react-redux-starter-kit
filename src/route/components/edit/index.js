@@ -89,12 +89,12 @@ export default class EditorWithPreview extends React.Component {
     html: ''
   }
   editorChange = editorState => {
-    const { editorFormValue } = this.props
+    const { onChange } = this.props
     this.setState({
       html: GetHTML(editorState)
     })
 
-    editorFormValue && editorFormValue(GetHTML(editorState))
+    onChange && onChange(GetHTML(editorState))
   }
   render() {
     return (
@@ -103,7 +103,7 @@ export default class EditorWithPreview extends React.Component {
           className="preview"
           dangerouslySetInnerHTML={{ __html: this.state.html }}
         />*/}
-        <Input value={this.state.html} />
+        {/* <Input value={this.state.html} /> */}
         <EditorCore
           prefixCls="rc-editor-core"
           plugins={plugins}

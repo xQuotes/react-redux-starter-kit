@@ -4,7 +4,6 @@ import Api from 'Api'
 import Url from 'Url'
 
 import FuncList from '../../components/switches/commonInfoTable'
-import AddQAModal from './add'
 
 @inject('QAStore')
 @observer
@@ -27,7 +26,6 @@ export default class QAs extends React.Component {
           funcEnName={'QA'}
           addUrl={Url.QAAdd}
         />
-        <AddQAModal />
       </div>
     )
   }
