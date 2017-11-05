@@ -1,8 +1,9 @@
 import { inject, observer } from 'mobx-react'
 
 import Api from 'Api'
+import Url from 'Url'
 
-import FuncList from '../../components/switches/commonInfoList'
+import FuncList from '../../components/switches/commonInfoTable'
 import AddQAModal from './add'
 
 @inject('QAStore')
@@ -24,6 +25,7 @@ export default class QAs extends React.Component {
           bcData={bcData}
           downloadCSV={Api.downloadQACSV}
           funcEnName={'QA'}
+          addUrl={Url.QAAdd}
         />
         <AddQAModal />
       </div>

@@ -1,6 +1,6 @@
 import { inject, observer } from 'mobx-react'
 
-import AddForm from '../../components/switches/commonInfoAdd'
+import AddForm from '../../components/switches/commonInfoForm'
 import ReactQuill from '../../components/edit/index'
 
 @inject('QAStore')
@@ -37,7 +37,7 @@ export default class AddQA extends React.Component {
     const paramsData = QAStore.params
     const QA = QAStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(QAStore.updateFields, (v, k) => {
-      if (k === 'content') {
+      if (k === 'answerContent') {
         return _.assign(
           {},
           {
@@ -84,6 +84,8 @@ export default class AddQA extends React.Component {
       ...formDataTitileServer
     ]
 
-    return <AddForm store={QAStore} title={formDataTitileServer} />
+    return (
+      <AddForm {...this.props} store={QAStore} title={formDataTitileServer} />
+    )
   }
 }

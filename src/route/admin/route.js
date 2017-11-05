@@ -1,7 +1,11 @@
 import { caculator } from 'Url'
+import Auth from 'Auth'
 
 module.exports = {
   path: `/${caculator}`,
+  // onEnter: (nextState, replace) => {
+  //   Auth.redirectToLogin(nextState, replace)
+  // },
   getComponent(nextState, cb) {
     require.ensure([], require => {
       cb(null, require('./index')['default'])
@@ -16,7 +20,7 @@ module.exports = {
         require('./formula/route'),
         require('./user/route'),
         require('./news/route'),
-        require('./qa/route')
+        ...require('./qa/route')
         /*file_append*/
       ])
     })

@@ -13,7 +13,6 @@ class Login extends React.Component {
     const { myStore, form } = this.props
     form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
         myStore.login({
           ...values
         })

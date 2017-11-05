@@ -2,7 +2,8 @@ export const caculator = 'caculator' // 交换机自动化
 
 const Url = {
   ads: '/',
-  index: `/${caculator}/type/ist`,
+  index: `/`,
+  redirect: `/${caculator}/type/ist`,
   login: '/login',
   logout: '/logout',
   register: '/register',
@@ -19,7 +20,8 @@ const Url = {
 
   newsList: `/${caculator}/news/list`,
 
-  QAList: `/${caculator}/QA/list`
+  QAList: `/${caculator}/QA/list`,
+  QAAdd: `/${caculator}/QA/add`
   /*file_append*/
 }
 

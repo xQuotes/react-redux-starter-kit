@@ -1,6 +1,7 @@
 import { observable, computed, reaction, action } from 'mobx'
 
 import Api from 'Api'
+import Auth from 'Auth'
 import Fetch from 'Fetch'
 
 export default class UserStore {
@@ -36,17 +37,16 @@ export default class UserStore {
     Fetch({
       url: this.api.login,
       data: JSON.stringify({
-        phone: formData.phone,
+        mobile: formData.mobile,
         password: formData.password
       }),
       method: 'post',
       success: data => {
-        console.log(data)
         this.isLoading = false
         if (formData.remember) {
-          localStorage.setItem('jisuanqiUser', JSON.stringify(data))
+          Auth.remenber(data.databody)
         } else {
-          sessionStorage.setItem('jisuanqiUser', JSON.stringify(data))
+          Auth.login(data.databody)
         }
       },
       error: data => {

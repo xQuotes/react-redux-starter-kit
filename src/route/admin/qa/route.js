@@ -1,8 +1,18 @@
-module.exports = {
-  path: 'QA/list',
-  getComponent(nextState, cb) {
-    require.ensure([], require => {
-      cb(null, require('./index')['default'])
-    })
+module.exports = [
+  {
+    path: 'QA/list',
+    getComponent(nextState, cb) {
+      require.ensure([], require => {
+        cb(null, require('./index')['default'])
+      })
+    }
+  },
+  {
+    path: 'QA/add',
+    getComponent(nextState, cb) {
+      require.ensure([], require => {
+        cb(null, require('./add')['default'])
+      })
+    }
   }
-}
+]

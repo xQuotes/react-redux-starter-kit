@@ -22,20 +22,23 @@ export default class Dashboard extends React.Component {
 
       meneShow: true
     }
+
+    Auth.checkAuthLogin()
   }
   handleClick(e) {
     this.setState({
       current: e.key
     })
   }
-  logout() {
-    this.props.userStore.logoutServer()
 
-    Auth.removeAuthCookie('UserIfosSession', {
-      path: '/',
-      domain: 'xxx'
-    })
-    Auth.checkAuthCookie('UserIfosSession')
+  logout() {
+    // this.props.userStore.logoutServer()
+    Auth.logout()
+    // Auth.removeAuthCookie('UserIfosSession', {
+    //   path: '/',
+    //   domain: 'xxx'
+    // })
+    // Auth.checkAuthCookie('UserIfosSession')
   }
   handleMenu() {
     this.setState({
@@ -79,10 +82,10 @@ export default class Dashboard extends React.Component {
     )
     const userMenu = (
       <Menu>
-        {/*<Menu.Divider />
+        <Menu.Divider />
         <Menu.Item key="1">
           <div onClick={::this.logout}>退出</div>
-        </Menu.Item>*/}
+        </Menu.Item>
       </Menu>
     )
     return (
