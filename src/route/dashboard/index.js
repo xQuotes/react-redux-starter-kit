@@ -207,7 +207,7 @@ export default class Dashboard extends React.Component {
             <div className="header-right">
               <Dropdown overlay={userMenu} trigger={['click']}>
                 <a className="ant-dropdown-link user-menu" href="#">
-                  {Auth.getUserName} <Icon type="down" />{' '}
+                  {Auth.getUserName()} <Icon type="down" />{' '}
                   <Icon type="user" className="user-icon" />
                 </a>
               </Dropdown>
