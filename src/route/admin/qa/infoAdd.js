@@ -52,16 +52,22 @@ export default class InfoAdd extends React.Component {
       }
     })
   }
+  componentWillMount() {
+    const { QAStore, params: { id } } = this.props
+    QAStore.getServer({
+      id
+    })
+  }
   hideModal = () => {
     const { QAStore } = this.props
     QAStore.toggleVisible()
   }
 
   render() {
-    const { form, QAStore, item, history } = this.props
-
-    const paramsData = QAStore.params
-    const QA = QAStore.list.getById(paramsData.id) || {}
+    const { form, QAStore, history, location: { query: { type } } } = this.props
+    console.log(this.props)
+    const { item } = QAStore
+    console.log(item)
     let formDataTitileServer = _.map(QAStore.updateFields, (v, k) => {
       if (k === 'answerContent') {
         return _.assign(
@@ -73,7 +79,7 @@ export default class InfoAdd extends React.Component {
             component: props => {
               return (
                 <ReactQuill
-                  value={QA[k]}
+                  value={item && item[k]}
                   onChange={value => {
                     form.setFieldsValue({
                       answerContent: value
@@ -83,7 +89,7 @@ export default class InfoAdd extends React.Component {
               )
             },
             fieldOptions: {
-              initialValue: QA[k],
+              initialValue: item && item[k],
               rules: [
                 // { required: true, whitespace: true, message: '请输入主机名' }
               ]
@@ -98,7 +104,7 @@ export default class InfoAdd extends React.Component {
           name: k,
           label: v,
           fieldOptions: {
-            initialValue: QA[k],
+            initialValue: item[k],
             rules: [
               // { required: true, whitespace: true, message: '请输入主机名' }
             ]
@@ -113,7 +119,7 @@ export default class InfoAdd extends React.Component {
         name: 'id',
         label: 'id',
         fieldOptions: {
-          initialValue: paramsData.actionType == 'clone' ? undefined : QA.id
+          initialValue: type == 'clone' ? undefined : item.id
         }
       },
       ...formDataTitileServer

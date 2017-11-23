@@ -14,5 +14,13 @@ module.exports = [
         cb(null, require('./infoAdd')['default'])
       })
     }
+  },
+  {
+    path: 'QA/add(/:id)',
+    getComponent(nextState, cb) {
+      require.ensure([], require => {
+        cb(null, require('./infoAdd')['default'])
+      })
+    }
   }
 ]

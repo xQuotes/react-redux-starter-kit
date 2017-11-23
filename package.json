@@ -64,6 +64,7 @@
     "brfs": "^1.4.3",
     "browser-sync": "^2.11.2",
     "codemirror": "^5.13.4",
+    "copy-webpack-plugin": "^4.2.1",
     "css-loader": "^0.23.1",
     "del": "^2.2.0",
     "eslint": "^2.7.0",

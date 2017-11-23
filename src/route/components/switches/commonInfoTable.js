@@ -91,23 +91,12 @@ export default class FuncList extends React.Component {
               return (
                 <div className="table-actions">
                   {actions && actions(record)}
-                  <a
-                    href="#"
-                    onClick={that.updateFunc.bind(this, {
-                      id: record.id
-                    })}
-                  >
-                    修改
-                  </a>
-                  <Button
-                    type="dashed"
-                    onClick={that.updateFunc.bind(this, {
-                      id: record.id,
-                      actionType: 'clone'
-                    })}
-                  >
-                    克隆
-                  </Button>
+                  <Link to={`${addUrl}/${record.id}`}>
+                    <Button type="primary">修改</Button>
+                  </Link>
+                  <Link to={`${addUrl}/${record.id}?type=clone`}>
+                    <Button type="primary">克隆</Button>
+                  </Link>
                   <Popconfirm
                     title="确定要删除这个操作类型吗？"
                     onConfirm={that.handleDeleteConfirm.bind(this, {

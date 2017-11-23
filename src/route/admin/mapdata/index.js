@@ -75,8 +75,11 @@ export default class Mapdatas extends React.Component {
           downloadCSV={Api.downloadMapdataCSV}
           funcEnName={'mapdata'}
           mapdataHeader={mapdataHeader}
-          actions={() => {
-            return <Link to={`${Url.tableList}?type=1`}>计算器列表</Link>
+          actions={record => {
+            console.log(record)
+            return (
+              <Link to={`${Url.tableList}?type=${record.id}`}>计算器列表</Link>
+            )
           }}
           deleteAction={true}
         />

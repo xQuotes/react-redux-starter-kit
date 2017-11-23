@@ -9,6 +9,7 @@ import 'Arr'
 export default class Store {
   @observable isLoading = false
   @observable list = []
+  @observable item = {}
   @observable fields = {}
   @observable updateFields = {}
   @observable searchFields = {}

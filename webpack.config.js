@@ -7,6 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 var TransferWebpackPlugin = require('transfer-webpack-plugin')
 var OpenBrowserPlugin = require('open-browser-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 var node_modules_dir = path.resolve(__dirname, 'node_modules')
 
@@ -46,6 +47,12 @@ var plugins = [
   new WebpackCleanupPlugin({
     exclude: ['.git/*', 'dist/.git/*']
   }),
+  new CopyWebpackPlugin([
+    {
+      from: path.resolve(__dirname, './src/common/react-ueditor/ueditor'),
+      to: path.resolve(__dirname, build.dir + '/ueditor')
+    }
+  ]),
   new webpack.BannerPlugin('This file is created by fooying@qq.com'),
   new webpack.HotModuleReplacementPlugin(),
   new WebpackMd5Hash(),

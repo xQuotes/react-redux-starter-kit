@@ -14,8 +14,8 @@ export default class Newss extends React.Component {
   componentWillMount() {
     const { newsStore } = this.props
     newsStore.getServers({
-      putaway: null,
-      type: 1 //类型 ：造价实例，造价指数，人工成本
+      putaway: '1',
+      type: '1' //类型 ：造价实例，造价指数，人工成本
     })
   }
   render() {
