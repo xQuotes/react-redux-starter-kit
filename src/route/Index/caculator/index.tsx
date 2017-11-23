@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Row, Col } from 'antd'
+import { inject, observer } from 'mobx-react'
 
 import './caculator.less'
 
@@ -42,7 +43,13 @@ const caculator = [
   }
 ]
 
+@inject('caculatorStore')
+@observer
 export default class Caculator extends React.Component<any, any> {
+  componentWillMount() {
+    const { caculatorStore } = this.props
+    caculatorStore.getServers()
+  }
   render() {
     return (
       <Row className="main-caculator">

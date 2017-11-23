@@ -15,6 +15,7 @@ import Caculator from './route/Caculator/'
 import News from './route/news/'
 import Register from './route/Register/'
 import Login from './route/Login/'
+import FindPassword from './route/Login/findPassword'
 
 const stores = {
   routing: routingStore,
@@ -38,6 +39,7 @@ export default class App extends React.Component<{}, {}> {
               <Route path="/news" component={News} />
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
+              <Route path="/findPassword" component={FindPassword} />
             </Switch>
           </Router>
         </Root>

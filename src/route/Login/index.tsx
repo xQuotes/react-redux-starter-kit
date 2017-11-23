@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { inject, observer } from 'mobx-react'
 import { Form, Icon, Input, Button, Checkbox } from 'antd'
 import { Link } from 'react-router-dom'
 import { FormComponentProps } from 'antd/lib/form/Form'
@@ -8,12 +9,18 @@ import Footer from '../../components/Footer/'
 
 import './login.less'
 
+@inject('myStore')
+@observer
 class Login extends React.Component<any & FormComponentProps, {}> {
   handleSubmit = (e: any) => {
     e.preventDefault()
-    this.props.form.validateFields((err: any, values: any) => {
+    const { myStore, form } = this.props
+    form.validateFields((err: any, values: any) => {
       if (!err) {
         console.log('Received values of form: ', values)
+        myStore.login({
+          ...values
+        })
       }
     })
   }
@@ -26,7 +33,7 @@ class Login extends React.Component<any & FormComponentProps, {}> {
           <h3>登 录</h3>
           <Form onSubmit={this.handleSubmit} className="login-form">
             <FormItem>
-              {getFieldDecorator('账号', {
+              {getFieldDecorator('mobile', {
                 rules: [{ required: true, message: '请输入账号！' }]
               })(
                 <Input
@@ -36,7 +43,7 @@ class Login extends React.Component<any & FormComponentProps, {}> {
               )}
             </FormItem>
             <FormItem>
-              {getFieldDecorator('密码', {
+              {getFieldDecorator('password', {
                 rules: [{ required: true, message: '请输入您的密码!' }]
               })(
                 <Input
@@ -51,7 +58,7 @@ class Login extends React.Component<any & FormComponentProps, {}> {
                 valuePropName: 'checked',
                 initialValue: true
               })(<Checkbox>记住账号</Checkbox>)}
-              <Link className="login-form-forgot" to={`login`}>
+              <Link className="login-form-forgot" to={`findPassword`}>
                 忘记密码
               </Link>
               <Button

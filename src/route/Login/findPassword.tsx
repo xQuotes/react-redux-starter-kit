@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Form, Icon, Input, Button, Tooltip, Row, Col } from 'antd'
+import { Form, Input, Button, Row, Col } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 const FormItem = Form.Item
 import { Link } from 'react-router-dom'
 import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
 
-import '../Login/login.less'
+import './login.less'
 
 const formItemLayout = {
   labelCol: {
@@ -22,7 +22,7 @@ const formItemLayout = {
 
 @inject('myStore')
 @observer
-class Register extends React.Component<any & FormComponentProps, {}> {
+class FindPassword extends React.Component<any & FormComponentProps, {}> {
   state = {
     confirmDirty: false,
     autoCompleteResult: []
@@ -132,28 +132,6 @@ class Register extends React.Component<any & FormComponentProps, {}> {
                 ]
               })(<Input type="password" onBlur={this.handleConfirmBlur} />)}
             </FormItem>
-            <FormItem
-              {...formItemLayout}
-              label={
-                <span>
-                  昵称
-                  <Tooltip title="请输入昵称?">
-                    <Icon type="question-circle-o" />
-                  </Tooltip>
-                </span>
-              }
-              hasFeedback={true}
-            >
-              {getFieldDecorator('nickname', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请输入你昵称!',
-                    whitespace: true
-                  }
-                ]
-              })(<Input />)}
-            </FormItem>
             <FormItem {...formItemLayout} label=" " colon={false}>
               <Button
                 type="primary"
@@ -173,4 +151,4 @@ class Register extends React.Component<any & FormComponentProps, {}> {
   }
 }
 
-export default Form.create()(Register)
+export default Form.create()(FindPassword)
