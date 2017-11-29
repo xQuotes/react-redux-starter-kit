@@ -20,11 +20,12 @@ export default class EditableCell extends React.Component {
   }
   render() {
     const { value, editable } = this.state
+    console.log(value)
     return (
       <div className="editable-cell">
         {editable ? (
           <div className="editable-cell-input-wrapper">
-            {value.length < 100 ? (
+            {value === undefined || value.length < 100 ? (
               <Input
                 value={value}
                 onChange={this.handleChange}

@@ -38,20 +38,23 @@ export default class Tables extends React.Component {
         presetStore.list = value
       } else {
         const index = presetStore.list.findIndex(v => v.key === list_id)
-        if (index >= 0) presetStore.list[index] = value
+
+        if (index >= 0) presetStore.list[index] = value[index]
       }
     }
     if (type === 'options') {
       const list = presetStore.list
       const index = list.findIndex(v => v.key === list_id)
+
       if (index >= 0) {
         if (options_id === 'addOrDelete') {
           presetStore.list[index].options = value
         } else {
           const options = list[index].options
           const indexOtions = options.findIndex(v => v.key === options_id)
+
           if (indexOtions >= 0) {
-            options[indexOtions] = value
+            options[indexOtions] = value[indexOtions]
           }
         }
       }
@@ -59,17 +62,20 @@ export default class Tables extends React.Component {
     if (type === 'selects') {
       const list = presetStore.list
       const index = list.findIndex(v => v.key === list_id)
+
       if (index >= 0) {
         const options = list[index].options
         const indexOtions = options.findIndex(v => v.key === options_id)
+
         if (indexOtions >= 0) {
           if (selects_id === 'addOrDelete') {
             presetStore.list[index].options[indexOtions].selects = value
           } else {
             const selects = options[indexOtions].selects
             const indexSelects = selects.findIndex(v => v.key === selects_id)
+
             if (indexSelects >= 0) {
-              selects[indexSelects] = value
+              selects[indexSelects] = value[indexSelects]
               // presetStore.list[index].options[indexOtions].selects[
               //   indexSelects
               // ] = value
@@ -163,9 +169,12 @@ export default class Tables extends React.Component {
                     }}
                     defaultValue={presetStore.item}
                     expandedRowRender={record2 => {
+                      console.log(record2)
                       return (
                         <PresetValue
-                          data={record2.options.toJS() || []}
+                          data={
+                            (record2.options && record2.options.toJS()) || []
+                          }
                           title={'小类型'}
                           fields={{
                             key: 'ID',
@@ -181,9 +190,13 @@ export default class Tables extends React.Component {
                             })
                           }}
                           expandedRowRender={record3 => {
+                            console.log(record3)
                             return (
                               <PresetValue
-                                data={record3.selects.toJS() || []}
+                                data={
+                                  (record3.selects && record3.selects.toJS()) ||
+                                  []
+                                }
                                 title={'基本选项'}
                                 fields={{
                                   key: 'ID',
