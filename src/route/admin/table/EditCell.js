@@ -25,20 +25,11 @@ export default class EditableCell extends React.Component {
       <div className="editable-cell">
         {editable ? (
           <div className="editable-cell-input-wrapper">
-            {value === undefined || value.length < 100 ? (
-              <Input
-                value={value}
-                onChange={this.handleChange}
-                onPressEnter={this.check}
-              />
-            ) : (
-              <Input.TextArea
-                value={value}
-                onChange={this.handleChange}
-                onPressEnter={this.check}
-                autosize={{ minRows: 3, maxRows: 6 }}
-              />
-            )}
+            <Input.TextArea
+              value={value}
+              onChange={this.handleChange}
+              autosize={{ minRows: 3, maxRows: 6 }}
+            />
             <Icon
               type="check"
               className="editable-cell-icon-check"
@@ -59,3 +50,5 @@ export default class EditableCell extends React.Component {
     )
   }
 }
+
+//  onPressEnter={this.check}
