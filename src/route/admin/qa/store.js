@@ -12,7 +12,7 @@ export default class QAStore extends Store {
   fields = {
     id: 'id',
     question: '提问内容',
-    // answerContent: '回答内容',
+    answerContent: '回答内容',
     updateTime: '更新时间'
 
     // totalCount 总数

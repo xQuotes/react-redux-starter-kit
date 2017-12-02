@@ -54,9 +54,10 @@ export default class InfoAdd extends React.Component {
   }
   componentWillMount() {
     const { QAStore, params: { id } } = this.props
-    QAStore.getServer({
-      id
-    })
+    id &&
+      QAStore.getServer({
+        id
+      })
   }
   hideModal = () => {
     const { QAStore } = this.props

@@ -2,7 +2,6 @@ import { inject, observer } from 'mobx-react'
 
 import AddForm from '../../components/switches/commonInfoAdd'
 import ReactQuill from '../../components/edit/index'
-import Ueditor from '../../components/ueditor/index'
 
 @inject('newsStore')
 @observer
@@ -46,7 +45,7 @@ export default class AddNews extends React.Component {
             label: v,
             formType: 'component',
             component: props => {
-              return <Ueditor id="content" height="200" />
+              return <ReactQuill value={news[k]} />
             },
             fieldOptions: {
               initialValue: news[k],
