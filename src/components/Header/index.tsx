@@ -21,12 +21,12 @@ export default class Header extends React.Component<any, {}> {
       <div className="header">
         <div className="top">
           <Button.Group>
-            <Link to={`/login`}>
+            <Link to={Urls.login}>
               <Button type="primary" ghost>
                 登录
               </Button>
             </Link>
-            <Link to={`/register`}>
+            <Link to={Urls.register}>
               <Button type="primary">注册</Button>
             </Link>
           </Button.Group>
@@ -44,10 +44,21 @@ export default class Header extends React.Component<any, {}> {
             <Menu.Item key={Urls.caculator}>
               <Link to={Urls.caculator}>计算器</Link>
             </Menu.Item>
-            <Menu.Item key="tools">工具箱</Menu.Item>
-            <Menu.Item key="guide">造假规范</Menu.Item>
-            <Menu.Item key="search">指标查询</Menu.Item>
-            <Menu.Item key="ask">问答</Menu.Item>
+            <Menu.Item key={Urls.tools}>
+              <Link to={Urls.tools}>工具箱</Link>
+            </Menu.Item>
+            <Menu.Item key={Urls.guide}>
+              <Link to={Urls.guide}>造价规范</Link>
+            </Menu.Item>
+            <Menu.Item key={Urls.search}>
+              <Link to={Urls.search}>指标查询</Link>
+            </Menu.Item>
+            <Menu.Item key={Urls.ask}>
+              <Link to={Urls.ask}>专业问答</Link>
+            </Menu.Item>
+            <Menu.Item key={Urls.message}>
+              <Link to={Urls.message}>造价信息</Link>
+            </Menu.Item>
           </Menu>
         </div>
       </div>

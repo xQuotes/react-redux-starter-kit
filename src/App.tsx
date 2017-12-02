@@ -15,7 +15,14 @@ import Caculator from './route/Caculator/'
 import News from './route/news/'
 import Register from './route/Register/'
 import Login from './route/Login/'
+import Tools from './route/Tools/'
+import Guide from './route/Guide/'
+import Search from './route/Search/'
+import Ask from './route/Ask/'
+import Message from './route/Message/'
 import FindPassword from './route/Login/findPassword'
+
+import Urls from './common/url'
 
 const stores = {
   routing: routingStore,
@@ -32,14 +39,19 @@ export default class App extends React.Component<{}, {}> {
               <Route
                 exact={true}
                 path="/"
-                render={() => <Redirect to="/index" />}
+                render={() => <Redirect to={Urls.index} />}
               />
-              <Route path="/index" component={Index} />
-              <Route path="/caculator" component={Caculator} />
-              <Route path="/news" component={News} />
-              <Route path="/register" component={Register} />
-              <Route path="/login" component={Login} />
-              <Route path="/findPassword" component={FindPassword} />
+              <Route path={Urls.index} component={Index} />
+              <Route path={Urls.caculator} component={Caculator} />
+              <Route path={Urls.news} component={News} />
+              <Route path={Urls.register} component={Register} />
+              <Route path={Urls.login} component={Login} />
+              <Route path={Urls.tools} component={Tools} />
+              <Route path={Urls.guide} component={Guide} />
+              <Route path={Urls.search} component={Search} />
+              <Route path={Urls.ask} component={Ask} />
+              <Route path={Urls.message} component={Message} />
+              <Route path={Urls.findPassword} component={FindPassword} />
             </Switch>
           </Router>
         </Root>

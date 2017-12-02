@@ -16,7 +16,7 @@ export default class Hello extends React.Component<{}, {}> {
         <Header {...this.props} />
         <MainCarousel />
         <MainNav />
-        <div className="main-container">
+        <div className="main-container index-container">
           <MainCaculator />
           <MainStandard />
           <Indicator />
