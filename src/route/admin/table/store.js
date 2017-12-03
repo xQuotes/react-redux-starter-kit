@@ -19,6 +19,7 @@ export default class TableStore extends Store {
     defaultValue: '默认值',
     tableType: '表类型',
     type: '计算器类型',
+    code: '地区',
     unit: '单位',
     valueRange: '取值范围',
     orderNumber: '序号',

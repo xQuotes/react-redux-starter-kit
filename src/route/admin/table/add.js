@@ -24,7 +24,7 @@ export default class AddTable extends React.Component {
   }
 
   render() {
-    const { tableStore, code, location: { query: { type } } } = this.props
+    const { tableStore, location: { query: { type, code } } } = this.props
 
     const options = {
       selectOnLineNumbers: true
@@ -113,6 +113,24 @@ export default class AddTable extends React.Component {
             disabled: !!type,
             fieldOptions: {
               initialValue: table[k] || type,
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请选择${v}`
+          }
+        )
+      }
+
+      if (k === 'code') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            disabled: !!type,
+            fieldOptions: {
+              initialValue: table[k] || code,
               rules: [
                 // { required: true, whitespace: true, message: '请输入主机名' }
               ]

@@ -135,7 +135,7 @@ export default class Dashboard extends React.Component {
 
               <Menu.Item key={`${Url.mapdataList}`}>
                 <Link to={`${Url.mapdataList}`}>
-                  <Icon type="appstore-o" />地图计算器
+                  <Icon type="appstore-o" />造价咨询费计算器
                 </Link>
               </Menu.Item>
 
@@ -162,20 +162,6 @@ export default class Dashboard extends React.Component {
               <Menu.Item key={`${Url.newsList}`}>
                 <Link to={`${Url.newsList}`}>
                   <Icon type="appstore-o" />造价指标列表
-                </Link>
-              </Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub3"
-              title={
-                <span>
-                  <Icon type="bars" />问答
-                </span>
-              }
-            >
-              <Menu.Item key={`${Url.QAList}`}>
-                <Link to={`${Url.QAList}`}>
-                  <Icon type="appstore-o" />问答列表
                 </Link>
               </Menu.Item>
             </SubMenu>
@@ -225,7 +211,9 @@ export default class Dashboard extends React.Component {
               <div style={{ height: '100%' }}>{this.props.children}</div>
             </div>
           </div>
-          <div className="ant-layout-footer">ifeng.com 版权所有 © 2016 凤凰网运维中心</div>
+          <div className="ant-layout-footer">
+            ifeng.com 版权所有 © 2016 凤凰网运维中心
+          </div>
         </div>
       </div>
     )
