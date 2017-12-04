@@ -116,7 +116,7 @@ export default class Dashboard extends React.Component {
             mode="inline"
             theme="dark"
             onClick={this.handleClick.bind(this)}
-            defaultOpenKeys={['sub0', 'sub1', 'sub2', 'sub3', 'sub4']}
+            defaultOpenKeys={['sub0', 'sub1', 'sub2', 'sub20', 'sub3', 'sub4']}
             selectedKeys={[this.state.current]}
           >
             <SubMenu
@@ -162,6 +162,21 @@ export default class Dashboard extends React.Component {
               <Menu.Item key={`${Url.newsList}`}>
                 <Link to={`${Url.newsList}`}>
                   <Icon type="appstore-o" />造价指标列表
+                </Link>
+              </Menu.Item>
+            </SubMenu>
+
+            <SubMenu
+              key="sub20"
+              title={
+                <span>
+                  <Icon type="bars" />造价规范
+                </span>
+              }
+            >
+              <Menu.Item key={`${Url.guidedataList}`}>
+                <Link to={`${Url.guidedataList}`}>
+                  <Icon type="appstore-o" />造价规范列表
                 </Link>
               </Menu.Item>
             </SubMenu>

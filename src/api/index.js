@@ -51,6 +51,14 @@ const Api = {
   putNews: `${url}/infor/saveinfor`,
   putNewss: `${url}/infor/saveinfor`,
 
+  postGuide: `${url}/standard/savestandard`,
+  getGuides: `${url}/standard/standardlist`,
+  getGuide: `${url}/standard/standarddetails`,
+  deleteGuide: `${url}/standard/deletedstandard`,
+  auditGuide: `${url}/standard/putawaystandard`,
+  putGuide: `${url}/standard/savestandard`,
+  putGuides: `${url}/standard/savestandard`,
+
   postQA: `${url}/answer/saveanswer`,
   getQAs: `${url}/answer/answerlist`,
   getQA: `${url}/answer/answerdetails`,

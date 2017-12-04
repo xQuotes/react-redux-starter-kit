@@ -41,7 +41,8 @@ export default class FuncList extends React.Component {
       downloadCSV,
       actions,
       deleteAction,
-      expandedRowRender
+      expandedRowRender,
+      rmAdd
     } = this.props
     let dataList = _.map(store.toJS(), (v, k) => {
       return {
@@ -122,11 +123,13 @@ export default class FuncList extends React.Component {
 
     return (
       <div>
-        <div className="switches-action-type">
-          <Button type="primary" onClick={::this.addFunc}>
-            添加
-          </Button>
-        </div>
+        {!rmAdd && (
+          <div className="switches-action-type">
+            <Button type="primary" onClick={::this.addFunc}>
+              添加
+            </Button>
+          </div>
+        )}
         <div className={classNames({ tables: true })}>
           <DataTable
             columns={columns}

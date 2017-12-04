@@ -18,6 +18,10 @@ const Url = {
 
   userList: `/${caculator}/user/list`,
 
+  guideList: `/${caculator}/guide/list`,
+
+  guidedataList: `/${caculator}/guidedata/list`,
+
   newsList: `/${caculator}/news/list`,
 
   QAList: `/${caculator}/QA/list`,
