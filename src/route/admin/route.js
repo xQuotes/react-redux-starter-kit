@@ -19,6 +19,8 @@ module.exports = {
         require('./table/route'),
         require('./formula/route'),
         require('./user/route'),
+        require('./guidedata/route'),
+        require('./guide/route'),
         require('./news/route'),
         ...require('./qa/route')
         /*file_append*/

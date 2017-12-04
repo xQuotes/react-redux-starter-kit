@@ -5,27 +5,27 @@ import Api from 'Api'
 import Url from 'Url'
 
 import FuncList from '../../components/switches/commonInfoList'
-import AddMapdataModal from './add'
+import AddGuidedataModal from './add'
 import JSONView from '../../components/jsonview/index'
 
-@inject('mapdataStore')
+@inject('guidedataStore')
 @observer
-export default class Mapdatas extends React.Component {
+export default class Guidedatas extends React.Component {
   constructor(props) {
     super(props)
   }
   componentWillMount() {
-    const { mapdataStore } = this.props
-    // mapdataStore.getServers({
+    const { guidedataStore } = this.props
+    // guidedataStore.getServers({
     //   type: 11
     // })
   }
   render() {
     const bcData = ['首页', '计算器管理', '列表']
-    const { mapdataStore } = this.props
-    const { fields } = mapdataStore
+    const { guidedataStore } = this.props
+    const { fields } = guidedataStore
 
-    const mapdataHeader = _.map(fields, (v, k) => {
+    const guidedataHeader = _.map(fields, (v, k) => {
       if (k === 'presetValue') {
         return {
           title: v,
@@ -71,22 +71,20 @@ export default class Mapdatas extends React.Component {
       <div className="switches-network">
         <FuncList
           rmAdd={true}
-          store={this.props.mapdataStore}
+          store={this.props.guidedataStore}
           bcData={bcData}
-          downloadCSV={Api.downloadMapdataCSV}
-          funcEnName={'mapdata'}
-          mapdataHeader={mapdataHeader}
+          downloadCSV={Api.downloadGuidedataCSV}
+          funcEnName={'guidedata'}
+          guidedataHeader={guidedataHeader}
           actions={record => {
             console.log(record)
             return (
-              <Link to={`${Url.tableList}?code=${record.id}&type=${101}`}>
-                计算器列表
-              </Link>
+              <Link to={`${Url.guideList}?code=${record.id}`}>计算器列表</Link>
             )
           }}
           deleteAction={true}
         />
-        <AddMapdataModal />
+        <AddGuidedataModal />
       </div>
     )
   }

@@ -128,7 +128,7 @@ export default class AddTable extends React.Component {
           {
             name: k,
             label: v,
-            disabled: !!type,
+            disabled: !!code,
             fieldOptions: {
               initialValue: table[k] || code,
               rules: [
