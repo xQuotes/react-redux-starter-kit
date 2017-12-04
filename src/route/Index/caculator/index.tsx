@@ -64,9 +64,9 @@ export default class Caculator extends React.Component<any, any> {
                   <img src={v.img} alt="" className="cacu-img" />
                 </div>
                 <div>{v.name}</div>
-                <div>
+                {/* <div>
                   <a href={v.clickurl}>{v.clickname}</a>
-                </div>
+                </div> */}
               </Col>
             )
           })}
