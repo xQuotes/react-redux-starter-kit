@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx'
+import { observable } from 'mobx'
 
 import Store from '../../stores/store'
 // import Fetch from '../../common/fetch'
@@ -19,10 +19,5 @@ export default class CaculatorStore extends Store {
     post: '',
     put: '',
     delete: ''
-  }
-
-  @action
-  setItem(type: number) {
-    this.itemType = type
   }
 }
