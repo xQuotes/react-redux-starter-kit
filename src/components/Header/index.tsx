@@ -53,9 +53,9 @@ export default class Header extends React.Component<any, {}> {
             <Menu.Item key={Urls.search}>
               <Link to={Urls.search}>指标查询</Link>
             </Menu.Item>
-            <Menu.Item key={Urls.ask}>
+            {/*<Menu.Item key={Urls.ask}>
               <Link to={Urls.ask}>专业问答</Link>
-            </Menu.Item>
+            </Menu.Item>*/}
             <Menu.Item key={Urls.message}>
               <Link to={Urls.message}>造价信息</Link>
             </Menu.Item>

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { inject, observer } from 'mobx-react'
 import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
 import MainNav from './nav'
@@ -7,7 +8,14 @@ import MainResult from './result/index'
 
 import './caculator.less'
 
-export default class Caculator extends React.Component<{}, {}> {
+@inject('caculatorStore')
+@observer
+export default class Caculator extends React.Component<any, any> {
+  componentWillMount() {
+    console.log('componentWillMount')
+    const { caculatorStore } = this.props
+    caculatorStore.getServers({})
+  }
   render() {
     return (
       <div>

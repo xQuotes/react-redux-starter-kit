@@ -1,8 +1,10 @@
 import * as React from 'react'
+import { inject, observer } from 'mobx-react'
 import { Row, Col, Button, Form, Input } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 const FormItem = Form.Item
 import Echarts from '../../../components/Echarts/'
+import CaculatorModal from '../model'
 
 const formItemLayout = {
   labelCol: {
@@ -15,7 +17,9 @@ const formItemLayout = {
   }
 }
 
-class Standard extends React.Component<{} & FormComponentProps, {}> {
+@inject('caculatorStore')
+@observer
+class Standard extends React.Component<any & FormComponentProps, {}> {
   handleSubmit = (e: any) => {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err: any, values: any) => {
@@ -25,7 +29,10 @@ class Standard extends React.Component<{} & FormComponentProps, {}> {
     })
   }
   render() {
-    const { getFieldDecorator } = this.props.form
+    const { caculatorStore, form } = this.props
+    const { item, presetValue, presetVisible } = caculatorStore
+    const { getFieldDecorator } = form
+
     return (
       <Row className="standard">
         <Col span={14}>
@@ -39,12 +46,37 @@ class Standard extends React.Component<{} & FormComponentProps, {}> {
         <Col span={10}>
           <h3>您已选择： 新疆</h3>
           <Form onSubmit={this.handleSubmit}>
-            <FormItem colon={false} {...formItemLayout} label="计算器1">
-              {getFieldDecorator('email', {})(<Input />)}
-            </FormItem>
-            <FormItem colon={false} {...formItemLayout} label="计算器2">
-              {getFieldDecorator('name', {})(<Input />)}
-            </FormItem>
+            {item.map((val: any, key: string) => {
+              return (
+                <FormItem
+                  key={val.id}
+                  colon={false}
+                  {...formItemLayout}
+                  label={val.item}
+                >
+                  <div>
+                    {getFieldDecorator(val.itemKey, {
+                      initialValue: val.defaultValue
+                    })(<Input addonAfter={val.unit === '无' ? '' : val.unit} />)}
+                    {val.contentType === 'select' ? (
+                      <Button
+                        type="primary"
+                        onClick={() => {
+                          caculatorStore.presetValue = JSON.parse(
+                            val.presetValue
+                          )
+                          caculatorStore.presetVisible = true
+                        }}
+                      >
+                        点击选择
+                      </Button>
+                    ) : (
+                      ''
+                    )}
+                  </div>
+                </FormItem>
+              )
+            })}
             <FormItem colon={false} {...formItemLayout} label=" ">
               <Button
                 type="primary"
@@ -55,6 +87,7 @@ class Standard extends React.Component<{} & FormComponentProps, {}> {
               </Button>
             </FormItem>
           </Form>
+          {presetVisible && <CaculatorModal presetValue={presetValue} />}
         </Col>
       </Row>
     )

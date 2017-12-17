@@ -27,11 +27,11 @@ export default class Store implements Model {
   }
   @action
   getServers(formData: object = {}, params: object = {}) {
-    // console.log(formData, params)
+    console.log(formData, params)
     return Fetch({
       url: this.api.gets,
       data: formData,
-      method: 'get'
+      method: 'post'
     })
   }
   @action
