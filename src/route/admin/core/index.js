@@ -6,38 +6,38 @@ import Api from 'Api'
 import FuncList from '../../components/switches/commonInfoList'
 import AddTableModal from './add'
 import JSONView from '../../components/jsonview/index'
-import PresetValue from './presetValue'
+import PresetValue from '../table/presetValue'
 
-@inject('tableStore', 'coreTableStore', 'presetStore')
+@inject('coreTableStore', 'presetStore')
 @observer
 export default class Tables extends React.Component {
   constructor(props) {
     super(props)
   }
   componentWillMount() {
-    const { tableStore, location: { query } } = this.props
+    const { coreTableStore, location: { query } } = this.props
     if (query.code) {
       coreTableStore.getServers({
         areaCode: query.code || ''
       })
     } else {
-      tableStore.getServers({
+      coreTableStore.getServers({
         type: query.type || ''
       })
     }
   }
   handleSubmit(item) {
-    const { tableStore, presetStore } = this.props
+    const { coreTableStore, presetStore } = this.props
     delete item.key
     item.presetValue = JSON.stringify({
       title: presetStore.title,
       description: presetStore.description,
       list: presetStore.list
     })
-    tableStore.putServer(item)
+    coreTableStore.putServer(item)
   }
   onChange(value, options) {
-    const { tableStore, presetStore } = this.props
+    const { coreTableStore, presetStore } = this.props
     const { type, list_id, options_id, selects_id, key } = options
     if (type === 'list') {
       if (list_id === 'addOrDelete') {
@@ -93,8 +93,8 @@ export default class Tables extends React.Component {
   }
   render() {
     const bcData = ['首页', '计算器管理', '列表']
-    const { tableStore, presetStore } = this.props
-    const { fields } = tableStore
+    const { coreTableStore, presetStore } = this.props
+    const { fields } = coreTableStore
 
     const tableHeader = _.map(fields, (v, k) => {
       return {
@@ -110,7 +110,7 @@ export default class Tables extends React.Component {
     return (
       <div className="switches-network">
         <FuncList
-          store={this.props.tableStore}
+          store={this.props.coreTableStore}
           bcData={bcData}
           downloadCSV={Api.downloadTableCSV}
           funcEnName={'table'}

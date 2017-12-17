@@ -16,6 +16,7 @@ module.exports = {
       callback(null, [
         require('./caculator/route'), // 计算器类型
         require('./mapdata/route'), // 地图类型
+        require('./core/route'),
         require('./table/route'),
         require('./formula/route'),
         require('./user/route'),

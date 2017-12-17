@@ -1,5 +1,9 @@
 const earch = [
   {
+    label: '全国',
+    id: '001'
+  },
+  {
     label: '北京',
     id: '010'
   },

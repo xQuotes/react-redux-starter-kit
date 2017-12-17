@@ -29,6 +29,13 @@ const Api = {
   putTable: `${url}/table/savetable`,
   putTables: `${url}/table/savetable`,
 
+  postCoreTable: `${url}/cost/savetable`,
+  getCoreTables: `${url}/cost/list`,
+  getCoreTable: `${url}/cost/tail`,
+  deleteCoreTable: `${url}/cost/deletedtable`,
+  putCoreTable: `${url}/cost/savetable`,
+  putCoreTables: `${url}/cost/savetable`,
+
   postFormula: `${url}/calculationformula/savecalculationformula`,
   getFormulas: `${url}/calculationformula/list`,
   getFormula: `${url}/calculationformula/tail`,

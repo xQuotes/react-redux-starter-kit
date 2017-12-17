@@ -14,6 +14,8 @@ const Url = {
 
   tableList: `/${caculator}/table/list`,
 
+  coreList: `/${caculator}/core/list`,
+
   formulaList: `/${caculator}/formula/list`,
 
   userList: `/${caculator}/user/list`,

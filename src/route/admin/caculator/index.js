@@ -20,7 +20,7 @@ export default class Caculators extends React.Component {
   componentWillMount() {
     const { caculatorStore } = this.props
     caculatorStore.getServers({
-      type: 11
+      type: ''
     })
   }
   render() {

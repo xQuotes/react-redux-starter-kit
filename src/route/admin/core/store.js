@@ -5,7 +5,7 @@ import Api from 'Api'
 import 'Arr'
 import Store from '../../../stores/Store'
 
-export default class TableStore extends Store {
+export default class CoreTableStore extends Store {
   constructor(props) {
     super(props)
   }
@@ -29,16 +29,14 @@ export default class TableStore extends Store {
   updateFields = _.omit(this.fields, ['id', 'updateTime'])
   // searchFields = _.omit(this.fields, ['id', 'updateTime'])
   api = {
-    gets: Api.getTables,
-    delete: Api.deleteTable,
-    post: Api.postTable,
-    uploadCsvData: Api.uploadCsvData,
-    put: Api.putTable,
-    puts: Api.putTables,
-    exports: Api.exports
+    gets: Api.getCoreTables,
+    delete: Api.deleteCoreTable,
+    post: Api.postCoreTable,
+    put: Api.putCoreTable,
+    puts: Api.putCoreTables
   }
 
   static fromJS(array = []) {
-    return new TableStore()
+    return new CoreTableStore()
   }
 }
