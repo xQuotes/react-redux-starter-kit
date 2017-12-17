@@ -47,12 +47,12 @@ var plugins = [
   new WebpackCleanupPlugin({
     exclude: ['.git/*', 'dist/.git/*']
   }),
-  new CopyWebpackPlugin([
-    {
-      from: path.resolve(__dirname, './src/common/react-ueditor/ueditor'),
-      to: path.resolve(__dirname, build.dir + '/ueditor')
-    }
-  ]),
+  // new CopyWebpackPlugin([
+  //   {
+  //     from: path.resolve(__dirname, './src/common/react-ueditor/ueditor'),
+  //     to: path.resolve(__dirname, build.dir + '/ueditor')
+  //   }
+  // ]),
   new webpack.BannerPlugin('This file is created by fooying@qq.com'),
   new webpack.HotModuleReplacementPlugin(),
   new WebpackMd5Hash(),
