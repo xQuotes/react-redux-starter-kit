@@ -30,7 +30,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
   }
   render() {
     const { caculatorStore, form } = this.props
-    const { item, presetValue, presetVisible } = caculatorStore
+    const { item, presetValue, presetVisible, presetItemKey } = caculatorStore
     const { getFieldDecorator } = form
 
     return (
@@ -62,6 +62,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                       <Button
                         type="primary"
                         onClick={() => {
+                          caculatorStore.presetItemKey = val.itemKey
                           caculatorStore.presetValue = JSON.parse(
                             val.presetValue
                           )
@@ -87,7 +88,16 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
               </Button>
             </FormItem>
           </Form>
-          {presetVisible && <CaculatorModal presetValue={presetValue} />}
+          {presetVisible && (
+            <CaculatorModal
+              presetValue={presetValue}
+              onChange={(val: any) => {
+                form.setFieldsValue({
+                  [presetItemKey]: val
+                })
+              }}
+            />
+          )}
         </Col>
       </Row>
     )

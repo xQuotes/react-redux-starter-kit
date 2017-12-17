@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Collapse, Modal } from 'antd'
+import { Collapse, Modal, Tabs } from 'antd'
 
 const Panel = Collapse.Panel
+const TabPane = Tabs.TabPane
 
 @inject('caculatorStore')
 @observer
@@ -38,23 +39,30 @@ export default class CaculatorModal extends React.Component<any, {}> {
           {(list || []).map((val: any, key: any) => {
             return (
               <Panel header={val.title} key={key}>
-                {(val.options || []).map((v: any, k: any) => {
-                  if (v.title) {
-                    return v.title
-                  } else {
+                <Tabs defaultActiveKey="1">
+                  {(val.options || []).map((v: any, k: any) => {
                     return (
-                      <div className="list" key={k}>
-                        {(v.selects || []).map((item: any, itemKey: any) => {
-                          return (
-                            <div key={item.key} className="list-item">
-                              {item.lable + `(${item.value})`}
-                            </div>
-                          )
-                        })}
-                      </div>
+                      <TabPane tab={v.title} key="1">
+                        <div className="list" key={k}>
+                          {(v.selects || []).map((item: any, itemKey: any) => {
+                            return (
+                              <div
+                                key={item.key}
+                                className="list-item"
+                                onClick={() => {
+                                  this.props.onChange(item.value)
+                                  caculatorStore.presetVisible = false
+                                }}
+                              >
+                                {item.lable + `(${item.value})`}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </TabPane>
                     )
-                  }
-                })}
+                  })}
+                </Tabs>
               </Panel>
             )
           })}
