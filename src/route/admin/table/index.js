@@ -16,15 +16,10 @@ export default class Tables extends React.Component {
   }
   componentWillMount() {
     const { tableStore, location: { query } } = this.props
-    if (query.code) {
-      coreTableStore.getServers({
-        areaCode: query.code || ''
-      })
-    } else {
-      tableStore.getServers({
-        type: query.type || ''
-      })
-    }
+
+    tableStore.getServers({
+      type: query.type || ''
+    })
   }
   handleSubmit(item) {
     const { tableStore, presetStore } = this.props
