@@ -18,10 +18,10 @@ export default function fetching(action: {
   let options = {
     method: action.method || 'post',
     // contentType: action.contentType || 'application/json', // 'application/x-www-form-urlencoded',
-    // withCredentials: true,
-    // crossOrigin: true,
+    withCredentials: true,
+    crossOrigin: true,
     headers: {
-      'Content-Type': action.contentType || 'application/json'
+      'Content-Type': action.contentType || 'application/x-www-form-urlencoded' // 'application/json'
       // AuthToken: Auth.getAuthCookie('UserIfosSession') || ''
     },
     // credentials: 'same-origin',
