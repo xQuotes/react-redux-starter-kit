@@ -13,6 +13,11 @@ export default class CaculatorStore extends Store {
   @observable presetValue = {}
   @observable presetVisible = false
 
+  @observable selectMapItem = {
+    name: '全国',
+    value: 0
+  }
+
   api = {
     gets: Api.getCaculators,
     get: Api.getCaculator,

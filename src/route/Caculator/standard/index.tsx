@@ -30,7 +30,13 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
   }
   render() {
     const { caculatorStore, form } = this.props
-    const { item, presetValue, presetVisible, presetItemKey } = caculatorStore
+    const {
+      item,
+      presetValue,
+      presetVisible,
+      presetItemKey,
+      selectMapItem
+    } = caculatorStore
     const { getFieldDecorator } = form
 
     return (
@@ -41,10 +47,11 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
               width: '550px',
               height: '550px'
             }}
+            store={caculatorStore}
           />
         </Col>
         <Col span={10}>
-          <h3>您已选择： 新疆</h3>
+          <h3>您已选择： {selectMapItem.name}</h3>
           <Form onSubmit={this.handleSubmit}>
             {item.map((val: any, key: string) => {
               return (
@@ -57,7 +64,9 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                   <div>
                     {getFieldDecorator(val.itemKey, {
                       initialValue: val.defaultValue
-                    })(<Input addonAfter={val.unit === '无' ? '' : val.unit} />)}
+                    })(
+                      <Input addonAfter={val.unit === '无' ? '' : val.unit} />
+                    )}
                     {val.contentType === 'select' ? (
                       <Button
                         type="primary"

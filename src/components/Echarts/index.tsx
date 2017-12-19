@@ -2,6 +2,8 @@ import * as React from 'react'
 import ReactEcharts from 'echarts-for-react'
 import 'echarts/map/js/china.js'
 
+import mapData from './const'
+
 export default class EchartsComponent extends React.Component<any, {}> {
   constructor(props: {}) {
     super(props)
@@ -19,7 +21,7 @@ export default class EchartsComponent extends React.Component<any, {}> {
         show: true,
         formatter: function(params: { value: string; name: string }) {
           if (params.value) {
-            return params.name + '<br />' + params.value + '个'
+            return params.name + '<br />' + params.value
           } else {
             return null
           }
@@ -60,158 +62,124 @@ export default class EchartsComponent extends React.Component<any, {}> {
 
           data: [
             {
-              name: '西藏',
+              name: '全国',
               value: 0
-            },
-            {
-              name: '青海',
-              value: 0
-            },
-            {
-              name: '宁夏',
-              value: 10
-            },
-            {
-              name: '重庆',
-              value: 30
-            },
-            {
-              name: '贵州',
-              value: 50
-            },
-            {
-              name: '甘肃',
-              value: 55
-            },
-            {
-              name: '云南',
-              value: 70
-            },
-            {
-              name: '辽宁',
-              value: 28
-            },
-            {
-              name: '新疆',
-              value: 0
-            },
-            {
-              name: '黑龙江',
-              value: 88
-            },
-            {
-              name: '上海',
-              value: 120
-            },
-            {
-              name: '四川',
-              value: 110
-            },
-            {
-              name: '广西',
-              value: 102
-            },
-            {
-              name: '吉林',
-              value: 76
-            },
-            {
-              name: '内蒙古',
-              value: 54
-            },
-            {
-              name: '天津',
-              value: 76
-            },
-            {
-              name: '江西',
-              value: 80
-            },
-            {
-              name: '湖南',
-              value: 43
-            },
-            {
-              name: '陕西',
-              value: 42
-            },
-            {
-              name: '浙江',
-              value: 50
-            },
-            {
-              name: '广东',
-              value: 18
-            },
-            {
-              name: '福建',
-              value: 66
             },
             {
               name: '北京',
-              value: 30
+              value: 1
             },
             {
-              name: '海南',
-              value: 18
+              name: '广西',
+              value: 2
             },
             {
-              name: '湖北',
-              value: {
-                咨询标准: {
-                  0: '鄂价工服规[2011]23号'
-                },
-                咨询项目: {
-                  0: '工程项目设计概算编制',
-                  1: '工程项目设计概算审核',
-                  2: '清单计价-工程量清单编制或审核',
-                  3: '清单计价-控制价（标底价）编制(不含工程量清单编制)',
-                  4: '清单计价-控制价（标底价)、工程结算审核',
-                  5: '定额计价-工程预算、标底编制',
-                  6: '定额计价-工程预算、结算、标底审核',
-                  7: '施工阶段全过程工程造价控制',
-                  8: '竣工决算编制或审核',
-                  9: '工程造价纠纷案件鉴定'
-                },
-                概算价: '',
-                优惠折扣: '90'
-              }
+              name: '甘肃',
+              value: 3
             },
             {
-              name: '安徽',
-              value: 80
+              name: '广东',
+              value: 4
+            },
+            {
+              name: '贵州',
+              value: 5
             },
             {
               name: '河南',
-              value: 42
+              value: 6
+            },
+            {
+              name: '黑龙江',
+              value: 7
+            },
+            {
+              name: '湖北',
+              value: 8
+            },
+            {
+              name: '吉林',
+              value: 9
             },
             {
               name: '江苏',
+              value: 10
+            },
+            {
+              name: '江西',
+              value: 11
+            },
+            {
+              name: '四川',
+              value: 12
+            },
+            {
+              name: '浙江',
+              value: 13
+            },
+            {
+              name: '上海',
+              value: 14
+            },
+            {
+              name: '天津',
+              value: 15
+            },
+            {
+              name: '重庆',
+              value: 16
+            },
+            {
+              name: '内蒙古',
+              value: 17
+            },
+            {
+              name: '宁夏',
+              value: 18
+            },
+            {
+              name: '新疆',
+              value: 19
+            },
+            {
+              name: '安徽',
+              value: 20
+            },
+            {
+              name: '福建',
+              value: 21
+            },
+            {
+              name: '海南',
+              value: 22
+            },
+            {
+              name: '陕西',
+              value: 23
+            },
+            {
+              name: '湖南',
+              value: 24
+            },
+            {
+              name: '辽宁',
+              value: 25
+            },
+            {
+              name: '青海',
+              value: 26
+            },
+            {
+              name: '山东',
               value: 27
             },
             {
               name: '山西',
-              value: 75
+              value: 28
             },
             {
-              name: '山东',
-              value: 41
-            },
-            {
-              name: '河北',
-              value: 31
-            },
-            {
-              name: '台湾',
-              value: 59
-            },
-            {
-              name: '澳门',
-              value: 36
-            },
-            {
-              name: '香港',
-              value: 2
+              name: '云南',
+              value: 29
             }
           ]
         }
@@ -220,11 +188,14 @@ export default class EchartsComponent extends React.Component<any, {}> {
 
     return option
   }
-  onChartClick(param: any, echart: any) {
+  onChartClick = (param: any, echart: any) => {
+    const { store } = this.props
+    const { data } = param
+    console.log(mapData, param, data)
+    store.selectMapItem = data
     console.log(param, echart)
-    alert('chart click')
   }
-  onChartLegendselectchanged(param: any, echart: any) {
+  onChartLegendselectchanged = (param: any, echart: any) => {
     console.log(param, echart)
     alert('chart legendselectchanged')
   }
