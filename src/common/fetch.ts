@@ -21,7 +21,7 @@ export default function fetching(action: {
     // withCredentials: true,
     // crossOrigin: true,
     headers: {
-      'Content-Type': action.contentType || 'application/x-www-form-urlencoded'
+      'Content-Type': action.contentType || 'application/json'
       // AuthToken: Auth.getAuthCookie('UserIfosSession') || ''
     },
     // credentials: 'same-origin',

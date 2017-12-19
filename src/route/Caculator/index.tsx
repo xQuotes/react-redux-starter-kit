@@ -14,9 +14,7 @@ export default class Caculator extends React.Component<any, any> {
   componentWillMount() {
     console.log('componentWillMount')
     const { caculatorStore } = this.props
-    caculatorStore.getServers({
-      type: ''
-    })
+    caculatorStore.getServers({})
     caculatorStore.getServer({
       type: '',
       code: 0
