@@ -16,7 +16,13 @@ export default class CaculatorNav extends React.Component<any, any> {
             type="primary"
             className="btn-group-item"
             onClick={() => {
-              caculatorStore.itemType = ''
+              caculatorStore.setSelectMapItem(
+                {
+                  name: '全国',
+                  value: 0
+                },
+                ''
+              )
             }}
           >
             造价计算器
@@ -25,7 +31,13 @@ export default class CaculatorNav extends React.Component<any, any> {
           <Button
             className="btn-group-item"
             onClick={() => {
-              caculatorStore.itemType = ''
+              caculatorStore.setSelectMapItem(
+                {
+                  name: '全国',
+                  value: 0
+                },
+                ''
+              )
             }}
           >
             造价计算器
@@ -38,7 +50,13 @@ export default class CaculatorNav extends React.Component<any, any> {
               type="primary"
               className="btn-group-item"
               onClick={() => {
-                caculatorStore.itemType = v.type
+                caculatorStore.setSelectMapItem(
+                  {
+                    name: '全国',
+                    value: 0
+                  },
+                  v.type
+                )
               }}
             >
               {v.calculatorName}
@@ -48,7 +66,13 @@ export default class CaculatorNav extends React.Component<any, any> {
               key={v.id}
               className="btn-group-item"
               onClick={() => {
-                caculatorStore.itemType = v.type
+                caculatorStore.setSelectMapItem(
+                  {
+                    name: '全国',
+                    value: 0
+                  },
+                  v.type
+                )
               }}
             >
               {v.calculatorName}

@@ -21,7 +21,7 @@ export default class EchartsComponent extends React.Component<any, {}> {
         show: true,
         formatter: function(params: { value: string; name: string }) {
           if (params.value) {
-            return params.name + '<br />' + params.value
+            return params.name + '<br />' + mapData[params.value].value
           } else {
             return null
           }
@@ -60,128 +60,12 @@ export default class EchartsComponent extends React.Component<any, {}> {
             }
           },
 
-          data: [
-            {
-              name: '全国',
-              value: 0
-            },
-            {
-              name: '北京',
-              value: 1
-            },
-            {
-              name: '广西',
-              value: 2
-            },
-            {
-              name: '甘肃',
-              value: 3
-            },
-            {
-              name: '广东',
-              value: 4
-            },
-            {
-              name: '贵州',
-              value: 5
-            },
-            {
-              name: '河南',
-              value: 6
-            },
-            {
-              name: '黑龙江',
-              value: 7
-            },
-            {
-              name: '湖北',
-              value: 8
-            },
-            {
-              name: '吉林',
-              value: 9
-            },
-            {
-              name: '江苏',
-              value: 10
-            },
-            {
-              name: '江西',
-              value: 11
-            },
-            {
-              name: '四川',
-              value: 12
-            },
-            {
-              name: '浙江',
-              value: 13
-            },
-            {
-              name: '上海',
-              value: 14
-            },
-            {
-              name: '天津',
-              value: 15
-            },
-            {
-              name: '重庆',
-              value: 16
-            },
-            {
-              name: '内蒙古',
-              value: 17
-            },
-            {
-              name: '宁夏',
-              value: 18
-            },
-            {
-              name: '新疆',
-              value: 19
-            },
-            {
-              name: '安徽',
-              value: 20
-            },
-            {
-              name: '福建',
-              value: 21
-            },
-            {
-              name: '海南',
-              value: 22
-            },
-            {
-              name: '陕西',
-              value: 23
-            },
-            {
-              name: '湖南',
-              value: 24
-            },
-            {
-              name: '辽宁',
-              value: 25
-            },
-            {
-              name: '青海',
-              value: 26
-            },
-            {
-              name: '山东',
-              value: 27
-            },
-            {
-              name: '山西',
-              value: 28
-            },
-            {
-              name: '云南',
-              value: 29
+          data: mapData.map((v, k) => {
+            return {
+              name: v.name,
+              value: k
             }
-          ]
+          })
         }
       ]
     }
@@ -191,9 +75,12 @@ export default class EchartsComponent extends React.Component<any, {}> {
   onChartClick = (param: any, echart: any) => {
     const { store } = this.props
     const { data } = param
-    console.log(mapData, param, data)
-    store.selectMapItem = data
-    console.log(param, echart)
+    console.log(store.itemType)
+    if (store.itemType) {
+      alert('该计算器是全国范围的')
+    } else {
+      store.setSelectMapItem(data, store.itemType)
+    }
   }
   onChartLegendselectchanged = (param: any, echart: any) => {
     console.log(param, echart)

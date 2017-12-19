@@ -6,7 +6,9 @@ const Api = {
   login: `${api}/user/loginbymobile`,
 
   getCaculators: `${api}/calculator/list`,
-  getCaculator: `${api}/calculator/tail`,
+
+  getCore: `${api}/core/list`,
+  getTable: `${api}/table/tail`,
 
   getMapdatas: `${api}/mapdata/list`,
   getMapdata: `${api}/mapdata/tail`
