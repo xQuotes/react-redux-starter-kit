@@ -8,7 +8,7 @@
     "babel-plugin-import": "^1.2.1",
     "babel-preset-react-app": "^3.0.1",
     "react-app-rewire-less": "^2.0.4",
-    "react-app-rewired": "^1.1.0",
+    "react-app-rewired": "^1.4.0",
     "react-scripts-ts": "2.5.0"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "@types/react-dom": "^15.5.1",
     "@types/react-router": "^4.0.15",
     "@types/react-router-dom": "^4.0.8",
+    "@types/reqwest": "git+https://git@github.com/nozzlegear/reqwest.d.ts.git",
     "antd": "2.12.2",
     "babel-plugin-import": "^1.6.2",
     "echarts": "^3.7.2",
@@ -36,6 +37,7 @@
     "react-dom": "^15.6.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "reqwest": "^2.0.5",
     "ts-loader": "^2.3.7"
   },
   "scripts": {

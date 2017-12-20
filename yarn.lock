@@ -89,6 +89,10 @@
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.6.0.tgz#3b3e92a60b65045e4df48fda324de84d83addbc4"
 
+"@types/reqwest@git+https://git@github.com/nozzlegear/reqwest.d.ts.git":
+  version "1.2.0"
+  resolved "git+https://git@github.com/nozzlegear/reqwest.d.ts.git#4287b3995dab78eeb6fe9bf2f932db4eedf6dbdd"
+
 abab@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.3.tgz#b81de5f7274ec4e756d797cd834f303642724e5d"
@@ -5538,9 +5542,9 @@ react-app-rewire-less@^2.0.4:
     less "^2.7.2"
     less-loader "^4.0.3"
 
-react-app-rewired@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-1.1.0.tgz#e4f61a561e3d3c4c1c73604f007bd787433fc42b"
+react-app-rewired@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-1.4.0.tgz#58186dde172b06d5933fcb39268feb8f3f8bcc58"
   dependencies:
     cross-spawn "^5.1.0"
     dotenv "^4.0.0"
@@ -5943,6 +5947,10 @@ require-main-filename@^1.0.1:
 requires-port@1.0.x, requires-port@1.x.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+
+reqwest@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/reqwest/-/reqwest-2.0.5.tgz#00fb15ac4918c419ca82b43f24c78882e66039a1"
 
 resolve-pathname@^2.2.0:
   version "2.2.0"

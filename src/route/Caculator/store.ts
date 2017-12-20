@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx'
-
+import { Modal } from 'antd'
 import Store from '../../stores/store'
 import Api from '../../common/api'
 
@@ -37,7 +37,14 @@ export default class CaculatorStore extends Store {
       data: formData,
       method: 'post'
     }).then((data: any) => {
-      this.list = data.databody || []
+      if (data.databody.noresult) {
+        Modal.error({
+          title: '',
+          content: data.databody.noresult
+        })
+      } else {
+        this.list = data.databody || []
+      }
     })
   }
 
@@ -61,12 +68,19 @@ export default class CaculatorStore extends Store {
       data,
       method: 'post'
     }).then((data: any) => {
-      this.item = data.databody || []
+      if (data.databody.noresult) {
+        Modal.error({
+          title: '',
+          content: data.databody.noresult
+        })
+      } else {
+        this.item = data.databody || []
+      }
     })
   }
 
   @action setSelectMapItem(data: {name: string, value: number}, type: any) {
-    this.getServers({
+    this.getServer({
       type,
       code: data.value
     })

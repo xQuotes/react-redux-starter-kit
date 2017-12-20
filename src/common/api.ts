@@ -7,8 +7,8 @@ const Api = {
 
   getCaculators: `${api}/calculator/list`,
 
-  getCore: `${api}/core/list`,
-  getTable: `${api}/table/tail`,
+  getCore: `${api}/cost/list`,
+  getTable: `${api}/table/list`,
 
   getMapdatas: `${api}/mapdata/list`,
   getMapdata: `${api}/mapdata/tail`
