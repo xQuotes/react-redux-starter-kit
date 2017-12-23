@@ -21,7 +21,7 @@ var server = new webpackDevServer(compiler, {
   proxy: {
     '/api/*': {
       target: 'http://47.93.50.131:8080',
-      // target: 'http://172.30.200.163:8082',
+      // target: 'http://192.168.1.114:8080',
       crossOrigin: true,
       // port: "8080",
       secure: false
