@@ -23,6 +23,8 @@ module.exports = {
         require('./guidedata/route'),
         require('./guide/route'),
         require('./news/route'),
+        require('./tools/route'),
+        require('./bidding/route'),
         ...require('./qa/route')
         /*file_append*/
       ])
