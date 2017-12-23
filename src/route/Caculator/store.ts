@@ -37,13 +37,17 @@ export default class CaculatorStore extends Store {
       data: formData,
       method: 'post'
     }).then((data: any) => {
-      if (data.databody.noresult) {
-        Modal.error({
-          title: '',
-          content: data.databody.noresult
-        })
+      if(data.code < 0) {
+        return 
       } else {
-        this.list = data.databody || []
+        if (data.databody.noresult) {
+          Modal.error({
+            title: '',
+            content: data.databody.noresult
+          })
+        } else {
+          this.list = data.databody || []
+        }
       }
     })
   }

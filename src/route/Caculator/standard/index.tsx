@@ -4,7 +4,7 @@ import { Row, Col, Button, Form, Input } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 const FormItem = Form.Item
 import Echarts from '../../../components/Echarts/'
-import CaculatorModal from '../model'
+// import CaculatorModal from '../model'
 
 const formItemLayout = {
   labelCol: {
@@ -30,13 +30,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
   }
   render() {
     const { caculatorStore, form } = this.props
-    const {
-      item,
-      presetValue,
-      presetVisible,
-      presetItemKey,
-      selectMapItem
-    } = caculatorStore
+    const { item, selectMapItem } = caculatorStore
     const { getFieldDecorator } = form
 
     return (
@@ -53,40 +47,44 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
         <Col span={10}>
           <h3>您已选择： {selectMapItem.name}</h3>
           <Form onSubmit={this.handleSubmit}>
-            {item.map((val: any, key: string) => {
-              return (
-                <FormItem
-                  key={val.id}
-                  colon={false}
-                  {...formItemLayout}
-                  label={val.item}
-                >
-                  <div>
-                    {getFieldDecorator(val.itemKey, {
-                      initialValue: val.defaultValue
-                    })(
-                      <Input addonAfter={val.unit === '无' ? '' : val.unit} />
-                    )}
-                    {val.contentType === 'select' ? (
-                      <Button
-                        type="primary"
-                        onClick={() => {
-                          caculatorStore.presetItemKey = val.itemKey
-                          caculatorStore.presetValue = JSON.parse(
-                            val.presetValue
-                          )
-                          caculatorStore.presetVisible = true
-                        }}
-                      >
-                        点击选择
-                      </Button>
-                    ) : (
-                      ''
-                    )}
-                  </div>
-                </FormItem>
-              )
-            })}
+            {item
+              .filter((v: any) => v.tableType === 1)
+              .map((val: any, key: string) => {
+                console.log(val.unit)
+                return (
+                  <FormItem
+                    key={val.id}
+                    colon={false}
+                    {...formItemLayout}
+                    label={val.item}
+                  >
+                    <div>
+                      {getFieldDecorator(val.itemKey, {
+                        initialValue:
+                          val.defaultValue === '无' ? '' : val.defaultValue
+                      })(
+                        <Input addonAfter={val.unit === '无' ? '' : val.unit} />
+                      )}
+                      {val.contentType === 'select' ? (
+                        <Button
+                          type="primary"
+                          onClick={() => {
+                            caculatorStore.presetItemKey = val.itemKey
+                            caculatorStore.presetValue = JSON.parse(
+                              val.presetValue
+                            )
+                            caculatorStore.presetVisible = true
+                          }}
+                        >
+                          点击选择
+                        </Button>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </FormItem>
+                )
+              })}
             <FormItem colon={false} {...formItemLayout} label=" ">
               <Button
                 type="primary"
@@ -97,16 +95,45 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
               </Button>
             </FormItem>
           </Form>
-          {presetVisible && (
-            <CaculatorModal
-              presetValue={presetValue}
-              onChange={(val: any) => {
-                form.setFieldsValue({
-                  [presetItemKey]: val
-                })
-              }}
-            />
-          )}
+          <div>
+            {item
+              .filter((v: any) => v.tableType === 2)
+              .map((val: any, key: string) => {
+                return (
+                  <FormItem
+                    key={val.id}
+                    colon={false}
+                    {...formItemLayout}
+                    label={val.item}
+                  >
+                    <div>
+                      {getFieldDecorator(val.itemKey, {
+                        initialValue:
+                          val.defaultValue === '无' ? '' : val.defaultValue
+                      })(
+                        <Input addonAfter={val.unit === '无' ? '' : val.unit} />
+                      )}
+                      {val.contentType === 'select' ? (
+                        <Button
+                          type="primary"
+                          onClick={() => {
+                            caculatorStore.presetItemKey = val.itemKey
+                            caculatorStore.presetValue = JSON.parse(
+                              val.presetValue
+                            )
+                            caculatorStore.presetVisible = true
+                          }}
+                        >
+                          点击选择
+                        </Button>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </FormItem>
+                )
+              })}
+          </div>
         </Col>
       </Row>
     )

@@ -4,7 +4,7 @@ import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
 import MainNav from './nav'
 import MainStandard from './standard/index'
-import MainResult from './result/index'
+// import MainResult from './result/index'
 
 import './caculator.less'
 
@@ -27,7 +27,7 @@ export default class Caculator extends React.Component<any, any> {
         <div className="main-container">
           <MainNav />
           <MainStandard />
-          <MainResult />
+          {/*<MainResult />*/}
         </div>
         <Footer />
       </div>
