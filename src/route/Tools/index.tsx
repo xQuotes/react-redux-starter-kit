@@ -16,8 +16,8 @@ export default class Caculator extends React.Component<{}, {}> {
           <PDF
             pdfBlob={'https://pdfobject.com/pdf/sample-3pp.pdf'}
             containerId={'pdf'}
-            width={'600px'}
-            height={'700px'}
+            width={'100%'}
+            height={'1200px'}
           />
           <div id="pdf" />
         </div>
