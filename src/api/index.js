@@ -13,42 +13,36 @@ const Api = {
   getCaculator: `${url}/calculator/tail`,
   deleteCaculator: `${url}/calculator/deletedcalculator`,
   putCaculator: `${url}/calculator/savecalculator`,
-  putCaculators: `${url}/calculator/savecalculator`,
 
   postMapdata: `${url}/mapdata/savemapdata`,
   getMapdatas: `${url}/mapdata/list`,
   getMapdata: `${url}/mapdata/tail`,
   deleteMapdata: `${url}/mapdata/deletedmapdata`,
   putMapdata: `${url}/mapdata/savemapdata`,
-  putMapdatas: `${url}/mapdata/savemapdata`,
 
   postTable: `${url}/table/savetable`,
   getTables: `${url}/table/list`,
   getTable: `${url}/table/tail`,
   deleteTable: `${url}/table/deletedtable`,
   putTable: `${url}/table/savetable`,
-  putTables: `${url}/table/savetable`,
 
   postCoreTable: `${url}/cost/savetable`,
   getCoreTables: `${url}/cost/list`,
   getCoreTable: `${url}/cost/tail`,
   deleteCoreTable: `${url}/cost/deletedtable`,
   putCoreTable: `${url}/cost/savetable`,
-  putCoreTables: `${url}/cost/savetable`,
 
   postFormula: `${url}/calculationformula/savecalculationformula`,
   getFormulas: `${url}/calculationformula/list`,
   getFormula: `${url}/calculationformula/tail`,
   deleteFormula: `${url}/calculationformula/deletecalculationformula`,
   putFormula: `${url}/calculationformula/savecalculationformula`,
-  putFormulas: `${url}/calculationformula/savecalculationformula`,
 
   login: `${url}/admin/loginbymobile`,
   getUsers: `${url}/admin/userlist`,
   getUser: ``,
   deleteUser: ``,
   resetPassword: `${url}/admin/resetpassword`,
-  putUsers: ``,
 
   postNews: `${url}/infor/saveinfor`,
   getNewss: `${url}/infor/inforlist`,
@@ -56,7 +50,20 @@ const Api = {
   deleteNews: `${url}/infor/deletedinfor`,
   auditNews: `${url}/infor/putawayinfor`,
   putNews: `${url}/infor/saveinfor`,
-  putNewss: `${url}/infor/saveinfor`,
+
+  postTool: `${url}/tool/save`,
+  getTools: `${url}/tool/list`,
+  getTool: `${url}/tool/details`,
+  deleteTool: `${url}/tool/deleted`,
+  auditTool: `${url}/tool/putaway`,
+  putTool: `${url}/tool/save`,
+
+  postBidding: `${url}/bidding/save`,
+  getBiddings: `${url}/bidding/list`,
+  getBidding: `${url}/bidding/details`,
+  deleteBidding: `${url}/bidding/deleted`,
+  auditBidding: `${url}/bidding/putaway`,
+  putBidding: `${url}/bidding/save`,
 
   postGuide: `${url}/standard/savestandard`,
   getGuides: `${url}/standard/standardlist`,
@@ -64,15 +71,13 @@ const Api = {
   deleteGuide: `${url}/standard/deletedstandard`,
   auditGuide: `${url}/standard/putawaystandard`,
   putGuide: `${url}/standard/savestandard`,
-  putGuides: `${url}/standard/savestandard`,
 
   postQA: `${url}/answer/saveanswer`,
   getQAs: `${url}/answer/answerlist`,
   getQA: `${url}/answer/answerdetails`,
   deleteQA: `${url}/answer/deletedanswer`,
   auditQA: `${url}/answer/putawayanswer`,
-  putQA: `${url}/answer/saveanswer`,
-  putQAs: `${url}/answer/saveanswer`
+  putQA: `${url}/answer/saveanswer`
 }
 
 export default Api

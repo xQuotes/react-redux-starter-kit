@@ -116,7 +116,16 @@ export default class Dashboard extends React.Component {
             mode="inline"
             theme="dark"
             onClick={this.handleClick.bind(this)}
-            defaultOpenKeys={['sub0', 'sub1', 'sub2', 'sub20', 'sub3', 'sub4']}
+            defaultOpenKeys={[
+              'sub0',
+              'sub1',
+              'sub2',
+              'sub20',
+              'sub3',
+              'sub4',
+              'tools',
+              'bidding'
+            ]}
             selectedKeys={[this.state.current]}
           >
             <SubMenu
@@ -180,6 +189,37 @@ export default class Dashboard extends React.Component {
                 </Link>
               </Menu.Item>
             </SubMenu>
+
+            <SubMenu
+              key="tools"
+              title={
+                <span>
+                  <Icon type="bars" />工具
+                </span>
+              }
+            >
+              <Menu.Item key={`${Url.toolList}`}>
+                <Link to={`${Url.toolList}`}>
+                  <Icon type="appstore-o" />工具列表
+                </Link>
+              </Menu.Item>
+            </SubMenu>
+
+            <SubMenu
+              key="bidding"
+              title={
+                <span>
+                  <Icon type="bars" />招投标
+                </span>
+              }
+            >
+              <Menu.Item key={`${Url.biddingList}`}>
+                <Link to={`${Url.biddingList}`}>
+                  <Icon type="appstore-o" />招投标列表
+                </Link>
+              </Menu.Item>
+            </SubMenu>
+
             <SubMenu
               key="sub1"
               title={
@@ -226,9 +266,7 @@ export default class Dashboard extends React.Component {
               <div style={{ height: '100%' }}>{this.props.children}</div>
             </div>
           </div>
-          <div className="ant-layout-footer">
-            ifeng.com 版权所有 © 2016 凤凰网运维中心
-          </div>
+          <div className="ant-layout-footer">ifeng.com 版权所有 © 2016 凤凰网运维中心</div>
         </div>
       </div>
     )
