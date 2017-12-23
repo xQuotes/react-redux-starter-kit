@@ -10,20 +10,48 @@ export default class AddGuide extends React.Component {
   }
 
   render() {
-    const { guideStore, location: { query: { code } } } = this.props
+    const { guideStore, location: { query: { areaCode } } } = this.props
 
     const paramsData = guideStore.params
     const guide = guideStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(guideStore.updateFields, (v, k) => {
-      if (k === 'code') {
+      if (k === 'areaCode') {
         return _.assign(
           {},
           {
             name: k,
             label: v,
-            disabled: !!code,
+            disabled: !!areaCode,
             fieldOptions: {
-              initialValue: guide[k] || code,
+              initialValue: guide[k] || areaCode,
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请选择${v}`
+          }
+        )
+      }
+
+      if (k === 'type') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            formType: 'select',
+            optionData: [
+              {
+                id: '1',
+                value: '清单规则'
+              },
+              {
+                id: '2',
+                value: '定额规则'
+              }
+            ],
+            fieldOptions: {
+              initialValue: '1',
               rules: [
                 // { required: true, whitespace: true, message: '请输入主机名' }
               ]

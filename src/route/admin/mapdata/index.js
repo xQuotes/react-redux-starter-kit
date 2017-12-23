@@ -79,7 +79,7 @@ export default class Mapdatas extends React.Component {
           actions={record => {
             console.log(record)
             return (
-              <Link to={`${Url.coreList}?code=${record.id}&type=${101}`}>
+              <Link to={`${Url.coreList}?areaCode=${record.id}&type=${101}`}>
                 计算器列表
               </Link>
             )

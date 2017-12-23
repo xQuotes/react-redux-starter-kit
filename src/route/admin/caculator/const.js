@@ -1,6 +1,6 @@
 const list = {
   attributes: { databodysize: 5, totalCount: 0 },
-  code: 1701,
+  areaCode: 1701,
   databody: [
     {
       updateTime: '2017-12-16 21:46:49',
@@ -38,7 +38,7 @@ const list = {
 
 const item = {
   attributes: { databodysize: 11, totalCount: 0 },
-  code: 1701,
+  areaCode: 1701,
   databody: [
     {
       item: '工程造价',

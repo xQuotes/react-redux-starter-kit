@@ -11,7 +11,7 @@ export default class AddMapdata extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      code: '// type your code...'
+      areaCode: '// type your code...'
     }
   }
   editorDidMount(editor, monaco) {
@@ -23,7 +23,7 @@ export default class AddMapdata extends React.Component {
   }
 
   render() {
-    const { mapdataStore, code } = this.props
+    const { mapdataStore, areaCode } = this.props
     const options = {
       selectOnLineNumbers: true
     }

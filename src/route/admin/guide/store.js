@@ -12,8 +12,9 @@ export default class GuideStore extends Store {
 
   fields = {
     //id: '造价指标id',
-    code: '地区',
+    areaCode: '地区',
     name: '名称',
+    type: '类型',
     url: '链接',
     remark: '备注'
   }

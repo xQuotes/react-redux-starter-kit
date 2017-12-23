@@ -12,7 +12,7 @@ export default class AddTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      code: '// type your code...'
+      areaCode: '// type your code...'
     }
   }
   editorDidMount(editor, monaco) {
@@ -24,7 +24,10 @@ export default class AddTable extends React.Component {
   }
 
   render() {
-    const { coreTableStore, location: { query: { type, code } } } = this.props
+    const {
+      coreTableStore,
+      location: { query: { type, areaCode } }
+    } = this.props
 
     const options = {
       selectOnLineNumbers: true
@@ -126,15 +129,15 @@ export default class AddTable extends React.Component {
         )
       }
 
-      if (k === 'code') {
+      if (k === 'areaCode') {
         return _.assign(
           {},
           {
             name: k,
             label: v,
-            disabled: !!code,
+            disabled: !!areaCode,
             fieldOptions: {
-              initialValue: table[k] || code,
+              initialValue: table[k] || areaCode,
               rules: [
                 // { required: true, whitespace: true, message: '请输入主机名' }
               ]

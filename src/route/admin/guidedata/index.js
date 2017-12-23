@@ -79,7 +79,7 @@ export default class Guidedatas extends React.Component {
           actions={record => {
             console.log(record)
             return (
-              <Link to={`${Url.guideList}?code=${record.id}`}>计算器列表</Link>
+              <Link to={`${Url.guideList}?areaCode=${record.id}`}>造价规范列表</Link>
             )
           }}
           deleteAction={true}
