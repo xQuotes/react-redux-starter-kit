@@ -91,6 +91,10 @@ export default class AddTable extends React.Component {
               {
                 id: 'text',
                 value: '文本'
+              },
+              {
+                id: 'disabled',
+                value: '不能输入'
               }
             ],
             fieldOptions: {

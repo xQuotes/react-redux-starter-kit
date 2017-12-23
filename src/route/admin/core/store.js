@@ -21,6 +21,7 @@ export default class CoreTableStore extends Store {
     type: '计算器类型',
     code: '地区',
     unit: '单位',
+    additionalID: '附加项ID',
     valueRange: '取值范围',
     orderNumber: '序号',
     updateTime: '更新时间',
