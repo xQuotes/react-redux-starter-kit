@@ -9,7 +9,12 @@ import AddCaculatorModal from './add'
 import JSONView from '../../components/jsonview/edit'
 
 var actions = ({ type }) => {
-  return <Link to={`${Url.tableList}?type=${type}&code=001`}>计算器列表</Link>
+  return (
+    <span>
+      <Link to={`${Url.tableList}?type=${type}&code=001`}>计算器列表</Link>
+      <Link to={`${Url.formulaList}?type=${type}&code=001`}>计算器公式</Link>
+    </span>
+  )
 }
 @inject('caculatorStore')
 @observer

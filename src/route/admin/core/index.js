@@ -18,10 +18,12 @@ export default class Tables extends React.Component {
     const { coreTableStore, location: { query } } = this.props
     if (query.code) {
       coreTableStore.getServers({
-        areaCode: query.code || ''
+        areaCode: query.areaCode || '',
+        type: query.type || ''
       })
     } else {
       coreTableStore.getServers({
+        areaCode: query.areaCode || '',
         type: query.type || ''
       })
     }

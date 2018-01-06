@@ -79,9 +79,19 @@ export default class Mapdatas extends React.Component {
           actions={record => {
             console.log(record)
             return (
-              <Link to={`${Url.coreList}?areaCode=${record.id}&type=${101}`}>
-                计算器列表
-              </Link>
+              <div>
+                <Link to={`${Url.coreList}?areaCode=${record.id}&type=${101}`}>
+                  计算器资讯项目
+                </Link>
+                <Link
+                  to={`${Url.formulaList}?type=${101}&code=${record.id}`}
+                  style={{
+                    marginLeft: '20px'
+                  }}
+                >
+                  计算器公式
+                </Link>
+              </div>
             )
           }}
           deleteAction={true}

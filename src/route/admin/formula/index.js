@@ -12,11 +12,9 @@ export default class Formulas extends React.Component {
     super(props)
   }
   componentWillMount() {
-    const { formulaStore } = this.props
+    const { formulaStore, location: { query } } = this.props
     formulaStore.getServers({
-      calculatorType: 1
-      //pageNum
-      //pageSize
+      calculatorType: query.type
     })
   }
   render() {

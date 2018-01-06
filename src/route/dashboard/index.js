@@ -152,13 +152,13 @@ export default class Dashboard extends React.Component {
                 <Link to={`${Url.tableList}`}>
                   <Icon type="appstore-o" />计算器列表
                 </Link>
-              </Menu.Item> */}
+              </Menu.Item> 
 
               <Menu.Item key={`${Url.formulaList}`}>
                 <Link to={`${Url.formulaList}`}>
                   <Icon type="appstore-o" />计算公式
                 </Link>
-              </Menu.Item>
+              </Menu.Item>*/}
             </SubMenu>
             <SubMenu
               key="sub2"
