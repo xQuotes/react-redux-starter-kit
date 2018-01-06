@@ -23,7 +23,7 @@ export default class Dashboard extends React.Component {
       meneShow: true
     }
 
-    Auth.checkAuthLogin()
+    // Auth.checkAuthLogin()
   }
   handleClick(e) {
     this.setState({
