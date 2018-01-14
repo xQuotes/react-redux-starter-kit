@@ -26,6 +26,13 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
     this.props.form.validateFieldsAndScroll((err: any, values: any) => {
       if (!err) {
         console.log('Received values of form: ', values)
+
+        const { caculatorStore } = this.props
+
+        caculatorStore.getResults({
+          ...values,
+          calculatorType: caculatorStore.itemType
+        })
       }
     })
   }
@@ -37,7 +44,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
   }
   render() {
     const { caculatorStore, form } = this.props
-    const { item, selectMapItem } = caculatorStore
+    const { item, selectMapItem, results } = caculatorStore
     const { getFieldDecorator } = form
 
     return (
@@ -57,7 +64,6 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
             {item
               .filter((v: any) => v.tableType === 1)
               .map((val: any, key: string) => {
-                console.log(val, val.contentType, val.presetValue)
                 return (
                   <FormItem
                     key={val.id}
@@ -80,25 +86,28 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                           </Select>
                         ) : (
                           <Input
-                            addonAfter={val.unit === '无' ? '' : val.unit}
+                            addonAfter={
+                              val.contentType === 'select' ? (
+                                <Button
+                                  type="primary"
+                                  onClick={() => {
+                                    caculatorStore.presetItemKey = val.itemKey
+                                    caculatorStore.presetValue = JSON.parse(
+                                      val.presetValue
+                                    )
+                                    caculatorStore.presetVisible = true
+                                  }}
+                                >
+                                  点击选择
+                                </Button>
+                              ) : val.unit === '无' ? (
+                                ''
+                              ) : (
+                                val.unit
+                              )
+                            }
                           />
                         )
-                      )}
-                      {val.contentType === 'select' ? (
-                        <Button
-                          type="primary"
-                          onClick={() => {
-                            caculatorStore.presetItemKey = val.itemKey
-                            caculatorStore.presetValue = JSON.parse(
-                              val.presetValue
-                            )
-                            caculatorStore.presetVisible = true
-                          }}
-                        >
-                          点击选择
-                        </Button>
-                      ) : (
-                        ''
                       )}
                     </div>
                   </FormItem>
@@ -127,27 +136,9 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                   >
                     <div>
                       {getFieldDecorator(val.itemKey, {
-                        initialValue:
-                          val.defaultValue === '无' ? '' : val.defaultValue
+                        initialValue: results[val.itemKey]
                       })(
-                        val.contentType === 'drop_down_select' ? (
-                          <Button
-                            type="primary"
-                            onClick={() => {
-                              caculatorStore.presetItemKey = val.itemKey
-                              caculatorStore.presetValue = JSON.parse(
-                                val.presetValue
-                              )
-                              caculatorStore.presetVisible = true
-                            }}
-                          >
-                            点击选择
-                          </Button>
-                        ) : (
-                          <Input
-                            addonAfter={val.unit === '无' ? '' : val.unit}
-                          />
-                        )
+                        <Input addonAfter={val.unit === '无' ? '' : val.unit} />
                       )}
 
                       {val.contentType === 'select' ? (

@@ -3,6 +3,8 @@ import { Modal } from 'antd'
 import Store from '../../stores/store'
 import Api from '../../common/api'
 
+import RApi from './api'
+
 // import dataSource from './const'
 import mapData from '../../components/Echarts/const'
 
@@ -13,9 +15,11 @@ export default class CaculatorStore extends Store {
   @observable item = [] //dataSource.item.databody
   @observable itemType = ''
   @observable presetValue = {}
+  @observable results = {}
   @observable presetVisible = false
 
-  @observable selectMapItem = {
+  @observable
+  selectMapItem = {
     name: '全国',
     value: 0
   }
@@ -28,7 +32,7 @@ export default class CaculatorStore extends Store {
     put: '',
     delete: ''
   }
-  
+
   @action
   getServers(formData: any, params: object = {}) {
     let url = this.api.gets
@@ -37,8 +41,8 @@ export default class CaculatorStore extends Store {
       data: formData,
       method: 'post'
     }).then((data: any) => {
-      if(data.code < 0) {
-        return 
+      if (data.code < 0) {
+        return
       } else {
         if (data.databody.noresult) {
           Modal.error({
@@ -47,6 +51,29 @@ export default class CaculatorStore extends Store {
           })
         } else {
           this.list = data.databody || []
+        }
+      }
+    })
+  }
+
+  @action
+  getResults(formData: any, params: object = {}) {
+    let url = RApi[this.itemType]
+    return Fetch({
+      url,
+      data: formData,
+      method: 'post'
+    }).then((data: any) => {
+      if (data.code < 0) {
+        return
+      } else {
+        if (data.databody.noresult) {
+          Modal.error({
+            title: '',
+            content: data.databody.noresult
+          })
+        } else {
+          this.results = data.databody || []
         }
       }
     })
@@ -83,7 +110,8 @@ export default class CaculatorStore extends Store {
     })
   }
 
-  @action setSelectMapItem(data: {name: string, value: number}, type: any) {
+  @action
+  setSelectMapItem(data: { name: string; value: number }, type: any) {
     this.getServer({
       type,
       code: data.value
