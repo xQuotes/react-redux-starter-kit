@@ -24,7 +24,7 @@ export default class Caculator extends React.Component<any, any> {
       <div>
         <Header {...this.props} />
         <div className="main-container">
-          <MainNav />
+          <MainNav history={this.props.history} />
           <MainStandard />
         </div>
         <Footer />
