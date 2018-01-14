@@ -26,6 +26,8 @@ const Api = {
   deleteTable: `${url}/table/deletedtable`,
   putTable: `${url}/table/savetable`,
 
+  getCostTables: `${url}/table/costlist`,
+
   postProject: `${url}/formulaproject/saveformulaproject`,
   getProjects: `${url}/formulaproject/list`,
   getProject: `${url}/formulaproject/tail`,

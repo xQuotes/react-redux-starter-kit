@@ -2,6 +2,7 @@ import { observable, computed, action } from 'mobx'
 
 import Fetch from 'Fetch'
 import Api from 'Api'
+import Auth from 'Auth'
 import 'Arr'
 import Store from '../../../stores/Store'
 
@@ -14,6 +15,7 @@ export default class TableStore extends Store {
     item: '表行名',
     itemKey: '表行名key',
     contentType: '内容类型',
+    formulaId: '造价计算器计算项ID',
     // parameters: '参数名称',
     // presetValue: '预置选项',
     defaultValue: '默认值',
@@ -31,12 +33,46 @@ export default class TableStore extends Store {
   // searchFields = _.omit(this.fields, ['id', 'updateTime'])
   api = {
     gets: Api.getTables,
+    getFormulars: Api.getCostTables,
     delete: Api.deleteTable,
     post: Api.postTable,
     uploadCsvData: Api.uploadCsvData,
     put: Api.putTable,
     puts: Api.putTables,
     exports: Api.exports
+  }
+
+  @action
+  getFormulaServers(formData = {}, params = {}) {
+    this.isLoading = true
+    this.setSearchDatas(formData, params)
+
+    Fetch({
+      url: this.api.getFormulars,
+      data: JSON.stringify({
+        token: Auth.getAuthToken(),
+        ...formData
+      }), //JSON.stringify(formData),
+      // withCredentials: false,
+      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      method: 'post',
+      success: data => {
+        this.isLoading = false
+        if (data.databody.noresult) {
+          this.list = []
+        } else {
+          this.list = data.databody
+        }
+
+        // this.fields = data.fields
+        // this.searchFields = data.search_fields
+        // this.updateFields = data.update_fields
+      },
+      error: data => {
+        errorAlert('服务器出错！')
+        this.isLoading = false
+      }
+    })
   }
 
   static fromJS(array = []) {
