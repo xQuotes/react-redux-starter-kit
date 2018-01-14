@@ -77,7 +77,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                           val.defaultValue === '无' ? '' : val.defaultValue
                       })(
                         val.contentType === 'drop_down_select' ? (
-                          <Select style={{ width: 120 }}>
+                          <Select>
                             {JSON.parse(
                               val.presetValue
                             ).list.map((v: any, k: any) => {

@@ -8,7 +8,7 @@ export default class CaculatorNav extends React.Component<any, any> {
   render() {
     const { caculatorStore } = this.props
     const { list: caculator, itemType } = caculatorStore
-    console.log(itemType)
+
     return (
       <div className="btn-group">
         {!itemType ? (
