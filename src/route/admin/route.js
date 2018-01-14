@@ -18,6 +18,7 @@ module.exports = {
         require('./mapdata/route'), // 地图类型
         require('./core/route'),
         require('./table/route'),
+        require('./cacuitem/route'),
         require('./formula/route'),
         require('./user/route'),
         require('./guidedata/route'),

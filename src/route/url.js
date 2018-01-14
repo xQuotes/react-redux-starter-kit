@@ -16,6 +16,8 @@ const Url = {
 
   coreList: `/${caculator}/core/list`,
 
+  projectList: `/${caculator}/project/list`,
+
   formulaList: `/${caculator}/formula/list`,
 
   userList: `/${caculator}/user/list`,

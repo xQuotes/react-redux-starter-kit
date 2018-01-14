@@ -15,10 +15,11 @@ export default class Tables extends React.Component {
     super(props)
   }
   componentWillMount() {
-    const { tableStore, location: { query } } = this.props
+    const { tableStore, location: { query, formulaId } } = this.props
 
     tableStore.getServers({
-      type: query.type || ''
+      type: query.type || '',
+      formulaId: formulaId
     })
   }
   handleSubmit(item) {

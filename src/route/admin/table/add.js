@@ -86,7 +86,11 @@ export default class AddTable extends React.Component {
             optionData: [
               {
                 id: 'select',
-                value: '选项'
+                value: '弹窗选项'
+              },
+              {
+                id: 'drop_down_select',
+                value: '下拉选项'
               },
               {
                 id: 'text',

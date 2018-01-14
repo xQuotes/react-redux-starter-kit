@@ -5,27 +5,43 @@ import Api from 'Api'
 import Url from 'Url'
 
 import FuncList from '../../components/switches/commonInfoList'
-import AddMapdataModal from './add'
-import JSONView from '../../components/jsonview/index'
+import AddCaculatorModal from './add'
+import JSONView from '../../components/jsonview/edit'
 
-@inject('mapdataStore')
+var actions = ({ type, areaCode, id }) => {
+  return (
+    <span>
+      <Link to={`${Url.tableList}?type=${1}&code=${areaCode}&formulaId=${id}`}>
+        计算器列表
+      </Link>
+      <Link
+        to={`${Url.formulaList}?type=${1}&code=${areaCode}&formulaId=${id}`}
+      >
+        计算器公式
+      </Link>
+    </span>
+  )
+}
+@inject('projectStore')
 @observer
-export default class Mapdatas extends React.Component {
+export default class Caculators extends React.Component {
   constructor(props) {
     super(props)
   }
   componentWillMount() {
-    const { mapdataStore } = this.props
-    // mapdataStore.getServers({
-    //   type: 11
-    // })
+    const { projectStore, location: { query: { type, areaCode } } } = this.props
+    projectStore.getServers({
+      areaCode,
+      type
+    })
   }
   render() {
     const bcData = ['首页', '计算器管理', '列表']
-    const { mapdataStore } = this.props
-    const { fields } = mapdataStore
+    const { projectStore, location: { query: { type, areaCode } } } = this.props
 
-    const mapdataHeader = _.map(fields, (v, k) => {
+    const { fields } = projectStore
+
+    const projectHeader = _.map(fields, (v, k) => {
       if (k === 'presetValue') {
         return {
           title: v,
@@ -70,32 +86,14 @@ export default class Mapdatas extends React.Component {
     return (
       <div className="switches-network">
         <FuncList
-          rmAdd={true}
-          store={this.props.mapdataStore}
+          store={this.props.projectStore}
           bcData={bcData}
-          downloadCSV={Api.downloadMapdataCSV}
-          funcEnName={'mapdata'}
-          mapdataHeader={mapdataHeader}
-          actions={record => {
-            return (
-              <div>
-                <Link to={`${Url.projectList}?areaCode=${record.id}&type=${1}`}>
-                  计算器项目
-                </Link>
-                {/* <Link
-                  to={`${Url.formulaList}?type=${101}&code=${record.id}`}
-                  style={{
-                    marginLeft: '20px'
-                  }}
-                >
-                  计算器公式
-                </Link> */}
-              </div>
-            )
-          }}
-          deleteAction={true}
+          downloadCSV={Api.downloadCaculatorCSV}
+          funcEnName={'project'}
+          projectHeader={projectHeader}
+          actions={actions}
         />
-        <AddMapdataModal />
+        <AddCaculatorModal />
       </div>
     )
   }
