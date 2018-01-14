@@ -10,7 +10,7 @@ import CaculatorModal from '../model'
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 6 }
+    sm: { span: 10 }
   },
   wrapperCol: {
     xs: { span: 24 },
@@ -58,7 +58,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
             store={caculatorStore}
           />
         </Col>
-        <Col span={10}>
+        <Col span={9} offset={1}>
           <h3>您已选择： {selectMapItem.name}</h3>
           <Form onSubmit={this.handleSubmit}>
             {item
