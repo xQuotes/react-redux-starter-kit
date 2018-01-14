@@ -12,7 +12,6 @@ import './caculator.less'
 @observer
 export default class Caculator extends React.Component<any, any> {
   componentWillMount() {
-    console.log('componentWillMount')
     const { caculatorStore } = this.props
     caculatorStore.getServers({})
     caculatorStore.getServer({

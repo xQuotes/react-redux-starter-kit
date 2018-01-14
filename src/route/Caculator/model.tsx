@@ -50,7 +50,10 @@ export default class CaculatorModal extends React.Component<any, {}> {
                                 key={item.key}
                                 className="list-item"
                                 onClick={() => {
-                                  this.props.onChange(item.value)
+                                  this.props.onChange({
+                                    value: item.value,
+                                    key: item.key
+                                  })
                                   caculatorStore.presetVisible = false
                                 }}
                               >

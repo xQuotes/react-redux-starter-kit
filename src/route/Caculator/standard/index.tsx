@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Row, Col, Button, Form, Input } from 'antd'
+import { Row, Col, Button, Form, Input, Select } from 'antd'
+const Option = Select.Option
 import { FormComponentProps } from 'antd/lib/form/Form'
 const FormItem = Form.Item
 import Echarts from '../../../components/Echarts/'
-// import CaculatorModal from '../model'
+import CaculatorModal from '../model'
 
 const formItemLayout = {
   labelCol: {
@@ -26,6 +27,12 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
       if (!err) {
         console.log('Received values of form: ', values)
       }
+    })
+  }
+  onChange = (v: any) => {
+    const { form, caculatorStore } = this.props
+    form.setFieldsValue({
+      [caculatorStore.presetItemKey]: v.value
     })
   }
   render() {
@@ -50,7 +57,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
             {item
               .filter((v: any) => v.tableType === 1)
               .map((val: any, key: string) => {
-                console.log(val.unit)
+                console.log(val, val.contentType, val.presetValue)
                 return (
                   <FormItem
                     key={val.id}
@@ -63,7 +70,19 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                         initialValue:
                           val.defaultValue === '无' ? '' : val.defaultValue
                       })(
-                        <Input addonAfter={val.unit === '无' ? '' : val.unit} />
+                        val.contentType === 'drop_down_select' ? (
+                          <Select style={{ width: 120 }}>
+                            {JSON.parse(
+                              val.presetValue
+                            ).list.map((v: any, k: any) => {
+                              return <Option value={v.title}>{v.title}</Option>
+                            })}
+                          </Select>
+                        ) : (
+                          <Input
+                            addonAfter={val.unit === '无' ? '' : val.unit}
+                          />
+                        )
                       )}
                       {val.contentType === 'select' ? (
                         <Button
@@ -111,8 +130,26 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                         initialValue:
                           val.defaultValue === '无' ? '' : val.defaultValue
                       })(
-                        <Input addonAfter={val.unit === '无' ? '' : val.unit} />
+                        val.contentType === 'drop_down_select' ? (
+                          <Button
+                            type="primary"
+                            onClick={() => {
+                              caculatorStore.presetItemKey = val.itemKey
+                              caculatorStore.presetValue = JSON.parse(
+                                val.presetValue
+                              )
+                              caculatorStore.presetVisible = true
+                            }}
+                          >
+                            点击选择
+                          </Button>
+                        ) : (
+                          <Input
+                            addonAfter={val.unit === '无' ? '' : val.unit}
+                          />
+                        )
                       )}
+
                       {val.contentType === 'select' ? (
                         <Button
                           type="primary"
@@ -135,6 +172,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
               })}
           </div>
         </Col>
+        <CaculatorModal onChange={this.onChange} />
       </Row>
     )
   }
