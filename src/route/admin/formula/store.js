@@ -11,7 +11,7 @@ export default class FormulaStore extends Store {
   }
 
   fields = {
-    //id: '造价指标id',
+    id: '造价指标id',
     calculatorItem: '计算项目',
     calculatorType: '计算器类型',
     formulaId: '造价计算器计算项ID',
