@@ -14,6 +14,7 @@ export default class FormulaStore extends Store {
     //id: '造价指标id',
     calculatorItem: '计算项目',
     calculatorType: '计算器类型',
+    formulaId: '造价计算器计算项ID',
     // contentType: '计算器类型',
     price: '价格',
     rate: '公式',

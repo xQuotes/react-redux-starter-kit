@@ -28,11 +28,11 @@ const Api = {
 
   getCostTables: `${url}/table/costlist`,
 
-  postProject: `${url}/formulaproject/saveformulaproject`,
+  postProject: `${url}/formulaproject/saveformula`,
   getProjects: `${url}/formulaproject/list`,
   getProject: `${url}/formulaproject/tail`,
-  deleteProject: `${url}/formulaproject/deletedformulaproject`,
-  putProject: `${url}/formulaproject/saveformulaproject`,
+  deleteProject: `${url}/formulaproject/deletedformula`,
+  putProject: `${url}/formulaproject/saveformula`,
 
   postCoreTable: `${url}/formulaproject/savetable`,
   getCoreTables: `${url}/formulaproject/list`,

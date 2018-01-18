@@ -186,7 +186,6 @@ export default class AddTable extends React.Component {
     })
     formDataTitileServer = [
       {
-        type: 'hidden',
         name: 'id',
         label: 'id',
         fieldOptions: {

@@ -13,9 +13,15 @@ export default class Formulas extends React.Component {
   }
   componentWillMount() {
     const { formulaStore, location: { query } } = this.props
-    formulaStore.getServers({
-      calculatorType: query.type
-    })
+    if (query.formulaId) {
+      formulaStore.getServers({
+        formulaId: query.formulaId
+      })
+    } else {
+      formulaStore.getServers({
+        calculatorType: query.type
+      })
+    }
   }
   render() {
     const bcData = ['首页', '计算器管理', '列表']
