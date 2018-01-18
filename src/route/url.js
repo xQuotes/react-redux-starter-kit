@@ -14,6 +14,8 @@ const Url = {
 
   tableList: `/${caculator}/table/list`,
 
+  rateList: `/${caculator}/rate/list`,
+
   coreList: `/${caculator}/core/list`,
 
   projectList: `/${caculator}/project/list`,

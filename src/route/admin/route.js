@@ -20,6 +20,7 @@ module.exports = {
         require('./table/route'),
         require('./cacuitem/route'),
         require('./formula/route'),
+        require('./rate/route'),
         require('./user/route'),
         require('./guidedata/route'),
         require('./guide/route'),

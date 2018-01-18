@@ -5,6 +5,7 @@ module.exports = {
   caculatorStore: require('../route/admin/caculator/store')['default'].fromJS(),
   tableStore: require('../route/admin/table/store')['default'].fromJS(),
   projectStore: require('../route/admin/cacuitem/store')['default'].fromJS(),
+  rateStore: require('../route/admin/rate/store')['default'].fromJS(),
   //CoreTableStore
   coreTableStore: require('../route/admin/core/store')['default'].fromJS(),
   presetStore: require('../route/admin/table/PresetStore')['default'].fromJS(),

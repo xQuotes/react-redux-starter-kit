@@ -14,9 +14,7 @@ var actions = ({ type, areaCode, id }) => {
       <Link to={`${Url.tableList}?type=${1}&code=${areaCode}&formulaId=${id}`}>
         计算器列表
       </Link>
-      <Link
-        to={`${Url.formulaList}?type=${1}&code=${areaCode}&formulaId=${id}`}
-      >
+      <Link to={`${Url.rateList}?type=${1}&code=${areaCode}&formulaId=${id}`}>
         计算器公式
       </Link>
     </span>
