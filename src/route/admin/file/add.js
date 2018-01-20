@@ -1,4 +1,4 @@
-import { Select, Upload, Icon, message } from 'antd'
+import { Select, Upload, Icon, message, Input } from 'antd'
 import { inject, observer } from 'mobx-react'
 const Dragger = Upload.Dragger
 import AddForm from '../../components/switches/commonInfoAdd'
@@ -36,7 +36,7 @@ export default class AddFile extends React.Component {
       }
     }
   }
-  uploadProps({ form }) {
+  uploadProps({ form, urlType }) {
     const { type } = this.state
 
     return {
@@ -47,6 +47,11 @@ export default class AddFile extends React.Component {
       onChange(info) {
         const status = info.file.status
         console.log(info)
+        if (urlType === 'url') {
+          form.setFieldsValue({
+            fileName: info.file.name
+          })
+        }
         if (status !== 'uploading') {
           console.log(info.file, info.fileList)
         }
@@ -54,7 +59,7 @@ export default class AddFile extends React.Component {
           const response = info.file.response
 
           form.setFieldsValue({
-            urlData: response.url
+            [urlType]: response.url
           })
           message.success(`${info.file.name} file uploaded successfully.`)
         } else if (status === 'error') {
@@ -69,7 +74,7 @@ export default class AddFile extends React.Component {
     const file = fileStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(fileStore.updateFields, (v, k) => {
       console.log(file[k], this.state.type)
-      if (k === 'type') {
+      if (k === 'typeName') {
         return _.assign(
           {},
           {
@@ -79,6 +84,7 @@ export default class AddFile extends React.Component {
             component: props => {
               return (
                 <Select
+                  defaultValue={this.state.type}
                   onChange={v => {
                     this.setState({
                       type: v
@@ -104,7 +110,28 @@ export default class AddFile extends React.Component {
         )
       }
 
-      if (k === 'urlData') {
+      if (k === 'documentDescription') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            formType: 'component',
+            component: props => {
+              return <Input.TextArea rows={4} />
+            },
+            fieldOptions: {
+              initialValue: file[k],
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请输入${v}`
+          }
+        )
+      }
+
+      if (k === 'url') {
         return _.assign(
           {},
           {
@@ -115,14 +142,49 @@ export default class AddFile extends React.Component {
               return (
                 <Dragger
                   {...this.uploadProps({
-                    form: props.form
+                    form: props.form,
+                    urlType: 'url'
                   })}
                 >
                   <p className="ant-upload-drag-icon">
                     <Icon type="inbox" />
                   </p>
                   <p className="ant-upload-text">上传文件</p>
-                  <p>{props.form.getFieldValue('urlData')}</p>
+                  <p>{props.form.getFieldValue('url')}</p>
+                </Dragger>
+              )
+            },
+            fieldOptions: {
+              initialValue: file[k],
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请输入${v}`
+          }
+        )
+      }
+
+      if (k === 'imageUrl') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            formType: 'component',
+            component: props => {
+              return (
+                <Dragger
+                  {...this.uploadProps({
+                    form: props.form,
+                    urlType: 'imageUrl'
+                  })}
+                >
+                  <p className="ant-upload-drag-icon">
+                    <Icon type="inbox" />
+                  </p>
+                  <p className="ant-upload-text">上传文件</p>
+                  <p>{props.form.getFieldValue('imageUrl')}</p>
                 </Dragger>
               )
             },
