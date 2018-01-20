@@ -13,10 +13,11 @@ import './caculator.less'
 export default class Caculator extends React.Component<any, any> {
   componentWillMount() {
     const { caculatorStore } = this.props
-    caculatorStore.getServers({})
+    caculatorStore.getServers({
+      type: '701'
+    })
     caculatorStore.getServer({
-      type: '',
-      code: 0
+      type: '701'
     })
   }
   render() {

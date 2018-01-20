@@ -44,7 +44,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
   }
   render() {
     const { caculatorStore, form } = this.props
-    const { item, selectMapItem, results } = caculatorStore
+    const { item, selectMapItem, results, projects } = caculatorStore
     const { getFieldDecorator } = form
 
     return (
@@ -60,6 +60,30 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
         </Col>
         <Col span={9} offset={1}>
           <h3>您已选择： {selectMapItem.name}</h3>
+          {projects.length > 0 && (
+            <FormItem colon={false} {...formItemLayout} label={'计算项'}>
+              <Select
+                onChange={id => {
+                  caculatorStore.setSelectMapItem(
+                    caculatorStore.selectMapItem,
+                    caculatorStore.itemType,
+                    id
+                  )
+                }}
+                style={{
+                  width: '100%'
+                }}
+              >
+                {projects.map((v: any, k: any) => {
+                  return (
+                    <Option
+                      value={v.id}
+                    >{`${v.formulaName}(${v.standardName})`}</Option>
+                  )
+                })}
+              </Select>
+            </FormItem>
+          )}
           <Form onSubmit={this.handleSubmit}>
             {item
               .filter((v: any) => v.tableType === 1)

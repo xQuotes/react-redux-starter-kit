@@ -13,7 +13,8 @@ import Fetch from '../../common/fetch'
 export default class CaculatorStore extends Store {
   @observable list = [] //dataSource.list.databody
   @observable item = [] //dataSource.item.databody
-  @observable itemType = ''
+  @observable projects = []
+  @observable itemType = 701
   @observable presetValue = {}
   @observable results = {}
   @observable presetVisible = false
@@ -100,6 +101,7 @@ export default class CaculatorStore extends Store {
       method: 'post'
     }).then((data: any) => {
       if (data.databody.noresult) {
+        this.item = []
         Modal.error({
           title: '',
           content: data.databody.noresult
@@ -111,11 +113,82 @@ export default class CaculatorStore extends Store {
   }
 
   @action
-  setSelectMapItem(data: { name: string; value: number }, type: any) {
-    this.getServer({
-      type,
-      code: data.value
+  getFormulaServer(formData: any, params: object = {}) {
+    let url = this.api.get
+    let data = {
+      formulaId: formData.formulaId
+    }
+    return Fetch({
+      url,
+      data,
+      method: 'post'
+    }).then((data: any) => {
+      if (data.databody.noresult) {
+        this.item = []
+        Modal.error({
+          title: '',
+          content: data.databody.noresult
+        })
+      } else {
+        this.item = data.databody || []
+      }
     })
+  }
+
+  @action
+  getProject(formData: any, params: object = {}) {
+    let url = '/api/formulaproject/list'
+    let data = {}
+    if (!formData.type) {
+      data = {
+        areaCode: mapData[formData.code].value
+      }
+    } else {
+      data = {
+        type: '' + formData.type
+      }
+    }
+    // mapData[
+    return Fetch({
+      url,
+      data,
+      method: 'post'
+    }).then((data: any) => {
+      if (data.databody.noresult) {
+        this.item = []
+        Modal.error({
+          title: '',
+          content: data.databody.noresult
+        })
+      } else {
+        this.item = []
+        this.projects = data.databody || []
+      }
+    })
+  }
+
+  @action
+  setSelectMapItem(
+    data: { name: string; value: number },
+    type: any,
+    formulaId: any
+  ) {
+    console.log(type, data)
+    if (formulaId) {
+      this.getFormulaServer({
+        formulaId
+      })
+    } else if (!type) {
+      this.getProject({
+        type,
+        code: data.value
+      })
+    } else {
+      this.getServer({
+        type,
+        code: data.value
+      })
+    }
     this.selectMapItem = data
 
     this.itemType = type
