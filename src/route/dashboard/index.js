@@ -124,6 +124,7 @@ export default class Dashboard extends React.Component {
               'sub3',
               'sub4',
               'tools',
+              'files',
               'bidding'
             ]}
             selectedKeys={[this.state.current]}
@@ -159,6 +160,21 @@ export default class Dashboard extends React.Component {
                   <Icon type="appstore-o" />计算公式
                 </Link>
               </Menu.Item>*/}
+            </SubMenu>
+
+            <SubMenu
+              key="files"
+              title={
+                <span>
+                  <Icon type="bars" />文件上传
+                </span>
+              }
+            >
+              <Menu.Item key={`${Url.fileList}`}>
+                <Link to={`${Url.fileList}`}>
+                  <Icon type="appstore-o" />文件列表
+                </Link>
+              </Menu.Item>
             </SubMenu>
             <SubMenu
               key="sub2"

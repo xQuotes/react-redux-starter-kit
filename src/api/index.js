@@ -40,6 +40,12 @@ const Api = {
   deleteRate: `${url}/rate/deletedrate`,
   putRate: `${url}/rate/saverate`,
 
+  postFile: `${url}/file/save`,
+  getFiles: `${url}/file/list`,
+  getFile: `${url}/file/tail`,
+  deleteFile: `${url}/file/deleted`,
+  putFile: `${url}/file/save`,
+
   postCoreTable: `${url}/formulaproject/savetable`,
   getCoreTables: `${url}/formulaproject/list`,
   getCoreTable: `${url}/formulaproject/tail`,

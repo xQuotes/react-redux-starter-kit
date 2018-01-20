@@ -30,6 +30,8 @@ const Url = {
 
   newsList: `/${caculator}/news/list`,
 
+  fileList: `/${caculator}/file/list`,
+
   toolList: `/${caculator}/tool/list`,
 
   biddingList: `/${caculator}/bidding/list`,

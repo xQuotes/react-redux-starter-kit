@@ -13,6 +13,7 @@ module.exports = {
   userStore: require('../route/admin/user/store')['default'].fromJS(),
   guidedataStore: require('../route/admin/guidedata/store')['default'].fromJS(),
   guideStore: require('../route/admin/guide/store')['default'].fromJS(),
+  fileStore: require('../route/admin/file/store')['default'].fromJS(),
   newsStore: require('../route/admin/news/store')['default'].fromJS(),
   toolStore: require('../route/admin/tools/store')['default'].fromJS(),
   biddingStore: require('../route/admin/bidding/store')['default'].fromJS(),
