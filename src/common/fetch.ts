@@ -83,7 +83,7 @@ export function fetchs(action: {
       AuthToken: ''
     },
     // credentials: 'same-origin',
-    body: JSON.stringify(action.data)
+    body: queryString.stringify(action.data)
   }
 
   if (options.method === 'get') {
