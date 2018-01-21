@@ -44,6 +44,14 @@ export default class AddFile extends React.Component {
       multiple: true,
       showUploadList: false,
       action: '/api/file/upload',
+      data: {
+        aaa: 'aaa'
+      },
+      withCredentials: true,
+      headers: {
+        'X-Requested-With': null,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
       onChange(info) {
         const status = info.file.status
         console.log(info)

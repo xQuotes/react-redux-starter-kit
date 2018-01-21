@@ -32,6 +32,7 @@ export default class FileStore extends Store {
     puts: Api.putFiles,
     exports: Api.exports
   }
+
   static fromJS(array = []) {
     return new FileStore()
   }

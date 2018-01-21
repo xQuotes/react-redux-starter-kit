@@ -4,6 +4,7 @@ import Fetch from 'Fetch'
 import Api from 'Api'
 import Auth from 'Auth'
 import { errorAlert } from 'Utils'
+import queryString from 'query-string'
 import 'Arr'
 
 export default class Store {
@@ -42,10 +43,10 @@ export default class Store {
 
     Fetch({
       url: this.api.gets,
-      data: JSON.stringify({
+      data: queryString.stringify({
         token: Auth.getAuthToken(),
         ...formData
-      }), //JSON.stringify(formData),
+      }), //queryString.stringify(formData),
       // withCredentials: false,
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       method: 'post',
@@ -75,7 +76,7 @@ export default class Store {
 
     Fetch({
       url: this.api.get,
-      data: JSON.stringify({
+      data: queryString.stringify({
         token: Auth.getAuthToken(),
         ...formData
       }),
@@ -96,7 +97,7 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.delete,
-      data: JSON.stringify({
+      data: queryString.stringify({
         token: Auth.getAuthToken(),
         id: formData.id
       }),
@@ -119,7 +120,7 @@ export default class Store {
     delete formData.id
     Fetch({
       url: this.api.post,
-      data: JSON.stringify({
+      data: queryString.stringify({
         token: Auth.getAuthToken(),
         ...formData
       }),
@@ -147,7 +148,7 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.uploadCsvData,
-      data: JSON.stringify({
+      data: queryString.stringify({
         token: Auth.getAuthToken(),
         ...formData
       }),
@@ -169,7 +170,7 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.put,
-      data: JSON.stringify({
+      data: queryString.stringify({
         token: Auth.getAuthToken(),
         ...formData
       }),
@@ -195,7 +196,7 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.puts,
-      data: JSON.stringify({
+      data: queryString.stringify({
         token: Auth.getAuthToken(),
         ...formData
       }),
@@ -216,7 +217,7 @@ export default class Store {
     this.isLoading = true
     Fetch({
       url: this.api.exports,
-      data: JSON.stringify({
+      data: queryString.stringify({
         conditions: {
           list: this.list,
           fields: this.fields,
