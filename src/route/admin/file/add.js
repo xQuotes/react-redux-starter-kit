@@ -40,17 +40,16 @@ export default class AddFile extends React.Component {
     const { type } = this.state
 
     return {
-      name: type,
+      name: 'file',
       multiple: true,
       showUploadList: false,
-      action: '/api/file/upload',
+      action: 'http://admin.anyfees.com/api/file/upload',
       data: {
-        aaa: 'aaa'
+        name: type
       },
       withCredentials: true,
       headers: {
-        'X-Requested-With': null,
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'X-Requested-With': null
       },
       onChange(info) {
         const status = info.file.status
@@ -64,10 +63,11 @@ export default class AddFile extends React.Component {
           console.log(info.file, info.fileList)
         }
         if (status === 'done') {
+          console.log(info)
           const response = info.file.response
 
           form.setFieldsValue({
-            [urlType]: response.url
+            [urlType]: response.databody.url
           })
           message.success(`${info.file.name} file uploaded successfully.`)
         } else if (status === 'error') {
