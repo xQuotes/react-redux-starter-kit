@@ -162,7 +162,12 @@ export default class CaculatorStore extends Store {
         })
       } else {
         this.item = []
-        this.projects = data.databody || []
+        if (data.databody) {
+          this.projects = data.databody
+          this.getFormulaServer({
+            formulaId: data.databody[0].id
+          })
+        }
       }
     })
   }

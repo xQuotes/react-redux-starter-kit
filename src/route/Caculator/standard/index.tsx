@@ -46,7 +46,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
     const { caculatorStore, form } = this.props
     const { item, selectMapItem, results, projects } = caculatorStore
     const { getFieldDecorator } = form
-
+    console.log(projects)
     return (
       <Row className="standard">
         <Col span={14}>
@@ -61,24 +61,24 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
         <Col span={9} offset={1}>
           <h3>您已选择： {selectMapItem.name}</h3>
           {projects.length > 0 && (
-            <FormItem colon={false} {...formItemLayout} label={'计算项'}>
+            <FormItem colon={false} {...formItemLayout} label={'咨询项目'}>
               <Select
                 onChange={id => {
+                  console.log(id)
                   caculatorStore.setSelectMapItem(
                     caculatorStore.selectMapItem,
                     caculatorStore.itemType,
                     id
                   )
                 }}
+                defaultValue={projects[0].id}
                 style={{
                   width: '100%'
                 }}
               >
                 {projects.map((v: any, k: any) => {
                   return (
-                    <Option
-                      value={v.id}
-                    >{`${v.formulaName}(${v.standardName})`}</Option>
+                    <Option value={v.id} key={k}>{`${v.formulaName}`}</Option>
                   )
                 })}
               </Select>
@@ -105,7 +105,11 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                             {JSON.parse(
                               val.presetValue
                             ).list.map((v: any, k: any) => {
-                              return <Option value={v.title}>{v.title}</Option>
+                              return (
+                                <Option value={v.title} key={k}>
+                                  {v.title}
+                                </Option>
+                              )
                             })}
                           </Select>
                         ) : (
