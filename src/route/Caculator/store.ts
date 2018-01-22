@@ -101,12 +101,14 @@ export default class CaculatorStore extends Store {
       method: 'post'
     }).then((data: any) => {
       if (data.databody.noresult) {
+        this.projects = []
         this.item = []
         Modal.error({
           title: '',
           content: data.databody.noresult
         })
       } else {
+        this.projects = []
         this.item = data.databody || []
       }
     })

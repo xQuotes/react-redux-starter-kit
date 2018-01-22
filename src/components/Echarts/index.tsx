@@ -77,7 +77,8 @@ export default class EchartsComponent extends React.Component<any, {}> {
     const { data } = param
     console.log(store.itemType)
     if (store.itemType) {
-      alert('该计算器是全国范围的')
+      store.setSelectMapItem(data, store.itemType)
+      // alert('该计算器是全国范围的')
     } else {
       store.setSelectMapItem(data, store.itemType)
     }
