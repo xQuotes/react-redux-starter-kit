@@ -8,6 +8,8 @@ export default {
   701: '/api/supervise/projectmanagement',
   801: '/api/supervise/projectmanagement',
   901: '/api/supervise/projectmanagement',
+  110: '/api/supervise/projectmanagement',
+  120: '/api/supervise/projectmanagement',
   // 造价计算器
-  111: '/api/cost/getprojectcost'
+  9: '/api/cost/getprojectcost'
 }
