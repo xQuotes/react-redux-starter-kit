@@ -20,7 +20,7 @@ export default function fetching(action: any) {
     headers: {
       AuthToken: '' //Auth.getAuthCookie('UserIfosSession') || ''
     },
-    data: JSON.stringify(action.data),
+    data: queryString.stringify(action.data),
     type: 'json',
     success: (res: any) => {
       if (res.code <= 0) {
@@ -56,7 +56,6 @@ export default function fetching(action: any) {
     }
   })
 }
-
 
 export function fetchs(action: {
   url: string

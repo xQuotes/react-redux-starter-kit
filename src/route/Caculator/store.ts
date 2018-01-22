@@ -59,7 +59,7 @@ export default class CaculatorStore extends Store {
 
   @action
   getResults(formData: any, params: object = {}) {
-    let url = RApi[this.itemType]
+    let url = RApi[this.itemType] || RApi[111]
     return Fetch({
       url,
       data: formData,
