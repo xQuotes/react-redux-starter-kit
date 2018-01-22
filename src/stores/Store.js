@@ -4,8 +4,8 @@ import Fetch from 'Fetch'
 import Api from 'Api'
 import Auth from 'Auth'
 import { errorAlert } from 'Utils'
-// import queryString from 'query-string'
-const queryString = JSON
+import queryString from 'query-string'
+// const queryString = JSON
 import 'Arr'
 
 export default class Store {
