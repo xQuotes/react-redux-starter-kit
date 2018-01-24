@@ -68,8 +68,12 @@ const earch = [
     id: '023'
   },
   {
+    name: '河北',
+    value: '0310'
+  },
+  {
     label: '内蒙古',
-    id: ' 0470'
+    id: '0470'
   },
   {
     label: '宁夏',
@@ -104,7 +108,7 @@ const earch = [
     id: '024'
   },
   {
-    label: '青海 ',
+    label: '青海',
     id: '0971'
   },
   {

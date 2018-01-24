@@ -10,10 +10,68 @@ export default class Addrate extends React.Component {
   }
 
   render() {
-    const { rateStore } = this.props
+    const {
+      rateStore,
+      location: { query: { type, code: areaCode, formulaId } }
+    } = this.props
+
     const paramsData = rateStore.params
     const rate = rateStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(rateStore.updateFields, (v, k) => {
+      if (k === 'areaCode') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            disabled: !!areaCode,
+            fieldOptions: {
+              initialValue: rate[k] || areaCode,
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请选择${v}`
+          }
+        )
+      }
+
+      if (k === 'type') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            disabled: !!type,
+            fieldOptions: {
+              initialValue: rate[k] || type,
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请选择${v}`
+          }
+        )
+      }
+
+      if (k === 'formulaId') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            disabled: true,
+            fieldOptions: {
+              initialValue: rate[k] || formulaId,
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请选择${v}`
+          }
+        )
+      }
+
       return _.assign(
         {},
         {

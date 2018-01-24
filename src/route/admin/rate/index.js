@@ -33,7 +33,7 @@ export default class rates extends React.Component {
           downloadCSV={Api.downloadrateCSV}
           funcEnName={'rate'}
         />
-        <AddrateModal />
+        <AddrateModal {...this.props} />
       </div>
     )
   }
