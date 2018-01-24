@@ -46,7 +46,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
     const { caculatorStore, form } = this.props
     const { item, selectMapItem, results, projects } = caculatorStore
     const { getFieldDecorator } = form
-    console.log(projects)
+
     return (
       <Row className="standard">
         <Col span={14}>
@@ -64,7 +64,6 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
             <FormItem colon={false} {...formItemLayout} label={'咨询项目'}>
               <Select
                 onChange={id => {
-                  console.log(id)
                   caculatorStore.setSelectMapItem(
                     caculatorStore.selectMapItem,
                     caculatorStore.itemType,
@@ -88,9 +87,28 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
             {item
               .filter((v: any) => v.tableType === 1)
               .map((val: any, key: string) => {
+                const addonAfter = () => {
+                  return val.contentType === 'select' ? (
+                    <Button
+                      type="primary"
+                      onClick={() => {
+                        caculatorStore.presetItemKey = val.itemKey
+                        caculatorStore.presetValue = JSON.parse(val.presetValue)
+                        caculatorStore.presetVisible = true
+                      }}
+                    >
+                      点击选择
+                    </Button>
+                  ) : val.unit === '无' ? (
+                    ''
+                  ) : (
+                    val.unit
+                  )
+                }
+
                 return (
                   <FormItem
-                    key={val.id}
+                    key={key}
                     colon={false}
                     {...formItemLayout}
                     label={val.item}
@@ -113,28 +131,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                             })}
                           </Select>
                         ) : (
-                          <Input
-                            addonAfter={
-                              val.contentType === 'select' ? (
-                                <Button
-                                  type="primary"
-                                  onClick={() => {
-                                    caculatorStore.presetItemKey = val.itemKey
-                                    caculatorStore.presetValue = JSON.parse(
-                                      val.presetValue
-                                    )
-                                    caculatorStore.presetVisible = true
-                                  }}
-                                >
-                                  点击选择
-                                </Button>
-                              ) : val.unit === '无' ? (
-                                ''
-                              ) : (
-                                val.unit
-                              )
-                            }
-                          />
+                          <Input addonAfter={addonAfter()} />
                         )
                       )}
                     </div>
