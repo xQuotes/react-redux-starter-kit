@@ -6,7 +6,7 @@ import { Button } from 'antd'
 @observer
 export default class CaculatorNav extends React.Component<any, any> {
   render() {
-    const { caculatorStore } = this.props
+    const { caculatorStore, history } = this.props
     const { list: caculator, itemType } = caculatorStore
 
     return (
@@ -16,6 +16,8 @@ export default class CaculatorNav extends React.Component<any, any> {
             type="primary"
             className="btn-group-item"
             onClick={() => {
+              history.location.search = ''
+
               caculatorStore.setSelectMapItem(
                 {
                   name: '全国',
@@ -31,6 +33,8 @@ export default class CaculatorNav extends React.Component<any, any> {
           <Button
             className="btn-group-item"
             onClick={() => {
+              history.location.search = ''
+
               caculatorStore.setSelectMapItem(
                 {
                   name: '全国',
@@ -50,6 +54,8 @@ export default class CaculatorNav extends React.Component<any, any> {
               type="primary"
               className="btn-group-item"
               onClick={() => {
+                history.location.search = `?type=${v.type}`
+
                 caculatorStore.setSelectMapItem(
                   {
                     name: '全国',
@@ -66,6 +72,8 @@ export default class CaculatorNav extends React.Component<any, any> {
               key={v.id}
               className="btn-group-item"
               onClick={() => {
+                history.location.search = `?type=${v.type}`
+                console.log(history.location.search)
                 caculatorStore.setSelectMapItem(
                   {
                     name: '全国',

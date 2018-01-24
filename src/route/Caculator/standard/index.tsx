@@ -108,7 +108,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
 
                 return (
                   <FormItem
-                    key={key}
+                    key={val.itemKey}
                     colon={false}
                     {...formItemLayout}
                     label={val.item}
@@ -154,7 +154,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
               .map((val: any, key: string) => {
                 return (
                   <FormItem
-                    key={key}
+                    key={val.itemKey}
                     colon={false}
                     {...formItemLayout}
                     label={val.item}
