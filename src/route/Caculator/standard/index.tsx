@@ -154,7 +154,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
               .map((val: any, key: string) => {
                 return (
                   <FormItem
-                    key={val.id}
+                    key={key}
                     colon={false}
                     {...formItemLayout}
                     label={val.item}
