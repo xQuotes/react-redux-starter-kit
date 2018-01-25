@@ -21,7 +21,7 @@ export default class EchartsComponent extends React.Component<any, {}> {
         show: true,
         formatter: function(params: { value: string; name: string }) {
           if (params.value) {
-            return params.name + '<br />' + mapData[params.value].value
+            return params.name // + '<br />' + mapData[params.value].value
           } else {
             return null
           }
