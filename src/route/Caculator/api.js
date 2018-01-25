@@ -5,7 +5,7 @@ export default {
   401: '/api/supervise/projectmanagement',
   501: '/api/supervise/projectmanagement',
   601: '/api/supervise/projectmanagement',
-  701: '/api/supervise/projectmanagement',
+  701: '/api/supervise/projectbefore',
   801: '/api/supervise/projectmanagement',
   901: '/api/supervise/projectmanagement',
   110: '/api/supervise/projectmanagement',
