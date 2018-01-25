@@ -24,7 +24,10 @@ export default class rates extends React.Component {
     }
   }
   render() {
-    const bcData = ['首页', '计算器管理', '列表']
+    const {
+      location: { query: { type, areaCode, path: urlPath } }
+    } = this.props
+    const bcData = ['首页', '计算公式', urlPath]
     return (
       <div className="switches-network">
         <FuncList

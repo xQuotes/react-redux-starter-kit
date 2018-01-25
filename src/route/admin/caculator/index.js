@@ -8,11 +8,19 @@ import FuncList from '../../components/switches/commonInfoList'
 import AddCaculatorModal from './add'
 import JSONView from '../../components/jsonview/edit'
 
-var actions = ({ type }) => {
+var actions = ({ type, calculatorName }) => {
   return (
     <span>
-      <Link to={`${Url.tableList}?type=${type}&code=001`}>计算器列表</Link>
-      <Link to={`${Url.formulaList}?type=${type}&code=001`}>计算器公式</Link>
+      <Link
+        to={`${Url.tableList}?type=${type}&code=001&path=${calculatorName}`}
+      >
+        计算器列表
+      </Link>
+      <Link
+        to={`${Url.formulaList}?type=${type}&code=001&path=${calculatorName}`}
+      >
+        计算器公式
+      </Link>
     </span>
   )
 }
@@ -29,7 +37,7 @@ export default class Caculators extends React.Component {
     })
   }
   render() {
-    const bcData = ['首页', '计算器管理', '列表']
+    const bcData = ['首页', '计算器管理', '计算器类型']
     const { caculatorStore } = this.props
     const { fields } = caculatorStore
 

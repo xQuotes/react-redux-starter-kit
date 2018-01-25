@@ -93,8 +93,8 @@ export default class Tables extends React.Component {
     }
   }
   render() {
-    const bcData = ['首页', '计算器管理', '列表']
-    const { tableStore, presetStore } = this.props
+    const { tableStore, presetStore, location: { query } } = this.props
+    const bcData = ['首页', '计算器', query.path]
     const { fields } = tableStore
 
     const tableHeader = _.map(fields, (v, k) => {

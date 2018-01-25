@@ -79,7 +79,9 @@ export default class Mapdatas extends React.Component {
           actions={record => {
             return (
               <div>
-                <Link to={`${Url.projectList}?areaCode=${record.id}&type=${1}`}>
+                <Link
+                  to={`${Url.projectList}?areaCode=${record.id}&type=${1}&path=${record.label}`}
+                >
                   计算器项目
                 </Link>
                 {/* <Link
