@@ -23,6 +23,7 @@ export default class CaculatorNav extends React.Component<any, any> {
                   name: '全国',
                   value: 0
                 },
+                '',
                 ''
               )
             }}
@@ -40,6 +41,7 @@ export default class CaculatorNav extends React.Component<any, any> {
                   name: '全国',
                   value: 0
                 },
+                '',
                 ''
               )
             }}
@@ -61,7 +63,8 @@ export default class CaculatorNav extends React.Component<any, any> {
                     name: '全国',
                     value: 0
                   },
-                  v.type
+                  v.type,
+                  ''
                 )
               }}
             >
@@ -73,13 +76,14 @@ export default class CaculatorNav extends React.Component<any, any> {
               className="btn-group-item"
               onClick={() => {
                 history.location.search = `?type=${v.type}`
-                console.log(history.location.search)
+
                 caculatorStore.setSelectMapItem(
                   {
                     name: '全国',
                     value: 0
                   },
-                  v.type
+                  v.type,
+                  ''
                 )
               }}
             >
