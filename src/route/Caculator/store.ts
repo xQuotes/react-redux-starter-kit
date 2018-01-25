@@ -18,6 +18,7 @@ export default class CaculatorStore extends Store {
   @observable presetValue = {}
   @observable results = {}
   @observable presetVisible = false
+  @observable formulaId = ''
 
   @observable
   selectMapItem = {
@@ -199,5 +200,7 @@ export default class CaculatorStore extends Store {
     this.selectMapItem = data
 
     this.itemType = type
+
+    this.formulaId = formulaId
   }
 }

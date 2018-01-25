@@ -31,6 +31,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
 
         caculatorStore.getResults({
           ...values,
+          formulaId: caculatorStore.formulaId,
           calculatorType: caculatorStore.itemType
         })
       }
