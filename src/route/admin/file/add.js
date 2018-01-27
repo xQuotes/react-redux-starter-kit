@@ -103,7 +103,11 @@ export default class AddFile extends React.Component {
                   <Option value="detailed">造价规范-清单</Option>
                   <Option value="quota">造价规范-定额</Option>
                   <Option value="tool">工具</Option>
-                  <Option value="cost">造价信息</Option>
+                  <Option value="costinformation">造价信息</Option>
+                  <Option value="laws">法律法规</Option>
+                  <Option value="standard">计算器费用计算标准</Option>
+                  <Option value="costindex">造价指标</Option>
+                  <Option value="laborcost">人工成本</Option>
                 </Select>
               )
             },

@@ -46,8 +46,6 @@ export default class AddCaculator extends React.Component {
                 val = {}
               }
 
-              console.log(caculator[k])
-
               return (
                 <JSONView
                   value={val}
@@ -55,15 +53,6 @@ export default class AddCaculator extends React.Component {
                   form={this.props.form}
                 />
               )
-              {
-                /*
-                  <Editor
-                    width="300px"
-                    height="300px"
-                    defaultValue={JSON.stringify(JSON.parse(caculator[k]), null, 2)} 
-                    mode="json" />
-                */
-              }
             },
             fieldOptions: {
               initialValue: caculator[k],
