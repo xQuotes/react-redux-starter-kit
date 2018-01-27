@@ -60,31 +60,37 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
           />
         </Col>
         <Col span={9} offset={1}>
-          <h3>您已选择： {selectMapItem.name}</h3>
-          {projects.length > 0 && (
-            <FormItem colon={false} {...formItemLayout} label={'咨询项目'}>
-              <Select
-                onChange={id => {
-                  caculatorStore.setSelectMapItem(
-                    caculatorStore.selectMapItem,
-                    caculatorStore.itemType,
-                    id
-                  )
-                }}
-                defaultValue={projects[0].id}
-                style={{
-                  width: '100%'
-                }}
-              >
-                {projects.map((v: any, k: any) => {
-                  return (
-                    <Option value={v.id} key={k}>{`${v.formulaName}`}</Option>
-                  )
-                })}
-              </Select>
-            </FormItem>
-          )}
           <Form onSubmit={this.handleSubmit}>
+            <h3>您已选择： {selectMapItem.name}</h3>
+            {projects.length > 0 && (
+              <FormItem colon={false} {...formItemLayout} label={'咨询项目'}>
+                {getFieldDecorator('formulaId', {
+                  initialValue: projects[0].id + ''
+                })(
+                  <Select
+                    onChange={id => {
+                      caculatorStore.setSelectMapItem(
+                        caculatorStore.selectMapItem,
+                        caculatorStore.itemType,
+                        id
+                      )
+                    }}
+                    style={{
+                      width: '100%'
+                    }}
+                  >
+                    {projects.map((v: any, k: any) => {
+                      return (
+                        <Option
+                          value={v.id}
+                          key={k}
+                        >{`${v.formulaName}`}</Option>
+                      )
+                    })}
+                  </Select>
+                )}
+              </FormItem>
+            )}
             {item
               .filter((v: any) => v.tableType === 1)
               .map((val: any, key: string) => {
@@ -148,46 +154,48 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                 计算结果
               </Button>
             </FormItem>
-          </Form>
-          <div>
-            {item
-              .filter((v: any) => v.tableType === 2)
-              .map((val: any, key: string) => {
-                return (
-                  <FormItem
-                    key={val.itemKey}
-                    colon={false}
-                    {...formItemLayout}
-                    label={val.item}
-                  >
-                    <div>
-                      {getFieldDecorator(val.itemKey, {
-                        initialValue: results[val.itemKey]
-                      })(
-                        <Input addonAfter={val.unit === '无' ? '' : val.unit} />
-                      )}
+            <div>
+              {item
+                .filter((v: any) => v.tableType === 2)
+                .map((val: any, key: string) => {
+                  return (
+                    <FormItem
+                      key={val.itemKey}
+                      colon={false}
+                      {...formItemLayout}
+                      label={val.item}
+                    >
+                      <div>
+                        {getFieldDecorator(val.itemKey, {
+                          initialValue: results[val.itemKey]
+                        })(
+                          <Input
+                            addonAfter={val.unit === '无' ? '' : val.unit}
+                          />
+                        )}
 
-                      {val.contentType === 'select' ? (
-                        <Button
-                          type="primary"
-                          onClick={() => {
-                            caculatorStore.presetItemKey = val.itemKey
-                            caculatorStore.presetValue = JSON.parse(
-                              val.presetValue
-                            )
-                            caculatorStore.presetVisible = true
-                          }}
-                        >
-                          点击选择
-                        </Button>
-                      ) : (
-                        ''
-                      )}
-                    </div>
-                  </FormItem>
-                )
-              })}
-          </div>
+                        {val.contentType === 'select' ? (
+                          <Button
+                            type="primary"
+                            onClick={() => {
+                              caculatorStore.presetItemKey = val.itemKey
+                              caculatorStore.presetValue = JSON.parse(
+                                val.presetValue
+                              )
+                              caculatorStore.presetVisible = true
+                            }}
+                          >
+                            点击选择
+                          </Button>
+                        ) : (
+                          ''
+                        )}
+                      </div>
+                    </FormItem>
+                  )
+                })}
+            </div>
+          </Form>
         </Col>
         <CaculatorModal onChange={this.onChange} />
       </Row>
