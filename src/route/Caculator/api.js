@@ -10,7 +10,7 @@ export default {
   901: '/api/supervise/projectmanagement',
   110: '/api/supervise/projectmanagement',
   112: '/api/supervise/projectinvestigate',
-  120: '/supervise/projectconservation',
+  120: '/api/supervise/projectconservation',
   // 造价计算器
   9: '/api/cost/getprojectcost'
 }
