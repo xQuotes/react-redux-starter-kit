@@ -12,12 +12,16 @@ var actions = ({ type, areaCode, id, formulaName }) => {
   return (
     <span>
       <Link
-        to={`${Url.tableList}?type=${1}&code=${areaCode}&formulaId=${id}&path=${formulaName}`}
+        to={`${Url.tableList}?type=${1}&code=${areaCode}&formulaId=${id}&path=${encodeURIComponent(
+          formulaName
+        )}`}
       >
         计算器列表
       </Link>
       <Link
-        to={`${Url.rateList}?type=${1}&code=${areaCode}&formulaId=${id}&path=${formulaName}`}
+        to={`${Url.rateList}?type=${1}&code=${areaCode}&formulaId=${id}&path=${encodeURIComponent(
+          formulaName
+        )}`}
       >
         计算器公式
       </Link>
