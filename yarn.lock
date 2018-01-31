@@ -60,6 +60,10 @@
   version "8.0.17"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.17.tgz#677bc8c118cfb76013febb62ede1f31d2c7222a1"
 
+"@types/pdfobject@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@types/pdfobject/-/pdfobject-2.0.6.tgz#67da3ce9663f93e15bcfa0d4ecea2169091ece1a"
+
 "@types/query-string@^5.0.1":
   version "5.0.1"
   resolved "http://registry.npm.taobao.org/@types/query-string/download/@types/query-string-5.0.1.tgz#6cb41c724cb1644d56c2d1dae7c7b204e706b39e"
@@ -4688,7 +4692,7 @@ pbkdf2@^3.0.3:
 
 pdfobject@^2.0.201604172:
   version "2.0.201604172"
-  resolved "http://registry.npm.taobao.org/pdfobject/download/pdfobject-2.0.201604172.tgz#112edf93b98be121a5e780b06e7f5f78ad31ab3f"
+  resolved "https://registry.yarnpkg.com/pdfobject/-/pdfobject-2.0.201604172.tgz#112edf93b98be121a5e780b06e7f5f78ad31ab3f"
 
 performance-now@^0.2.0:
   version "0.2.0"
@@ -5546,9 +5550,9 @@ react-app-rewire-less@^2.0.4:
     less "^2.7.2"
     less-loader "^4.0.3"
 
-react-app-rewired@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-1.4.0.tgz#58186dde172b06d5933fcb39268feb8f3f8bcc58"
+react-app-rewired@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-1.4.1.tgz#e4cca962590a9893710664728bb5ee02f3976dbe"
   dependencies:
     cross-spawn "^5.1.0"
     dotenv "^4.0.0"

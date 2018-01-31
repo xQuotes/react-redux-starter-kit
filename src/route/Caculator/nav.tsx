@@ -23,7 +23,7 @@ export default class CaculatorNav extends React.Component<any, any> {
                   name: '全国',
                   value: 0
                 },
-                '',
+                '11',
                 ''
               )
             }}
@@ -41,7 +41,7 @@ export default class CaculatorNav extends React.Component<any, any> {
                   name: '全国',
                   value: 0
                 },
-                '',
+                '11',
                 ''
               )
             }}
@@ -49,6 +49,40 @@ export default class CaculatorNav extends React.Component<any, any> {
             造价计算器
           </Button>
         )}
+        <Button
+          className="btn-group-item"
+          onClick={() => {
+            history.location.search = ''
+
+            caculatorStore.setSelectMapItem(
+              {
+                name: '全国',
+                value: 0
+              },
+              '13',
+              ''
+            )
+          }}
+        >
+          地质灾害计算器
+        </Button>
+        <Button
+          className="btn-group-item"
+          onClick={() => {
+            history.location.search = ''
+
+            caculatorStore.setSelectMapItem(
+              {
+                name: '全国',
+                value: 0
+              },
+              '12',
+              ''
+            )
+          }}
+        >
+          施工图计算器
+        </Button>
         {caculator.map((v: any, k: any) => {
           return v.type === itemType ? (
             <Button
