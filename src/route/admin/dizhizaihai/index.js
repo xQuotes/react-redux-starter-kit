@@ -5,27 +5,27 @@ import Api from 'Api'
 import Url from 'Url'
 
 import FuncList from '../../components/switches/commonInfoList'
-import AddMapdataModal from './add'
+import AddDizhizaihaiModal from './add'
 import JSONView from '../../components/jsonview/index'
 
-@inject('mapdataStore')
+@inject('dizhizaihaiStore')
 @observer
-export default class Mapdatas extends React.Component {
+export default class Dizhizaihais extends React.Component {
   constructor(props) {
     super(props)
   }
   componentWillMount() {
-    const { mapdataStore } = this.props
-    // mapdataStore.getServers({
+    const { dizhizaihaiStore } = this.props
+    // dizhizaihaiStore.getServers({
     //   type: 11
     // })
   }
   render() {
     const bcData = ['首页', '计算器管理', '列表']
-    const { mapdataStore } = this.props
-    const { fields } = mapdataStore
+    const { dizhizaihaiStore } = this.props
+    const { fields } = dizhizaihaiStore
 
-    const mapdataHeader = _.map(fields, (v, k) => {
+    const dizhizaihaiHeader = _.map(fields, (v, k) => {
       if (k === 'presetValue') {
         return {
           title: v,
@@ -71,18 +71,18 @@ export default class Mapdatas extends React.Component {
       <div className="switches-network">
         <FuncList
           rmAdd={true}
-          store={this.props.mapdataStore}
+          store={this.props.dizhizaihaiStore}
           bcData={bcData}
-          downloadCSV={Api.downloadMapdataCSV}
-          funcEnName={'mapdata'}
-          mapdataHeader={mapdataHeader}
+          downloadCSV={Api.downloadDizhizaihaiCSV}
+          funcEnName={'dizhizaihai'}
+          dizhizaihaiHeader={dizhizaihaiHeader}
           actions={record => {
             return (
               <div>
                 <Link
                   to={`${Url.projectList}?areaCode=${
                     record.id
-                  }&type=${11}&path=${record.label}`}
+                  }&type=${13}&path=${record.label}`}
                 >
                   计算器项目
                 </Link>
@@ -99,7 +99,7 @@ export default class Mapdatas extends React.Component {
           }}
           deleteAction={true}
         />
-        <AddMapdataModal />
+        <AddDizhizaihaiModal />
       </div>
     )
   }

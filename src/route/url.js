@@ -12,6 +12,10 @@ const Url = {
 
   mapdataList: `/${caculator}/mapdata/list`,
 
+  dizhizaihaiList: `/${caculator}/dizhizaihai/list`,
+
+  shigongtuList: `/${caculator}/shigongtu/list`,
+
   tableList: `/${caculator}/table/list`,
 
   rateList: `/${caculator}/rate/list`,

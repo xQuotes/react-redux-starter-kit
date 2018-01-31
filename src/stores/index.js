@@ -18,6 +18,10 @@ module.exports = {
   toolStore: require('../route/admin/tools/store')['default'].fromJS(),
   biddingStore: require('../route/admin/bidding/store')['default'].fromJS(),
   mapdataStore: require('../route/admin/mapdata/store')['default'].fromJS(),
+  dizhizaihaiStore: require('../route/admin/dizhizaihai/store')[
+    'default'
+  ].fromJS(),
+  shigongtuStore: require('../route/admin/shigongtu/store')['default'].fromJS(),
   QAStore: require('../route/admin/qa/store')['default'].fromJS(),
   /*file_append*/
 
