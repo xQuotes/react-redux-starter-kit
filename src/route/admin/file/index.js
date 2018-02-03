@@ -11,8 +11,16 @@ export default class Files extends React.Component {
   constructor(props) {
     super(props)
   }
-  componentWillMount() {
-    const { fileStore, location: { query: { typeName } } } = this.props
+  // componentWillMount() {
+  //   const { fileStore, location: { query: { typeName } } } = this.props
+  //   fileStore.getServers({
+  //     typeName,
+  //     putaway: '1',
+  //     type: '1' //类型 ：造价实例，造价指数，人工成本
+  //   })
+  // }
+  componentWillReceiveProps(nexrProps) {
+    const { fileStore, location: { query: { typeName } } } = nexrProps
     fileStore.getServers({
       typeName,
       putaway: '1',
