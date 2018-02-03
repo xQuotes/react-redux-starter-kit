@@ -73,23 +73,17 @@ export default class Index extends React.Component<any, any> {
           {item.fileName}
         </Col>
         <Col span={24} className="main-contain">
-          <html>
+          {/*<html>
             <head>
               <meta
                 http-equiv="Content-Type"
                 content="text/html; charset=GBK"
               />
             </head>
-            <body>
-              中间页，编码为gbk，明确指定了编码类型。帮助目标页确定编码
-              <iframe
-                src={item.url}
-                width="100%"
-                height="1000px"
-                frameBorder="0"
-              />
-            </body>
-          </html>
+            <body>*/}
+          <iframe src={item.url} width="100%" height="1000px" frameBorder="0" />
+          {/*</body>
+          </html>*/}
         </Col>
       </Row>
     )
