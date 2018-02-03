@@ -121,6 +121,9 @@ export default class CaculatorStore extends Store {
     let data = {
       formulaId: formData.formulaId
     }
+
+    this.formulaId = formData.formulaId
+
     return Fetch({
       url,
       data,
@@ -187,21 +190,24 @@ export default class CaculatorStore extends Store {
       this.getFormulaServer({
         formulaId
       })
+
+      this.formulaId = formulaId
     } else if (type === '11' || type === '12' || type === '13') {
       this.getProject({
         type,
         code: data.value
       })
+      this.selectMapItem = data
+
+      this.itemType = type
     } else {
       this.getServer({
         type,
         code: data.value
       })
+      this.selectMapItem = data
+
+      this.itemType = type
     }
-    this.selectMapItem = data
-
-    this.itemType = type
-
-    this.formulaId = formulaId
   }
 }

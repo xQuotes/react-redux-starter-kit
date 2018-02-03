@@ -1,4 +1,4 @@
-import { action } from 'mobx'
+import { action, observable } from 'mobx'
 
 import Store from '../../../stores/store'
 import Fetch from '../../../common/fetch'
@@ -13,6 +13,9 @@ export default class CaculatorStore extends Store {
     delete: ''
   }
 
+  @observable list = [] //dataSource.list.databody
+  @observable item = [] //dataSource.item.databody
+
   @action
   gets(formData: { typeName: string }) {
     return Fetch({
@@ -20,7 +23,7 @@ export default class CaculatorStore extends Store {
       data: formData,
       method: 'post'
     }).then(data => {
-      console.log(data)
+      this.list = data.databody
     })
   }
 }

@@ -13,7 +13,7 @@ const Api = {
   getMapdatas: `${api}/mapdata/list`,
   getMapdata: `${api}/mapdata/tail`,
 
-  getStandard: `${api}/api/file/list`
+  getStandard: `${api}/file/list`
 }
 
 export default Api
