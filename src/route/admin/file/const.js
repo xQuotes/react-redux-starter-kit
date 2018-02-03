@@ -6,7 +6,8 @@ export const typeNameConst = {
   costinformation: '造价信息',
   laws: '法律法规',
   standard: '计算器费用计算标准',
-  costindex: '造价指标',
+  costexample: '造价实例',
+  costindex: '造价指数',
   laborcost: '人工成本'
 }
 
