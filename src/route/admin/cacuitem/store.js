@@ -14,6 +14,7 @@ export default class ProjectStore extends Store {
     formulaName: '计算项名称',
     areaCode: '地区区号',
     areaName: '地区名称',
+    type: '计算器类型',
     standardName: '标准名称',
     updateTime: '更新时间'
   }

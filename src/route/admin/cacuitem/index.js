@@ -102,7 +102,7 @@ export default class Caculators extends React.Component {
           projectHeader={projectHeader}
           actions={actions}
         />
-        <AddCaculatorModal />
+        <AddCaculatorModal {...this.props} />
       </div>
     )
   }

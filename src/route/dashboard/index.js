@@ -8,6 +8,8 @@ const SubMenu = Menu.SubMenu
 import Img from 'Img'
 import './dashboard.less'
 
+import { typeNameConst } from '../admin/file/const'
+
 import Url from 'Url'
 import Auth from 'Auth'
 
@@ -182,11 +184,16 @@ export default class Dashboard extends React.Component {
                 </span>
               }
             >
-              <Menu.Item key={`${Url.fileList}`}>
-                <Link to={`${Url.fileList}`}>
-                  <Icon type="appstore-o" />文件列表
-                </Link>
-              </Menu.Item>
+              {_.map(typeNameConst, (val, key) => {
+                return (
+                  <Menu.Item key={`${Url.fileList}?typeName=${key}`}>
+                    <Link to={`${Url.fileList}?typeName=${key}`}>
+                      <Icon type="appstore-o" />
+                      {val}
+                    </Link>
+                  </Menu.Item>
+                )
+              })}
             </SubMenu>
             <SubMenu
               key="sub2"
@@ -294,9 +301,7 @@ export default class Dashboard extends React.Component {
               <div style={{ height: '100%' }}>{this.props.children}</div>
             </div>
           </div>
-          <div className="ant-layout-footer">
-            ifeng.com 版权所有 © 2016 凤凰网运维中心
-          </div>
+          <div className="ant-layout-footer">ifeng.com 版权所有 © 2016 凤凰网运维中心</div>
         </div>
       </div>
     )

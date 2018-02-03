@@ -12,8 +12,9 @@ export default class Files extends React.Component {
     super(props)
   }
   componentWillMount() {
-    const { fileStore } = this.props
+    const { fileStore, location: { query: { typeName } } } = this.props
     fileStore.getServers({
+      typeName,
       putaway: '1',
       type: '1' //类型 ：造价实例，造价指数，人工成本
     })

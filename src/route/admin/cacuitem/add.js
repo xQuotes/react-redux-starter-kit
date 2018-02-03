@@ -23,13 +23,70 @@ export default class AddCaculator extends React.Component {
   }
 
   render() {
-    const { projectStore, areaCode } = this.props
+    const {
+      projectStore,
+      location: { query: { type, areaCode, path: areaName } }
+    } = this.props
     const options = {
       selectOnLineNumbers: true
     }
     const paramsData = projectStore.params
     const project = projectStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(projectStore.updateFields, (v, k) => {
+      if (k === 'areaCode') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            disabled: !!areaCode,
+            fieldOptions: {
+              initialValue: project[k] || areaCode,
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请选择${v}`
+          }
+        )
+      }
+
+      if (k === 'areaName') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            disabled: !!areaName,
+            fieldOptions: {
+              initialValue: project[k] || areaName,
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请选择${v}`
+          }
+        )
+      }
+
+      if (k === 'type') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            disabled: !!type,
+            fieldOptions: {
+              initialValue: project[k] || type,
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请选择${v}`
+          }
+        )
+      }
+
       if (k === 'presetValue') {
         return _.assign(
           {},

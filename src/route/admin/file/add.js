@@ -1,8 +1,13 @@
 import { Select, Upload, Icon, message, Input } from 'antd'
+const Option = Select.Option
 import { inject, observer } from 'mobx-react'
 const Dragger = Upload.Dragger
 import AddForm from '../../components/switches/commonInfoAdd'
 import ReactQuill from '../../components/edit/index'
+
+import _ from 'lodash'
+
+import { typeNameConst, urlTypeConst } from './const'
 
 @inject('fileStore')
 @observer
@@ -54,7 +59,6 @@ export default class AddFile extends React.Component {
       onChange(info) {
         const status = info.file.status
         console.log(info)
-        info.file.name = type + '_' + info.file.name
         if (urlType === 'url') {
           form.setFieldsValue({
             fileName: info.file.name
@@ -82,7 +86,30 @@ export default class AddFile extends React.Component {
     const paramsData = fileStore.params
     const file = fileStore.list.getById(paramsData.id) || {}
     let formDataTitileServer = _.map(fileStore.updateFields, (v, k) => {
-      console.log(file[k], this.state.type)
+      if (k === 'urlType') {
+        return _.assign(
+          {},
+          {
+            name: k,
+            label: v,
+            formType: 'select',
+            optionData: _.map(urlTypeConst, (v, k) => {
+              return {
+                id: k,
+                value: v
+              }
+            }),
+            fieldOptions: {
+              initialValue: file[k],
+              rules: [
+                // { required: true, whitespace: true, message: '请输入主机名' }
+              ]
+            },
+            placeholder: `请输入${v}`
+          }
+        )
+      }
+
       if (k === 'typeName') {
         return _.assign(
           {},
@@ -100,15 +127,13 @@ export default class AddFile extends React.Component {
                     })
                   }}
                 >
-                  <Option value="case">自制案例</Option>
-                  <Option value="detailed">造价规范-清单</Option>
-                  <Option value="quota">造价规范-定额</Option>
-                  <Option value="tool">工具</Option>
-                  <Option value="costinformation">造价信息</Option>
-                  <Option value="laws">法律法规</Option>
-                  <Option value="standard">计算器费用计算标准</Option>
-                  <Option value="costindex">造价指标</Option>
-                  <Option value="laborcost">人工成本</Option>
+                  {_.map(typeNameConst, (v, k) => {
+                    return (
+                      <Option key={k} value={k}>
+                        {v}
+                      </Option>
+                    )
+                  })}
                 </Select>
               )
             },
@@ -203,35 +228,6 @@ export default class AddFile extends React.Component {
             },
             fieldOptions: {
               initialValue: file[k],
-              rules: [
-                // { required: true, whitespace: true, message: '请输入主机名' }
-              ]
-            },
-            placeholder: `请输入${v}`
-          }
-        )
-      }
-
-      if (k === 'urlType') {
-        return _.assign(
-          {},
-          {
-            name: k,
-            label: v,
-            formType: 'component',
-            component: props => {
-              return (
-                <Select>
-                  <Option value="download">下载链接</Option>
-                  <Option value="link">跳转链接</Option>
-                  <Option value="html">描述html链接</Option>
-                  <Option value="pdf">描述pdf链接</Option>
-                  <Option value="content">内容描述</Option>
-                </Select>
-              )
-            },
-            fieldOptions: {
-              initialValue: file[k] || 'detailed',
               rules: [
                 // { required: true, whitespace: true, message: '请输入主机名' }
               ]
