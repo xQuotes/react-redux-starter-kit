@@ -1,8 +1,25 @@
 import * as React from 'react'
+import { inject, observer } from 'mobx-react'
 import { Row, Col, Button } from 'antd'
 import Echarts from '../../../components/Echarts/'
 
-export default class Standard extends React.Component<{}, {}> {
+@inject('standardStore')
+@observer
+export default class Standard extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props)
+
+    this.state = {
+      typeName: 'quota'
+    }
+  }
+  componentWillMount() {
+    const { standardStore } = this.props
+
+    standardStore.gets({
+      typeName: this.state.typeName
+    })
+  }
   render() {
     return (
       <Row className="main-standard">

@@ -63,7 +63,12 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
           <Form onSubmit={this.handleSubmit}>
             <h3>您已选择： {selectMapItem.name}</h3>
             {projects.length > 0 && (
-              <FormItem colon={false} {...formItemLayout} label={'咨询项目'}>
+              <FormItem
+                key={projects[0].id}
+                colon={false}
+                {...formItemLayout}
+                label={'咨询项目'}
+              >
                 {getFieldDecorator('formulaId', {
                   initialValue: projects[0].id + ''
                 })(

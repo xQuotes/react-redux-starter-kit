@@ -148,6 +148,7 @@ export default class CaculatorStore extends Store {
       }
     } else {
       data = {
+        areaCode: mapData[formData.code].value,
         type: '' + formData.type
       }
     }
@@ -181,12 +182,12 @@ export default class CaculatorStore extends Store {
     type: any,
     formulaId: any
   ) {
-    console.log(type, data)
+    console.log(type, data, formulaId)
     if (formulaId) {
       this.getFormulaServer({
         formulaId
       })
-    } else if (!type) {
+    } else if (type === '11' || type === '12' || type === '13') {
       this.getProject({
         type,
         code: data.value
