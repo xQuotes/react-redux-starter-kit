@@ -54,6 +54,7 @@ export default class AddFile extends React.Component {
       onChange(info) {
         const status = info.file.status
         console.log(info)
+        info.file.name = type + '_' + info.file.name
         if (urlType === 'url') {
           form.setFieldsValue({
             fileName: info.file.name
