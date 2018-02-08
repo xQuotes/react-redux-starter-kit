@@ -73,9 +73,12 @@ export default class EchartsComponent extends React.Component<any, {}> {
     return option
   }
   onChartClick = (param: any, echart: any) => {
-    const { store } = this.props
+    const { store, typeName } = this.props // componentType = 'guide'
     const { data } = param
-    console.log(store.itemType)
+    if (typeName) {
+      store.setSelectMapItem(data, typeName, store.componentType)
+      return
+    }
     if (store.itemType) {
       store.setSelectMapItem(data, store.itemType)
       // alert('该计算器是全国范围的')

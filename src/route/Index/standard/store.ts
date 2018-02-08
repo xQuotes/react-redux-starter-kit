@@ -15,15 +15,38 @@ export default class CaculatorStore extends Store {
 
   @observable list = [] //dataSource.list.databody
   @observable item = [] //dataSource.item.databody
+  @observable selectMapItem = {}
+  @observable typeName = ''
+  @observable componentType = 'guide'
 
   @action
-  gets(formData: { typeName: string }) {
+  gets(formData: { typeName: string; codeName: string }) {
     return Fetch({
       url: this.api.gets,
       data: formData,
       method: 'post'
     }).then(data => {
-      this.list = data.databody
+      if (data.databody.noresult) {
+        this.list = []
+      } else {
+        this.list = data.databody
+      }
+    })
+  }
+
+  @action
+  setSelectMapItem(
+    data: { name: string; value: number },
+    type: any,
+    componentType: string
+  ) {
+    this.selectMapItem = data
+    this.typeName = type
+    this.componentType = componentType
+
+    this.gets({
+      typeName: type,
+      codeName: data.name
     })
   }
 }

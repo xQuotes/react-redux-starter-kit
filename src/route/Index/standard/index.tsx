@@ -11,20 +11,24 @@ import './standard.less'
 export default class Standard extends React.Component<any, any> {
   constructor(props: any) {
     super(props)
-
-    this.state = {
-      typeName: 'quota'
-    }
   }
   componentWillMount() {
     const { standardStore } = this.props
 
-    standardStore.gets({
-      typeName: this.state.typeName,
-      name: '北京',
-      putaway: 1,
-      type: 1
-    })
+    // standardStore.gets({
+    //   typeName: this.state.typeName,
+    //   codeName: '北京',
+    //   putaway: 1,
+    //   type: 1
+    // })
+
+    standardStore.setSelectMapItem(
+      {
+        name: '北京'
+      },
+      'quota',
+      'guide'
+    )
   }
   render() {
     const { standardStore } = this.props
@@ -41,10 +45,13 @@ export default class Standard extends React.Component<any, any> {
               width: '550px',
               height: '550px'
             }}
+            componentType={standardStore.componentType}
+            typeName={standardStore.typeName}
+            store={standardStore}
           />
         </Col>
         <Col span={9} className="main-content">
-          <h3>新疆造价规范</h3>
+          <h3>{standardStore.selectMapItem.name}造价规范</h3>
           <Button.Group>
             <Button type="primary">定额</Button>
             <Button className="default">清单</Button>
@@ -57,8 +64,8 @@ export default class Standard extends React.Component<any, any> {
                     key={key}
                     to={{
                       pathname: '/guide',
-                      search: `?type=${this.state.typeName}&id=${val.id}`,
-                      state: { type: this.state.typeName, id: val.id }
+                      search: `?type=${standardStore.typeName}&id=${val.id}`,
+                      state: { type: standardStore.typeName, id: val.id }
                     }}
                   >
                     <Col className="main-content-col">{val.fileName}</Col>
