@@ -64,7 +64,7 @@ export default class CaculatorNav extends React.Component<any, any> {
             )
           }}
         >
-          地质灾害计算器
+          地质灾害评估收费计算器
         </Button>
         <Button
           className="btn-group-item"

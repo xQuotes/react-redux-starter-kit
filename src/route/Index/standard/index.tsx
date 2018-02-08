@@ -21,6 +21,7 @@ export default class Standard extends React.Component<any, any> {
 
     standardStore.gets({
       typeName: this.state.typeName,
+      name: '北京',
       putaway: 1,
       type: 1
     })

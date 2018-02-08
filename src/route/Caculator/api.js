@@ -13,5 +13,6 @@ export default {
   120: '/api/supervise/projectconservation',
   // 造价计算器
   11: '/api/cost/getprojectcost',
-  12: '/api/supervise/projectinvestigate'
+  12: '/api/supervise/projectinvestigate',
+  13: '/api/supervise/projectgeology'
 }
