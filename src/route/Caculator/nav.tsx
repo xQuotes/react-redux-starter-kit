@@ -66,6 +66,24 @@ export default class CaculatorNav extends React.Component<any, any> {
         >
           地质灾害评估收费计算器
         </Button>
+
+        <Button
+          className="btn-group-item"
+          onClick={() => {
+            history.location.search = ''
+
+            caculatorStore.setSelectMapItem(
+              {
+                name: '全国',
+                value: 0
+              },
+              '15',
+              ''
+            )
+          }}
+        >
+          水土保持计算器
+        </Button>
         <Button
           className="btn-group-item"
           onClick={() => {
