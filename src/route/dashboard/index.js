@@ -157,6 +157,12 @@ export default class Dashboard extends React.Component {
                 </Link>
               </Menu.Item>
 
+              <Menu.Item key={`${Url.shuitubaochiList}`}>
+                <Link to={`${Url.shuitubaochiList}`}>
+                  <Icon type="appstore-o" />水土保持计算器
+                </Link>
+              </Menu.Item>
+
               <Menu.Item key={`${Url.shigongtuList}`}>
                 <Link to={`${Url.shigongtuList}`}>
                   <Icon type="appstore-o" />施工图计算器

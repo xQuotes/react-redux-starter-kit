@@ -17,6 +17,7 @@ module.exports = {
         require('./caculator/route'), // 计算器类型
         require('./mapdata/route'), // 地图类型
         require('./dizhizaihai/route'), // 地图类型
+        require('./shuitubaochi/route'), // 地图类型
         require('./shigongtu/route'), // 地图类型
         require('./core/route'),
         require('./table/route'),

@@ -14,6 +14,8 @@ const Url = {
 
   dizhizaihaiList: `/${caculator}/dizhizaihai/list`,
 
+  shuitubaochiList: `/${caculator}/dizhizaihai/list`,
+
   shigongtuList: `/${caculator}/shigongtu/list`,
 
   tableList: `/${caculator}/table/list`,
