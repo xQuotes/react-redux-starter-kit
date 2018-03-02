@@ -1,51 +1,71 @@
 @import '../../style/const.less';
 
 .header {
-  .top {
-    width: 1000px;
+  height: 90px;
+  padding: 20px 0;
+  .header-main {
+    width: 1200px;
     margin: 0 auto;
-    height: 60px;
-    line-height: 60px;
+    display: flex;
+  }
+  .left {
+    // float: left;
+    line-height: 50px;
+    width: 120px;
+    font-size: 40px;
+    color: #2a8df2;
+  }
+  .right {
+    width: 160px;
+    // float: right;
     text-align: right;
-    .ant-btn-group > .ant-btn:first-child:not(:last-child) {
-      padding-right: 15px;
-    }
-    .ant-btn-group > .ant-btn:last-child:not(:first-child) {
-      padding-left: 15px;
+    .ant-btn {
+      width: 70px;
+      border-radius: 4px;
+      margin: 7px 5px;
+      // margin-right: 10px;
+      height: 34px;
+      font-size: 14px;
     }
   }
 
   .header-nav {
-    background-color: @primary-color;
-  }
-  .header-nav-main {
-    width: 1000px;
-    margin: 0 auto;
-    background-color: @primary-color;
-    border-color: @primary-color;
-    color: #eee;
+    flex: 1;
+    // background-color: @primary-color;
+    line-height: 50px;
 
-    .ant-menu-item {
-      font-size: 14px;
-      margin: 0 10px;
-      & > a {
-        color: #eee;
-        &:hover {
-          color: #fff;
+    .header-nav-main {
+      width: 700px;
+      margin: 0 auto;
+      // background-color: @primary-color;
+      border-color: #fff;
+      color: #666;
+
+      .ant-menu-item {
+        font-size: 16px;
+        margin: 0 10px;
+        & > a {
+          color: #666;
+          &:hover {
+            color: #2a8df2;
+          }
         }
-      }
-      &.ant-menu-item-selected {
-        color: #fff;
-        border-color: #fff;
-        &:hover {
-          border-color: #fff;
+        &.ant-menu-item-selected {
+          color: #2a8df2;
+          border-color: #2a8df2;
+          & > a {
+            color: #2a8df2;
+            &:hover {
+              border-color: #2a8df2;
+            }
+          }
         }
-      }
-      &.ant-menu-item-active {
-        color: #fff;
-        border-color: #fff;
-        &:hover {
-          border-color: #fff;
+        &.ant-menu-item-active {
+          color: #2a8df2;
+          border-color: #2a8df2;
+          &:hover {
+            border-color: #2a8df2;
+          }
         }
       }
     }
