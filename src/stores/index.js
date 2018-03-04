@@ -22,6 +22,9 @@ module.exports = {
     'default'
   ].fromJS(),
   shigongtuStore: require('../route/admin/shigongtu/store')['default'].fromJS(),
+  shuitubaochiStore: require('../route/admin/shuitubaochi/store')[
+    'default'
+  ].fromJS(),
   QAStore: require('../route/admin/qa/store')['default'].fromJS(),
   /*file_append*/
 
