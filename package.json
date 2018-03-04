@@ -43,7 +43,7 @@
     "ts-loader": "^2.3.7"
   },
   "scripts": {
-    "start": "BROWSER=none react-app-rewired start --scripts-version react-scripts-ts",
+    "start": "react-app-rewired start --scripts-version react-scripts-ts",
     "build": "react-app-rewired build --scripts-version react-scripts-ts",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
