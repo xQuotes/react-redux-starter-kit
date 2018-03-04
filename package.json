@@ -24,7 +24,7 @@
     "@types/react-router": "^4.0.15",
     "@types/react-router-dom": "^4.0.8",
     "@types/reqwest": "git+https://git@github.com/nozzlegear/reqwest.d.ts.git",
-    "antd": "2.12.2",
+    "antd": "^3.2.2",
     "babel-plugin-import": "^1.6.2",
     "echarts": "^3.7.2",
     "echarts-for-react": "github:yywork/echarts-for-react",

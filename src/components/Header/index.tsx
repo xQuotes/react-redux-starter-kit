@@ -29,31 +29,31 @@ export default class Header extends React.Component<any, {}> {
               mode="horizontal"
             >
               <Menu.Item key={Urls.aboutUs}>
-                <Link to={Urls.aboutUs}>
+                <Link to={Urls.index}>
                   <div className="header-en-title">ABOUT US</div>
                   <div className="header-zh-title">关于德仁</div>
                 </Link>
               </Menu.Item>
               <Menu.Item key={Urls.news}>
-                <Link to={Urls.news}>
+                <Link to={Urls.index}>
                   <div className="header-en-title">NEWS</div>
                   <div className="header-zh-title">德仁动态</div>
                 </Link>
               </Menu.Item>
               <Menu.Item key={Urls.coreBusiness}>
-                <Link to={Urls.coreBusiness}>
+                <Link to={Urls.index}>
                   <div className="header-en-title">CORE BUSINESS</div>
                   <div className="header-zh-title">核心业务</div>
                 </Link>
               </Menu.Item>
               <Menu.Item key={Urls.careers}>
-                <Link to={Urls.careers}>
+                <Link to={Urls.index}>
                   <div className="header-en-title">CAREERS</div>
                   <div className="header-zh-title">招贤纳士</div>
                 </Link>
               </Menu.Item>
               <Menu.Item key={Urls.contactsUs}>
-                <Link to={Urls.contactsUs}>
+                <Link to={Urls.index}>
                   <div className="header-en-title">CONTACTS US</div>
                   <div className="header-zh-title">联系我们</div>
                 </Link>
