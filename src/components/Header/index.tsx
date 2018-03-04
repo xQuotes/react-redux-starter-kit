@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Menu } from 'antd'
+import { Menu } from 'antd'
 
 import Urls from '../../common/url'
 
@@ -20,7 +20,7 @@ export default class Header extends React.Component<any, {}> {
     return (
       <div className="header">
         <div className="header-main">
-          <div className="left">夜猫</div>
+          <div className="left">德仁招聘</div>
           <div className="header-nav">
             <Menu
               className="header-nav-main"
@@ -28,38 +28,37 @@ export default class Header extends React.Component<any, {}> {
               selectedKeys={[path]}
               mode="horizontal"
             >
-              <Menu.Item key={Urls.index}>
-                <Link to={Urls.index}>首页</Link>
+              <Menu.Item key={Urls.aboutUs}>
+                <Link to={Urls.aboutUs}>
+                  <div className="header-en-title">ABOUT US</div>
+                  <div className="header-zh-title">关于德仁</div>
+                </Link>
               </Menu.Item>
-              <Menu.Item key={Urls.caculator}>
-                <Link to={Urls.caculator}>计算器</Link>
+              <Menu.Item key={Urls.news}>
+                <Link to={Urls.news}>
+                  <div className="header-en-title">NEWS</div>
+                  <div className="header-zh-title">德仁动态</div>
+                </Link>
               </Menu.Item>
-              <Menu.Item key={Urls.tools}>
-                <Link to={Urls.tools}>工具箱</Link>
+              <Menu.Item key={Urls.coreBusiness}>
+                <Link to={Urls.coreBusiness}>
+                  <div className="header-en-title">CORE BUSINESS</div>
+                  <div className="header-zh-title">核心业务</div>
+                </Link>
               </Menu.Item>
-              <Menu.Item key={Urls.guide}>
-                <Link to={Urls.guide}>造价规范</Link>
+              <Menu.Item key={Urls.careers}>
+                <Link to={Urls.careers}>
+                  <div className="header-en-title">CAREERS</div>
+                  <div className="header-zh-title">招贤纳士</div>
+                </Link>
               </Menu.Item>
-              <Menu.Item key={Urls.search}>
-                <Link to={Urls.search}>指标查询</Link>
-              </Menu.Item>
-              {/*<Menu.Item key={Urls.ask}>
-              <Link to={Urls.ask}>专业问答</Link>
-            </Menu.Item>*/}
-              <Menu.Item key={Urls.message}>
-                <Link to={Urls.message}>招投标法规</Link>
+              <Menu.Item key={Urls.contactsUs}>
+                <Link to={Urls.contactsUs}>
+                  <div className="header-en-title">CONTACTS US</div>
+                  <div className="header-zh-title">联系我们</div>
+                </Link>
               </Menu.Item>
             </Menu>
-          </div>
-          <div className="right">
-            <Link to={Urls.login}>
-              <Button type="primary">登录</Button>
-            </Link>
-            <Link to={Urls.register}>
-              <Button type="primary" ghost>
-                注册
-              </Button>
-            </Link>
           </div>
         </div>
       </div>

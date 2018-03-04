@@ -3,16 +3,22 @@
 .header {
   height: 90px;
   padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+
   .header-main {
-    width: 1200px;
+    width: 1000px;
     margin: 0 auto;
     display: flex;
+  }
+  .ant-menu {
+    line-height: initial;
+    padding: 10px;
   }
   .left {
     // float: left;
     line-height: 50px;
     width: 120px;
-    font-size: 40px;
+    font-size: 30px;
     color: #2a8df2;
   }
   .right {
@@ -32,11 +38,11 @@
   .header-nav {
     flex: 1;
     // background-color: @primary-color;
-    line-height: 50px;
 
     .header-nav-main {
-      width: 700px;
-      margin: 0 auto;
+      // width: 700px;
+      // margin: 0 auto;
+      margin-left: 40px;
       // background-color: @primary-color;
       border-color: #fff;
       color: #666;
@@ -44,6 +50,9 @@
       .ant-menu-item {
         font-size: 16px;
         margin: 0 10px;
+        .header-en-title {
+          font-size: 14px;
+        }
         & > a {
           color: #666;
           &:hover {

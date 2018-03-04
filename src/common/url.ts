@@ -1,8 +1,14 @@
 export default {
   index: '/index',
+
+  aboutUs: '/about-us',
+  news: '/news',
+  coreBusiness: '/core-business',
+  careers: '/careers',
+  contactsUs: '/contacts-us',
+
   caculator: '/caculator',
   tools: '/tools',
-  news: '/news',
   register: '/register',
   login: '/login',
   findPassword: '/findPassword',
