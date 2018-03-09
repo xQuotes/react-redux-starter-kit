@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Table } from 'antd'
-import { TableColumnConfig } from 'antd/lib/table/Table'
+import { ColumnProps } from 'antd/lib/table'
 
 interface IResult {
   key: string
@@ -9,7 +9,7 @@ interface IResult {
   result: number
 }
 
-const columns: TableColumnConfig<IResult>[] = [
+const columns: ColumnProps<IResult>[] = [
   {
     title: '计算器名称',
     dataIndex: 'name'
