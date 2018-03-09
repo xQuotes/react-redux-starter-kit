@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Row, Card } from 'antd'
-
+import './tools.less'
 const tools = [
   {
     label: '型钢理论重量',
@@ -82,7 +82,8 @@ export default class Index extends React.Component<{}, {}> {
                   margin: '8px',
                   textAlign: 'center',
                   backgroundColor: v.color,
-                  borderRadius: '50%'
+                  borderRadius: '50%',
+                  background:'url require(./bg1.png) no-repeat',
                 }}
               >
                 <div
