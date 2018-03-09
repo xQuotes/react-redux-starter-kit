@@ -75,14 +75,15 @@ export default class Index extends React.Component<{}, {}> {
         <Card noHovering>
           {tools.map((v, k) => (
             <a href={v.url} target={v.download ? '__blank' : '_self'}>
-              <Card.Grid
+              <Card.Grid 
                 style={{
                   width: '100px',
                   height: '100px',
                   margin: '8px',
                   textAlign: 'center',
                   backgroundColor: v.color,
-                  borderRadius: '50%'
+                  borderRadius: '50%',
+                  background: 'url(${require(./bg.png)}) no-repeat'
                 }}
               >
                 <div
