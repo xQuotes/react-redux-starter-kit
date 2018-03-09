@@ -2,8 +2,10 @@ import * as React from 'react'
 import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
 
-import EarchChart from './earth'
+// import EarchChart from './earth'
 import Content from './content'
+
+import Standard from '../Index/standard/index'
 
 export default class Caculator extends React.Component<{}, {}> {
   render() {
@@ -11,8 +13,8 @@ export default class Caculator extends React.Component<{}, {}> {
       <div>
         <Header {...this.props} />
         <div className="main-container">
-          <EarchChart />
-          <Content />
+          <Standard componentType="guide" />
+          <Content {...this.props} />
         </div>
         <Footer />
       </div>

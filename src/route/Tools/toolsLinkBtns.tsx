@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Row, Card } from 'antd'
-
+import './tools.less'
 const tools = [
   {
-    label: '型钢理论重量',
+    label: '型钢理论重量2',
     color: '#55c1bc',
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',

@@ -11,7 +11,9 @@ const Api = {
   getTable: `${api}/table/list`,
 
   getMapdatas: `${api}/mapdata/list`,
-  getMapdata: `${api}/mapdata/tail`
+  getMapdata: `${api}/mapdata/tail`,
+
+  getStandard: `${api}/file/list`
 }
 
 export default Api

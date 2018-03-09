@@ -21,7 +21,7 @@ export default class EchartsComponent extends React.Component<any, {}> {
         show: true,
         formatter: function(params: { value: string; name: string }) {
           if (params.value) {
-            return params.name + '<br />' + mapData[params.value].value
+            return params.name // + '<br />' + mapData[params.value].value
           } else {
             return null
           }
@@ -73,9 +73,12 @@ export default class EchartsComponent extends React.Component<any, {}> {
     return option
   }
   onChartClick = (param: any, echart: any) => {
-    const { store } = this.props
+    const { store, typeName } = this.props // componentType = 'guide'
     const { data } = param
-    console.log(store.itemType)
+    if (typeName) {
+      store.setSelectMapItem(data, typeName, store.componentType)
+      return
+    }
     if (store.itemType) {
       store.setSelectMapItem(data, store.itemType)
       // alert('该计算器是全国范围的')

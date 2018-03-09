@@ -6,6 +6,7 @@ import PDF from '../../components/PDF/'
 
 import ToolsLink from './toolsLink'
 
+import './tools.less'
 export default class Caculator extends React.Component<{}, {}> {
   render() {
     return (

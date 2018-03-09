@@ -40,6 +40,10 @@ const mapData = [
     value: '0431'
   },
   {
+    name: '河北',
+    value: '0310'
+  },
+  {
     name: '江苏',
     value: '025'
   },
@@ -104,7 +108,7 @@ const mapData = [
     value: '024'
   },
   {
-    name: '青海 ',
+    name: '青海',
     value: '0971'
   },
   {

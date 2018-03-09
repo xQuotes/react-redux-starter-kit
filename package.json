@@ -8,7 +8,7 @@
     "babel-plugin-import": "^1.2.1",
     "babel-preset-react-app": "^3.0.1",
     "react-app-rewire-less": "^2.0.4",
-    "react-app-rewired": "^1.4.0",
+    "react-app-rewired": "^1.4.1",
     "react-scripts-ts": "2.5.0"
   },
   "dependencies": {

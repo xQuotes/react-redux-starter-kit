@@ -18,6 +18,7 @@ export default class CaculatorStore extends Store {
   @observable presetValue = {}
   @observable results = {}
   @observable presetVisible = false
+  @observable formulaId = ''
 
   @observable
   selectMapItem = {
@@ -120,6 +121,9 @@ export default class CaculatorStore extends Store {
     let data = {
       formulaId: formData.formulaId
     }
+
+    this.formulaId = formData.formulaId
+
     return Fetch({
       url,
       data,
@@ -147,6 +151,7 @@ export default class CaculatorStore extends Store {
       }
     } else {
       data = {
+        areaCode: mapData[formData.code].value,
         type: '' + formData.type
       }
     }
@@ -180,24 +185,29 @@ export default class CaculatorStore extends Store {
     type: any,
     formulaId: any
   ) {
-    console.log(type, data)
+    console.log(type, data, formulaId)
     if (formulaId) {
       this.getFormulaServer({
         formulaId
       })
-    } else if (!type) {
+
+      this.formulaId = formulaId
+    } else if (type === '11' || type === '12' || type === '13') {
       this.getProject({
         type,
         code: data.value
       })
+      this.selectMapItem = data
+
+      this.itemType = type
     } else {
       this.getServer({
         type,
         code: data.value
       })
-    }
-    this.selectMapItem = data
+      this.selectMapItem = data
 
-    this.itemType = type
+      this.itemType = type
+    }
   }
 }
