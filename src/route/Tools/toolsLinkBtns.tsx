@@ -3,7 +3,7 @@ import { Row, Card } from 'antd'
 import './tools.less'
 const tools = [
   {
-    label: '型钢理论重量',
+    label: '型钢理论重量2',
     color: '#55c1bc',
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
@@ -75,7 +75,7 @@ export default class Index extends React.Component<{}, {}> {
         <Card noHovering>
           {tools.map((v, k) => (
             <a href={v.url} target={v.download ? '__blank' : '_self'}>
-              <Card.Grid
+              <Card.Grid 
                 style={{
                   width: '100px',
                   height: '100px',
@@ -83,7 +83,11 @@ export default class Index extends React.Component<{}, {}> {
                   textAlign: 'center',
                   backgroundColor: v.color,
                   borderRadius: '50%',
+<<<<<<< HEAD
                   background:'url require(./bg1.png) no-repeat',
+=======
+                  background: 'url(${require(./bg.png)}) no-repeat'
+>>>>>>> a4bf1d86aa48299d97e4900a2f850047b1e12521
                 }}
               >
                 <div
