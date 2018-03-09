@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Card, Tabs, Button, Row, Col, List } from 'antd'
+
 import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
 import MainCarousel from './carousel/index'
@@ -7,6 +8,7 @@ import MainCarousel from './carousel/index'
 const TabPane = Tabs.TabPane
 
 import './index.less'
+import 'react-alice-carousel/lib/alice-carousel.css'
 
 const data = [
   '德仁动态新闻动态新闻动态新闻动态新闻1',
@@ -14,6 +16,36 @@ const data = [
   '德仁动态新闻动态新闻动态新闻动态新闻22',
   '德仁动态新闻动态新闻动态新闻动态新闻',
   '德仁动态新闻动态新闻动态新闻动态新闻2'
+]
+
+const dataImg = [
+  {
+    url: 'http://www.jincaohr.com/Links/20122109572245258.jpg'
+  },
+  {
+    url: 'http://www.jincaohr.com/Links/20122109572245258.jpg'
+  },
+  {
+    url: 'http://www.jincaohr.com/Links/20122109572245258.jpg'
+  },
+  {
+    url: 'http://www.jincaohr.com/Links/20122109572245258.jpg'
+  },
+  {
+    url: 'http://www.jincaohr.com/Links/20122109572245258.jpg'
+  },
+  {
+    url: 'http://www.jincaohr.com/Links/20122109572245258.jpg'
+  },
+  {
+    url: 'http://www.jincaohr.com/Links/20122109572245258.jpg'
+  },
+  {
+    url: 'http://www.jincaohr.com/Links/20122109572245258.jpg'
+  },
+  {
+    url: 'http://www.jincaohr.com/Links/20122109572245258.jpg'
+  }
 ]
 
 export default class Hello extends React.Component<{}, {}> {
@@ -94,7 +126,35 @@ export default class Hello extends React.Component<{}, {}> {
               </Card>
             </Col>
           </Row>
+
+          <div
+            style={{
+              width: '100%',
+              overflowX: 'auto'
+            }}
+          >
+            <div
+              style={{
+                width: dataImg.length * 220 + 'px'
+              }}
+              className="image-item"
+            >
+              {dataImg.map((v, k) => {
+                return (
+                  <img
+                    src={v.url}
+                    key={k}
+                    style={{
+                      width: '200px',
+                      padding: '10px'
+                    }}
+                  />
+                )
+              })}
+            </div>
+          </div>
         </div>
+
         <Footer />
       </div>
     )
