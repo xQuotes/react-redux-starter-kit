@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Row, Card } from 'antd'
-import './tools.less'
 const tools = [
   {
     label: '型钢理论重量2',
@@ -8,6 +7,7 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
+    bg: require('./bg1.png'),
     download: true
   },
   {
@@ -16,6 +16,7 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
+    bg: require('./bg1-2.png'),
     download: true
   },
   {
@@ -24,6 +25,7 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
+    bg: require('./bg2-2.png'),
     download: true
   },
   {
@@ -32,6 +34,7 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
+    bg: require('./bg2.png'),
     download: true
   },
   {
@@ -40,6 +43,7 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
+    bg: require('./bg1-2.png'),
     download: true
   },
   {
@@ -48,6 +52,7 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
+    bg: require('./bg1-2.png'),
     download: true
   },
   {
@@ -56,6 +61,7 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
+    bg: require('./bg1-2.png'),
     download: true
   },
   {
@@ -64,6 +70,7 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/tools',
+    bg: require('./bg1-2.png'),
     download: false
   }
 ]
@@ -75,36 +82,26 @@ export default class Index extends React.Component<{}, {}> {
         <Card noHovering>
           {tools.map((v, k) => (
             <a href={v.url} target={v.download ? '__blank' : '_self'}>
-              <Card.Grid 
+              <Card.Grid className="t-tool"
                 style={{
-                  width: '100px',
-                  height: '100px',
-                  margin: '8px',
-                  textAlign: 'center',
-                  backgroundColor: v.color,
-                  borderRadius: '50%',
-<<<<<<< HEAD
-                  background:'url require(./bg1.png) no-repeat',
-=======
-                  background: 'url(${require(./bg.png)}) no-repeat'
->>>>>>> a4bf1d86aa48299d97e4900a2f850047b1e12521
+                  width: '126px',
+                  padding: '0 5px',
+                  border: 'none'
+                  /*  background: `url(${require('./bg1-2.png')}) no-repeat` */
                 }}
               >
                 <div
-                  className="custom-card"
+                  className="custom-card t-bg"
                   style={{
-                    height: '62px'
+                    background: `url(${v.bg}) no-repeat`
                   }}
                 >
-                  <h3
-                    style={{
-                      color: '#fff',
-                      padding: '6px 0'
-                    }}
-                  >
-                    {v.label}
-                  </h3>
+                
                 </div>
+                <h3 className="t-font"
+                >
+                  {v.label}
+                </h3>
               </Card.Grid>
             </a>
           ))}
