@@ -4,12 +4,25 @@
   background-color: #fff;
   border:none;
   margin:0 8px;
+  .t-bghover{
+    &:hover{
+     .t-bg{display:none} 
+     .t-bg2{display:block;}
+     .t-font{color:#008df2;font-family: 'Microsoft YaHei';
+    font-size:16px;padding:30px 0 0 6px;}
+    }
+  }
   .t-bg{
-     background:url('./bg1.png') 0 center no-repeat;
      width:60px;
      height:60px;
      margin:0 auto;
   }
+  .t-bg2{
+    width:60px;
+     height:60px;
+     margin:0 auto;
+     display:none;
+  }  
   .t-font{
     font-family: 'Microsoft YaHei';
     font-size:16px;

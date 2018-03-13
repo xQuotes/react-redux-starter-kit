@@ -8,6 +8,7 @@ const tools = [
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
     bg: require('./bg1.png'),
+    bg1: require('./bg1-2.png'),
     download: true
   },
   {
@@ -16,7 +17,8 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
-    bg: require('./bg1-2.png'),
+    bg: require('./bg2.png'),
+    bg1: require('./bg2-2.png'),
     download: true
   },
   {
@@ -25,7 +27,8 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
-    bg: require('./bg2-2.png'),
+    bg: require('./bg1.png'),
+    bg1: require('./bg1-2.png'),
     download: true
   },
   {
@@ -35,6 +38,7 @@ const tools = [
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
     bg: require('./bg2.png'),
+    bg1: require('./bg2-2.png'),
     download: true
   },
   {
@@ -43,7 +47,8 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
-    bg: require('./bg1-2.png'),
+    bg: require('./bg1.png'),
+    bg1: require('./bg1-2.png'),
     download: true
   },
   {
@@ -52,7 +57,8 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
-    bg: require('./bg1-2.png'),
+    bg: require('./bg2.png'),
+    bg1: require('./bg2-2.png'),
     download: true
   },
   {
@@ -61,7 +67,8 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/news/1',
-    bg: require('./bg1-2.png'),
+    bg: require('./bg1.png'),
+    bg1: require('./bg1-2.png'),
     download: true
   },
   {
@@ -70,7 +77,8 @@ const tools = [
     img:
       'http://www.bjjs.gov.cn/bjjs/uiFramework/commonResource/image/2016101417375494158.png',
     url: 'http://localhost:3000/tools',
-    bg: require('./bg1-2.png'),
+    bg: require('./bg2.png'),
+    bg1: require('./bg2-2.png'),
     download: false
   }
 ]
@@ -86,22 +94,31 @@ export default class Index extends React.Component<{}, {}> {
                 style={{
                   width: '126px',
                   padding: '0 5px',
-                  border: 'none'
-                  /*  background: `url(${require('./bg1-2.png')}) no-repeat` */
+                  border: 'none',
+                  boxShadow :'none'
                 }}
               >
+              <div className="t-bghover">
                 <div
                   className="custom-card t-bg"
                   style={{
                     background: `url(${v.bg}) no-repeat`
                   }}
                 >
-                
+                </div>
+                <div
+                    className="custom-card t-bg2"
+                    style={{
+                      background: `url(${v.bg1}) no-repeat`
+                    }}
+                  >
+
                 </div>
                 <h3 className="t-font"
                 >
                   {v.label}
                 </h3>
+              </div>  
               </Card.Grid>
             </a>
           ))}
