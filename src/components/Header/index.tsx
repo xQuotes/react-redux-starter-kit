@@ -20,7 +20,9 @@ export default class Header extends React.Component<any, {}> {
     return (
       <div className="header">
         <div className="header-main">
-          <Link to={Urls.index}><div className="left">夜猫</div></Link>
+          <Link to={Urls.index} style={{
+            textUnderlineStyle: 'none'
+          }}><div className="left">夜猫</div></Link>
           <div className="header-nav">
             <Menu
               className="header-nav-main"

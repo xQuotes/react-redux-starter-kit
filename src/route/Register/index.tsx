@@ -71,101 +71,124 @@ class Register extends React.Component<any & FormComponentProps, {}> {
     return (
       <div className="index">
         <Header {...this.props} />
-        <div className="login register">
-          <h3>注册</h3>
-          <Form className="login-form">
-            <FormItem {...formItemLayout} label="手机号" extra="">
-              <Row gutter={8}>
-                <Col span={12}>
-                  {getFieldDecorator('mobile', {
-                    rules: [
-                      {
-                        required: true,
-                        message: '请输入手机号!'
-                      }
-                    ]
-                  })(<Input size="large" />)}
-                </Col>
-                <Col span={12}>
-                  <Button
-                    size="large"
-                    onClick={this.getPhoneCode(getFieldValue('mobile'))}
-                  >
-                    获取验证码
+        <div className="login-main" style={{
+          backgroundImage: `url(${require('../../common/images/注册/图层1.png')})`
+        }}>
+          <div className="login register">
+            <h3>注册</h3>
+            <Form className="login-form">
+              <FormItem {...formItemLayout} label="手机号" extra="">
+                {getFieldDecorator('mobile', {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请输入手机号!'
+                    }
+                  ]
+                })(<Input size="large"
+                  className="input-style" />)}
+              </FormItem>
+              <FormItem {...formItemLayout} label="验证码" >
+                <Row gutter={8}>
+                  <Col span={16}>
+                    {getFieldDecorator('smscode', {
+                      rules: [
+                        {
+                          required: true,
+                          message: '请输入验证码!'
+                        }
+                      ]
+                    })(<Input
+                      className="input-style"
+                      style={{
+                        width: '100%'
+                      }} />)}
+                  </Col>
+                  <Col span={8}>
+                    <Button
+                      size="large"
+                      type="primary" ghost
+                      onClick={this.getPhoneCode(getFieldValue('mobile'))}
+                      style={{
+                        width: '120px',
+                        height: '48px',
+                        borderRadius: '12px'
+                      }}
+                    >
+                      获取验证码
                   </Button>
-                </Col>
-              </Row>
-            </FormItem>
-            <FormItem {...formItemLayout} label="验证码" hasFeedback={true}>
-              {getFieldDecorator('smscode', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请输入验证码!'
-                  }
-                ]
-              })(<Input />)}
-            </FormItem>
-            <FormItem {...formItemLayout} label="密码" hasFeedback={true}>
-              {getFieldDecorator('password', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请输入密码!'
-                  },
-                  {
-                    validator: this.checkConfirm
-                  }
-                ]
-              })(<Input type="password" />)}
-            </FormItem>
-            <FormItem {...formItemLayout} label="确认密码" hasFeedback={true}>
-              {getFieldDecorator('confirm', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请再次输入密码!'
-                  },
-                  {
-                    validator: this.checkPassword
-                  }
-                ]
-              })(<Input type="password" onBlur={this.handleConfirmBlur} />)}
-            </FormItem>
-            <FormItem
-              {...formItemLayout}
-              label={
-                <span>
-                  昵称
+                  </Col>
+                </Row>
+              </FormItem>
+              <FormItem {...formItemLayout} label="密码" >
+                {getFieldDecorator('password', {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请输入密码!'
+                    },
+                    {
+                      validator: this.checkConfirm
+                    }
+                  ]
+                })(<Input type="password"
+                  className="input-style" />)}
+              </FormItem>
+              <FormItem {...formItemLayout} label="确认密码" >
+                {getFieldDecorator('confirm', {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请再次输入密码!'
+                    },
+                    {
+                      validator: this.checkPassword
+                    }
+                  ]
+                })(<Input type="password" onBlur={this.handleConfirmBlur}
+                  className="input-style" />)}
+              </FormItem>
+              <FormItem
+                {...formItemLayout}
+                label={
+                  <span>
+                    昵称
                   <Tooltip title="请输入昵称?">
-                    <Icon type="question-circle-o" />
-                  </Tooltip>
-                </span>
-              }
-              hasFeedback={true}
-            >
-              {getFieldDecorator('nickname', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请输入你昵称!',
-                    whitespace: true
-                  }
-                ]
-              })(<Input />)}
-            </FormItem>
-            <FormItem {...formItemLayout} label=" " colon={false}>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
-                onClick={this.handleSubmit}
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                  </span>
+                }
               >
-                注 册
+                {getFieldDecorator('nickname', {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请输入你昵称!',
+                      whitespace: true
+                    }
+                  ]
+                })(<Input
+                  className="input-style" />)}
+              </FormItem>
+              <FormItem {...formItemLayout} label=" " colon={false}>
+                <div style={{ textAlign: 'center' }}><Button
+                  type="primary"
+                  htmlType="submit"
+                  onClick={this.handleSubmit}
+                  className="login-form-button input-style"
+                  style={{
+                    width: '150px',
+                    borderRadius: '24px'
+                  }}
+                >
+                  注 册
               </Button>
-              或 已有账号， <Link to={`login`}>立即登录!</Link>
-            </FormItem>
-          </Form>
+                </div>
+                <div style={{ textAlign: 'center' }}>  已有账号， <Link to={`login`}>立即登录!</Link>
+                </div>
+              </FormItem>
+            </Form>
+          </div>
         </div>
         <Footer />
       </div>

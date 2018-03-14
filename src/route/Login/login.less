@@ -1,6 +1,95 @@
+.login-main {
+  width: 100%;
+  overflow: hidden;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+}
+
 .login {
-  max-width: 300px;
+  width: 400px;
+  height: 410px;
+  background-color: #fff;
+  border-radius: 20px;
+  text-align: center;
+  padding: 50px 0;
   margin: 200px auto;
+  box-shadow: 8px 8px 4px #b9e0f6;
+
+  .ant-form-explain {
+    text-align: left;
+    width: 300px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .login-form .input-style {
+    width: 300px;
+    height: 48px;
+    font-size: 14px;
+
+
+    .login-user-icon {
+      width: 20px;
+      height: 20px;
+      margin-left: 20px;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-image: url(../../common/images/登录/88.png)
+    }
+
+
+    .login-pass-icon {
+      width: 20px;
+      height: 20px;
+      margin-left: 20px;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-image: url(../../common/images/登录/2.png)
+    }
+
+    &:hover {
+      .login-pass-icon {
+        background-image: url(../../common/images/登录/99.png)
+      }
+
+      .login-user-icon {
+        background-image: url(../../common/images/登录/1.png)
+      }
+    }
+
+    .ant-input {
+      border-radius: 24px;
+      padding: 0 25px 0 55px;
+    }
+  }
+
+
+  &.register {
+    width: 460px;
+    height: 570px;
+    margin: 60px auto;
+    box-shadow: 8px 8px 4px #b9e0f6;
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    .ant-input {
+      border-radius: 10px;
+      padding: 0 15px 0 15px;
+    }
+    .ant-form-item-required {
+      font-size: 14px;
+      line-height: 48px;
+    }
+    .ant-row {
+      // margin-bottom: 12px;
+    }
+  }
+
   h3 {
     text-align: center;
     font-size: 30px;
@@ -20,4 +109,15 @@
   max-width: 550px;
   margin: 200px auto;
   margin: 100px auto 200px;
+
+  .input-style {
+    width: 300px;
+    height: 48px;
+    border-radius: 24px;
+    font-size: 14px;
+
+    .ant-input {
+      border-radius: 24px;
+    }
+  }
 }
