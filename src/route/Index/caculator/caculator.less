@@ -1,11 +1,67 @@
 .main-caculator {
+  width: 100%;
   font-size: 14px;
+  background-color: #f3f9fe;
+  background-image: url('../../../common/images/首页/qwe.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  
+  .caculator-main {
+    margin-bottom: 50px;
+  }
+
+  .main {
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  .main-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 900;
+    color: #2a8df2;
+    border: none;
+
+    .main-title-ch {
+      .main-title-line {
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+        margin: 0 15px;
+        border-bottom: 1px solid #e6e6e6;
+      }
+    }
+
+    .main-title-en {
+      font-weight: 400;
+      font-size: 14px;
+      color: #b6b6b6;
+    }
+  }
+
   .cacu-img {
     display: inline-block;
-    width: 150px;
+    height: 70px;
+  }
+  .cacu-name {
+    margin-top: 40px;
   }
   .caculator-item {
     text-align: center;
-    padding: 50px;
+    padding: 50px 0;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    color: #000;
+
+    &:hover {
+      background-repeat: no-repeat;
+      background-size: 70%;
+      background-position: 50% 38%;
+      background-image: url('../../../common/index/选中.png');
+      background-color: #fff;
+      border-radius: 10px;
+    }
   }
 }
