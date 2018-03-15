@@ -2,6 +2,18 @@
   width: 1200px;
   margin: auto !important;
 
+  .view-more {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background-size: 100%;
+    text-align: center;
+    line-height: 50px;
+    background-image: url('../../../common/index/查看更多.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
   .main-title {
     text-align: center;
     font-size: 26px;
@@ -30,10 +42,35 @@
     position: relative;
   }
 
+
   .guide-left {
-    overflow: hidden;
+    position: relative;
     img {
       width: 100%;
+    }
+  
+    .btn-icon-dinge {
+      width: 12px;
+      margin-right: 6px;
+      margin-left: -24px;
+    }
+
+    .btn-group {
+      position: absolute;
+      bottom: -18px;
+      right: -18px;
+
+      .btn-group-dinge {
+        display: block;
+        border: none;
+        // border-bottom: 1px solid #ddd;
+      }
+      .btn-group-qingdan {
+        border: none;
+        display: block;
+        background-color: #66abff;
+        margin-left: 0;
+      }
     }
   }
 
@@ -71,6 +108,6 @@
     padding: 8px;
     font-size: 14px;
     cursor: pointer;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #ddd;
   }
 }

@@ -11,6 +11,7 @@ import './index.less'
 
 export default class Hello extends React.Component<{}, {}> {
   render() {
+    console.log(this.props)
     return (
       <div className="index">
         <Header {...this.props} />
@@ -18,7 +19,7 @@ export default class Hello extends React.Component<{}, {}> {
         <MainNav />
         <div className="main-container index-container">
           <MainCaculator />
-          <MainStandard />
+          <MainStandard {...this.props} />
           <Indicator />
         </div>
         <Footer />

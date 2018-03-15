@@ -15,6 +15,11 @@ export default class Standard extends React.Component<any, any> {
   componentWillMount() {
     const { standardStore } = this.props
 
+    console.log(this.props)
+
+    const { location: { state } } = this.props
+    const { type } = state || { type: null }
+
     // standardStore.gets({
     //   typeName: this.state.typeName,
     //   codeName: '北京',
@@ -26,14 +31,14 @@ export default class Standard extends React.Component<any, any> {
       {
         name: '北京'
       },
-      'quota',
+      type || 'quota',
       'guide'
     )
   }
   render() {
     const { standardStore } = this.props
-    const { list } = standardStore
-    console.log(list)
+    const { list, typeName } = standardStore
+
     return (
       <Row className="main-standard">
         <Col span={24} className="main-title">
@@ -48,9 +53,41 @@ export default class Standard extends React.Component<any, any> {
           <Col span={11} className="guide-left">
             <img src={require('../../../common/index/规范.jpg')} alt="" />
 
-            <Button.Group>
-              <Button type="primary">定额</Button>
-              <Button className="default">清单</Button>
+            <Button.Group className="btn-group">
+              <Link
+                to={{
+                  pathname: '/guide',
+                  search: `?type=quota`,
+                  state: { type: 'quota' }
+                }}
+              ><Button type="primary" className="btn-group-dinge" onClick={() => {
+                standardStore.setSelectMapItem(
+                  {
+                    name: '北京'
+                  },
+                  'quota',
+                  'guide'
+                )
+              }}>
+                  {typeName === 'quota' && <img src={require('../../../common/images/首页/fd.png')} alt="" className="btn-icon-dinge" />}
+                  定额</Button></Link>
+              <Link
+                to={{
+                  pathname: '/guide',
+                  search: `?type=detailed`,
+                  state: { type: 'detailed' }
+                }}
+              ><Button type="primary" className="btn-group-qingdan" onClick={() => {
+                standardStore.setSelectMapItem(
+                  {
+                    name: '北京'
+                  },
+                  'detailed',
+                  'guide'
+                )
+              }}>
+                  {typeName === 'detailed' && <img src={require('../../../common/images/首页/fd.png')} alt="" className="btn-icon-dinge" />}
+                  清单</Button></Link>
             </Button.Group>
           </Col>
           <Col span={11} offset={2} className="guide-right">
@@ -85,7 +122,13 @@ export default class Standard extends React.Component<any, any> {
               </Row>
             </div>
             <div className="guide-footer">
-              <Button>查看更多</Button>
+              <Link
+                to={{
+                  pathname: '/guide',
+                  search: `?type=${standardStore.typeName}`,
+                  state: { type: standardStore.typeName }
+                }}
+              ><span className="view-more"><span style={{ marginLeft: '-10px', color: '#555' }}>查看更多</span></span></Link>
             </div>
           </Col>
         </Col>

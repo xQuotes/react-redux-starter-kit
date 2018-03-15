@@ -13,7 +13,7 @@ export default class Caculator extends React.Component<{}, {}> {
       <div>
         <Header {...this.props} />
         <div className="main-container">
-          <Standard componentType="guide" />
+          <Standard componentType="guide" {...this.props} />
           <Content {...this.props} />
         </div>
         <Footer />
