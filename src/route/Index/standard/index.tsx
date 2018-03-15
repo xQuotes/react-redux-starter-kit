@@ -20,13 +20,6 @@ export default class Standard extends React.Component<any, any> {
     const { location: { state } } = this.props
     const { type } = state || { type: null }
 
-    // standardStore.gets({
-    //   typeName: this.state.typeName,
-    //   codeName: '北京',
-    //   putaway: 1,
-    //   type: 1
-    // })
-
     standardStore.setSelectMapItem(
       {
         name: '北京'
