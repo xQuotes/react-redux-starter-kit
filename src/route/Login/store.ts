@@ -17,7 +17,7 @@ export default class CaculatorStore extends Store {
   }
 
   @action getCode(formData: {
-    phone: string
+    mobile: string
   }) {
     return Fetch({
       url: this.api.getCode,
@@ -60,7 +60,7 @@ export default class CaculatorStore extends Store {
       console.log(data)
     })
   }
-  
+
   @action login(formData: any) {
     return Fetch({
       url: this.api.login,

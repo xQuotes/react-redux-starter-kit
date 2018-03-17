@@ -1,7 +1,7 @@
 const api = '/api'
 
 const Api = {
-  getCode: `${api}/user/register`,
+  getCode: `${api}/user/sendsmscode`,
   register: `${api}/user/registerbymobile`,
   login: `${api}/user/loginbymobile`,
 

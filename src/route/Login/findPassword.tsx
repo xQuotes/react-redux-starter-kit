@@ -22,10 +22,17 @@ const formItemLayout = {
 
 @inject('myStore')
 @observer
-class FindPassword extends React.Component<any & FormComponentProps, {}> {
-  state = {
-    confirmDirty: false,
-    autoCompleteResult: []
+class FindPassword extends React.Component<any & FormComponentProps, any> {
+  constructor(props: any) {
+    super(props)
+
+    this.state = {
+      confirmDirty: false,
+      autoCompleteResult: [],
+      dlgTipTxt: '获取验证码',
+      seconds: 59,
+      disabled: false
+    }
   }
   handleSubmit = (e: any) => {
     e.preventDefault()
@@ -53,15 +60,30 @@ class FindPassword extends React.Component<any & FormComponentProps, {}> {
   checkPassword = (rule: any, value: any, callback: any) => {
     const form = this.props.form
     if (value && value !== form.getFieldValue('password')) {
-      callback('Two passwords that you enter is inconsistent!')
+      callback('两次的密码不一样!')
     } else {
       callback()
     }
   }
-  getPhoneCode = (phone: string) => () => {
+  getPhoneCode = (mobile: string) => () => {
+    let siv = setInterval(() => {
+      this.setState((preState) => ({
+        seconds: preState.seconds - 1,
+        dlgTipTxt: `${preState.seconds - 1}s重新发送`,
+        disabled: true
+      }), () => {
+        if (this.state.seconds == 0) {
+          this.setState({
+            disabled: false
+          })
+          clearInterval(siv)
+        }
+      });
+    }, 1000)
+
     const { myStore } = this.props
     myStore.getCode({
-      phone
+      mobile
     })
   }
   render() {
@@ -71,79 +93,104 @@ class FindPassword extends React.Component<any & FormComponentProps, {}> {
     return (
       <div className="index">
         <Header {...this.props} />
-        <div className="login register">
-          <h3>注册</h3>
-          <Form className="login-form">
-            <FormItem {...formItemLayout} label="手机号" extra="">
-              <Row gutter={8}>
-                <Col span={12}>
-                  {getFieldDecorator('mobile', {
-                    rules: [
-                      {
-                        required: true,
-                        message: '请输入手机号!'
-                      }
-                    ]
-                  })(<Input size="large" />)}
-                </Col>
-                <Col span={12}>
-                  <Button
-                    size="large"
-                    onClick={this.getPhoneCode(getFieldValue('mobile'))}
-                  >
-                    获取验证码
-                  </Button>
-                </Col>
-              </Row>
-            </FormItem>
-            <FormItem {...formItemLayout} label="验证码" hasFeedback={true}>
-              {getFieldDecorator('smscode', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请输入验证码!'
-                  }
-                ]
-              })(<Input />)}
-            </FormItem>
-            <FormItem {...formItemLayout} label="密码" hasFeedback={true}>
-              {getFieldDecorator('password', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请输入密码!'
-                  },
-                  {
-                    validator: this.checkConfirm
-                  }
-                ]
-              })(<Input type="password" />)}
-            </FormItem>
-            <FormItem {...formItemLayout} label="确认密码" hasFeedback={true}>
-              {getFieldDecorator('confirm', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请再次输入密码!'
-                  },
-                  {
-                    validator: this.checkPassword
-                  }
-                ]
-              })(<Input type="password" onBlur={this.handleConfirmBlur} />)}
-            </FormItem>
-            <FormItem {...formItemLayout} label=" " colon={false}>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
-                onClick={this.handleSubmit}
-              >
-                注 册
+        <div className="login-main" style={{
+          backgroundImage: `url(${require('../../common/images/注册/图层1.png')})`
+        }}>
+          <div className="login register">
+            <h3>找回密码</h3>
+
+            <Form className="login-form">
+              <FormItem {...formItemLayout} label="手机号" extra="">
+                {getFieldDecorator('mobile', {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请输入手机号!'
+                    }
+                  ]
+                })(<Input size="large"
+                  className="input-style" />)}
+              </FormItem>
+              <FormItem {...formItemLayout} label="验证码" >
+                <Row gutter={8}>
+                  <Col span={16}>
+                    {getFieldDecorator('smscode', {
+                      rules: [
+                        {
+                          required: true,
+                          message: '请输入验证码!'
+                        }
+                      ]
+                    })(<Input
+                      className="input-style"
+                      style={{
+                        width: '100%'
+                      }} />)}
+                  </Col>
+                  <Col span={8}>
+                    {<Button
+                      disabled={this.state.disabled}
+                      size="large"
+                      type="primary" ghost
+                      onClick={this.getPhoneCode(getFieldValue('mobile'))}
+                      style={{
+                        width: '120px',
+                        height: '48px',
+                        borderRadius: '12px'
+                      }}
+                    >
+                      {this.state.dlgTipTxt}
+                    </Button>}
+                  </Col>
+                </Row>
+              </FormItem>
+              <FormItem {...formItemLayout} label="密码" >
+                {getFieldDecorator('password', {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请输入密码!'
+                    },
+                    {
+                      validator: this.checkConfirm
+                    }
+                  ]
+                })(<Input type="password"
+                  className="input-style" />)}
+              </FormItem>
+              <FormItem {...formItemLayout} label="确认密码" >
+                {getFieldDecorator('confirm', {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请再次输入密码!'
+                    },
+                    {
+                      validator: this.checkPassword
+                    }
+                  ]
+                })(<Input type="password" onBlur={this.handleConfirmBlur}
+                  className="input-style" />)}
+              </FormItem>
+              <FormItem {...formItemLayout} label=" " colon={false}>
+                <div style={{ textAlign: 'center' }}><Button
+                  type="primary"
+                  htmlType="submit"
+                  onClick={this.handleSubmit}
+                  className="login-form-button input-style"
+                  style={{
+                    width: '150px',
+                    borderRadius: '24px'
+                  }}
+                >
+                  确定
               </Button>
-              或 已有账号， <Link to={`login`}>立即登录!</Link>
-            </FormItem>
-          </Form>
+                </div>
+                <div style={{ textAlign: 'center' }}>  已有账号， <Link to={`login`}>立即登录!</Link>
+                </div>
+              </FormItem>
+            </Form>
+          </div>
         </div>
         <Footer />
       </div>

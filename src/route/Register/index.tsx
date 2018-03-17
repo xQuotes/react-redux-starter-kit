@@ -22,11 +22,19 @@ const formItemLayout = {
 
 @inject('myStore')
 @observer
-class Register extends React.Component<any & FormComponentProps, {}> {
-  state = {
-    confirmDirty: false,
-    autoCompleteResult: []
+class Register extends React.Component<any & FormComponentProps, any> {
+  constructor(props: any) {
+    super(props)
+
+    this.state = {
+      confirmDirty: false,
+      autoCompleteResult: [],
+      dlgTipTxt: '获取验证码',
+      seconds: 59,
+      disabled: false
+    }
   }
+
   handleSubmit = (e: any) => {
     e.preventDefault()
     const { myStore, form } = this.props
@@ -53,15 +61,30 @@ class Register extends React.Component<any & FormComponentProps, {}> {
   checkPassword = (rule: any, value: any, callback: any) => {
     const form = this.props.form
     if (value && value !== form.getFieldValue('password')) {
-      callback('Two passwords that you enter is inconsistent!')
+      callback('两次的密码不一样')
     } else {
       callback()
     }
   }
-  getPhoneCode = (phone: string) => () => {
+  getPhoneCode = (mobile: string) => () => {
+    let siv = setInterval(() => {
+      this.setState((preState) => ({
+        seconds: preState.seconds - 1,
+        dlgTipTxt: `${preState.seconds - 1}s重新发送`,
+        disabled: true
+      }), () => {
+        if (this.state.seconds == 0) {
+          this.setState({
+            disabled: false
+          })
+          clearInterval(siv)
+        }
+      });
+    }, 1000)
+
     const { myStore } = this.props
     myStore.getCode({
-      phone
+      mobile
     })
   }
   render() {
@@ -105,7 +128,8 @@ class Register extends React.Component<any & FormComponentProps, {}> {
                       }} />)}
                   </Col>
                   <Col span={8}>
-                    <Button
+                    {<Button
+                      disabled={this.state.disabled}
                       size="large"
                       type="primary" ghost
                       onClick={this.getPhoneCode(getFieldValue('mobile'))}
@@ -115,8 +139,8 @@ class Register extends React.Component<any & FormComponentProps, {}> {
                         borderRadius: '12px'
                       }}
                     >
-                      获取验证码
-                  </Button>
+                      {this.state.dlgTipTxt}
+                    </Button>}
                   </Col>
                 </Row>
               </FormItem>
