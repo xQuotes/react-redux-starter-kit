@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Row, Col, Button, Form, Input, Select } from 'antd'
+import { Row, Col, Button, Form, Input, Select, Icon } from 'antd'
 const Option = Select.Option
 import { FormComponentProps } from 'antd/lib/form/Form'
 const FormItem = Form.Item
@@ -53,15 +53,21 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
     return (
       <Row className="standard">
         <Col span={24} className="main-title-left">
-          <img src={require('../../../common/images/计算器修改/sdf.png')} className="main-title-left-icon" />
-          <div className="main-title-left-title">
-            <div className="main-title-ch">
-              <span className="main-title-line"> &nbsp;</span>
-              <span>其他计算器</span>
-              <span className="main-title-line"> &nbsp;</span>
+
+          <Col span={12}><img src={require('../../../common/images/计算器修改/sdf.png')} className="main-title-left-icon" />
+            <div className="main-title-left-title">
+              <div className="main-title-ch">
+                <span className="main-title-line"> &nbsp;</span>
+                <span>其他计算器</span>
+                <span className="main-title-line"> &nbsp;</span>
+              </div>
+              <div className="main-title-en">Caculator</div>
             </div>
-            <div className="main-title-en">Caculator</div>
-          </div>
+
+          </Col>
+          <Col span={12} style={{ color: '#6cb7f3', textAlign: 'right', cursor: 'pointer' }}>
+            <span><Icon type="info-circle-o" /><span style={{ marginLeft: '5px' }}>设计费计算规则</span></span>
+          </Col>
         </Col>
         <Col span={24}>
           <Col span={14}>
@@ -75,7 +81,10 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
           </Col>
           <Col span={9} offset={1}>
             <Form onSubmit={this.handleSubmit}>
-              <h3>您已选择： {selectMapItem.name}</h3>
+              <h3 className="map-title">
+                <span className="map-label">您已选择：</span>
+                <span className="map-label-caculator">{selectMapItem.name}</span>
+              </h3>
               {projects.length > 0 && (
                 <FormItem
                   key={projects[0].id}
@@ -173,7 +182,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                   计算结果
                 </Button>
               </FormItem>
-              <div>
+              <div className="caculator-result">
                 {item
                   .filter((v: any) => v.tableType === 2)
                   .map((val: any, key: string) => {
@@ -189,12 +198,15 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                             initialValue: results[val.itemKey]
                           })(
                             <Input
+                              disabled={true}
+                              style={{ color: '#fac29d' }}
                               addonAfter={val.unit === '无' ? '' : val.unit}
                             />
                           )}
 
                           {val.contentType === 'select' ? (
                             <Button
+                              className="sub-btn"
                               type="primary"
                               onClick={() => {
                                 caculatorStore.presetItemKey = val.itemKey
