@@ -19,7 +19,7 @@ export default class EchartsComponent extends React.Component<any, {}> {
       },
       tooltip: {
         show: true,
-        formatter: function(params: { value: string; name: string }) {
+        formatter: function (params: { value: string; name: string }) {
           if (params.value) {
             return params.name // + '<br />' + mapData[params.value].value
           } else {
@@ -51,7 +51,7 @@ export default class EchartsComponent extends React.Component<any, {}> {
           },
           itemStyle: {
             normal: {
-              areaColor: '#ebf0f4',
+              areaColor: '#cdecff',
               borderColor: '#fff',
               borderWidth: 1
             },

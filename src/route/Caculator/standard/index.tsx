@@ -18,6 +18,8 @@ const formItemLayout = {
   }
 }
 
+import './index.less'
+
 @inject('caculatorStore')
 @observer
 class Standard extends React.Component<any & FormComponentProps, {}> {
@@ -50,119 +52,86 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
 
     return (
       <Row className="standard">
-        <Col span={14}>
-          <Echarts
-            style={{
-              width: '550px',
-              height: '550px'
-            }}
-            store={caculatorStore}
-          />
+        <Col span={24} className="main-title-left">
+          <img src={require('../../../common/images/计算器修改/sdf.png')} className="main-title-left-icon" />
+          <div className="main-title-left-title">
+            <div className="main-title-ch">
+              <span className="main-title-line"> &nbsp;</span>
+              <span>其他计算器</span>
+              <span className="main-title-line"> &nbsp;</span>
+            </div>
+            <div className="main-title-en">Caculator</div>
+          </div>
         </Col>
-        <Col span={9} offset={1}>
-          <Form onSubmit={this.handleSubmit}>
-            <h3>您已选择： {selectMapItem.name}</h3>
-            {projects.length > 0 && (
-              <FormItem
-                key={projects[0].id}
-                colon={false}
-                {...formItemLayout}
-                label={'咨询项目'}
-              >
-                {getFieldDecorator('formulaId', {
-                  initialValue: projects[0].id + ''
-                })(
-                  <Select
-                    onChange={id => {
-                      caculatorStore.setSelectMapItem(
-                        caculatorStore.selectMapItem,
-                        caculatorStore.itemType,
-                        id
-                      )
-                    }}
-                    style={{
-                      width: '100%'
-                    }}
-                  >
-                    {projects.map((v: any, k: any) => {
-                      return (
-                        <Option
-                          value={v.id}
-                          key={k}
-                        >{`${v.formulaName}`}</Option>
-                      )
-                    })}
-                  </Select>
-                )}
-              </FormItem>
-            )}
-            {item
-              .filter((v: any) => v.tableType === 1)
-              .map((val: any, key: string) => {
-                const addonAfter = () => {
-                  return val.contentType === 'select' ? (
-                    <Button
-                      type="primary"
-                      onClick={() => {
-                        caculatorStore.presetItemKey = val.itemKey
-                        caculatorStore.presetValue = JSON.parse(val.presetValue)
-                        caculatorStore.presetVisible = true
+        <Col span={24}>
+          <Col span={14}>
+            <Echarts
+              style={{
+                width: '550px',
+                height: '550px'
+              }}
+              store={caculatorStore}
+            />
+          </Col>
+          <Col span={9} offset={1}>
+            <Form onSubmit={this.handleSubmit}>
+              <h3>您已选择： {selectMapItem.name}</h3>
+              {projects.length > 0 && (
+                <FormItem
+                  key={projects[0].id}
+                  colon={false}
+                  {...formItemLayout}
+                  label={'咨询项目'}
+                >
+                  {getFieldDecorator('formulaId', {
+                    initialValue: projects[0].id + ''
+                  })(
+                    <Select
+                      onChange={id => {
+                        caculatorStore.setSelectMapItem(
+                          caculatorStore.selectMapItem,
+                          caculatorStore.itemType,
+                          id
+                        )
+                      }}
+                      style={{
+                        width: '100%'
                       }}
                     >
-                      点击选择
-                    </Button>
-                  ) : val.unit === '无' ? (
-                    ''
-                  ) : (
-                    val.unit
-                  )
-                }
-
-                return (
-                  <FormItem
-                    key={val.itemKey}
-                    colon={false}
-                    {...formItemLayout}
-                    label={val.item}
-                  >
-                    <div>
-                      {getFieldDecorator(val.itemKey, {
-                        initialValue:
-                          val.defaultValue === '无' ? '' : val.defaultValue
-                      })(
-                        val.contentType === 'drop_down_select' ? (
-                          <Select>
-                            {JSON.parse(
-                              val.presetValue
-                            ).list.map((v: any, k: any) => {
-                              return (
-                                <Option value={v.title} key={k}>
-                                  {v.title}
-                                </Option>
-                              )
-                            })}
-                          </Select>
-                        ) : (
-                          <Input addonAfter={addonAfter()} />
+                      {projects.map((v: any, k: any) => {
+                        return (
+                          <Option
+                            value={v.id}
+                            key={k}
+                          >{`${v.formulaName}`}</Option>
                         )
-                      )}
-                    </div>
-                  </FormItem>
-                )
-              })}
-            <FormItem colon={false} {...formItemLayout} label=" ">
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
-              >
-                计算结果
-              </Button>
-            </FormItem>
-            <div>
+                      })}
+                    </Select>
+                  )}
+                </FormItem>
+              )}
               {item
-                .filter((v: any) => v.tableType === 2)
+                .filter((v: any) => v.tableType === 1)
                 .map((val: any, key: string) => {
+                  const addonAfter = () => {
+                    return val.contentType === 'select' ? (
+                      <Button
+                        type="primary"
+                        onClick={() => {
+                          caculatorStore.presetItemKey = val.itemKey
+                          caculatorStore.presetValue = JSON.parse(val.presetValue)
+                          caculatorStore.presetVisible = true
+                        }}
+                      >
+                        点击选择
+                      </Button>
+                    ) : val.unit === '无' ? (
+                      ''
+                    ) : (
+                          val.unit
+                        )
+                  }
+
                   return (
                     <FormItem
                       key={val.itemKey}
@@ -172,35 +141,81 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                     >
                       <div>
                         {getFieldDecorator(val.itemKey, {
-                          initialValue: results[val.itemKey]
+                          initialValue:
+                            val.defaultValue === '无' ? '' : val.defaultValue
                         })(
-                          <Input
-                            addonAfter={val.unit === '无' ? '' : val.unit}
-                          />
-                        )}
-
-                        {val.contentType === 'select' ? (
-                          <Button
-                            type="primary"
-                            onClick={() => {
-                              caculatorStore.presetItemKey = val.itemKey
-                              caculatorStore.presetValue = JSON.parse(
+                          val.contentType === 'drop_down_select' ? (
+                            <Select>
+                              {JSON.parse(
                                 val.presetValue
-                              )
-                              caculatorStore.presetVisible = true
-                            }}
-                          >
-                            点击选择
-                          </Button>
-                        ) : (
-                          ''
+                              ).list.map((v: any, k: any) => {
+                                return (
+                                  <Option value={v.title} key={k}>
+                                    {v.title}
+                                  </Option>
+                                )
+                              })}
+                            </Select>
+                          ) : (
+                              <Input addonAfter={addonAfter()} />
+                            )
                         )}
                       </div>
                     </FormItem>
                   )
                 })}
-            </div>
-          </Form>
+              <FormItem colon={false} {...formItemLayout} label=" ">
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="login-form-button"
+                >
+                  计算结果
+                </Button>
+              </FormItem>
+              <div>
+                {item
+                  .filter((v: any) => v.tableType === 2)
+                  .map((val: any, key: string) => {
+                    return (
+                      <FormItem
+                        key={val.itemKey}
+                        colon={false}
+                        {...formItemLayout}
+                        label={val.item}
+                      >
+                        <div>
+                          {getFieldDecorator(val.itemKey, {
+                            initialValue: results[val.itemKey]
+                          })(
+                            <Input
+                              addonAfter={val.unit === '无' ? '' : val.unit}
+                            />
+                          )}
+
+                          {val.contentType === 'select' ? (
+                            <Button
+                              type="primary"
+                              onClick={() => {
+                                caculatorStore.presetItemKey = val.itemKey
+                                caculatorStore.presetValue = JSON.parse(
+                                  val.presetValue
+                                )
+                                caculatorStore.presetVisible = true
+                              }}
+                            >
+                              点击选择
+                            </Button>
+                          ) : (
+                              ''
+                            )}
+                        </div>
+                      </FormItem>
+                    )
+                  })}
+              </div>
+            </Form>
+          </Col>
         </Col>
         <CaculatorModal onChange={this.onChange} />
       </Row>

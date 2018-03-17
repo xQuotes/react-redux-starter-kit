@@ -14,6 +14,40 @@
   .main {
     width: 1200px;
     margin: 0 auto;
+    padding-top: 50px;
+  }
+
+  
+  .cacu-img {
+    display: inline-block;
+    height: 70px;
+  }
+  .cacu-name {
+    margin-top: 40px;
+    text-decoration: none;
+  }
+  .caculator-item {
+    text-align: center;
+    padding: 50px 0;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    color: #000;
+
+    &.caculator-item-active,
+    &:hover {
+      background-repeat: no-repeat;
+      background-size: 70%;
+      background-position: 50% 38%;
+      background-image: url('../../../common/index/选中.png');
+      background-color: #fff;
+      border-radius: 10px;
+    }
+  }
+
+  .main-title-left {
+    text-align: left;
+    margin-bottom: 10px;
   }
 
   .main-title {
@@ -40,28 +74,26 @@
     }
   }
 
-  .cacu-img {
-    display: inline-block;
-    height: 70px;
-  }
-  .cacu-name {
-    margin-top: 40px;
-  }
-  .caculator-item {
-    text-align: center;
-    padding: 50px 0;
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    color: #000;
 
-    &:hover {
-      background-repeat: no-repeat;
-      background-size: 70%;
-      background-position: 50% 38%;
-      background-image: url('../../../common/index/选中.png');
-      background-color: #fff;
-      border-radius: 10px;
-    }
+  .main-title-left-icon {
+    display: inline-block;
+    vertical-align: top;
+
+  }
+
+  .main-title-left-title {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+  }
+
+  .main-title-ch {
+    border-left: 2px solid #6cb7f3;
+    color: #6cb7f3;
+    font-weight: bold;
+  }
+
+  .main-title-en {
+    color: #d4d4d5;
   }
 }
