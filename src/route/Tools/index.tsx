@@ -9,7 +9,7 @@ import './tools.less'
 export default class Caculator extends React.Component<{}, {}> {
   render() {
     return (
-      <div>
+      <div className="tools">
         <Header {...this.props} />
         <div className="main-container">
           <ToolsLink />

@@ -34,8 +34,8 @@ export default class Caculator extends React.Component<any, any> {
   render() {
     const { caculatorStore, location } = this.props
     const { list } = caculatorStore
-    const { state: { type } } = location
-    console.log(this.props)
+    const { state } = location
+    const { type } = state || { type: '' }
 
     let caculators = list.concat(caculator)
     return (

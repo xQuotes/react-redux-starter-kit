@@ -29,19 +29,19 @@ export default class Standard extends React.Component<any, any> {
     )
   }
   render() {
-    const { standardStore } = this.props
+    const { standardStore, componentType } = this.props
     const { list, typeName } = standardStore
 
     return (
       <Row className="main-standard">
-        <Col span={24} className="main-title">
+        {componentType !== 'guide' && <Col span={24} className="main-title">
           <div className="main-title-ch">
             <span className="main-title-line"> &nbsp;</span>
             <span>计算规范</span>
             <span className="main-title-line"> &nbsp;</span>
           </div>
           <div className="main-title-en">Computation specification</div>
-        </Col>
+        </Col>}
         <Col span={24}>
           <Col span={11} className="guide-left">
             <img src={require('../../../common/index/规范.jpg')} alt="" />

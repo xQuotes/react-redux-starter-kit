@@ -199,7 +199,6 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
                           })(
                             <Input
                               disabled={true}
-                              style={{ color: '#fac29d' }}
                               addonAfter={val.unit === '无' ? '' : val.unit}
                             />
                           )}

@@ -2,6 +2,8 @@ import * as React from 'react'
 import { inject, observer } from 'mobx-react'
 import { Row, Col } from 'antd'
 
+import './guide.less'
+
 @inject('standardStore')
 @observer
 export default class Index extends React.Component<any, any> {
@@ -14,6 +16,21 @@ export default class Index extends React.Component<any, any> {
     }
   }
 
+  componentDidMount() {
+    // function setIframeHeight(iframe: any) {
+    //   if (iframe) {
+    //     var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+    //     if (iframeWin.document.body) {
+    //       iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+    //     }
+    //   }
+    // };
+
+    // window.onload = function () {
+    //   setIframeHeight(document.getElementById('external-frame'));
+    // };
+  }
+
   render() {
     const { standardStore, location: { state } } = this.props
     const { list } = standardStore
@@ -23,10 +40,10 @@ export default class Index extends React.Component<any, any> {
     return (
       <Row className="tools-component">
         <Col span={24} className="main-title">
-          {item.fileName}
+          <span className="main-title-content">{item.fileName}</span>
         </Col>
         <Col span={24} className="main-contain">
-          <iframe src={item.url} width="100%" height="1000px" frameBorder="0" />
+          <iframe id="external-frame" src={item.url} width="100%" height="1600px" frameBorder="0" />
         </Col>
       </Row>
     )
