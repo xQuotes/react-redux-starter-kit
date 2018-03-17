@@ -56,7 +56,7 @@ export default class EchartsComponent extends React.Component<any, {}> {
               borderWidth: 1
             },
             emphasis: {
-              areaColor: '#3c8cff'
+              areaColor: '#16ce73'
             }
           },
 
@@ -73,19 +73,18 @@ export default class EchartsComponent extends React.Component<any, {}> {
     return option
   }
   onChartClick = (param: any, echart: any) => {
-    const { store, typeName, history, location } = this.props // componentType = 'guide'
+    const { store, typeName } = this.props // componentType = 'guide'
 
     // history.push()
     const { data } = param
-    console.log(data, this.props)
 
-    history.push({
-      state: {
-        ...location.state,
-        ...data
-      },
-      // search: location.search
-    })
+    // history.push({
+    //   state: {
+    //     ...location.state,
+    //     ...data
+    //   },
+    //   // search: location.search
+    // })
     if (typeName) {
       store.setSelectMapItem(data, typeName, store.componentType)
       return

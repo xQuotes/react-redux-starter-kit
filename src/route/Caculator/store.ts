@@ -10,6 +10,25 @@ import mapData from '../../components/Echarts/const'
 
 import Fetch from '../../common/fetch'
 
+const cacu = [
+  {
+    type: '11',
+    calculatorName: '造价计算器'
+  },
+  {
+    type: '13',
+    calculatorName: '地质灾害评估收费计算器'
+  },
+  {
+    type: '15',
+    calculatorName: '水土保持计算器'
+  },
+  {
+    type: '12',
+    calculatorName: '施工图计算器'
+  }
+]
+
 export default class CaculatorStore extends Store {
   @observable list = [] //dataSource.list.databody
   @observable item = [] //dataSource.item.databody
@@ -52,7 +71,7 @@ export default class CaculatorStore extends Store {
             content: data.databody.noresult
           })
         } else {
-          this.list = data.databody || []
+          this.list = data.databody.concat(cacu)
         }
       }
     })

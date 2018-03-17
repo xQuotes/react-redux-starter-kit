@@ -46,10 +46,14 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
     })
   }
   render() {
-    const { caculatorStore, form } = this.props
-    const { item, selectMapItem, results, projects } = caculatorStore
+    const { caculatorStore, form, location } = this.props
+    const { item, selectMapItem, results, projects, list, itemType } = caculatorStore
     const { getFieldDecorator } = form
 
+    const { state } = location || { state: {} }
+    const { type } = state || { type: itemType }
+    const cacula = list.find((v: any) => v.type === type) || {}
+    console.log(list, type, cacula)
     return (
       <Row className="standard">
         <Col span={24} className="main-title-left">
@@ -58,7 +62,7 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
             <div className="main-title-left-title">
               <div className="main-title-ch">
                 <span className="main-title-line"> &nbsp;</span>
-                <span>其他计算器</span>
+                <span>{cacula.calculatorName}</span>
                 <span className="main-title-line"> &nbsp;</span>
               </div>
               <div className="main-title-en">Caculator</div>

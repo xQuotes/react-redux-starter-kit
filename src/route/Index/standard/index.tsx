@@ -13,11 +13,7 @@ export default class Standard extends React.Component<any, any> {
     super(props)
   }
   componentWillMount() {
-    const { standardStore } = this.props
-
-    console.log(this.props)
-
-    const { location: { state } } = this.props
+    const { standardStore, location: { state } } = this.props
     const { type } = state || { type: null }
 
     standardStore.setSelectMapItem(
