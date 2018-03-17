@@ -19,30 +19,33 @@ const mouth = ['Jan',
 
 import './indicator.less'
 
-@inject('indicatorStore')
+@inject('searchStore', 'searchStore')
 @observer
 export default class Indicator extends React.Component<any, {}> {
   componentWillMount() {
-    const { indicatorStore } = this.props
+    const { searchStore } = this.props
 
-    indicatorStore.setSelectMapItem({
-      searchData: {
-        typeName: 'costindex',
-        pageNum: 1,
-        pageSize: 10
-      }
-    }
+    // indicatorStore.setSelectMapItem({
+    //   searchData: {
+    //     typeName: 'costindex',
+    //     pageNum: 1,
+    //     pageSize: 10
+    //   }
+    // })
 
-    )
+    searchStore.getCostindex({
+      putaway: 1,
+      type: 1,
+      typeName: 'costindex'
+    })
   }
   render() {
-    const { indicatorStore } = this.props
-    const { list } = indicatorStore
-    console.log(list)
+    const { searchStore } = this.props
+    const { costindexs: list } = searchStore
 
     const one = list[0] || {}
     const six = list.slice(1, 6) || []
-    console.log(one, six)
+
     return (
       <div className="main-indicator">
         <Row className="main">
@@ -59,7 +62,17 @@ export default class Indicator extends React.Component<any, {}> {
               {six.map((v: any, k: number) => {
                 return (
                   <Col span={24} className="main-item" key={k}>
-                    <Link to={`/news/${v.id}`}>
+                    <Link
+                      onClick={() => {
+                        searchStore.selectCostindex('costindex', v)
+                      }}
+                      to={{
+                        pathname: '/search/costindex',
+                        search: location.search + `&url=${v.url}`,
+                        state: {
+                          url: v.url
+                        }
+                      }}>
                       <Col span={6} style={{
                         padding: '10px 0',
                         textAlign: 'center'
@@ -81,7 +94,17 @@ export default class Indicator extends React.Component<any, {}> {
               })}
             </Col>
             <Col span={10} offset={1}>
-              <Link to={`/news/${one.id}`}>
+              <Link
+                onClick={() => {
+                  searchStore.selectCostindex('costindex', one)
+                }}
+                to={{
+                  pathname: '/search/costindex',
+                  search: location.search + `&url=${one.url}`,
+                  state: {
+                    url: one.url
+                  }
+                }}>
                 <Card style={{ height: '420px' }}
                   hoverable
                   cover={<div style={{ position: 'relative' }}>

@@ -31,7 +31,7 @@ export default class Caculator extends React.Component<any, {}> {
     })
   }
   render() {
-    const { searchStore, location } = this.props
+    const { location } = this.props
 
     const state = queryString.parse(location.search)
     return (
@@ -45,7 +45,7 @@ export default class Caculator extends React.Component<any, {}> {
               marginBottom: '50px'
             }}>
               <iframe
-                src={searchStore[state.typeName]['url'] || state.url}
+                src={state.url}
                 width="100%"
                 height="1800px"
                 frameBorder="0"

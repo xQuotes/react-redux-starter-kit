@@ -161,7 +161,7 @@ export default class Caculator extends React.Component<any, {}> {
                           pathname: '/search/' + state.typeName,
                           search: location.search + `&url=${item.url}`,
                           state: {
-                            url: 'item.url'
+                            url: item.url
                           }
                         }}
                       >
