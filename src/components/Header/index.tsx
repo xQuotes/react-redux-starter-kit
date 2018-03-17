@@ -34,16 +34,16 @@ export default class Header extends React.Component<any, {}> {
                 <Link to={Urls.index}>首页</Link>
               </Menu.Item>
               <Menu.Item key={Urls.caculator}>
-                <Link to={Urls.caculator}>计算器</Link>
+                <Link to={Urls.caculator + '?type=701'}>计算器</Link>
               </Menu.Item>
               <Menu.Item key={Urls.tools}>
                 <Link to={Urls.tools}>工具箱</Link>
               </Menu.Item>
               <Menu.Item key={Urls.guide}>
-                <Link to={Urls.guide}>造价规范</Link>
+                <Link to={Urls.guide + '?type=quota'}>造价规范</Link>
               </Menu.Item>
               <Menu.Item key={Urls.search}>
-                <Link to={Urls.search}>指标查询</Link>
+                <Link to={Urls.search + '?typeName=costindex'}>指标查询</Link>
               </Menu.Item>
               {/*<Menu.Item key={Urls.ask}>
               <Link to={Urls.ask}>专业问答</Link>

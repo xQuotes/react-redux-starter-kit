@@ -18,6 +18,7 @@ import Login from './route/Login/'
 import Tools from './route/Tools/'
 import Guide from './route/Guide/'
 import Search from './route/Search/'
+import SearchView from './route/Search/main'
 import Ask from './route/Ask/'
 import Message from './route/Message/'
 import FindPassword from './route/Login/findPassword'
@@ -48,7 +49,9 @@ export default class App extends React.Component<{}, {}> {
               <Route path={Urls.login} component={Login} />
               <Route path={Urls.tools} component={Tools} />
               <Route path={Urls.guide} component={Guide} />
-              <Route path={Urls.search} component={Search} />
+              <Route path={`${Urls.search}/:id`} component={SearchView} />
+              <Route
+                exact={true} path={Urls.search} component={Search} />
               <Route path={Urls.ask} component={Ask} />
               <Route path={Urls.message} component={Message} />
               <Route path={Urls.findPassword} component={FindPassword} />

@@ -65,7 +65,7 @@ projectName
 yearData
      */
 
-    let url = this.api.getCostindex
+    let url = this.api.getTargetdata
     return Fetch({
       url,
       data: formData,
