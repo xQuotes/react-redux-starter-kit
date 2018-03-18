@@ -8,3 +8,4 @@ git push origin HEAD -f
 
 
 
+git remote add up https://git.coding.net/fuyins/waibao-deploy.git
