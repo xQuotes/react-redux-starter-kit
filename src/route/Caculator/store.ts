@@ -211,10 +211,18 @@ export default class CaculatorStore extends Store {
       })
 
       this.formulaId = formulaId
-    } else if (type === '11' || type === '12' || type === '13') {
+    } else if (type === '11' || type === '12') {
       this.getProject({
         type,
         code: data.value
+      })
+      this.selectMapItem = data
+
+      this.itemType = type
+    } else if (type === '15' || type === '13') {
+      this.getProject({
+        type,
+        code: 0
       })
       this.selectMapItem = data
 

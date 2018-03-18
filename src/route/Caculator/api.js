@@ -14,5 +14,6 @@ export default {
   // 造价计算器
   11: '/api/cost/getprojectcost',
   12: '/api/supervise/projectinvestigate',
-  13: '/api/supervise/projectgeology'
+  13: '/api/supervise/projectgeology',
+  15: '/api/supervise/projectinvestigate'
 }

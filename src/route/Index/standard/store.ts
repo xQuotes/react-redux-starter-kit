@@ -20,7 +20,7 @@ export default class CaculatorStore extends Store {
   @observable componentType = 'guide'
 
   @action
-  gets(formData: { typeName: string; codeName: string }) {
+  gets(formData: { typeName: string; codeName?: any }) {
     return Fetch({
       url: this.api.gets,
       data: formData,
@@ -39,14 +39,19 @@ export default class CaculatorStore extends Store {
     data: { name: string; value: number },
     type: any,
     componentType: string
-    ) {
+  ) {
     this.selectMapItem = data
     this.typeName = type
     this.componentType = componentType
-
-    this.gets({
-      typeName: type,
-      codeName: data.name
-    })
+    if (type === 'detailed') {
+      this.gets({
+        typeName: type
+      })
+    } else {
+      this.gets({
+        typeName: type,
+        codeName: data.name
+      })
+    }
   }
 }

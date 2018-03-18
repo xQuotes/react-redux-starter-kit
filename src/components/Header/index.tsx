@@ -36,9 +36,6 @@ export default class Header extends React.Component<any, {}> {
               <Menu.Item key={Urls.caculator}>
                 <Link to={Urls.caculator + '?type=701'}>计算器</Link>
               </Menu.Item>
-              <Menu.Item key={Urls.tools}>
-                <Link to={Urls.tools}>工具箱</Link>
-              </Menu.Item>
               <Menu.Item key={Urls.guide}>
                 <Link to={Urls.guide + '?type=quota'}>造价规范</Link>
               </Menu.Item>
@@ -48,6 +45,9 @@ export default class Header extends React.Component<any, {}> {
               {/*<Menu.Item key={Urls.ask}>
               <Link to={Urls.ask}>专业问答</Link>
             </Menu.Item>*/}
+              <Menu.Item key={Urls.tools}>
+                <Link to={Urls.tools}>工具箱</Link>
+              </Menu.Item>
               <Menu.Item key={Urls.message}>
                 <Link to={Urls.message}>招投标法规</Link>
               </Menu.Item>

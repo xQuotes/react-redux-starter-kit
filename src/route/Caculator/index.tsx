@@ -8,19 +8,24 @@ import MainStandard from './standard/index'
 
 import Cacu from '../Index/caculator/caculator'
 
+import queryString from 'query-string'
+
 import './caculator.less'
 
 @inject('caculatorStore')
 @observer
 export default class Caculator extends React.Component<any, any> {
   componentWillMount() {
-    const { caculatorStore } = this.props
-    caculatorStore.getServers({
-      type: '701'
-    })
-    caculatorStore.getServer({
-      type: '701'
-    })
+    const { caculatorStore, location } = this.props
+    // const { state } = location || { state:  }
+    const state = queryString.parse(location.search)
+    caculatorStore.getServers({})
+    caculatorStore.setSelectMapItem(
+      {
+        name: '全国',
+        value: 0
+      }, state.type
+    )
   }
   render() {
     return (
