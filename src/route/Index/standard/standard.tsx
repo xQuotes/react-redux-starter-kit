@@ -33,7 +33,6 @@ export default class Standard extends React.Component<any, any> {
   render() {
     const { standardStore } = this.props
     const { list, typeName } = standardStore
-
     return (
       <Row className="main-standard">
         <Col span={15}>

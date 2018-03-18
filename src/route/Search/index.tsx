@@ -5,8 +5,13 @@ import queryString from 'query-string'
 import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
 
-import { List, Col, Card, Button } from 'antd'
+import { List, Col, Card, Button, Collapse } from 'antd'
+const Panel = Collapse.Panel
+
 import { Link } from 'react-router-dom'
+
+import _groupBy from 'lodash.groupby'
+import _map from 'lodash.map'
 
 import './search.less'
 
@@ -43,6 +48,10 @@ export default class Caculator extends React.Component<any, {}> {
     const state = queryString.parse(location.search)
     // console.log(location.search, queryString.parse(location.search))
     // const { costindexs, costindex, laborcosts, laborcost } = searchStore
+    const listMap = searchStore[state.typeName + 's']
+    console.log(listMap)
+    const listGroup = _groupBy(listMap, v => v.fileName.split(/年|月/)[0])
+
     return (
       <div>
         <Header {...this.props} />
@@ -142,34 +151,41 @@ export default class Caculator extends React.Component<any, {}> {
                 </Col>
               </div>
               <div style={{
-                height: '600px',
                 overflowY: 'auto',
                 margin: '20px 0'
               }}>
-                <List
-                  header={false}
-                  footer={false}
-                  bordered
-                  dataSource={searchStore[state.typeName + 's']}
-                  renderItem={(item: any) => (
-                    <List.Item>
-                      <Link
-                        onClick={() => {
-                          searchStore.selectCostindex(state.typeName, item)
-                        }}
-                        to={{
-                          pathname: '/search/' + state.typeName,
-                          search: location.search + `&url=${item.url}`,
-                          state: {
-                            url: item.url
-                          }
-                        }}
-                      >
-                        {item.fileName}
-                      </Link>
-                    </List.Item>
-                  )}
-                />
+                <Collapse>
+                  {_map(listGroup, (val: any, key: any) => {
+                    return <Panel header={key + '年'} key={key}>
+                      <List
+                        header={false}
+                        footer={false}
+                        bordered
+                        dataSource={val}
+                        renderItem={(item: any) => (
+                          <List.Item>
+                            <Link
+                              onClick={() => {
+                                searchStore.selectCostindex(state.typeName, item)
+                              }}
+                              to={{
+                                pathname: '/search/' + state.typeName,
+                                search: location.search + `&url=${item.url}`,
+                                state: {
+                                  url: item.url
+                                }
+                              }}
+                            >
+                              {item.fileName}
+                            </Link>
+                          </List.Item>
+                        )}
+                      />
+                    </Panel>
+                  })}
+                </Collapse>
+
+
               </div>
             </Card>
           </div>
