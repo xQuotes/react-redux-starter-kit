@@ -26,6 +26,11 @@ const cacu = [
   {
     type: '12',
     calculatorName: '施工图计算器'
+  },
+  {
+    type: '16',
+    calculatorName: '社会稳定性风险评估',
+    disabled: true
   }
 ]
 

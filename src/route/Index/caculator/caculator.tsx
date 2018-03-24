@@ -58,7 +58,18 @@ export default class Caculator extends React.Component<any, any> {
             {caculators.map((v: any, k: any) => {
               return (
                 <Col span={4} key={k}>
-                  <Link className="caculator-item" to={{
+
+                  {v.disabled ? <div className={`caculator-item`}>
+                    <div>
+                      <img
+                        src={require(`../../../common/images/首页/${v.calculatorName}.png`)}
+                        alt=""
+                        className="cacu-img"
+                      />
+                    </div>
+                    <div className="cacu-name">{v.calculatorName}</div>
+                    <div className="vwarning">努力开发中</div>
+                  </div> : <Link className="caculator-item" to={{
                     pathname: '/caculator',
                     search: `?type=${v.type}`,
                     state: {
@@ -75,20 +86,17 @@ export default class Caculator extends React.Component<any, any> {
                         ''
                       )
                     }} >
-                    <div className={`caculator-item` + ' ' + (type === v.type && "caculator-item-active")}>
-                      <div>
-                        <img
-                          src={require(`../../../common/images/首页/${v.calculatorName}.png`)}
-                          alt=""
-                          className="cacu-img"
-                        />
+                      <div className={`caculator-item` + ' ' + (type === v.type && "caculator-item-active")}>
+                        <div>
+                          <img
+                            src={require(`../../../common/images/首页/${v.calculatorName}.png`)}
+                            alt=""
+                            className="cacu-img"
+                          />
+                        </div>
+                        <div className="cacu-name">{v.calculatorName}</div>
                       </div>
-                      <div className="cacu-name">{v.calculatorName}</div>
-                    </div>
-                  </Link>
-                  {/* <div>
-                  <a href={v.clickurl}>{v.clickname}</a>
-                </div> */}
+                    </Link>}
                 </Col>
               )
             })}

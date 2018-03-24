@@ -5,25 +5,6 @@ import { Link } from 'react-router-dom'
 
 import './caculator.less'
 
-export const caculator = [
-  {
-    type: '11',
-    calculatorName: '造价计算器'
-  },
-  {
-    type: '13',
-    calculatorName: '地质灾害评估收费计算器'
-  },
-  {
-    type: '15',
-    calculatorName: '水土保持计算器'
-  },
-  {
-    type: '12',
-    calculatorName: '施工图计算器'
-  }
-]
-
 @inject('caculatorStore')
 @observer
 export default class Caculator extends React.Component<any, any> {
@@ -35,7 +16,7 @@ export default class Caculator extends React.Component<any, any> {
     const { caculatorStore } = this.props
     const { list } = caculatorStore
 
-    let caculators = list.concat(caculator)
+    let caculators = list
     return (
       <div className="main-caculator">
         <Row className="main">
@@ -51,14 +32,8 @@ export default class Caculator extends React.Component<any, any> {
             {caculators.map((v: any, k: any) => {
               return (
                 <Col span={6} key={k}>
-                  <Link className="caculator-item" to={{
-                    pathname: '/caculator',
-                    search: `?type=${v.type}`,
-                    state: {
-                      type: v.type
-                    }
-                  }} >
-                    <div className="caculator-item">
+                  {v.disabled ?
+                    <div className="caculator-item disabled">
                       <div>
                         <img
                           src={require(`../../../common/images/首页/${v.calculatorName}.png`)}
@@ -67,11 +42,25 @@ export default class Caculator extends React.Component<any, any> {
                         />
                       </div>
                       <div className="cacu-name">{v.calculatorName}</div>
-                    </div>
-                  </Link>
-                  {/* <div>
-                  <a href={v.clickurl}>{v.clickname}</a>
-                </div> */}
+                      <div className="vwarning">努力开发中</div>
+                    </div> : <Link className="caculator-item" to={{
+                      pathname: '/caculator',
+                      search: `?type=${v.type}`,
+                      state: {
+                        type: v.type
+                      }
+                    }} >
+                      <div className="caculator-item">
+                        <div>
+                          <img
+                            src={require(`../../../common/images/首页/${v.calculatorName}.png`)}
+                            alt=""
+                            className="cacu-img"
+                          />
+                        </div>
+                        <div className="cacu-name">{v.calculatorName}</div>
+                      </div>
+                    </Link>}
                 </Col>
               )
             })}
