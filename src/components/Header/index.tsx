@@ -17,6 +17,7 @@ export default class Header extends React.Component<any, {}> {
   }
   render() {
     const { match: { path } } = this.props
+    const loginStatus = false
     return (
       <div className="header">
         <div className="header-main">
@@ -54,14 +55,25 @@ export default class Header extends React.Component<any, {}> {
             </Menu>
           </div>
           <div className="right">
-            <Link to={Urls.login}>
-              <Button type="primary">登录</Button>
-            </Link>
-            <Link to={Urls.register}>
-              <Button type="primary" ghost>
-                注册
+            {loginStatus ? <div className="btn-group">
+              <Link to={Urls.login}>
+                <Button type="primary">登录</Button>
+              </Link>
+              <Link to={Urls.register}>
+                <Button type="primary" ghost>
+                  注册
               </Button>
-            </Link>
+              </Link>
+            </div> :
+              <Link to={Urls.mine}>
+                <div className="user-info">
+                  <img src={require('../../common/images/首页/333.png')} alt="" className="avator" />
+                  <div className="name">
+                    熬夜不配的
+              </div>
+                </div>
+              </Link>
+            }
           </div>
         </div>
       </div>

@@ -21,6 +21,7 @@ import Search from './route/Search/'
 import SearchView from './route/Search/main'
 import Ask from './route/Ask/'
 import Message from './route/Message/'
+import Mine from './route/Mine/'
 import FindPassword from './route/Login/findPassword'
 
 import Urls from './common/url'
@@ -44,6 +45,7 @@ export default class App extends React.Component<{}, {}> {
               />
               <Route path={Urls.index} component={Index} />
               <Route path={Urls.caculator} component={Caculator} />
+              <Route path={Urls.mine} component={Mine} />
               <Route path={Urls.news} component={News} />
               <Route path={Urls.register} component={Register} />
               <Route path={Urls.login} component={Login} />

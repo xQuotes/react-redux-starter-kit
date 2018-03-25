@@ -9,5 +9,6 @@ export default {
   guide: '/guide',
   search: '/search',
   ask: '/ask',
-  message: '/message'
+  message: '/message',
+  mine: '/mine'
 }

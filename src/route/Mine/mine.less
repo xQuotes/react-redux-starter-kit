@@ -1,0 +1,93 @@
+.mine {
+  background-color: #eee;
+
+  .main-container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    margin: 22px auto 60px;
+  }
+  .left-menu {
+    width: 216px;
+    background-color: #fff;
+    padding: 30px 0 30px;
+    border: 1px solid #efefef;
+
+    .vip-btn {
+      margin-top: 15px;
+      text-align: center;
+      // 开发一个组建 传入一个颜色 就可以形成对应的button
+      .ant-btn {
+        background-color: #ffb54c;
+        color: #fff;
+        border-color: #ffb54c;
+        width: 90px;
+        height: 30px;
+        border-radius: 15px;
+      }
+    }
+
+    .info {
+      text-align: center;
+    }
+    .avator {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    .name {
+      font-size: 14px;
+      margin-top: 14px;
+    }
+
+    .huiyuan {
+      margin-top: 12px;
+      margin-bottom: 18px;
+    }
+    .huiyuan-icon {
+      width: 26px;
+      height: 26px;
+    }
+    .huiyuan-label {
+      font-size: 12px;
+      line-height: 26px;
+      margin-left: 10px;
+    }
+    .ant-menu  {
+      font-size: 14px;
+    }
+    .ant-menu-item {
+      font-size: 14px;
+      border-top: 1px solid #efefef;
+      margin-bottom: 0!important;
+      margin-top: 0;
+
+      &:last-child {
+        border-bottom: 1px solid #efefef;
+      }
+    }
+  }
+  .right-content {
+    flex: 1;
+    margin-left: 20px;
+    background-color: #fff;
+    border: 1px solid #efefef;
+    padding: 20px;
+    
+    .form-title {
+      color: #656665;
+      font-size: 14px;
+      margin-left: 3%;
+      margin-bottom: 20px;
+      border-left: 4px solid #048cf2;
+      padding-left: 5px;
+    }
+    
+    .submit-btn {
+      color: #fff;
+      width: 100px;
+      height: 30px;
+      border-radius: 15px;
+    }
+  }
+}
