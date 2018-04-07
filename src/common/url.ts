@@ -15,5 +15,6 @@ export default {
   mineInfo: '/mine/info',
   mineOrder: '/mine/order',
   mineVoucher: '/mine/voucher', // 抵扣券
-  setPassword: '/mine/setpassword'
+  setPassword: '/mine/setpassword',
+  vip: '/mine/vip'
 }

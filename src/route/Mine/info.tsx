@@ -45,11 +45,11 @@ class UserForm extends React.Component<UserFormProps, any> {
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Col className="form-title">
-          职业信息
+          基本信息
         </Col>
         <FormItem
           {...formItemLayout}
-          label="账号"
+          label="毕业院校"
         >
           {getFieldDecorator('email', {
             rules: [],
@@ -59,7 +59,7 @@ class UserForm extends React.Component<UserFormProps, any> {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="昵称"
+          label="专业方向"
         >
           {getFieldDecorator('email', {
             rules: [],

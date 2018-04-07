@@ -1,5 +1,9 @@
 import * as React from 'react'
 import { Button, Upload, message } from 'antd'
+import { Link } from 'react-router-dom'
+
+import Urls from '../../common/url'
+
 import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
 
@@ -63,7 +67,7 @@ export default class Mine extends React.Component<any, any> {
             </div>
             <MineMenu {...this.props} />
             <div className="vip-btn">
-              <Button>开通 VIP</Button>
+              <Link to={Urls.vip}><Button>开通 VIP</Button></Link>
             </div>
           </div>
           <div className="right-content">
