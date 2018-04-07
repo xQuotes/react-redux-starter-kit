@@ -1,20 +1,23 @@
 import React from 'react'
 import { Menu } from 'antd'
 
-export default class MineMenu extends React.Component {
+export default class MineMenu extends React.Component<any, any> {
   state = {
     current: 'mail',
   }
   handleClick = (e: any) => {
+    const { history } = this.props
     this.setState({
       current: e.key,
-    });
+    })
+    history.push(e.key)
   }
   render() {
+    const { match: { params: { type } } } = this.props
     return (
       <Menu
         onClick={this.handleClick}
-        selectedKeys={[this.state.current]}
+        selectedKeys={[type]}
       >
         <Menu.Item key="info">
           <img src={require('../../common/images/menu/personal.png')} className="menu-icon" /> 个人信息
@@ -25,7 +28,7 @@ export default class MineMenu extends React.Component {
         <Menu.Item key="order">
           <img src={require('../../common/images/menu/order.png')} className="menu-icon" />我的订单
         </Menu.Item>
-        <Menu.Item key="password">
+        <Menu.Item key="setpassword">
           <img src={require('../../common/images/menu/password.png')} className="menu-icon" />设置密码
         </Menu.Item>
       </Menu>

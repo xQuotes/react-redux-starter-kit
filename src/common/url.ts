@@ -10,5 +10,10 @@ export default {
   search: '/search',
   ask: '/ask',
   message: '/message',
-  mine: '/mine'
+  my: '/mine',
+  mine: '/mine/info',
+  mineInfo: '/mine/info',
+  mineOrder: '/mine/order',
+  mineVoucher: '/mine/voucher', // 抵扣券
+  setPassword: '/mine/setpassword'
 }

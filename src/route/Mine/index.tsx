@@ -40,6 +40,8 @@ export default class Mine extends React.Component<any, any> {
     }
   }
   render() {
+    const { match: { params: { type } } } = this.props
+    const userInfo = JSON.parse(localStorage.user_info || '{}')
     return (
       <div className="mine">
         <Header {...this.props} />
@@ -50,7 +52,7 @@ export default class Mine extends React.Component<any, any> {
                 <img src={require('../../common/images/首页/333.png')} alt="" className="avator" />
               </Upload>
               <div className="name">
-                熬夜不配的冬天
+                {userInfo.nickName}
               </div>
               <div className="huiyuan">
                 <img src={require('../../common/images/menu/huiyuan.png')} alt="" className="huiyuan-icon" />
@@ -59,13 +61,20 @@ export default class Mine extends React.Component<any, any> {
                 </span>
               </div>
             </div>
-            <MineMenu />
+            <MineMenu {...this.props} />
             <div className="vip-btn">
               <Button>开通 VIP</Button>
             </div>
           </div>
           <div className="right-content">
-            <MineInfo />
+            {type === 'info' && <MineInfo />}
+            {type != 'info' && <div style={{
+              height: '800px',
+              backgroundColor: 'rgb(243, 244, 246)',
+              textAlign: 'center',
+              lineHeight: '600px',
+              fontSize: '36px'
+            }}>正在努力建设中...</div>}
           </div>
         </div>
         <Footer />

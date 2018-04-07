@@ -45,7 +45,7 @@ export default class App extends React.Component<{}, {}> {
               />
               <Route path={Urls.index} component={Index} />
               <Route path={Urls.caculator} component={Caculator} />
-              <Route path={Urls.mine} component={Mine} />
+              <Route path={`${Urls.my}/:type`} component={Mine} />
               <Route path={Urls.news} component={News} />
               <Route path={Urls.register} component={Register} />
               <Route path={Urls.login} component={Login} />
