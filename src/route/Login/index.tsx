@@ -7,6 +7,8 @@ const FormItem = Form.Item
 import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
 
+import Urls from '../../common/url'
+
 import './login.less'
 
 @inject('myStore')
@@ -14,12 +16,16 @@ import './login.less'
 class Login extends React.Component<any & FormComponentProps, {}> {
   handleSubmit = (e: any) => {
     e.preventDefault()
-    const { myStore, form } = this.props
+    const { myStore, form, history } = this.props
     form.validateFields((err: any, values: any) => {
       if (!err) {
-        console.log('Received values of form: ', values)
         myStore.login({
           ...values
+        }).then((data: any) => {
+          if (data.code > 0) {
+            form.resetFields()
+            history.push(Urls.index)
+          }
         })
       }
     })
@@ -44,7 +50,7 @@ class Login extends React.Component<any & FormComponentProps, {}> {
                     prefix={<span className="login-user-icon" />}
                     placeholder="请输入账号！"
                   />
-                  )}
+                )}
               </FormItem>
               <FormItem>
                 {getFieldDecorator('password', {
@@ -56,7 +62,7 @@ class Login extends React.Component<any & FormComponentProps, {}> {
                     type="password"
                     placeholder="请输入密码！"
                   />
-                  )}
+                )}
               </FormItem>
               <FormItem>
                 <div style={{

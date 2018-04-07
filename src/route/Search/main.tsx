@@ -35,7 +35,6 @@ export default class Caculator extends React.Component<any, {}> {
 
     const state = queryString.parse(location.search)
 
-    console.log(state)
     return (
       <div>
         <Header {...this.props} />

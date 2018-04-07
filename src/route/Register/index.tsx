@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
 
+import Urls from '../../common/url'
+
 import '../Login/login.less'
 
 const formItemLayout = {
@@ -37,12 +39,16 @@ class Register extends React.Component<any & FormComponentProps, any> {
 
   handleSubmit = (e: any) => {
     e.preventDefault()
-    const { myStore, form } = this.props
+    const { myStore, form, history } = this.props
     form.validateFields((err: any, values: any) => {
       if (!err) {
-        console.log('Received values of form: ', values)
         myStore.register({
           ...values
+        }).then((data: any) => {
+          if (data.code > 0) {
+            form.resetFields()
+            history.push(Urls.index)
+          }
         })
       }
     })

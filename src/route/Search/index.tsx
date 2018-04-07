@@ -70,7 +70,6 @@ export default class Caculator extends React.Component<any, {}> {
         }
       }
     })
-    console.log('charts', dataTime, dataY)
     const state = queryString.parse(location.search)
     // console.log(location.search, queryString.parse(location.search))
     // const { costindexs, costindex, laborcosts, laborcost } = searchStore

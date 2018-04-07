@@ -1,25 +1,15 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Menu, Dropdown } from 'antd'
+import { inject, observer } from 'mobx-react'
 
 import Urls from '../../common/url'
 
 import './header.less'
 
-const menu = (
-  <Menu>
-    <Menu.Item key="0">
-      <Link to={Urls.mine}>
-        个人中心
-      </Link>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="1">
-      <a rel="noopener noreferrer" href="#">退出登陆</a>
-    </Menu.Item>
-  </Menu>
-);
 
+@inject('myStore')
+@observer
 export default class Header extends React.Component<any, {}> {
   state = {
     current: 'mail'
@@ -30,8 +20,34 @@ export default class Header extends React.Component<any, {}> {
     })
   }
   render() {
-    const { match: { path } } = this.props
-    const loginStatus = true
+    const { match: { path }, myStore, history } = this.props
+    let loginStatus = true
+    const userInfo = JSON.parse(localStorage.user_info || '{}')
+    if (userInfo.userId) { loginStatus = false }
+
+
+    const menu = (
+      <Menu style={{
+        width: '100px',
+        lineHeight: '40px',
+        left: '80px',
+        top: '16px'
+      }}>
+        <Menu.Item key="0">
+          <Link to={Urls.mine}>
+            个人中心
+          </Link>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="1">
+          <a rel="noopener noreferrer" href="#" onClick={() => {
+            myStore.logout()
+            history.push(Urls.index)
+          }}>退出登陆</a>
+        </Menu.Item>
+      </Menu>
+    );
+
     return (
       <div className="header">
         <div className="header-main">
@@ -79,12 +95,13 @@ export default class Header extends React.Component<any, {}> {
               </Button>
               </Link>
             </div> :
-              <Dropdown overlay={menu}>
+              <Dropdown
+                overlay={menu}>
                 <div className="user-info">
                   <img src={require('../../common/images/首页/333.png')} alt="" className="avator" />
                   <div className="name">
-                    熬夜不配的
-                </div>
+                    {userInfo.nickName}
+                  </div>
                 </div>
               </Dropdown>
             }

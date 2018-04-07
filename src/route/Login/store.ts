@@ -1,4 +1,5 @@
 import { action } from 'mobx'
+import { message } from 'antd'
 
 import Store from '../../stores/store'
 import Fetch from '../../common/fetch'
@@ -40,6 +41,7 @@ export default class CaculatorStore extends Store {
       },
       method: 'post'
     }).then(data => {
+      message.success(data.message)
     })
   }
 
@@ -55,19 +57,36 @@ export default class CaculatorStore extends Store {
       },
       method: 'post'
     }).then(data => {
+      if (data.code > 0) {
+        // localStorage.setItem('user_info', JSON.stringify(data.databody))
+        message.success(data.message)
+      }
+
+      return data
     })
+  }
+
+
+  @action logout() {
+    localStorage.setItem('user_info', JSON.stringify({}))
   }
 
   @action login(formData: any) {
     return Fetch({
       url: this.api.login,
       data: {
+        source: 2,
         mobile: formData.mobile,
         password: formData.password
       },
       method: 'post'
     }).then(data => {
-      // remenber
+      if (data.code > 0) {
+        localStorage.setItem('user_info', JSON.stringify(data.databody))
+        message.success(data.message)
+      }
+
+      return data
     })
   }
 }
