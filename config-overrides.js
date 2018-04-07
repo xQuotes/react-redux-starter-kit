@@ -1,4 +1,8 @@
+// const rewireVendorSplitting = require('./react-app-rewire-vendor-splitting')
+
 module.exports = function override(config, env) {
+  // config = rewireVendorSplitting(config, env)
+
   const tsLoader = config.module.rules.find(conf => {
     return conf.loader && conf.loader.includes('ts-loader')
   })
