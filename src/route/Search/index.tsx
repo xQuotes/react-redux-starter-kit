@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { inject, observer } from 'mobx-react'
 import queryString from 'query-string'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'
 
 import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
@@ -15,6 +16,8 @@ import _map from 'lodash.map'
 
 import './search.less'
 
+const colors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
+
 @inject('searchStore')
 @observer
 export default class Caculator extends React.Component<any, {}> {
@@ -22,34 +25,57 @@ export default class Caculator extends React.Component<any, {}> {
     const { searchStore, location } = this.props
     const state = queryString.parse(location.search) || {}
     // searchStore.selectCostindex(state.typeName, state.typeName)
-    searchStore.getCostindex({
-      putaway: 1,
-      type: 1,
-      typeName: state.typeName
-    })
-
-
-    searchStore.getTargetdata({})
+    if (state.typeName === 'costexample') {
+      searchStore.getTargetdata({})
+    } else {
+      searchStore.getCostindex({
+        putaway: 1,
+        type: 1,
+        typeName: state.typeName
+      })
+    }
   }
   onChangeData = (type: any) => () => {
     const { searchStore } = this.props
     // searchStore.selectCostindex(type, type)
-    searchStore.getCostindex({
-      putaway: 1,
-      type: 1,
-      typeName: type
-    })
+    if (type === 'costexample') {
+
+      searchStore.getTargetdata({})
+
+    } else {
+      searchStore.getCostindex({
+        putaway: 1,
+        type: 1,
+        typeName: type
+      })
+    }
   }
   render() {
     const { searchStore, location } = this.props
     const { targetdata } = searchStore
-    console.log(targetdata)
-    // const { state } = location || { state:  }
+    const dataTime = {}
+    const dataY = {}
+    targetdata.map((v: any, key: number) => {
+      dataY[v.projectName] = colors[key % 10]
+      if (dataTime[`${v.yearData} ${v.monthData}`]) {
+        dataTime[`${v.yearData} ${v.monthData}`] = {
+          ...dataTime[`${v.yearData} ${v.monthData}`],
+          [v.projectName]: Number(v.priceData)
+        }
+      } else {
+        dataTime[`${v.yearData} ${v.monthData}`] = {
+          key: v.id,
+          time: `${v.yearData} ${v.monthData}`,
+          [v.projectName]: Number(v.priceData)
+        }
+      }
+    })
+    console.log('charts', dataTime, dataY)
     const state = queryString.parse(location.search)
     // console.log(location.search, queryString.parse(location.search))
     // const { costindexs, costindex, laborcosts, laborcost } = searchStore
     const listMap = searchStore[state.typeName + 's']
-    console.log(listMap)
+
     const listGroup = _groupBy(listMap, v => v.fileName.split(/年|月/)[0])
 
     return (
@@ -152,9 +178,10 @@ export default class Caculator extends React.Component<any, {}> {
               </div>
               <div style={{
                 overflowY: 'auto',
-                margin: '20px 0'
+                margin: '20px 0',
+                minHeight: '600px'
               }}>
-                <Collapse>
+                {state.typeName !== 'costexample' && <Collapse>
                   {_map(listGroup, (val: any, key: any) => {
                     return <Panel header={key + '年'} key={key}>
                       <List
@@ -183,9 +210,16 @@ export default class Caculator extends React.Component<any, {}> {
                       />
                     </Panel>
                   })}
-                </Collapse>
-
-
+                </Collapse>}
+                {state.typeName === 'costexample' &&
+                  <LineChart width={800} height={300} data={_map(dataTime, v => v)}>
+                    <XAxis dataKey="time" />
+                    <YAxis domain={[85, 'dataMax']} />
+                    <Tooltip />
+                    <Legend />
+                    <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                    {_map(dataY, (v: any, key: string) => <Line type="monotone" dataKey={key} stroke={v} key={key} />)}
+                  </LineChart>}
               </div>
             </Card>
           </div>

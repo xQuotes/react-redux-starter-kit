@@ -24,7 +24,6 @@ export default class CaculatorStore extends Store {
       data: formData,
       method: 'post'
     }).then(data => {
-      console.log(data)
     })
   }
 
@@ -41,7 +40,6 @@ export default class CaculatorStore extends Store {
       },
       method: 'post'
     }).then(data => {
-      console.log(data)
     })
   }
 
@@ -57,7 +55,6 @@ export default class CaculatorStore extends Store {
       },
       method: 'post'
     }).then(data => {
-      console.log(data)
     })
   }
 
@@ -71,7 +68,6 @@ export default class CaculatorStore extends Store {
       method: 'post'
     }).then(data => {
       // remenber
-      console.log(data)
     })
   }
 }

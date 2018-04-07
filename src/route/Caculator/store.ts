@@ -13,19 +13,19 @@ import Fetch from '../../common/fetch'
 const cacu = [
   {
     type: '11',
-    calculatorName: '造价计算器'
+    calculatorName: '造价'
   },
   {
     type: '13',
-    calculatorName: '地质灾害评估收费计算器'
+    calculatorName: '地质灾害评估收费'
   },
   {
     type: '15',
-    calculatorName: '水土保持计算器'
+    calculatorName: '水土保持'
   },
   {
     type: '12',
-    calculatorName: '施工图计算器'
+    calculatorName: '施工图'
   },
   {
     type: '16',
@@ -209,7 +209,6 @@ export default class CaculatorStore extends Store {
     type: any,
     formulaId: any
   ) {
-    console.log(type, data, formulaId)
     if (formulaId) {
       this.getFormulaServer({
         formulaId

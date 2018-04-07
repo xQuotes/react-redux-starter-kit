@@ -53,7 +53,6 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
     const { state } = location || { state: {} }
     const { type } = state || { type: itemType }
     const cacula = list.find((v: any) => v.type === type) || {}
-    console.log(list, type, cacula)
     return (
       <Row className="standard">
         <Col span={24} className="main-title-left">

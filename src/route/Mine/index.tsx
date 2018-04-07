@@ -21,7 +21,7 @@ export default class Mine extends React.Component<{}, {}> {
                 熬夜不配的冬天
               </div>
               <div className="huiyuan">
-                <img src={require('../../common/images/首页/333.png')} alt="" className="huiyuan-icon" />
+                <img src={require('../../common/images/menu/huiyuan.png')} alt="" className="huiyuan-icon" />
                 <span className="huiyuan-label">
                   普通会员
                 </span>

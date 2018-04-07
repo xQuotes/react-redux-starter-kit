@@ -62,7 +62,7 @@ export default class Caculator extends React.Component<any, any> {
                   {v.disabled ? <div className={`caculator-item`}>
                     <div>
                       <img
-                        src={require(`../../../common/images/首页/${v.calculatorName}.png`)}
+                        src={require(`../../../common/images/首页/${v.type + ''}.png`)}
                         alt=""
                         className="cacu-img"
                       />
@@ -89,7 +89,7 @@ export default class Caculator extends React.Component<any, any> {
                       <div className={`caculator-item` + ' ' + (type === v.type && "caculator-item-active")}>
                         <div>
                           <img
-                            src={require(`../../../common/images/首页/${v.calculatorName}.png`)}
+                            src={require(`../../../common/images/首页/${v.type + ''}.png`)}
                             alt=""
                             className="cacu-img"
                           />

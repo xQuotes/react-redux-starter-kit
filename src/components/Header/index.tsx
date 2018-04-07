@@ -1,10 +1,24 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Menu } from 'antd'
+import { Button, Menu, Dropdown } from 'antd'
 
 import Urls from '../../common/url'
 
 import './header.less'
+
+const menu = (
+  <Menu>
+    <Menu.Item key="0">
+      <Link to={Urls.mine}>
+        个人中心
+      </Link>
+    </Menu.Item>
+    <Menu.Divider />
+    <Menu.Item key="1">
+      <a rel="noopener noreferrer" href="#">退出登陆</a>
+    </Menu.Item>
+  </Menu>
+);
 
 export default class Header extends React.Component<any, {}> {
   state = {
@@ -17,7 +31,7 @@ export default class Header extends React.Component<any, {}> {
   }
   render() {
     const { match: { path } } = this.props
-    const loginStatus = false
+    const loginStatus = true
     return (
       <div className="header">
         <div className="header-main">
@@ -65,14 +79,14 @@ export default class Header extends React.Component<any, {}> {
               </Button>
               </Link>
             </div> :
-              <Link to={Urls.mine}>
+              <Dropdown overlay={menu}>
                 <div className="user-info">
                   <img src={require('../../common/images/首页/333.png')} alt="" className="avator" />
                   <div className="name">
                     熬夜不配的
-              </div>
                 </div>
-              </Link>
+                </div>
+              </Dropdown>
             }
           </div>
         </div>

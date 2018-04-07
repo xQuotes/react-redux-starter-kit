@@ -50,7 +50,6 @@ export default class SearchStore extends Store {
 
   @action
   selectCostindex = (type: string, data: {}) => {
-    console.log(type, data)
     this[type] = data
   }
 

@@ -7,7 +7,6 @@ import mapData from './const'
 
 export default class SelectComponent extends React.Component<any, {}> {
   onChartClick = (param: any) => {
-    console.log(param)
     const { store, typeName } = this.props // componentType = 'guide'
     const data = JSON.parse(param)
     if (typeName) {

@@ -11,7 +11,6 @@ import './index.less'
 
 export default class Hello extends React.Component<{}, {}> {
   render() {
-    console.log(this.props)
     return (
       <div className="index">
         <Header {...this.props} />

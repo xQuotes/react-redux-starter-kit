@@ -8,7 +8,6 @@ import NewsView from './view'
 export default class News extends React.Component<any, {}> {
   render() {
     const { match } = this.props
-    console.log(match)
     return (
       <div className="index">
         <Header {...this.props} />

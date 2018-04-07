@@ -97,7 +97,6 @@ export default class EchartsComponent extends React.Component<any, {}> {
     }
   }
   onChartLegendselectchanged = (param: any, echart: any) => {
-    console.log(param, echart)
     alert('chart legendselectchanged')
   }
   onChartReady(echart: any) {

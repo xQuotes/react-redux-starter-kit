@@ -1,12 +1,11 @@
 import React from 'react'
-import { Menu, Icon } from 'antd'
+import { Menu } from 'antd'
 
 export default class MineMenu extends React.Component {
   state = {
     current: 'mail',
   }
   handleClick = (e: any) => {
-    console.log('click ', e);
     this.setState({
       current: e.key,
     });
@@ -18,16 +17,16 @@ export default class MineMenu extends React.Component {
         selectedKeys={[this.state.current]}
       >
         <Menu.Item key="info">
-          <Icon type="mail" />个人信息
+          <img src={require('../../common/images/menu/personal.png')} className="menu-icon" /> 个人信息
         </Menu.Item>
         <Menu.Item key="voucher">
-          <Icon type="appstore" />我的抵扣券
+          <img src={require('../../common/images/menu/coupon.png')} className="menu-icon" /> 我的抵扣券
         </Menu.Item>
         <Menu.Item key="order">
-          <Icon type="mail" />我的订单
+          <img src={require('../../common/images/menu/order.png')} className="menu-icon" />我的订单
         </Menu.Item>
         <Menu.Item key="password">
-          <Icon type="appstore" />设置密码
+          <img src={require('../../common/images/menu/password.png')} className="menu-icon" />设置密码
         </Menu.Item>
       </Menu>
     );
