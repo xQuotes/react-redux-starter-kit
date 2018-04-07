@@ -3,6 +3,8 @@ import { inject, observer } from 'mobx-react'
 import { Row, Col, Button, Form, Input, Select, Icon } from 'antd'
 const Option = Select.Option
 import { FormComponentProps } from 'antd/lib/form/Form'
+import queryString from 'query-string'
+
 const FormItem = Form.Item
 import Echarts from '../../../components/Echarts/'
 import CaculatorModal from '../model'
@@ -50,14 +52,22 @@ class Standard extends React.Component<any & FormComponentProps, {}> {
     const { item, selectMapItem, results, projects, list, itemType } = caculatorStore
     const { getFieldDecorator } = form
 
-    const { state } = location || { state: {} }
+    const state = queryString.parse(location.search)
+    // const { state } = location || { state: {} }
+    // const { state } = location || { state:  }
     const { type } = state || { type: itemType }
-    const cacula = list.find((v: any) => v.type === type) || {}
+    const cacula = list.find((v: any) => v.type + '' === type) || {}
+    console.log(state, list, cacula)
     return (
       <Row className="standard">
         <Col span={24} className="main-title-left">
 
-          <Col span={12}><img src={require('../../../common/images/计算器修改/sdf.png')} className="main-title-left-icon" />
+          <Col span={12}>
+            <img
+              src={require(`../../../common/images/首页/${type + ''}.png`)}
+              alt=""
+              className="main-title-left-icon"
+            />
             <div className="main-title-left-title">
               <div className="main-title-ch">
                 <span className="main-title-line"> &nbsp;</span>

@@ -1,12 +1,41 @@
 .carousel {
   font-size: 14px;
   .carousel-item.slick-slide {
-    height: 400px;
+    // height: 400px;
     background-color: #ddd;
+    height: initial!important;
   }
-  .carousel-item-content {
-    height: 400px;
-    background-image: url('./center.jpeg');
+  .ant-carousel .slick-slide {
+    height: initial!important;
+  }
+  .carousel-item {
+    position: relative;
+    text-align: center;
+
+    .banner-link {
+      position: absolute;
+      top: 70%;
+      border: 1px solid #fff;
+      color: #fff;
+      line-height: 40px;
+      width: 200px;
+      height: 42px;
+      border-radius: 22px;
+      margin-left: -100px;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .carousel-item-content1 {
+    // height: 400px;
+    background-image: url('../../../common/images/banner/banner1.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .carousel-item-content2 {
+    // height: 400px;
+    background-image: url('../../../common/images/banner/banner2.png');
     background-repeat: no-repeat;
     background-size: 100%;
   }

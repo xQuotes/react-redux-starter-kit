@@ -82,7 +82,7 @@ class UserForm extends React.Component<UserFormProps, any> {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="公司"
+          label="工作地点"
         >
           {getFieldDecorator('email', {
             rules: [],
@@ -92,7 +92,7 @@ class UserForm extends React.Component<UserFormProps, any> {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="岗位"
+          label="工作岗位"
         >
           {getFieldDecorator('email', {
             rules: [],

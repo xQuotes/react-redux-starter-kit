@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Button } from 'antd'
+import { Button, Upload, message } from 'antd'
 import Header from '../../components/Header/'
 import Footer from '../../components/Footer/'
 
@@ -8,7 +8,37 @@ import MineInfo from './info'
 
 import './mine.less'
 
-export default class Mine extends React.Component<{}, {}> {
+export default class Mine extends React.Component<any, any> {
+  uploadProps() {
+    return {
+      name: 'file',
+      multiple: true,
+      showUploadList: false,
+      action: 'http://www.anyfees.com/api/file/upload',
+      data: {
+        name: 'avator'
+      },
+      withCredentials: true,
+      // headers: {
+      //   'X-Requested-With': null
+      // },
+      onChange(info: any) {
+        const status = info.file.status
+        console.log(info)
+        if (status !== 'uploading') {
+          console.log(info.file, info.fileList)
+        }
+        if (status === 'done') {
+          console.log(info)
+          const response = info.file.response
+          console.log(response)
+          message.success(`${info.file.name} file uploaded successfully.`)
+        } else if (status === 'error') {
+          message.error(`${info.file.name} file upload failed.`)
+        }
+      }
+    }
+  }
   render() {
     return (
       <div className="mine">
@@ -16,7 +46,9 @@ export default class Mine extends React.Component<{}, {}> {
         <div className="main-container">
           <div className="left-menu">
             <div className="info">
-              <img src={require('../../common/images/首页/333.png')} alt="" className="avator" />
+              <Upload {...this.uploadProps()}>
+                <img src={require('../../common/images/首页/333.png')} alt="" className="avator" />
+              </Upload>
               <div className="name">
                 熬夜不配的冬天
               </div>

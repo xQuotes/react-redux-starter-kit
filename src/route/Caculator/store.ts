@@ -21,15 +21,15 @@ const cacu = [
   },
   {
     type: '15',
-    calculatorName: '水土保持'
+    calculatorName: '水土保持费'
   },
   {
     type: '12',
-    calculatorName: '施工图'
+    calculatorName: '施工图审查费'
   },
   {
     type: '16',
-    calculatorName: '社会稳定性风险评估',
+    calculatorName: '社会稳定风险评估费',
     disabled: true
   }
 ]

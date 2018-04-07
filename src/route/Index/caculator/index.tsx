@@ -17,6 +17,7 @@ export default class Caculator extends React.Component<any, any> {
     const { list } = caculatorStore
 
     let caculators = list
+
     return (
       <div className="main-caculator">
         <Row className="main">
