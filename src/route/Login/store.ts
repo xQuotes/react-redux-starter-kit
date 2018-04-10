@@ -24,7 +24,6 @@ export default class CaculatorStore extends Store {
       url: this.api.getCode,
       data: formData,
       method: 'post'
-    }).then(data => {
     })
   }
 

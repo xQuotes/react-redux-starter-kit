@@ -73,24 +73,33 @@ class Register extends React.Component<any & FormComponentProps, any> {
     }
   }
   getPhoneCode = (mobile: string) => () => {
-    let siv = setInterval(() => {
-      this.setState((preState) => ({
-        seconds: preState.seconds - 1,
-        dlgTipTxt: `${preState.seconds - 1}s重新发送`,
-        disabled: true
-      }), () => {
-        if (this.state.seconds == 0) {
-          this.setState({
-            disabled: false
-          })
-          clearInterval(siv)
-        }
-      });
-    }, 1000)
-
     const { myStore } = this.props
     myStore.getCode({
       mobile
+    }).then((data: any) => {
+      console.log(data)
+      if (data.code >= 0) {
+
+        let siv = setInterval(() => {
+          this.setState((preState) => ({
+            seconds: preState.seconds - 1,
+            dlgTipTxt: `${preState.seconds - 1}s重新发送`,
+            disabled: true
+          }), () => {
+            if (this.state.seconds == 0) {
+              this.setState({
+                disabled: false,
+                dlgTipTxt: '获取验证码',
+                seconds: 59
+              })
+              clearInterval(siv)
+            }
+          });
+        }, 1000)
+
+      }
+
+
     })
   }
   render() {
